@@ -1,0 +1,127 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e3]:
+      - link "ЖанКлод Мангал" [ref=e4] [cursor=pointer]:
+        - /url: "#top"
+        - img "ЖанКлод Мангал" [ref=e5]
+      - button "Открыть меню" [ref=e151]:
+        - img [ref=e152]
+    - navigation [ref=e131]:
+      - list [ref=e132]:
+        - listitem [ref=e133]:
+          - link "О нас" [ref=e134] [cursor=pointer]:
+            - /url: "#onas"
+        - listitem [ref=e135]:
+          - link "Меню" [ref=e136] [cursor=pointer]:
+            - /url: "#menu"
+        - listitem [ref=e137]:
+          - link "Банкеты" [ref=e138] [cursor=pointer]:
+            - /url: "#ban"
+        - listitem [ref=e139]:
+          - link "Контакты" [ref=e140] [cursor=pointer]:
+            - /url: "#contacts"
+      - generic [ref=e141]:
+        - link "+7 (903) 308-62-89" [ref=e142] [cursor=pointer]:
+          - /url: tel:+79033086289
+        - button "Сделать Заказ" [ref=e143] [cursor=pointer]
+  - main [ref=e19]:
+    - generic [ref=e20]:
+      - img "Шашлык на мангале" [ref=e21]
+      - generic [ref=e24]:
+        - generic [ref=e25]:
+          - heading "Доставка еды из кафе Жан Клод Мангал" [level=1] [ref=e26]:
+            - text: Доставка еды
+            - text: из кафе
+            - link "Жан Клод Мангал" [ref=e27] [cursor=pointer]:
+              - /url: https://yandex.ru/maps/org/zhan_klod_mangal/222834997712/
+          - paragraph [ref=e28]: Сочные шашлыки, вкуснейшая шаурма и бургеры с мангала — у вас дома!
+          - button "Заказать" [ref=e29] [cursor=pointer]
+        - generic [ref=e30]:
+          - generic [ref=e31]:
+            - img [ref=e32]
+            - paragraph [ref=e37]:
+              - generic [ref=e38]: Бесплатная доставка
+              - generic [ref=e39]: от 2500 рублей
+          - generic [ref=e40]:
+            - img [ref=e41]
+            - paragraph [ref=e44]:
+              - generic [ref=e45]: Доставляем блюда горячими за 45–60 минут
+          - generic [ref=e46]:
+            - img [ref=e47]
+            - paragraph [ref=e50]:
+              - generic [ref=e51]: "Время работы:"
+              - generic [ref=e52]: 11:00–00:00 (Пт - Сб)
+              - generic [ref=e53]: 11:00–23:00 (Вс - Чт)
+    - generic [ref=e55]:
+      - generic [ref=e56]:
+        - heading "Вкус, который вы искали. Здесь мясо готовят так, как вы ещё не пробовали." [level=2] [ref=e57]:
+          - text: Вкус, который вы искали.
+          - text: Здесь мясо готовят так, как вы ещё не пробовали.
+        - paragraph [ref=e58]:
+          - text: Мы готовим по традиционным армянским рецептам, передавая настоящий вкус мяса на углях — сочного, ароматного, с идеальной прожаркой.
+          - text: В основе каждого блюда — только свежие продукты и отборное мясо, чтобы сохранить настоящий вкус блюд на углях.
+          - text: Попробовав один раз, вы понимаете разницу — такого насыщенного вкуса вы ещё не ощущали.
+      - generic [ref=e59]:
+        - img "Шашлык и мясо на шампурах в ЖанКлод Мангал" [ref=e61]
+        - img "Блюда с мангала, овощи и лаваш" [ref=e63]
+        - img "Десерт и напиток в кафе ЖанКлод Мангал" [ref=e65]
+    - generic [ref=e67]:
+      - generic [ref=e68]:
+        - heading "Попробуйте всё разнообразие «Жан-Клод Мангал»!" [level=2] [ref=e69]
+        - paragraph [ref=e70]:
+          - text: Наше меню — это коллекция ваших любимых блюд в безупречном исполнении. Хочется сочной свиной шеи? Пожалуйста. Предпочитаете легкий рыбный стейк или свежий салат? У нас есть всё.
+          - text: Мы объединили традиции открытого огня и современную кухню, чтобы каждый ваш заказ стал событием.
+      - generic [ref=e71]:
+        - generic [ref=e72]:
+          - button "Предыдущий слайд" [ref=e73]:
+            - img [ref=e74]
+          - button "Открыть Страница меню ЖанКлод Мангал 1" [ref=e76]:
+            - img "Страница меню ЖанКлод Мангал 1" [ref=e77]
+          - button "Следующий слайд" [ref=e78]:
+            - img [ref=e79]
+        - tablist "Меню" [ref=e81]:
+          - button "Перейти к слайду 1" [ref=e82]
+          - button "Перейти к слайду 2" [ref=e83]
+          - button "Перейти к слайду 3" [ref=e84]
+          - button "Перейти к слайду 4" [ref=e85]
+          - button "Перейти к слайду 5" [ref=e86]
+          - button "Перейти к слайду 6" [ref=e87]
+          - button "Перейти к слайду 7" [ref=e88]
+          - button "Перейти к слайду 8" [ref=e89]
+          - button "Перейти к слайду 9" [ref=e90]
+          - button "Перейти к слайду 10" [ref=e91]
+    - generic [ref=e93]:
+      - generic [ref=e94]:
+        - generic [ref=e95]:
+          - img "Банкетный стол с блюдами ЖанКлод Мангал" [ref=e98]
+          - img "Тёплая атмосфера для торжества" [ref=e101]
+        - img "Блюда для банкетов и встреч" [ref=e145]
+      - generic [ref=e104]:
+        - heading "Банкеты и торжества" [level=2] [ref=e105]
+        - paragraph [ref=e106]: Мы знаем, как сделать ваш праздник вкусным и уютным. Дни рождения, корпоративы или встречи с друзьями — в «ЖанКлод Мангал» вы получаете тёплую атмосферу, сочное мясо на углях и никакой суеты. Мы берём на себя готовку и сервис, чтобы вы могли наслаждаться общением. Приходите большой компанией — накроем стол, нажарим мяса и сделаем вечер незабываемым.
+        - button "Оставить заявку" [ref=e107] [cursor=pointer]
+    - generic [ref=e110]:
+      - 'heading "Контакты Телефон: +7 (927) 010-47-25 +7 (903) 308-62-89 Адрес: Самара, просп. Кирова, 393В" [level=2] [ref=e111]':
+        - text: Контакты
+        - text: "Телефон:"
+        - link "+7 (927) 010-47-25" [ref=e112] [cursor=pointer]:
+          - /url: tel:+79270104725
+        - link "+7 (903) 308-62-89" [ref=e113] [cursor=pointer]:
+          - /url: tel:+79033086289
+        - text: "Адрес:"
+        - link "Самара, просп. Кирова, 393В" [ref=e114] [cursor=pointer]:
+          - /url: https://yandex.com/maps/51/samara/house/prospekt_kirova_393v/YUkYdAVkQUUPQFtpfX50cXRrYA==/
+      - generic [ref=e115]:
+        - strong [ref=e116]: Как мы доставляем
+        - emphasis [ref=e117]: "До 3 км:"
+        - text: при заказе от 2500 руб — бесплатно, до 2500 руб — 250 руб.
+        - emphasis [ref=e118]: "От 3 км:"
+        - text: 350 руб (или бесплатно от 3000 руб).
+      - generic "Социальные сети" [ref=e119]:
+        - link "Telegram" [ref=e120] [cursor=pointer]:
+          - /url: https://t.me/mangaljanklod
+          - img [ref=e121]
+        - link "Instagram" [ref=e124] [cursor=pointer]:
+          - /url: https://www.instagram.com/mangalzhanklod?igsh=OWdtaWFjcHI0ZHlv&utm_source=qr
+          - img [ref=e125]
+  - alert [ref=e128]

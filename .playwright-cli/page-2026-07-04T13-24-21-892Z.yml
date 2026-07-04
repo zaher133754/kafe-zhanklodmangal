@@ -1,0 +1,147 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - generic [ref=e4]:
+      - link "Жанклод МАНГАЛ" [ref=e7] [cursor=pointer]:
+        - /url: "#rec1913046593"
+        - img "Жанклод МАНГАЛ" [ref=e8]
+      - navigation [ref=e10]:
+        - list [ref=e11]:
+          - listitem [ref=e12]:
+            - link "О НАС" [ref=e13] [cursor=pointer]:
+              - /url: "#onas"
+          - listitem [ref=e14]:
+            - link "МЕНЮ" [ref=e15] [cursor=pointer]:
+              - /url: "#menu"
+          - listitem [ref=e16]:
+            - link "БАНКЕТЫ" [ref=e17] [cursor=pointer]:
+              - /url: "#ban"
+          - listitem [ref=e18]:
+            - link "КОНТАКТЫ" [ref=e19] [cursor=pointer]:
+              - /url: "#contacts"
+      - generic [ref=e21]:
+        - link "+7 (903) 308-62-89" [ref=e24] [cursor=pointer]:
+          - /url: TEL:+79033086289
+        - link "Сделать Заказ" [ref=e28] [cursor=pointer]:
+          - /url: TEL:+79033086289
+          - generic [ref=e29]: Сделать Заказ
+    - generic [ref=e37]:
+      - generic [ref=e39]:
+        - heading "Доставка еды из кафе Жан Клод Мангал" [level=1] [ref=e40]:
+          - text: Доставка еды
+          - text: из кафе
+          - link "Жан Клод Мангал" [ref=e41] [cursor=pointer]:
+            - /url: https://yandex.ru/maps/org/zhan_klod_mangal/222834997712/
+        - strong [ref=e43]: Сочные шашлыки, вкуснейшая шаурма и бургеры с мангала — у вас дома!
+        - link "Заказать" [ref=e45] [cursor=pointer]:
+          - /url: TEL:+79033086289
+          - generic [ref=e46]: Заказать
+      - generic [ref=e48]:
+        - generic [ref=e51]:
+          - strong [ref=e52]: Бесплатная доставка
+          - strong [ref=e53]: от 2500 рублей
+        - strong [ref=e57]: Доставляем блюда горячими за 45–60 минут
+        - generic [ref=e60]:
+          - strong [ref=e61]: "Время работы:"
+          - strong [ref=e62]: 11:00–00:00 (Пт - Сб)
+          - strong [ref=e63]: 11:00–23:00 (Вс - Чт)
+    - generic [ref=e67]:
+      - generic [ref=e68]:
+        - strong [ref=e69]: Вкус, который вы искали.
+        - strong [ref=e70]: Здесь мясо готовят так, как вы ещё не пробовали.
+      - generic [ref=e72]:
+        - text: Мы готовим по традиционным армянским рецептам, передавая настоящий вкус мяса на углях — сочного, ароматного, с идеальной прожаркой.
+        - text: В основе каждого блюда — только свежие продукты и отборное мясо, чтобы сохранить настоящий вкус блюд на углях.
+        - text: Попробовав один раз, вы понимаете разницу — такого насыщенного вкуса вы ещё не ощущали.
+    - generic [ref=e80]:
+      - generic [ref=e82]:
+        - generic [ref=e83]: Попробуйте всё разнообразие «Жан-Клод Мангал»!
+        - generic [ref=e84]:
+          - text: Наше меню — это коллекция ваших любимых блюд в безупречном исполнении. Хочется сочной свиной шеи? Пожалуйста. Предпочитаете легкий рыбный стейк или свежий салат? У нас есть всё.
+          - text: Мы объединили традиции открытого огня и современную кухню, чтобы каждый ваш заказ стал событием.
+      - generic [ref=e86]:
+        - list:
+          - listitem [ref=e87] [cursor=pointer]:
+            - button "Предыдущий слайд" [ref=e88]
+          - listitem [ref=e91] [cursor=pointer]:
+            - button "Следующий слайд" [ref=e92]
+        - generic [ref=e96]:
+          - group [ref=e97]
+          - group "1 из 10" [ref=e103]
+          - group [ref=e109]
+          - group [ref=e115]
+          - group [ref=e121]
+          - group [ref=e127]
+          - group [ref=e133]
+          - group [ref=e139]
+          - group [ref=e145]
+          - group [ref=e151]
+          - group [ref=e157]
+          - group [ref=e163]
+        - list [ref=e169]:
+          - listitem [ref=e170] [cursor=pointer]:
+            - button "Перейти к слайду 1" [ref=e171]
+          - listitem [ref=e172] [cursor=pointer]:
+            - button "Перейти к слайду 2" [ref=e173]
+          - listitem [ref=e174] [cursor=pointer]:
+            - button "Перейти к слайду 3" [ref=e175]
+          - listitem [ref=e176] [cursor=pointer]:
+            - button "Перейти к слайду 4" [ref=e177]
+          - listitem [ref=e178] [cursor=pointer]:
+            - button "Перейти к слайду 5" [ref=e179]
+          - listitem [ref=e180] [cursor=pointer]:
+            - button "Перейти к слайду 6" [ref=e181]
+          - listitem [ref=e182] [cursor=pointer]:
+            - button "Перейти к слайду 7" [ref=e183]
+          - listitem [ref=e184] [cursor=pointer]:
+            - button "Перейти к слайду 8" [ref=e185]
+          - listitem [ref=e186] [cursor=pointer]:
+            - button "Перейти к слайду 9" [ref=e187]
+          - listitem [ref=e188] [cursor=pointer]:
+            - button "Перейти к слайду 10" [ref=e189]
+    - generic [ref=e204]:
+      - heading "Банкеты и торжества" [level=2] [ref=e205]:
+        - strong [ref=e207]: Банкеты и торжества
+      - generic [ref=e209]: Мы знаем, как сделать ваш праздник вкусным и уютным. Дни рождения, корпоративы или встречи с друзьями — в «ЖанКлод Мангал» вы получаете тёплую атмосферу, сочное мясо на углях и никакой суеты. Мы берём на себя готовку и сервис, чтобы вы могли наслаждаться общением. Приходите большой компанией — накроем стол, нажарим мяса и сделаем вечер незабываемым.
+    - generic [ref=e213]:
+      - generic [ref=e214]:
+        - text: Контакты
+        - text: "Телефон:"
+        - link "+7 (927) 010-47-2" [ref=e215] [cursor=pointer]:
+          - /url: TEL:+78482622636
+        - text: "5"
+        - link "+7 (903) 308-62-89" [ref=e216] [cursor=pointer]:
+          - /url: TEL:+79033086289
+        - text: "Адрес:"
+        - link "Самара, просп. Кирова, 393В" [ref=e217] [cursor=pointer]:
+          - /url: https://yandex.com/maps/51/samara/house/prospekt_kirova_393v/YUkYdAVkQUUPQFtpfX50cXRrYA==/
+      - generic [ref=e218]:
+        - strong [ref=e219]: Как мы доставляем
+        - emphasis [ref=e220]: "До 3 км:"
+        - text: при заказе от 2500 руб — бесплатно, до 2500 руб — 250 руб.
+        - emphasis [ref=e221]: "От 3 км:"
+        - text: 350 руб (или бесплатно от 3000 руб).
+      - list "Social media links" [ref=e223]:
+        - listitem [ref=e224]:
+          - link "telegram" [ref=e225] [cursor=pointer]:
+            - /url: https://t.me/mangaljanklod
+        - listitem [ref=e227]:
+          - link "instagram" [ref=e228] [cursor=pointer]:
+            - /url: https://www.instagram.com/mangalzhanklod?igsh=OWdtaWFjcHI0ZHlv&utm_source=qr
+  - generic [ref=e230]:
+    - generic [ref=e231]:
+      - link [ref=e232] [cursor=pointer]:
+        - /url: https://tilda.cc/
+      - generic [ref=e233]:
+        - text: This site was made on
+        - link "Tilda — a website builder" [ref=e234] [cursor=pointer]:
+          - /url: https://tilda.cc/
+        - text: that helps to create a website without any code
+      - link "Create a website" [ref=e235] [cursor=pointer]:
+        - /url: https://tilda.cc/registration/
+    - generic [ref=e236]:
+      - link "How to remove this block?" [ref=e237] [cursor=pointer]:
+        - /url: https://help.tilda.cc/white-label
+      - link "About platform" [ref=e238] [cursor=pointer]:
+        - /url: https://tilda.cc/
+      - link "Submit a complaint" [ref=e239] [cursor=pointer]:
+        - /url: https://tilda.cc/abuse/
