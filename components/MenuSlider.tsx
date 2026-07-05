@@ -61,11 +61,15 @@ export function MenuSlider() {
   }
 
   return (
-    <div className="mx-auto mt-[95px] max-w-[640px]" data-reveal>
-      <div className="grid grid-cols-[44px_minmax(0,360px)_44px] items-center justify-center gap-4 sm:gap-8">
+    <div
+      className="premium-panel mx-auto mt-14 max-w-[720px] p-5 sm:mt-18 sm:p-8 md:mt-20 md:p-10"
+      data-reveal="scale"
+      data-reveal-delay="140"
+    >
+      <div className="grid grid-cols-[44px_minmax(0,360px)_44px] items-center justify-center gap-3 sm:grid-cols-[48px_minmax(0,360px)_48px] sm:gap-7">
         <button
           type="button"
-          className="focus-ring inline-flex h-10 w-10 items-center justify-center rounded-full bg-white text-[#555] transition hover:bg-ember hover:text-white"
+          className="icon-button focus-ring h-11 w-11"
           aria-label="Предыдущий слайд"
           onClick={() => move(-1)}
         >
@@ -75,7 +79,7 @@ export function MenuSlider() {
         <button
           ref={lightboxTriggerRef}
           type="button"
-          className="focus-ring relative aspect-[360/550] w-full overflow-hidden rounded-sm bg-[#6b4a3d]"
+          className="media-card focus-ring group relative aspect-[360/550] w-full overflow-hidden bg-coal"
           onClick={() => setLightbox(true)}
           aria-label={`Открыть ${active.alt}`}
         >
@@ -84,13 +88,13 @@ export function MenuSlider() {
             alt={active.alt}
             fill
             sizes="(max-width: 640px) 62vw, 360px"
-            className="object-cover"
+            className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.02]"
           />
         </button>
 
         <button
           type="button"
-          className="focus-ring inline-flex h-10 w-10 items-center justify-center rounded-full bg-white text-[#555] transition hover:bg-ember hover:text-white"
+          className="icon-button focus-ring h-11 w-11"
           aria-label="Следующий слайд"
           onClick={() => move(1)}
         >
@@ -109,8 +113,10 @@ export function MenuSlider() {
             key={image.src}
           >
             <span
-              className={`h-[5px] w-[5px] rounded-full transition ${
-                current === index ? "bg-white" : "bg-[#c7c7c7]/70"
+              className={`rounded-full transition-all ${
+                current === index
+                  ? "h-1.5 w-4 bg-ember shadow-[0_0_14px_rgba(255,85,0,0.45)]"
+                  : "h-1.5 w-1.5 bg-gold/35"
               }`}
               aria-hidden
             />
@@ -121,7 +127,7 @@ export function MenuSlider() {
       {lightbox
         ? createPortal(
             <div
-          className="fixed inset-0 z-[100] h-[100dvh] w-screen touch-pan-y overflow-hidden bg-black"
+          className="fixed inset-0 z-[100] h-[100dvh] w-screen touch-pan-y overflow-hidden bg-charcoal/95 backdrop-blur-xl"
           role="dialog"
           aria-modal="true"
           aria-label="Меню ЖанКлод Мангал"
@@ -142,7 +148,7 @@ export function MenuSlider() {
           </div>
 
           <p
-            className="pointer-events-none absolute left-1/2 top-4 z-10 -translate-x-1/2 rounded-full bg-black/70 px-3 py-1 text-sm font-bold text-white sm:top-5"
+            className="pointer-events-none absolute left-1/2 top-4 z-10 -translate-x-1/2 rounded-full border border-gold/20 bg-charcoal/80 px-4 py-1.5 text-sm font-bold text-cream shadow-lg sm:top-5"
             aria-live="polite"
           >
             {current + 1} / {images.menu.length}
@@ -151,7 +157,7 @@ export function MenuSlider() {
           <button
             ref={closeButtonRef}
             type="button"
-            className="focus-ring absolute right-3 top-3 z-20 inline-flex h-11 w-11 items-center justify-center rounded-full bg-white text-black transition hover:bg-ember hover:text-white sm:right-5 sm:top-5"
+            className="icon-button focus-ring absolute right-3 top-3 z-20 h-11 w-11 sm:right-5 sm:top-5"
             aria-label="Закрыть"
             onClick={() => setLightbox(false)}
           >
@@ -159,7 +165,7 @@ export function MenuSlider() {
           </button>
           <button
             type="button"
-            className="focus-ring absolute left-3 top-1/2 z-20 inline-flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-white text-black transition hover:bg-ember hover:text-white sm:left-5"
+            className="icon-button focus-ring absolute left-3 top-1/2 z-20 h-11 w-11 -translate-y-1/2 sm:left-5"
             aria-label="Предыдущий слайд"
             onClick={() => move(-1)}
           >
@@ -167,7 +173,7 @@ export function MenuSlider() {
           </button>
           <button
             type="button"
-            className="focus-ring absolute right-3 top-1/2 z-20 inline-flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-white text-black transition hover:bg-ember hover:text-white sm:right-5"
+            className="icon-button focus-ring absolute right-3 top-1/2 z-20 h-11 w-11 -translate-y-1/2 sm:right-5"
             aria-label="Следующий слайд"
             onClick={() => move(1)}
           >

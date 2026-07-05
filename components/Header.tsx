@@ -14,11 +14,14 @@ export function Header() {
   }, [isOpen]);
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 bg-black shadow-[0_1px_3px_rgba(0,0,0,0.1)]">
-      <div className="container-tilda flex h-[var(--header-height)] items-center justify-between gap-5">
+    <header className="fixed inset-x-0 top-0 z-50 border-b border-gold/15 bg-charcoal/[0.92] shadow-[0_10px_40px_rgba(0,0,0,0.28)] backdrop-blur-xl">
+      <div
+        className="container-tilda flex h-[var(--header-height)] items-center justify-between gap-5"
+        data-reveal="down"
+      >
         <a
           href="#top"
-          className="focus-ring relative h-[54px] w-[124px] shrink-0 sm:w-[150px]"
+          className="focus-ring relative h-[54px] w-[124px] shrink-0 transition-[opacity,transform] duration-300 hover:scale-[1.02] hover:opacity-95 sm:w-[150px]"
           aria-label="ЖанКлод Мангал"
           onClick={() => setIsOpen(false)}
         >
@@ -33,11 +36,11 @@ export function Header() {
         </a>
 
         <nav className="hidden flex-1 items-center justify-start md:flex">
-          <ul className="flex items-center gap-8 text-[13px] font-bold uppercase tracking-[0]">
+          <ul className="flex items-center gap-9 text-[13px] font-bold uppercase tracking-[0.04em]">
             {navItems.map((item) => (
               <li key={item.href}>
                 <a
-                  className="focus-ring transition-colors hover:text-ember-soft"
+                  className="nav-link focus-ring"
                   href={item.href}
                 >
                   {item.label}
@@ -50,7 +53,7 @@ export function Header() {
         <div className="hidden items-center gap-6 md:flex">
           <a
             href={site.orderPhone.href}
-            className="focus-ring text-[15px] font-bold text-ember"
+            className="focus-ring text-[15px] font-bold text-gold-soft transition-colors hover:text-ember-soft"
           >
             {site.orderPhone.label}
           </a>
@@ -64,7 +67,7 @@ export function Header() {
 
         <button
           type="button"
-          className="focus-ring inline-flex h-10 w-10 items-center justify-center text-ember md:hidden"
+          className="focus-ring inline-flex h-10 w-10 items-center justify-center rounded-full border border-gold/20 bg-coal/60 text-ember shadow-[0_8px_24px_rgba(0,0,0,0.22)] transition-colors hover:border-gold/40 hover:text-gold-soft md:hidden"
           aria-label={isOpen ? "Закрыть меню" : "Открыть меню"}
           aria-expanded={isOpen}
           onClick={() => setIsOpen((value) => !value)}
@@ -76,16 +79,16 @@ export function Header() {
       <div
         className={`md:hidden ${
           isOpen
-            ? "max-h-[calc(100svh-var(--header-height))] opacity-100"
-            : "max-h-0 opacity-0"
-        } overflow-hidden bg-black transition-[max-height,opacity] duration-300`}
+            ? "visible max-h-[calc(100svh-var(--header-height))] opacity-100"
+            : "invisible max-h-0 pointer-events-none opacity-0"
+        } overflow-hidden border-t border-gold/10 bg-charcoal/[0.98] shadow-[0_24px_50px_rgba(0,0,0,0.4)] backdrop-blur-xl transition-[max-height,opacity,visibility] duration-300`}
       >
-        <nav className="container-tilda py-6">
-          <ul className="flex flex-col items-center gap-4 text-sm font-bold uppercase">
+        <nav className="container-tilda py-8">
+          <ul className="flex flex-col items-center gap-5 text-[15px] font-bold uppercase tracking-[0.05em]">
             {navItems.map((item) => (
               <li key={item.href}>
                 <a
-                  className="focus-ring inline-flex py-1 transition-colors hover:text-ember-soft"
+                  className="nav-link focus-ring inline-flex py-2"
                   href={item.href}
                   onClick={() => setIsOpen(false)}
                 >
@@ -97,7 +100,7 @@ export function Header() {
           <div className="mt-7 flex flex-col items-center gap-4">
             <a
               href={site.orderPhone.href}
-              className="focus-ring text-base font-bold text-ember"
+              className="focus-ring text-base font-bold text-gold-soft transition-colors hover:text-ember-soft"
             >
               {site.orderPhone.label}
             </a>

@@ -2,18 +2,19 @@ import { MenuSlider } from "@/components/MenuSlider";
 
 export function MenuSection() {
   return (
-    <section id="menu" className="cv-auto bg-espresso py-[120px] md:py-[135px]">
+    <section id="menu" className="section-surface cv-auto bg-espresso py-[88px] md:py-[132px]">
       <div className="container-tilda text-center">
-        <div className="mx-auto max-w-[760px]">
+        <div className="mx-auto max-w-[820px]">
           <h2
-            className="text-[clamp(27px,3vw,34px)] font-extrabold leading-tight text-ember"
+            className="section-title"
             data-reveal
           >
             Попробуйте всё разнообразие «Жан-Клод Мангал»!
           </h2>
           <p
-            className="mx-auto mt-[70px] max-w-[610px] text-[16px] font-light leading-[1.55] text-white/86 md:text-[22px]"
+            className="section-copy mx-auto mt-10 max-w-[720px]"
             data-reveal
+            data-reveal-delay="90"
           >
             Наше меню — это коллекция ваших любимых блюд в безупречном
             исполнении. Хочется сочной свиной шеи? Пожалуйста. Предпочитаете
