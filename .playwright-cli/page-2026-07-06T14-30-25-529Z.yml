@@ -1,0 +1,1042 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - generic [ref=e4]:
+      - generic [ref=e5]:
+        - generic:
+          - generic:
+            - img
+            - img
+            - img
+            - img
+            - img
+            - img
+            - img
+            - img
+            - img
+            - img
+            - img
+            - img
+        - generic:
+          - generic:
+            - img
+            - img
+            - img
+            - img
+            - img
+            - img
+            - img
+            - img
+            - img
+            - img
+            - img
+            - img
+      - generic [ref=e6]:
+        - generic [ref=e7] [cursor=pointer]:
+          - generic:
+            - generic:
+              - generic:
+                - img
+              - generic:
+                - generic:
+                  - img
+        - generic [ref=e9] [cursor=pointer]:
+          - generic [ref=e10]:
+            - generic [ref=e11]: Жан Клод Мангал
+            - generic [ref=e13]:
+              - img [ref=e14]
+              - text: 4,7
+          - generic [ref=e17]: "Ср. чек: от 800 ₽"
+    - generic:
+      - generic:
+        - banner
+      - generic:
+        - complementary [ref=e18]:
+          - generic [ref=e21]:
+            - generic [ref=e22]:
+              - generic [ref=e23]:
+                - generic [ref=e25]:
+                  - button "Назад" [ref=e26] [cursor=pointer]:
+                    - img [ref=e27]
+                  - generic [ref=e29]:
+                    - button "Яндекс Карты" [ref=e30] [cursor=pointer]:
+                      - img [ref=e31]
+                    - generic [ref=e39]:
+                      - link "Поиск" [ref=e40] [cursor=pointer]:
+                        - img [ref=e42]
+                        - generic [ref=e44]: Поиск
+                      - link "Маршруты" [ref=e45] [cursor=pointer]:
+                        - /url: /maps/51/samara/routes/
+                        - img [ref=e47]
+                        - generic [ref=e51]: Маршруты
+                  - button "Закрыть" [ref=e52] [cursor=pointer]:
+                    - img [ref=e54]
+                - generic [ref=e57]:
+                  - generic [ref=e68]:
+                    - link "Карты" [ref=e69] [cursor=pointer]:
+                      - /url: https://yandex.com/maps/
+                    - text: ·
+                    - link "Самара" [ref=e70] [cursor=pointer]:
+                      - /url: https://yandex.com/maps/51/samara/
+                    - text: ·
+                    - link "Кафе" [ref=e71] [cursor=pointer]:
+                      - /url: https://yandex.com/maps/51/samara/category/cafe/184106390/
+                  - heading "Жан Клод Мангал" [level=1] [ref=e74]:
+                    - text: Жан Клод Мангал
+                    - img [ref=e77]
+                  - generic [ref=e82]:
+                    - generic [ref=e83]:
+                      - generic "Оценка 4.7 Из 5" [ref=e84]:
+                        - img [ref=e86]
+                        - img [ref=e89]
+                        - img [ref=e92]
+                        - img [ref=e95]
+                        - img [ref=e98]
+                      - generic [ref=e101]:
+                        - generic [ref=e102]: Рейтинг
+                        - text: 4,7
+                    - button "873 оценки" [ref=e103] [cursor=pointer]
+                  - generic [ref=e104]:
+                    - button "Открыто до 10:30 PM" [ref=e106] [cursor=pointer]:
+                      - generic [ref=e108]: Открыто до 10:30 PM
+                      - img [ref=e111]
+                    - button [ref=e115] [cursor=pointer]:
+                      - generic [ref=e116]: +7 (927) 010-47-25
+                      - img [ref=e119]
+                      - button [ref=e121]: Показать телефон
+                    - link "Самара, проспект Кирова, 393В, 443114 на карте Самары" [ref=e122] [cursor=pointer]:
+                      - /url: /maps/51/samara/house/prospekt_kirova_393v/YUkYdAVkQUUPQFtpfX50cXRrYA==/
+                      - generic [ref=e123]: Самара, просп. Кирова, 393В
+                  - list [ref=e127]:
+                    - listitem [ref=e128]:
+                      - generic [ref=e129]:
+                        - status [ref=e130]: Сохранить
+                        - button "Закладки" [ref=e132] [cursor=pointer]:
+                          - img [ref=e135]
+                    - listitem [ref=e137]:
+                      - button "Отправить в телефон" [ref=e139] [cursor=pointer]:
+                        - img [ref=e142]
+                    - listitem [ref=e144]:
+                      - button "Поделиться" [ref=e146] [cursor=pointer]:
+                        - img [ref=e149]
+                    - listitem [ref=e152]:
+                      - button "Маршрут" [ref=e154] [cursor=pointer]:
+                        - img [ref=e157]
+                        - generic [ref=e161]: Маршрут
+                    - iframe [ref=e162]:
+                      
+                  - generic [ref=e164]:
+                    - generic:
+                      - img "Логотип"
+                    - button "Добавить фото или видео" [ref=e165] [cursor=pointer]:
+                      - img [ref=e167]
+                      - heading "Добавить фото или видео" [level=2] [ref=e170]
+                    - generic [ref=e171]:
+                      - list [ref=e172]:
+                        - listitem [ref=e173]:
+                          - img [ref=e176] [cursor=pointer]
+                        - listitem [ref=e177]:
+                          - img [ref=e182] [cursor=pointer]
+                        - listitem [ref=e185]:
+                          - img [ref=e188] [cursor=pointer]
+                        - listitem [ref=e189]
+                        - listitem [ref=e193]
+                        - listitem [ref=e197]
+                        - listitem [ref=e201]
+                        - listitem [ref=e205]
+                        - listitem [ref=e209]
+                        - listitem [ref=e213]:
+                          - generic [ref=e217] [cursor=pointer]:
+                            - img [ref=e219]
+                            - generic [ref=e221]: Еще 53
+                        - iframe [ref=e222]:
+                          
+                      - img [ref=e225] [cursor=pointer]
+                  - generic [ref=e229]:
+                    - generic [ref=e233]:
+                      - tablist [ref=e234]:
+                        - tab "Обзор," [selected] [ref=e236]:
+                          - link:
+                            - /url: /maps/org/zhan_klod_mangal/222834997712/
+                            - text: Обзор
+                        - tab "Меню," [ref=e238]:
+                          - link:
+                            - /url: /maps/org/zhan_klod_mangal/222834997712/menu/
+                            - text: Меню
+                        - tab "Новости, 9" [ref=e240]:
+                          - link:
+                            - /url: /maps/org/zhan_klod_mangal/222834997712/?tab=posts
+                            - text: Новости
+                          - generic: "9"
+                        - tab "Фото, 63" [ref=e242]:
+                          - link:
+                            - /url: /maps/org/zhan_klod_mangal/222834997712/gallery/
+                            - text: Фото
+                          - generic: "63"
+                        - tab "Отзывы, 421" [ref=e244]:
+                          - link:
+                            - /url: /maps/org/zhan_klod_mangal/222834997712/reviews/
+                            - text: Отзывы
+                          - generic: "421"
+                        - tab "Особенности," [ref=e246]:
+                          - link:
+                            - /url: /maps/org/zhan_klod_mangal/222834997712/?tab=features
+                            - text: Особенности
+                        - tab "Похожие места," [ref=e248]:
+                          - link:
+                            - /url: /maps/org/zhan_klod_mangal/222834997712/related/
+                            - text: Похожие места
+                        - iframe [ref=e249]:
+                          
+                      - img [ref=e253] [cursor=pointer]
+                    - generic [ref=e258]:
+                      - list [ref=e262]:
+                        - listitem [ref=e263]:
+                          - generic [ref=e268] [cursor=pointer]: Розыгрыш!!!❤️
+                        - listitem [ref=e269]:
+                          - generic [ref=e274] [cursor=pointer]: Вкусная шаурма!
+                        - listitem [ref=e275]:
+                          - generic [ref=e280] [cursor=pointer]: Мясо уже едет!
+                        - listitem [ref=e281]:
+                          - generic [ref=e286] [cursor=pointer]: Вкуснейшее мясо
+                        - listitem [ref=e287]:
+                          - generic [ref=e292] [cursor=pointer]: Бизнес-ланч
+                        - iframe [ref=e293]:
+                          
+                      - generic [ref=e296]:
+                        - heading "Новости" [level=2] [ref=e298]
+                        - generic [ref=e299]:
+                          - generic [ref=e301]:
+                            - list [ref=e302]:
+                              - listitem [ref=e303]:
+                                - 'button "🍢 Блюда на мангале для настоящего аппетита! Вкус мангала сложно заменить. Именно поэтому в «Жан Клод Мангал» так любят блюда на углях: шаш... 30 июня, 21:28" [ref=e304]':
+                                  - generic [ref=e305]:
+                                    - generic [ref=e307]: "🍢 Блюда на мангале для настоящего аппетита! Вкус мангала сложно заменить. Именно поэтому в «Жан Клод Мангал» так любят блюда на углях: шаш..."
+                                    - generic [ref=e309]: 30 июня, 21:28
+                              - listitem [ref=e310]:
+                                - button "🍖 Шашлык с доставкой — удобно и вкусно Когда хочется шашлыка, не обязательно ждать выходных или выезжать за город. В «Жан Клод Мангал» мож... 28 июня, 20:49" [ref=e311]:
+                                  - generic [ref=e312]:
+                                    - generic [ref=e314]: 🍖 Шашлык с доставкой — удобно и вкусно Когда хочется шашлыка, не обязательно ждать выходных или выезжать за город. В «Жан Клод Мангал» мож...
+                                    - generic [ref=e316]: 28 июня, 20:49
+                              - listitem [ref=e317]:
+                                - button "🍖 Вкусный шашлык в Самаре для компании! Хороший шашлык — это не просто мясо. Это аромат мангала, сочность, правильный маринад и настроение... 27 июня, 10:16" [ref=e318]:
+                                  - generic [ref=e319]:
+                                    - generic [ref=e321]: 🍖 Вкусный шашлык в Самаре для компании! Хороший шашлык — это не просто мясо. Это аромат мангала, сочность, правильный маринад и настроение...
+                                    - generic [ref=e323]: 27 июня, 10:16
+                              - listitem [ref=e324]:
+                                - button "🔥 Люля-кебаб на мангале в Самаре Люля-кебаб — одно из самых популярных блюд на мангале. Он получается сочным, ароматным и отлично сочетаетс... 23 июня, 22:34" [ref=e325]:
+                                  - generic [ref=e326]:
+                                    - generic [ref=e328]: 🔥 Люля-кебаб на мангале в Самаре Люля-кебаб — одно из самых популярных блюд на мангале. Он получается сочным, ароматным и отлично сочетаетс...
+                                    - generic [ref=e330]: 23 июня, 22:34
+                              - listitem [ref=e331]:
+                                - button "🚗 Доставка шашлыка по Самаре Не всегда хочется выходить из дома, чтобы вкусно поесть. Поэтому в «Жан Клод Мангал» можно заказать доставку... 22 июня, 22:40" [ref=e332]:
+                                  - generic [ref=e333]:
+                                    - generic [ref=e335]: 🚗 Доставка шашлыка по Самаре Не всегда хочется выходить из дома, чтобы вкусно поесть. Поэтому в «Жан Клод Мангал» можно заказать доставку...
+                                    - generic [ref=e337]: 22 июня, 22:40
+                              - iframe [ref=e338]:
+                                
+                            - img [ref=e341] [cursor=pointer]
+                          - button "Все новости (9)" [ref=e344] [cursor=pointer]:
+                            - generic [ref=e346]:
+                              - img [ref=e349]
+                              - generic [ref=e352]: Все новости (9)
+                      - generic [ref=e356]:
+                        - generic [ref=e357]:
+                          - generic [ref=e358]:
+                            - heading "Меню" [level=2] [ref=e360]
+                            - generic [ref=e361]: Обновлено вчера
+                          - generic [ref=e364]:
+                            - list [ref=e365]:
+                              - listitem [ref=e366]:
+                                - generic [ref=e367] [cursor=pointer]:
+                                  - button [ref=e369]
+                                  - generic [ref=e372]:
+                                    - generic "Салат Цезарь с курицей" [ref=e374]
+                                    - generic [ref=e375]:
+                                      - generic [ref=e376]: 489 ₽
+                                      - generic [ref=e377]: ·180 г
+                              - listitem [ref=e378]:
+                                - generic [ref=e379] [cursor=pointer]:
+                                  - button [ref=e381]
+                                  - generic [ref=e384]:
+                                    - generic "Куриный люля-кебаб с восточными специями" [ref=e386]
+                                    - generic [ref=e387]:
+                                      - generic [ref=e388]: 599 ₽
+                                      - generic [ref=e389]: ·200 г
+                              - listitem [ref=e390]:
+                                - generic [ref=e391] [cursor=pointer]:
+                                  - button [ref=e393]
+                                  - generic [ref=e396]:
+                                    - generic "Люля-кебаб из сочной говядины" [ref=e398]
+                                    - generic [ref=e399]:
+                                      - generic [ref=e400]: 619 ₽
+                                      - generic [ref=e401]: ·200 г
+                              - listitem [ref=e402]:
+                                - generic [ref=e403] [cursor=pointer]:
+                                  - button [ref=e405]
+                                  - generic [ref=e408]:
+                                    - generic "Шашлык из куриного филе" [ref=e410]
+                                    - generic [ref=e411]:
+                                      - generic [ref=e412]: 589 ₽
+                                      - generic [ref=e413]: ·300 г
+                              - listitem [ref=e414]:
+                                - generic [ref=e415] [cursor=pointer]:
+                                  - button [ref=e417]
+                                  - generic [ref=e420]:
+                                    - generic "Шашлык из свиной шейки" [ref=e422]
+                                    - generic [ref=e423]:
+                                      - generic [ref=e424]: 755 ₽
+                                      - generic [ref=e425]: ·300 г
+                              - listitem [ref=e426]:
+                                - generic [ref=e430] [cursor=pointer]:
+                                  - generic "Шаурма с нежным куриным филе, овощами и соусом" [ref=e432]
+                                  - generic [ref=e433]:
+                                    - generic [ref=e434]: 499 ₽
+                                    - generic [ref=e435]: ·300 г
+                              - listitem [ref=e436]:
+                                - generic [ref=e440] [cursor=pointer]:
+                                  - generic "Шаурма со вкусной маринованной свининой" [ref=e442]
+                                  - generic [ref=e443]:
+                                    - generic [ref=e444]: 509 ₽
+                                    - generic [ref=e445]: ·300 г
+                              - listitem [ref=e446]:
+                                - generic [ref=e450] [cursor=pointer]:
+                                  - generic "Картофель на углях" [ref=e452]
+                                  - generic [ref=e453]:
+                                    - generic [ref=e454]: 255 ₽
+                                    - generic [ref=e455]: ·200 г
+                              - listitem [ref=e456]:
+                                - generic [ref=e460] [cursor=pointer]:
+                                  - generic [ref=e461]:
+                                    - generic "Картофель фри" [ref=e462]
+                                    - generic "Вкусный картофель фри, прожаренный во фритюре" [ref=e463]
+                                  - generic [ref=e464]:
+                                    - generic [ref=e465]: 255 ₽
+                                    - generic [ref=e466]: ·200 г
+                              - listitem [ref=e467]:
+                                - generic [ref=e471] [cursor=pointer]:
+                                  - generic "Картошка по-деревенски" [ref=e473]
+                                  - generic [ref=e474]:
+                                    - generic [ref=e475]: 200 ₽
+                                    - generic [ref=e476]: ·200 г
+                              - listitem [ref=e477]:
+                                - button "Посмотреть всё меню" [ref=e478] [cursor=pointer]:
+                                  - generic "Посмотреть всё меню" [ref=e479]:
+                                    - generic [ref=e480]:
+                                      - button [ref=e482]:
+                                        - img [ref=e486]
+                                      - generic "Посмотреть всё меню" [ref=e490]
+                              - iframe [ref=e491]:
+                                
+                            - img [ref=e494] [cursor=pointer]
+                        - button "Посмотреть всё меню" [ref=e497] [cursor=pointer]:
+                          - generic [ref=e499]:
+                            - img [ref=e502]
+                            - generic [ref=e505]: Посмотреть всё меню
+                      - generic [ref=e507]:
+                        - generic [ref=e508]:
+                          - generic [ref=e509]:
+                            - img [ref=e512]
+                            - heading "Адрес" [level=3] [ref=e515]
+                          - generic [ref=e521]:
+                            - link "Самара, просп. Кирова, 393В" [ref=e523]:
+                              - /url: /maps/51/samara/house/prospekt_kirova_393v/YUkYdAVkQUUPQFtpfX50cXRrYA==/
+                            - generic [ref=e524]:
+                              - button "Показать входы" [ref=e525] [cursor=pointer]
+                              - generic [ref=e526]: "|"
+                              - button "Маршрут" [ref=e527] [cursor=pointer]
+                        - generic [ref=e528]:
+                          - generic [ref=e529]:
+                            - img [ref=e532]
+                            - heading "Контакты" [level=3] [ref=e535]
+                          - generic [ref=e543]:
+                            - generic [ref=e544]: Для заказа
+                            - generic [ref=e548]:
+                              - text: +7 (927) 010-47-25
+                              - button "Показать телефон" [ref=e549] [cursor=pointer]:
+                                - generic [ref=e550]: Показать телефон
+                          - link "zhanklodmangal.ru" [ref=e561] [cursor=pointer]:
+                            - /url: https://zhanklodmangal.ru/
+                          - button "Соцсети, telegram" [ref=e569] [cursor=pointer]:
+                            - img [ref=e572]
+                        - generic [ref=e574]:
+                          - generic [ref=e575]:
+                            - img [ref=e578]
+                            - heading "Время работы" [level=3] [ref=e581]
+                          - button "Открыто до 10:30 PM" [ref=e585] [cursor=pointer]:
+                            - generic [ref=e586]:
+                              - generic "Открыто до 10:30 PM" [ref=e592]
+                              - generic [ref=e593]:
+                                - generic [ref=e594]: График
+                                - img [ref=e597]
+                        - button "Исправить неточность" [ref=e600] [cursor=pointer]:
+                          - img [ref=e603]
+                          - generic [ref=e605]: Исправить неточность
+                      - generic [ref=e608]:
+                        - heading "Входит в подборки" [level=2] [ref=e610]
+                        - generic [ref=e613]:
+                          - list [ref=e614]:
+                            - listitem [ref=e615]:
+                              - button "Подборка · 50 мест Недорогие заведения общепита в Самаре Яндекс Карты Яндекс Карты" [ref=e617]:
+                                - generic [ref=e618]:
+                                  - button [ref=e619]
+                                  - generic [ref=e622]: Подборка · 50 мест
+                                - link "Недорогие заведения общепита в Самаре" [ref=e624] [cursor=pointer]:
+                                  - /url: /maps/discovery/podborka_eda_nedorogo_samara-51/
+                                - generic [ref=e625]:
+                                  - img "Яндекс Карты" [ref=e626]
+                                  - generic [ref=e627]: Яндекс Карты
+                            - listitem [ref=e628]:
+                              - 'button "Подборка · 50 мест Шашлык в Кировском районе Самары: лучшие заведения Яндекс Карты Яндекс Карты" [ref=e630]':
+                                - generic [ref=e631]:
+                                  - button [ref=e632]
+                                  - generic [ref=e635]: Подборка · 50 мест
+                                - 'link "Шашлык в Кировском районе Самары: лучшие заведения" [ref=e637] [cursor=pointer]':
+                                  - /url: /maps/discovery/podborka_eda_shashlyk_r-n-kirovskij-samara-51/
+                                - generic [ref=e638]:
+                                  - img "Яндекс Карты" [ref=e639]
+                                  - generic [ref=e640]: Яндекс Карты
+                            - listitem [ref=e641]:
+                              - 'button "Подборка · 37 мест Шаурма в Кировском районе Самары: лучшие места для перекуса Яндекс Карты Яндекс Карты" [ref=e643]':
+                                - generic [ref=e644]:
+                                  - button [ref=e645]
+                                  - generic [ref=e648]: Подборка · 37 мест
+                                - 'link "Шаурма в Кировском районе Самары: лучшие места для перекуса" [ref=e650] [cursor=pointer]':
+                                  - /url: /maps/discovery/podborka_eda_shaurma_r-n-kirovskij-samara-51/
+                                - generic [ref=e651]:
+                                  - img "Яндекс Карты" [ref=e652]
+                                  - generic [ref=e653]: Яндекс Карты
+                            - listitem [ref=e654]:
+                              - button "Подборка · 50 мест Рестораны Самары с вкусным борщом Яндекс Карты Яндекс Карты" [ref=e656]:
+                                - generic [ref=e657]:
+                                  - button [ref=e658]
+                                  - generic [ref=e661]: Подборка · 50 мест
+                                - link "Рестораны Самары с вкусным борщом" [ref=e663] [cursor=pointer]:
+                                  - /url: /maps/discovery/podborka_eda_borshh_samara-51/
+                                - generic [ref=e664]:
+                                  - img "Яндекс Карты" [ref=e665]
+                                  - generic [ref=e666]: Яндекс Карты
+                            - listitem [ref=e667]:
+                              - button "Подборка · 7 мест Бизнес‑ланчи в районе Кировский (Самара) Яндекс Карты Яндекс Карты" [ref=e669]:
+                                - generic [ref=e670]:
+                                  - button [ref=e671]
+                                  - generic [ref=e674]: Подборка · 7 мест
+                                - link "Бизнес‑ланчи в районе Кировский (Самара)" [ref=e676] [cursor=pointer]:
+                                  - /url: /maps/discovery/podborka_eda_biznes-lanch_r-n-kirovskij-samara-51/
+                                - generic [ref=e677]:
+                                  - img "Яндекс Карты" [ref=e678]
+                                  - generic [ref=e679]: Яндекс Карты
+                            - listitem [ref=e680]:
+                              - button "Подборка · 4 места Заведения Кировского района Самары с борщом в меню Яндекс Карты Яндекс Карты" [ref=e682]:
+                                - generic [ref=e683]:
+                                  - button [ref=e684]
+                                  - generic [ref=e687]: Подборка · 4 места
+                                - link "Заведения Кировского района Самары с борщом в меню" [ref=e689] [cursor=pointer]:
+                                  - /url: /maps/discovery/podborka_eda_borshh_r-n-kirovskij-samara-51/
+                                - generic [ref=e690]:
+                                  - img "Яндекс Карты" [ref=e691]
+                                  - generic [ref=e692]: Яндекс Карты
+                            - listitem [ref=e693]:
+                              - button "Подборка · 6 мест Где попробовать картошку фри в Кировском районе Самары Яндекс Карты Яндекс Карты" [ref=e695]:
+                                - generic [ref=e696]:
+                                  - button [ref=e697]
+                                  - generic [ref=e700]: Подборка · 6 мест
+                                - link "Где попробовать картошку фри в Кировском районе Самары" [ref=e702] [cursor=pointer]:
+                                  - /url: /maps/discovery/podborka_eda_kartoshka-fri_r-n-kirovskij-samara-51/
+                                - generic [ref=e703]:
+                                  - img "Яндекс Карты" [ref=e704]
+                                  - generic [ref=e705]: Яндекс Карты
+                            - listitem [ref=e706]:
+                              - 'button "Подборка · 48 мест Картошка фри в Самаре: лучшие заведения Яндекс Карты Яндекс Карты" [ref=e708]':
+                                - generic [ref=e709]:
+                                  - button [ref=e710]
+                                  - generic [ref=e713]: Подборка · 48 мест
+                                - 'link "Картошка фри в Самаре: лучшие заведения" [ref=e715] [cursor=pointer]':
+                                  - /url: /maps/discovery/podborka_eda_kartoshka-fri_samara-51/
+                                - generic [ref=e716]:
+                                  - img "Яндекс Карты" [ref=e717]
+                                  - generic [ref=e718]: Яндекс Карты
+                            - listitem [ref=e719]:
+                              - button "Подборка · 27 мест Рестораны и кафе Самары с харчо Яндекс Карты Яндекс Карты" [ref=e721]:
+                                - generic [ref=e722]:
+                                  - button [ref=e723]
+                                  - generic [ref=e726]: Подборка · 27 мест
+                                - link "Рестораны и кафе Самары с харчо" [ref=e728] [cursor=pointer]:
+                                  - /url: /maps/discovery/podborka_eda_kharcho_samara-51/
+                                - generic [ref=e729]:
+                                  - img "Яндекс Карты" [ref=e730]
+                                  - generic [ref=e731]: Яндекс Карты
+                            - listitem [ref=e732]:
+                              - button "Подборка · 6 мест Заведения с лавашом в Кировском районе Самары Яндекс Карты Яндекс Карты" [ref=e734]:
+                                - generic [ref=e735]:
+                                  - button [ref=e736]
+                                  - generic [ref=e739]: Подборка · 6 мест
+                                - link "Заведения с лавашом в Кировском районе Самары" [ref=e741] [cursor=pointer]:
+                                  - /url: /maps/discovery/podborka_eda_lavash_r-n-kirovskij-samara-51/
+                                - generic [ref=e742]:
+                                  - img "Яндекс Карты" [ref=e743]
+                                  - generic [ref=e744]: Яндекс Карты
+                            - iframe [ref=e745]:
+                              
+                          - img [ref=e748] [cursor=pointer]
+                      - generic "Как добраться" [ref=e752]:
+                        - heading "Как добраться" [level=2] [ref=e754]
+                        - button "Остановки рядом" [ref=e758] [cursor=pointer]:
+                          - generic [ref=e759]:
+                            - generic [ref=e760]:
+                              - generic "На автобусе" [ref=e763]:
+                                - img [ref=e764]
+                              - generic [ref=e771]:
+                                - generic [ref=e772]: Московское шоссе
+                                - button "Московское шоссе Построить маршрут Пешком 105 м" [ref=e773]:
+                                  - img [ref=e775]
+                                  - generic [ref=e777]: 105 м
+                            - generic [ref=e778]:
+                              - generic [ref=e779]: "4"
+                              - img [ref=e782]
+                        - button [ref=e784] [cursor=pointer]:
+                          - generic [ref=e786]:
+                            - img [ref=e789]
+                            - generic [ref=e793]: Показать парковки
+                      - generic [ref=e796]:
+                        - heading "Особенности" [level=2] [ref=e798]
+                        - generic [ref=e799]:
+                          - link "Кафе" [ref=e800] [cursor=pointer]:
+                            - /url: /maps/51/samara/category/cafe/184106390/
+                            - button [ref=e802]:
+                              - generic [ref=e803]: Кафе
+                          - link "бар" [ref=e804] [cursor=pointer]:
+                            - /url: /maps/51/samara/category/bar_pub/184106384/
+                            - button [ref=e806]:
+                              - generic [ref=e807]: Бар
+                        - generic [ref=e808]:
+                          - generic [ref=e810]:
+                            - img [ref=e813]
+                            - generic [ref=e818]: Доставка еды
+                          - generic [ref=e820]:
+                            - img [ref=e823]
+                            - generic [ref=e826]: Еда навынос
+                          - generic [ref=e828]:
+                            - img [ref=e831]
+                            - generic [ref=e834]: Парковка
+                          - generic [ref=e836]:
+                            - img [ref=e839]
+                            - generic [ref=e846]: Туалет
+                          - generic [ref=e848]:
+                            - img [ref=e851]
+                            - generic [ref=e854]: Оплата картой
+                          - generic [ref=e856]:
+                            - img [ref=e859]
+                            - generic [ref=e861]: Кофе с собой
+                          - generic [ref=e863]:
+                            - img [ref=e866]
+                            - generic [ref=e868]: Можно с собакой
+                          - generic [ref=e870]:
+                            - img [ref=e873]
+                            - generic [ref=e875]: Забота о курьерах
+                          - generic [ref=e877]:
+                            - img [ref=e880]
+                            - generic [ref=e882]: Чай
+                        - generic [ref=e883]:
+                          - generic [ref=e885]:
+                            - generic [ref=e886]: "Средний счёт:"
+                            - text: 800–1100 ₽
+                          - generic [ref=e888]:
+                            - generic [ref=e889]: "События:"
+                            - text: Поминки, Корпоратив, Банкет, Деловая встреча, Семейный ужин, Свадьба, День Рождения, Свидание
+                          - generic [ref=e891]:
+                            - generic [ref=e892]: "Посещение с животными:"
+                            - text: запрещено с животными
+                          - generic [ref=e894]:
+                            - generic [ref=e895]: "Способ оплаты:"
+                            - text: банковским переводом, оплата картой, предоплата, наложенным платежом, безналичная, наличными, оплата кредитной картой
+                        - generic [ref=e899]:
+                          - generic [ref=e900]: "Доступность входа на инвалидной коляске:"
+                          - text: недоступно
+                        - button "Подробнее об организации" [ref=e901] [cursor=pointer]:
+                          - generic [ref=e903]:
+                            - img [ref=e906]
+                            - link [ref=e910]:
+                              - /url: /maps/org/zhan_klod_mangal/222834997712/?tab=features
+                              - text: Подробнее об организации
+                      - button "Акция" [ref=e915] [cursor=pointer]:
+                        - generic [ref=e916]:
+                          - img [ref=e919]
+                          - generic [ref=e924]: Акция
+                        - img [ref=e927]
+                      - generic [ref=e931]:
+                        - button "Панорама — кафе Жан Клод Мангал, Самара" [ref=e932] [cursor=pointer]:
+                          - img "Панорама — кафе Жан Клод Мангал, Самара" [ref=e935]
+                          - generic:
+                            - img
+                          - generic: Панорама
+                        - link "Панорама":
+                          - /url: /maps/org/zhan_klod_mangal/222834997712/panorama/
+                      - button "Владелец следит за актуальностью информации" [ref=e942] [cursor=pointer]:
+                        - generic [ref=e943]:
+                          - generic [ref=e944]:
+                            - img [ref=e947]
+                            - generic [ref=e952]: Владелец следит за актуальностью информации
+                          - img [ref=e956]
+                      - generic [ref=e997]:
+                        - heading "Посещаемость и график работы" [level=2] [ref=e999]
+                        - generic [ref=e1000]:
+                          - generic [ref=e1001]:
+                            - generic [ref=e1002]: 18:00
+                            - text: Обычно много посетителей
+                          - generic [ref=e1003]:
+                            - button "Понедельник" [ref=e1004] [cursor=pointer]: Пн
+                            - button "Вторник" [ref=e1005] [cursor=pointer]: Вт
+                            - button "Среда" [ref=e1006] [cursor=pointer]: Ср
+                            - button "Четверг" [ref=e1007] [cursor=pointer]: Чт
+                            - button "Пятница" [ref=e1008] [cursor=pointer]: Пт
+                            - button "Суббота" [ref=e1009] [cursor=pointer]: Сб
+                            - button "Воскресенье" [ref=e1010] [cursor=pointer]: Вс
+                          - generic [ref=e1011]:
+                            - text: 00:00 04:00 08:00
+                            - button "11:00" [ref=e1012] [cursor=pointer]
+                            - button "12:00" [ref=e1014] [cursor=pointer]: 12:00
+                            - button "13:00" [ref=e1016] [cursor=pointer]
+                            - button "14:00" [ref=e1018] [cursor=pointer]
+                            - button "15:00" [ref=e1020] [cursor=pointer]
+                            - button "16:00" [ref=e1022] [cursor=pointer]: 16:00
+                            - button "17:00" [ref=e1024] [cursor=pointer]
+                            - button "18:00" [ref=e1026] [cursor=pointer]
+                            - button "19:00" [ref=e1028] [cursor=pointer]
+                            - button "20:00" [ref=e1030] [cursor=pointer]: 20:00
+                            - button "21:00" [ref=e1032] [cursor=pointer]
+                            - button "22:00" [ref=e1034] [cursor=pointer]
+                            - text: 00:00
+                      - generic [ref=e1037]:
+                        - generic [ref=e1038]:
+                          - generic [ref=e1039]: Похожие места
+                          - button "Смотреть все" [ref=e1040] [cursor=pointer]
+                        - generic [ref=e1041]:
+                          - list [ref=e1042]:
+                            - listitem [ref=e1043]
+                            - listitem [ref=e1048]
+                            - listitem [ref=e1053]
+                            - listitem [ref=e1058]
+                            - listitem [ref=e1063]
+                            - listitem [ref=e1068]
+                            - listitem [ref=e1073]
+                            - listitem [ref=e1078]
+                            - listitem [ref=e1083]
+                            - listitem [ref=e1088]
+                            - iframe [ref=e1093]:
+                              
+                          - img [ref=e1096] [cursor=pointer]
+                      - generic [ref=e1101]:
+                        - generic [ref=e1106]:
+                          - generic [ref=e1108]:
+                            - generic [ref=e1109]:
+                              - generic [ref=e1110]: Рейтинг
+                              - text: 4,7
+                            - generic [ref=e1111]:
+                              - generic "Оценка 4.7 Из 5" [ref=e1113]:
+                                - img [ref=e1115]
+                                - img [ref=e1117]
+                                - img [ref=e1119]
+                                - img [ref=e1121]
+                                - img [ref=e1123]
+                              - generic [ref=e1124]: 873 оценки
+                          - generic [ref=e1129]:
+                            - generic [ref=e1130]: Оцените это место
+                            - generic [ref=e1131]:
+                              - button "1 звезда" [ref=e1132] [cursor=pointer]:
+                                - img [ref=e1133]
+                              - button "2 звезды" [ref=e1134] [cursor=pointer]:
+                                - img [ref=e1135]
+                              - button "3 звезды" [ref=e1136] [cursor=pointer]:
+                                - img [ref=e1137]
+                              - button "4 звезды" [ref=e1138] [cursor=pointer]:
+                                - img [ref=e1139]
+                              - button "5 звезд" [ref=e1140] [cursor=pointer]:
+                                - img [ref=e1141]
+                        - generic [ref=e1143]:
+                          - generic [ref=e1144]:
+                            - generic [ref=e1146]:
+                              - heading "421 отзыв" [level=2] [ref=e1147]
+                              - button "По умолчанию" [ref=e1150] [cursor=pointer]:
+                                - text: По умолчанию
+                                - img [ref=e1152]
+                            - menu [ref=e1154]:
+                              - generic [ref=e1155]:
+                                - list [ref=e1156]:
+                                  - listitem [ref=e1157]:
+                                    - menuitem "Еда · 87% положительный 376 отзывов" [ref=e1158] [cursor=pointer]:
+                                      - generic [ref=e1160]:
+                                        - generic [ref=e1161]:
+                                          - text: Еда ·
+                                          - generic [ref=e1162]: 87%
+                                          - generic [ref=e1163]: положительный
+                                          - img [ref=e1165]
+                                        - generic [ref=e1166]: 376 отзывов
+                                  - listitem [ref=e1167]:
+                                    - menuitem "Мясо · 86% положительный 214 отзывов" [ref=e1168] [cursor=pointer]:
+                                      - generic [ref=e1170]:
+                                        - generic [ref=e1171]:
+                                          - text: Мясо ·
+                                          - generic [ref=e1172]: 86%
+                                          - generic [ref=e1173]: положительный
+                                          - img [ref=e1175]
+                                        - generic [ref=e1176]: 214 отзывов
+                                  - listitem [ref=e1177]:
+                                    - menuitem "Шаверма · 82% положительный 145 отзывов" [ref=e1178] [cursor=pointer]:
+                                      - generic [ref=e1180]:
+                                        - generic [ref=e1181]:
+                                          - text: Шаверма ·
+                                          - generic [ref=e1182]: 82%
+                                          - generic [ref=e1183]: положительный
+                                          - img [ref=e1185]
+                                        - generic [ref=e1186]: 145 отзывов
+                                  - listitem [ref=e1187]:
+                                    - menuitem "Фаст-фуд · 86% положительный 125 отзывов" [ref=e1188] [cursor=pointer]:
+                                      - generic [ref=e1190]:
+                                        - generic [ref=e1191]:
+                                          - text: Фаст-фуд ·
+                                          - generic [ref=e1192]: 86%
+                                          - generic [ref=e1193]: положительный
+                                          - img [ref=e1195]
+                                        - generic [ref=e1196]: 125 отзывов
+                                  - listitem [ref=e1197]:
+                                    - menuitem "Шашлык · 86% положительный 107 отзывов" [ref=e1198] [cursor=pointer]:
+                                      - generic [ref=e1200]:
+                                        - generic [ref=e1201]:
+                                          - text: Шашлык ·
+                                          - generic [ref=e1202]: 86%
+                                          - generic [ref=e1203]: положительный
+                                          - img [ref=e1205]
+                                        - generic [ref=e1206]: 107 отзывов
+                                  - listitem [ref=e1207]:
+                                    - menuitem "Персонал · 76% положительный 88 отзывов" [ref=e1208] [cursor=pointer]:
+                                      - generic [ref=e1210]:
+                                        - generic [ref=e1211]:
+                                          - text: Персонал ·
+                                          - generic [ref=e1212]: 76%
+                                          - generic [ref=e1213]: положительный
+                                          - img [ref=e1215]
+                                        - generic [ref=e1216]: 88 отзывов
+                                  - listitem [ref=e1217]:
+                                    - menuitem "Время ожидания · 66% положительный 67 отзывов" [ref=e1218] [cursor=pointer]:
+                                      - generic [ref=e1220]:
+                                        - generic [ref=e1221]:
+                                          - text: Время ожидания ·
+                                          - generic [ref=e1222]: 66%
+                                          - generic [ref=e1223]: положительный
+                                          - img [ref=e1225]
+                                        - generic [ref=e1226]: 67 отзывов
+                                  - listitem [ref=e1227]:
+                                    - menuitem "Атмосфера · 98% положительный 57 отзывов" [ref=e1228] [cursor=pointer]:
+                                      - generic [ref=e1230]:
+                                        - generic [ref=e1231]:
+                                          - text: Атмосфера ·
+                                          - generic [ref=e1232]: 98%
+                                          - generic [ref=e1233]: положительный
+                                          - img [ref=e1235]
+                                        - generic [ref=e1236]: 57 отзывов
+                                  - listitem [ref=e1237]:
+                                    - menuitem "Бизнес-ланч · 90% положительный 30 отзывов" [ref=e1238] [cursor=pointer]:
+                                      - generic [ref=e1240]:
+                                        - generic [ref=e1241]:
+                                          - text: Бизнес-ланч ·
+                                          - generic [ref=e1242]: 90%
+                                          - generic [ref=e1243]: положительный
+                                          - img [ref=e1245]
+                                        - generic [ref=e1246]: 30 отзывов
+                                  - listitem [ref=e1247]:
+                                    - menuitem "Супы · 68% положительный 29 отзывов" [ref=e1248] [cursor=pointer]:
+                                      - generic [ref=e1250]:
+                                        - generic [ref=e1251]:
+                                          - text: Супы ·
+                                          - generic [ref=e1252]: 68%
+                                          - generic [ref=e1253]: положительный
+                                          - img [ref=e1255]
+                                        - generic [ref=e1256]: 29 отзывов
+                                  - listitem [ref=e1257]:
+                                    - menuitem "Чистота · 40% положительный 26 отзывов" [ref=e1258] [cursor=pointer]:
+                                      - generic [ref=e1260]:
+                                        - generic [ref=e1261]:
+                                          - text: Чистота ·
+                                          - generic [ref=e1262]: 40%
+                                          - generic [ref=e1263]: положительный
+                                          - img [ref=e1265]
+                                        - generic [ref=e1266]: 26 отзывов
+                                  - listitem [ref=e1267]:
+                                    - menuitem "Напитки · 75% положительный 21 отзыв" [ref=e1268] [cursor=pointer]:
+                                      - generic [ref=e1270]:
+                                        - generic [ref=e1271]:
+                                          - text: Напитки ·
+                                          - generic [ref=e1272]: 75%
+                                          - generic [ref=e1273]: положительный
+                                          - img [ref=e1275]
+                                        - generic [ref=e1276]: 21 отзыв
+                                  - listitem [ref=e1277]:
+                                    - menuitem "Интерьер · 70% положительный 20 отзывов" [ref=e1278] [cursor=pointer]:
+                                      - generic [ref=e1280]:
+                                        - generic [ref=e1281]:
+                                          - text: Интерьер ·
+                                          - generic [ref=e1282]: 70%
+                                          - generic [ref=e1283]: положительный
+                                          - img [ref=e1285]
+                                        - generic [ref=e1286]: 20 отзывов
+                                  - listitem [ref=e1287]:
+                                    - menuitem "Доставка · 85% положительный 14 отзывов" [ref=e1288] [cursor=pointer]:
+                                      - generic [ref=e1290]:
+                                        - generic [ref=e1291]:
+                                          - text: Доставка ·
+                                          - generic [ref=e1292]: 85%
+                                          - generic [ref=e1293]: положительный
+                                          - img [ref=e1295]
+                                        - generic [ref=e1296]: 14 отзывов
+                                  - iframe [ref=e1297]:
+                                    
+                                - img [ref=e1300] [cursor=pointer]
+                          - list [ref=e1301]:
+                            - listitem [ref=e1303]:
+                              - generic [ref=e1305]:
+                                - generic [ref=e1306]:
+                                  - link "Аватар" [ref=e1308] [cursor=pointer]:
+                                    - /url: https://yandex.com/maps/user/cfap6j8abxx92wxfxakmk8d5eg
+                                  - generic [ref=e1310]:
+                                    - link "Rustavelli4" [ref=e1312] [cursor=pointer]:
+                                      - /url: https://yandex.com/maps/user/cfap6j8abxx92wxfxakmk8d5eg
+                                    - generic [ref=e1313]: Знаток города 8 уровня
+                                  - button "Подписаться" [ref=e1316] [cursor=pointer]:
+                                    - generic [ref=e1317]: Подписаться
+                                - generic [ref=e1318]:
+                                  - generic "Оценка 5 Из 5" [ref=e1321]:
+                                    - img [ref=e1323]
+                                    - img [ref=e1325]
+                                    - img [ref=e1327]
+                                    - img [ref=e1329]
+                                    - img [ref=e1331]
+                                  - generic [ref=e1332]: 20 мая
+                                - generic [ref=e1335]: Всегда очень вкусная еда и бизнес-ланчи, а шашлык и шаурма, просто ТОПОГОНЬ!! Можно позвонить и заказать накрыть стол, либо собрать с собой и заказ будет выполнен очень быстро! Единственная просьба к персоналу, более тщательно вытирать столы, т.к. нередко могут быть липкими, либо в крошках. Спасибо за вкусное и разнообразное меню!
+                                - generic [ref=e1337]:
+                                  - list [ref=e1338]:
+                                    - listitem [ref=e1339]
+                                    - listitem [ref=e1341]
+                                    - iframe [ref=e1343]:
+                                      
+                                  - img [ref=e1346] [cursor=pointer]
+                                - generic [ref=e1347]:
+                                  - generic [ref=e1348]:
+                                    - button "Лайк" [ref=e1349] [cursor=pointer]:
+                                      - img [ref=e1351]
+                                      - generic [ref=e1353]: "1"
+                                    - button "Дизлайк" [ref=e1354] [cursor=pointer]:
+                                      - img [ref=e1356]
+                                  - button "Поделиться" [ref=e1358] [cursor=pointer]:
+                                    - img [ref=e1359]
+                                - button "— Посмотреть ответ организации" [ref=e1360] [cursor=pointer]
+                            - listitem [ref=e1361]:
+                              - generic [ref=e1363]:
+                                - generic [ref=e1364]:
+                                  - link "Аватар" [ref=e1366] [cursor=pointer]:
+                                    - /url: https://yandex.com/maps/user/0f18e68n31zkyn3un9j5evp58w
+                                  - generic [ref=e1368]:
+                                    - link "Хром" [ref=e1370] [cursor=pointer]:
+                                      - /url: https://yandex.com/maps/user/0f18e68n31zkyn3un9j5evp58w
+                                    - generic [ref=e1371]: Знаток города 3 уровня
+                                  - button "Подписаться" [ref=e1374] [cursor=pointer]:
+                                    - generic [ref=e1375]: Подписаться
+                                - generic [ref=e1376]:
+                                  - generic "Оценка 5 Из 5" [ref=e1379]:
+                                    - img [ref=e1381]
+                                    - img [ref=e1383]
+                                    - img [ref=e1385]
+                                    - img [ref=e1387]
+                                    - img [ref=e1389]
+                                  - generic [ref=e1390]: 6 июля
+                                - generic [ref=e1393]: Быстрая подача. Главное вкусно . Интерьер чистый , приятный
+                                - generic [ref=e1394]:
+                                  - generic [ref=e1395]:
+                                    - button "Лайк" [ref=e1396] [cursor=pointer]:
+                                      - img [ref=e1398]
+                                    - button "Дизлайк" [ref=e1400] [cursor=pointer]:
+                                      - img [ref=e1402]
+                                  - button "Поделиться" [ref=e1404] [cursor=pointer]:
+                                    - img [ref=e1405]
+                            - listitem [ref=e1406]:
+                              - generic [ref=e1408]:
+                                - generic [ref=e1409]:
+                                  - link "Аватар" [ref=e1411] [cursor=pointer]:
+                                    - /url: https://yandex.com/maps/user/wra5qft76f6h5jpnh840e7qttw
+                                  - generic [ref=e1413]:
+                                    - link "Семен" [ref=e1415] [cursor=pointer]:
+                                      - /url: https://yandex.com/maps/user/wra5qft76f6h5jpnh840e7qttw
+                                    - generic [ref=e1416]: Дегустатор 3 уровня
+                                  - button "Подписаться" [ref=e1419] [cursor=pointer]:
+                                    - generic [ref=e1420]: Подписаться
+                                - generic [ref=e1421]:
+                                  - generic "Оценка 3 Из 5" [ref=e1424]:
+                                    - img [ref=e1426]
+                                    - img [ref=e1428]
+                                    - img [ref=e1430]
+                                    - img [ref=e1432]
+                                    - img [ref=e1434]
+                                  - generic [ref=e1435]: 22 мая
+                                - generic [ref=e1438]: Все вкусно,но лаваша очень мало!заказывал целый лаваш к шашлыку а принесли полоску!сказали типа закончился!за такую сумму можно и целый положить!поэтому и оценка такая!
+                                - generic [ref=e1440]:
+                                  - list [ref=e1441]:
+                                    - listitem [ref=e1442]
+                                    - listitem [ref=e1444]
+                                    - iframe [ref=e1446]:
+                                      
+                                  - img [ref=e1449] [cursor=pointer]
+                                - generic [ref=e1450]:
+                                  - generic [ref=e1451]:
+                                    - button "Лайк" [ref=e1452] [cursor=pointer]:
+                                      - img [ref=e1454]
+                                    - button "Дизлайк" [ref=e1456] [cursor=pointer]:
+                                      - img [ref=e1458]
+                                      - generic [ref=e1460]: "1"
+                                  - button "Поделиться" [ref=e1461] [cursor=pointer]:
+                                    - img [ref=e1462]
+                                - button "— Посмотреть ответ организации" [ref=e1463] [cursor=pointer]
+                            - button "Посмотреть все 421 отзыв" [ref=e1466] [cursor=pointer]:
+                              - generic [ref=e1467]: Посмотреть все 421 отзыв
+                - generic "подвал блока" [ref=e1485]:
+                  - generic [ref=e1486]:
+                    - generic [ref=e1487]:
+                      - link "Сообщить об ошибке" [ref=e1489] [cursor=pointer]
+                      - link "Справка" [ref=e1491] [cursor=pointer]:
+                        - /url: //yandex.com/support/maps/?lang=ru
+                    - generic [ref=e1492]:
+                      - generic [ref=e1493]:
+                        - generic [ref=e1494]:
+                          - generic [ref=e1495]: Сервисы
+                          - link "Маршруты" [ref=e1497] [cursor=pointer]
+                          - link "Пробки" [ref=e1499] [cursor=pointer]
+                          - link "Редактор Яндекс Карт" [ref=e1501] [cursor=pointer]:
+                            - /url: https://mapeditor.yandex.com/
+                          - link "Схема Метро" [ref=e1503] [cursor=pointer]:
+                            - /url: https://yandex.com/metro/
+                          - link "Создать карту" [ref=e1505] [cursor=pointer]:
+                            - /url: https://yandex.com/map-constructor/
+                          - link "API Карт" [ref=e1507] [cursor=pointer]:
+                            - /url: https://tech.yandex.com/maps/
+                        - generic [ref=e1508]:
+                          - generic [ref=e1509]: Персональное
+                          - link "Закладки и мой транспорт" [ref=e1511] [cursor=pointer]
+                          - link "Мои карты" [ref=e1513] [cursor=pointer]:
+                            - /url: https://yandex.com/map-constructor/
+                          - link "Настройки" [ref=e1515] [cursor=pointer]:
+                            - /url: https://yandex.com/tune/?retpath=https%3A%2F%2Fyandex.com%2Fmaps%2Forg%2Fzhan_klod_mangal%2F222834997712%2F%3Fll%3D50.224685%252C53.250859%26z%3D14
+                        - generic [ref=e1516]:
+                          - generic [ref=e1517]: Для бизнеса
+                          - link "Личный кабинет" [ref=e1519] [cursor=pointer]:
+                            - /url: //business.yandex.ru/
+                          - link "Добавить свою организацию" [ref=e1521] [cursor=pointer]
+                      - generic [ref=e1522]:
+                        - link "О сервисе" [ref=e1524] [cursor=pointer]:
+                          - /url: //yandex.com/support/maps/
+                        - link "Пользовательское соглашение" [ref=e1526] [cursor=pointer]:
+                          - /url: https://yandex.com/legal/maps_termsofuse/?lang=ru
+                  - generic [ref=e1527]:
+                    - generic [ref=e1529]:
+                      - link "vkontakte" [ref=e1530] [cursor=pointer]:
+                        - /url: https://vk.com/yandex.maps
+                        - img [ref=e1531]
+                      - link "telegram" [ref=e1533] [cursor=pointer]:
+                        - /url: https://t.me/mapsyandex
+                        - img [ref=e1534]
+                      - link "zen" [ref=e1536] [cursor=pointer]:
+                        - /url: https://zen.yandex.ru/yandexmaps
+                        - img [ref=e1537]
+                    - generic [ref=e1539]:
+                      - generic [ref=e1540]: Яндекс Карты — выбирайте, где поесть, куда сходить, чем заняться.
+                      - generic [ref=e1541]: © 2001–2026 ООО «Яндекс»
+                      - button "Источник данных" [ref=e1544] [cursor=pointer]:
+                        - generic [ref=e1545]: Источник данных
+                        - img [ref=e1548]
+              - iframe [ref=e1550]:
+                
+            - iframe [ref=e1551]:
+              
+        - img [ref=e1557] [cursor=pointer]
+      - navigation:
+        - generic [ref=e1560]:
+          - button "Пробки в Самаре" [ref=e1563] [cursor=pointer]:
+            - generic [ref=e1564]:
+              - generic:
+                - img
+          - button "Панорамы улиц и фотографии" [ref=e1568] [cursor=pointer]:
+            - generic:
+              - generic:
+                - img
+          - button "Зеркала" [ref=e1571] [cursor=pointer]:
+            - generic:
+              - generic:
+                - img
+          - button "Движущийся транспорт" [ref=e1574] [cursor=pointer]:
+            - generic:
+              - generic:
+                - img
+          - button "Слои" [ref=e1577] [cursor=pointer]:
+            - generic:
+              - generic:
+                - img
+        - generic [ref=e1579]:
+          - button "Линейка и планиметр" [ref=e1582] [cursor=pointer]:
+            - generic:
+              - generic:
+                - img
+          - button "Детали" [ref=e1585] [cursor=pointer]:
+            - generic:
+              - generic:
+                - img
+        - button "Профиль" [ref=e1588] [cursor=pointer]:
+          - generic:
+            - generic:
+              - img
+        - generic:
+          - generic:
+            - generic:
+              - generic [ref=e1592]:
+                - button "Приблизить" [ref=e1594] [cursor=pointer]:
+                  - generic:
+                    - generic:
+                      - img
+                - button "Отдалить" [ref=e1596] [cursor=pointer]:
+                  - generic:
+                    - generic:
+                      - img
+              - button "Моё местоположение" [ref=e1600] [cursor=pointer]:
+                - generic:
+                  - generic:
+                    - img
+              - button "Наклон карты" [ref=e1607] [cursor=pointer]: 3D
+      - contentinfo:
+        - generic [ref=e1609]:
+          - generic [ref=e1610]: © Яндекс
+          - button "Русский" [ref=e1614] [cursor=pointer]:
+            - img [ref=e1616]
+            - generic [ref=e1619]: Русский
+            - img [ref=e1621]
+          - link "Справка" [ref=e1623] [cursor=pointer]:
+            - /url: //yandex.com/support/maps/?lang=ru
+          - link "Условия использования" [ref=e1624] [cursor=pointer]:
+            - /url: https://yandex.com/legal/maps_termsofuse/?lang=ru
+        - link "Яндекс" [ref=e1627] [cursor=pointer]:
+          - /url: https://yandex.com
+          - img [ref=e1629]
+        - generic:
+          - generic:
+            - generic:
+              - generic: 400 м
+      - iframe [ref=e1630]:
+        
+    - iframe [ref=e1631]:
+      
+  - iframe [ref=e1632]:
+    
+  - generic [ref=e1635]:
+    - generic [ref=e1636]:
+      - generic [ref=e1637]: Жан Клод Мангал
+      - generic [ref=e1639]:
+        - img [ref=e1640]
+        - text: 4,7
+    - generic [ref=e1643]: "Ср. чек: от 800 ₽"
+  - iframe [ref=e1646]:
+    

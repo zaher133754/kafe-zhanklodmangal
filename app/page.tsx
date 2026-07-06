@@ -5,6 +5,7 @@ import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
 import { MenuSection } from "@/components/MenuSection";
 import { MotionReveal } from "@/components/MotionReveal";
+import { TrustSection } from "@/components/TrustSection";
 import { restaurantJsonLd } from "@/lib/json-ld";
 
 export const dynamic = "force-static";
@@ -18,6 +19,7 @@ export default function Home() {
         <AboutSection />
         <MenuSection />
         <BanquetsSection />
+        <TrustSection />
         <ContactsSection />
       </main>
       <MotionReveal />
