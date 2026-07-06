@@ -178,7 +178,8 @@ export function Hero() {
           </motion.div>
 
           <motion.div
-            className="grid w-full overflow-hidden rounded-[24px] border border-gold/25 bg-charcoal/70 shadow-[0_22px_65px_rgba(0,0,0,0.34)] backdrop-blur-xl sm:grid-cols-3 lg:col-span-2"
+            id="delivery"
+            className="grid w-full scroll-mt-[calc(var(--header-height)+16px)] overflow-hidden rounded-[24px] border border-gold/25 bg-charcoal/70 shadow-[0_22px_65px_rgba(0,0,0,0.34)] backdrop-blur-xl sm:grid-cols-3 lg:col-span-2"
             initial={prefersReducedMotion ? false : { opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.82, delay: 0.78, ease: EASE_PREMIUM }}

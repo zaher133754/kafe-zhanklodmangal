@@ -14,6 +14,8 @@ export const site = {
   yandexMapsUrl:
     "https://yandex.com/maps/51/samara/house/prospekt_kirova_393v/YUkYdAVkQUUPQFtpfX50cXRrYA==/",
   yandexOrgUrl: "https://yandex.ru/maps/org/zhan_klod_mangal/222834997712/",
+  promotionsUrl:
+    "https://yandex.ru/maps/org/zhan_klod_mangal/222834997712/?tab=posts",
   phones: [
     { label: "+7 (927) 010-47-25", href: "tel:+79270104725" },
     { label: "+7 (903) 308-62-89", href: "tel:+79033086289" }
@@ -28,10 +30,12 @@ export const site = {
 } as const;
 
 export const navItems = [
-  { label: "О нас", href: "#onas" },
-  { label: "Меню", href: "#menu" },
-  { label: "Банкеты", href: "#ban" },
-  { label: "Контакты", href: "#contacts" }
+  { label: "О нас", href: "#onas", external: false },
+  { label: "Меню", href: "#menu", external: false },
+  { label: "Доставка", href: "#delivery", external: false },
+  { label: "Акции", href: site.promotionsUrl, external: true },
+  { label: "Отзывы", href: "#reviews", external: false },
+  { label: "Контакты", href: "#contacts", external: false }
 ] as const;
 
 export const images = {
