@@ -32,8 +32,7 @@ export const site = {
 export const navItems = [
   { label: "О нас", href: "#onas", external: false },
   { label: "Меню", href: "#menu", external: false },
-  { label: "Доставка", href: "#delivery", external: false },
-  { label: "Акции", href: site.promotionsUrl, external: true },
+  { label: "Банкеты", href: "#ban", external: false },
   { label: "Отзывы", href: "#reviews", external: false },
   { label: "Контакты", href: "#contacts", external: false }
 ] as const;
