@@ -140,7 +140,6 @@ export function MenuSlider() {
               src={active.src}
               alt={active.alt}
               fill
-              priority
               draggable={false}
               sizes="100vw"
               className="select-none object-contain"

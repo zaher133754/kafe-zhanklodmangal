@@ -1,0 +1,12 @@
+[      76ms] [ERROR] Failed to load resource: the server responded with a status of 400 (Bad Request) @ http://127.0.0.1:3002/_next/static/css/48af0a1195365b9d.css:0
+[     136ms] [ERROR] Failed to load resource: the server responded with a status of 400 (Bad Request) @ http://127.0.0.1:3002/_next/static/chunks/app/page-84d41c629295de04.js:0
+[    1703ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_CLOSED @ https://mc.yandex.ru/metrika/tag_turbo.js:0
+[  120205ms] ChunkLoadError: Loading chunk 974 failed.
+(timeout: http://127.0.0.1:3002/_next/static/chunks/app/page-84d41c629295de04.js)
+    at r.f.j (http://127.0.0.1:3002/_next/static/chunks/webpack-1017649d66d1259f.js:1:2891)
+    at http://127.0.0.1:3002/_next/static/chunks/webpack-1017649d66d1259f.js:1:1211
+    at Array.reduce (<anonymous>)
+    at r.e (http://127.0.0.1:3002/_next/static/chunks/webpack-1017649d66d1259f.js:1:1190)
+    at c (http://127.0.0.1:3002/_next/static/chunks/255-3981a3d1f3561bd8.js:1:136606)
+    at http://127.0.0.1:3002/_next/static/chunks/255-3981a3d1f3561bd8.js:1:151371
+    at t (http://127.0.0.1:3002/_next/static/chunks/255-3981a3d1f3561bd8.js:1:152829)

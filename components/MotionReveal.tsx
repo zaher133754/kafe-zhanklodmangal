@@ -4,10 +4,10 @@ import { animate, inView } from "motion/react";
 import { useLayoutEffect } from "react";
 
 const EASE_OUT = [0.22, 1, 0.36, 1] as const;
+const MAX_DELAY_SECONDS = 0.16;
 
 export function MotionReveal() {
   useLayoutEffect(() => {
-    const root = document.documentElement;
     const elements = Array.from(
       document.querySelectorAll<HTMLElement>("[data-reveal]")
     );
@@ -15,14 +15,12 @@ export function MotionReveal() {
       "(prefers-reduced-motion: reduce)"
     ).matches;
 
-    root.classList.add("motion-ready");
-
     if (prefersReducedMotion) {
       elements.forEach((element) => {
         element.dataset.revealed = "true";
       });
 
-      return () => root.classList.remove("motion-ready");
+      return;
     }
 
     const animations = new Set<{ stop: () => void }>();
@@ -30,16 +28,24 @@ export function MotionReveal() {
       inView(
         element,
         () => {
-          const delay = Number(element.dataset.revealDelay ?? 0) / 1000;
+          if (element.dataset.revealed === "true") return;
+          element.dataset.revealed = "true";
+
+          const delay = Math.min(
+            Number(element.dataset.revealDelay ?? 0) / 1000,
+            MAX_DELAY_SECONDS
+          );
           const controls = animate(
             element,
             {
-              opacity: 1,
-              transform: "translate3d(0, 0, 0) scale(1)",
-              filter: "blur(0px)"
+              opacity: [0.86, 1],
+              transform: [
+                "translate3d(0, 12px, 0)",
+                "translate3d(0, 0, 0)"
+              ]
             },
             {
-              duration: 0.82,
+              duration: 0.42,
               delay,
               ease: EASE_OUT
             }
@@ -48,10 +54,8 @@ export function MotionReveal() {
           animations.add(controls);
           void controls.then(() => {
             animations.delete(controls);
-            element.dataset.revealed = "true";
             element.style.removeProperty("opacity");
             element.style.removeProperty("transform");
-            element.style.removeProperty("filter");
             element.style.removeProperty("will-change");
           });
         },
@@ -62,7 +66,6 @@ export function MotionReveal() {
     return () => {
       stopObservers.forEach((stop) => stop());
       animations.forEach((controls) => controls.stop());
-      root.classList.remove("motion-ready");
     };
   }, []);
 

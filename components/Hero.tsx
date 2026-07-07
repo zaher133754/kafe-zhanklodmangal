@@ -73,7 +73,7 @@ export function Hero() {
         aria-hidden
       >
         <Image
-          src="/images/herofoto.png"
+          src="/images/herofoto.avif"
           alt="Фотография мангальной кухни Жан Клод Мангал"
           fill
           priority
