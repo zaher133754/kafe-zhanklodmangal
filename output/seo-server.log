@@ -1,0 +1,10 @@
+
+> zhanklod-mangal-next@1.0.0 start
+> next start -p 3020
+
+   ▲ Next.js 15.5.20
+   - Local:        http://localhost:3020
+   - Network:      http://192.168.0.246:3020
+
+ ✓ Starting...
+ ✓ Ready in 777ms
