@@ -1,0 +1,18 @@
+
+> zhanklod-mangal-next@1.0.0 dev
+> next dev -p 3000
+
+   ▲ Next.js 15.5.20
+   - Local:        http://localhost:3000
+   - Network:      http://192.168.0.246:3000
+   - Environments: .env.local
+
+ ✓ Starting...
+ ✓ Ready in 1686ms
+ ○ Compiling /api/order ...
+ ✓ Compiled /api/order in 668ms (351 modules)
+ POST /api/order 400 in 1134ms
+ ✓ Compiled in 141ms (156 modules)
+ POST /api/order 400 in 76ms
+   Reload env: .env.local
+ ✓ Compiled in 95ms (195 modules)

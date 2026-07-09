@@ -1,5 +1,8 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
+import { CartProvider } from "@/components/cart/CartProvider";
+import { CartSheet } from "@/components/cart/CartSheet";
+import { FloatingCartButton } from "@/components/cart/FloatingCartButton";
 import { images, site } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -76,7 +79,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ru" className="dark">
-      <body>{children}</body>
+      <body>
+        <CartProvider>
+          {children}
+          <FloatingCartButton />
+          <CartSheet />
+        </CartProvider>
+      </body>
     </html>
   );
 }

@@ -1,9 +1,9 @@
-import { MenuSlider } from "@/components/MenuSlider";
+import { MenuCatalog } from "@/components/MenuCatalog";
 
 export function MenuSection() {
   return (
     <section id="menu" className="section-surface cv-auto bg-espresso py-[88px] md:py-[132px]">
-      <div className="container-tilda text-center">
+      <div className="container-tilda">
         <div className="mx-auto max-w-[820px]">
           <h2
             className="section-title"
@@ -12,7 +12,7 @@ export function MenuSection() {
             Попробуйте всё разнообразие «Жан-Клод Мангал»!
           </h2>
           <p
-            className="section-copy mx-auto mt-10 max-w-[720px]"
+            className="section-copy mt-10 max-w-[720px]"
             data-reveal
             data-reveal-delay="90"
           >
@@ -24,7 +24,7 @@ export function MenuSection() {
             каждый ваш заказ стал событием.
           </p>
         </div>
-        <MenuSlider />
+        <MenuCatalog />
       </div>
     </section>
   );

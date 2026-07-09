@@ -2,6 +2,7 @@
 
 import { Send, X } from "lucide-react";
 import { FormEvent, useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 
 type SubmitState = "idle" | "sending" | "sent" | "error";
 
@@ -9,26 +10,37 @@ export function OrderModal() {
   const [isOpen, setIsOpen] = useState(false);
   const [submitState, setSubmitState] = useState<SubmitState>("idle");
   const [message, setMessage] = useState("");
+  const [selectedDish, setSelectedDish] = useState("");
   const dialogRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    function open() {
+    function open(dish = "") {
+      setSelectedDish(dish);
+      setSubmitState("idle");
+      setMessage("");
       setIsOpen(true);
     }
 
     function onClick(event: MouseEvent) {
       const target = event.target as HTMLElement | null;
-      if (target?.closest("[data-order-open]")) {
+      const trigger = target?.closest<HTMLElement>("[data-order-open]");
+
+      if (trigger) {
         event.preventDefault();
-        open();
+        open(trigger.dataset.orderItem ?? "");
       }
     }
 
-    window.addEventListener("open-order", open);
+    function onOpenOrder(event: Event) {
+      const detail = (event as CustomEvent<{ dish?: string }>).detail;
+      open(detail?.dish ?? "");
+    }
+
+    window.addEventListener("open-order", onOpenOrder);
     document.addEventListener("click", onClick);
 
     return () => {
-      window.removeEventListener("open-order", open);
+      window.removeEventListener("open-order", onOpenOrder);
       document.removeEventListener("click", onClick);
     };
   }, []);
@@ -92,7 +104,7 @@ export function OrderModal() {
 
   if (!isOpen) return null;
 
-  return (
+  return createPortal(
     <div
       className="fixed inset-0 z-[90] grid place-items-center bg-black/80 p-5"
       role="presentation"
@@ -117,8 +129,13 @@ export function OrderModal() {
         </button>
 
         <h2 id="order-title" className="pr-12 text-3xl font-extrabold text-ember">
-          Сделать заказ
+          {selectedDish ? "Заказать блюдо" : "Сделать заказ"}
         </h2>
+        {selectedDish ? (
+          <p className="mt-3 pr-12 text-base leading-relaxed text-white/75">
+            Выбрано: <span className="font-bold text-gold-soft">{selectedDish}</span>
+          </p>
+        ) : null}
         <form className="mt-7 grid gap-4" onSubmit={onSubmit}>
           <label className="grid gap-2 text-sm font-bold text-white">
             Имя
@@ -156,6 +173,7 @@ export function OrderModal() {
             <textarea
               name="message"
               rows={4}
+              defaultValue={selectedDish ? `Хочу заказать: ${selectedDish}` : ""}
               className="focus-ring resize-y rounded-md border border-white/15 bg-black/35 px-4 py-3 font-normal text-white outline-none"
             />
           </label>
@@ -179,6 +197,7 @@ export function OrderModal() {
           ) : null}
         </form>
       </div>
-    </div>
+    </div>,
+    document.body
   );
 }

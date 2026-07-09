@@ -1,0 +1,3 @@
+[    3327ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_CLOSED @ https://static-mon.yandex.net/static/main.js?pid=maps.yandex.ru:0
+[    3328ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_CLOSED @ https://mc.yandex.ru/metrika/tag_turbo.js:0
+[    3441ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_CLOSED @ https://static-mon.yandex.net/advert?rnd=1:0

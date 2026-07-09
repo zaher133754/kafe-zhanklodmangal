@@ -1,0 +1,14 @@
+
+> zhanklod-mangal-next@1.0.0 dev
+> next dev -p 3011
+
+   ▲ Next.js 15.5.20
+   - Local:        http://localhost:3011
+   - Network:      http://192.168.0.246:3011
+   - Environments: .env.local
+
+ ✓ Starting...
+ ✓ Ready in 1642ms
+ ✓ Compiled /api/order in 465ms (353 modules)
+ POST /api/order 200 in 2145ms
+ ✓ Compiled in 34ms
