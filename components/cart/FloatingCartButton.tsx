@@ -42,7 +42,7 @@ export function FloatingCartButton() {
 
   return (
     <motion.div
-      className="fixed bottom-[88px] right-8 z-40 sm:bottom-24 sm:right-12 lg:right-16"
+      className="fixed bottom-4 right-4 z-40 max-w-[calc(100vw-32px)] pb-[env(safe-area-inset-bottom)] sm:bottom-8 sm:right-8 sm:pb-0 lg:right-16"
       initial={prefersReducedMotion ? false : { opacity: 0, y: 18, scale: 0.96 }}
       animate={prefersReducedMotion ? { opacity: 1 } : { opacity: 1, y: 0, scale: 1 }}
       transition={{ duration: 0.24, ease: [0.22, 1, 0.36, 1] }}
@@ -60,19 +60,19 @@ export function FloatingCartButton() {
           type="button"
           aria-label={`Открыть корзину: ${formatDishCount(totalItems)}, ${formatPrice(totalPrice)} ₽`}
           onClick={openCart}
-          className="min-h-16 rounded-2xl border border-gold/35 bg-ember px-5 text-white shadow-[0_10px_24px_rgb(0_0_0/0.28)] hover:bg-flame sm:min-h-[72px] sm:px-6"
+          className="min-h-14 rounded-2xl border border-gold/35 bg-ember px-3 text-white shadow-[0_10px_24px_rgb(0_0_0/0.28)] hover:bg-flame sm:min-h-[72px] sm:px-6"
         >
-          <span className="relative flex h-11 w-11 items-center justify-center rounded-xl bg-charcoal/22 sm:h-12 sm:w-12">
-            <ShoppingCart className="h-6 w-6 sm:h-7 sm:w-7" aria-hidden />
+          <span className="relative flex h-10 w-10 items-center justify-center rounded-xl bg-charcoal/22 sm:h-12 sm:w-12">
+            <ShoppingCart className="h-5 w-5 sm:h-7 sm:w-7" aria-hidden />
             <span className="absolute -right-1.5 -top-1.5 grid min-h-5 min-w-5 place-items-center rounded-full bg-gold px-1 text-[11px] font-extrabold leading-none text-charcoal">
               {totalItems}
             </span>
           </span>
           <span className="grid text-left leading-tight">
-            <span className="text-[13px] font-extrabold sm:text-sm">
+            <span className="text-[12px] font-extrabold sm:text-sm">
               {formatDishCount(totalItems)}
             </span>
-            <span className="text-sm font-extrabold text-cream sm:text-base">
+            <span className="text-[13px] font-extrabold text-cream sm:text-base">
               {formatPrice(totalPrice)} ₽
             </span>
           </span>

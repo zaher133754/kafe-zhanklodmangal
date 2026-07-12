@@ -1,0 +1,665 @@
+- generic [active] [ref=f8e1]:
+  - banner [ref=f8e2]:
+    - generic [ref=f8e3]:
+      - link "ЖанКлод Мангал — на главную" [ref=f8e4] [cursor=pointer]:
+        - /url: "#top"
+        - img "ЖанКлод Мангал" [ref=f8e5]
+      - generic [ref=f8e6]:
+        - link "Позвонить и заказать" [ref=f8e7] [cursor=pointer]:
+          - /url: tel:+79033086289
+          - generic [ref=f8e10]: Заказать
+        - button "Открыть меню" [ref=f8e11]
+  - main [ref=f8e13]:
+    - generic [ref=f8e19]:
+      - generic [ref=f8e20]:
+        - link "Самара · просп. Кирова, 393В" [ref=f8e21] [cursor=pointer]:
+          - /url: https://yandex.ru/maps/org/zhan_klod_mangal/222834997712/
+        - heading "Доставка еды из кафе Жан Клод Мангал" [level=1] [ref=f8e25]: Доставка еды из кафеЖан Клод Мангал
+        - paragraph [ref=f8e26]: Сочные шашлыки, вкуснейшая шаурма и бургеры с мангала — с доставкой по Самаре!
+        - generic [ref=f8e27]:
+          - link "Заказать доставку" [ref=f8e28] [cursor=pointer]:
+            - /url: tel:+79033086289
+          - link "Посмотреть меню" [ref=f8e32] [cursor=pointer]:
+            - /url: "#menu"
+      - img "Шашлык на мангале в кафе «Жан Клод Мангал»" [ref=f8e41]
+      - generic "Преимущества доставки" [ref=f8e43]:
+        - generic [ref=f8e44]: "Время работы: 11:00–00:00 (Пт - Сб) 11:00–23:00 (Вс - Чт)"
+        - generic [ref=f8e51]: Доставляем за 45–60 минут
+        - generic [ref=f8e57]: Бесплатно от 2500 рублей
+    - generic [ref=f8e66]:
+      - generic [ref=f8e67]:
+        - heading "Вкус, который вы искали. Здесь мясо готовят так, как вы ещё не пробовали." [level=2] [ref=f8e68]: Вкус, который вы искали.Здесь мясо готовят так, как вы ещё не пробовали.
+        - paragraph [ref=f8e69]: Мы готовим по традиционным армянским рецептам, передавая настоящий вкус мяса на углях — сочного, ароматного, с идеальной прожаркой.В основе каждого блюда — только свежие продукты и отборное мясо, чтобы сохранить настоящий вкус блюд на углях.Попробовав один раз, вы понимаете разницу — такого насыщенного вкуса вы ещё не ощущали.
+      - generic [ref=f8e70]:
+        - img "Шашлык и мясо на шампурах в ЖанКлод Мангал" [ref=f8e72]
+        - img "Блюда с мангала, овощи и лаваш" [ref=f8e74]
+        - img "Десерт и напиток в кафе ЖанКлод Мангал" [ref=f8e76]
+    - generic [ref=f8e78]:
+      - generic [ref=f8e79]:
+        - heading "Попробуйте всё разнообразие «Жан-Клод Мангал»!" [level=2] [ref=f8e80]
+        - paragraph [ref=f8e81]: Наше меню — это коллекция ваших любимых блюд в безупречном исполнении. Хочется сочной свиной шеи? Пожалуйста. Предпочитаете легкий рыбный стейк или свежий салат? У нас есть всё.Мы объединили традиции открытого огня и современную кухню, чтобы каждый ваш заказ стал событием.
+      - generic [ref=f8e82]:
+        - navigation "Категории меню" [ref=f8e84]:
+          - link "Шашлык 6" [ref=f8e85] [cursor=pointer]:
+            - /url: "#menu-shashlyk"
+            - text: Шашлык
+            - generic [ref=f8e86]: "6"
+          - link "Горячие блюда 5" [ref=f8e87] [cursor=pointer]:
+            - /url: "#menu-goryachie-blyuda"
+            - text: Горячие блюда
+            - generic [ref=f8e88]: "5"
+          - link "Шаурма 4" [ref=f8e89] [cursor=pointer]:
+            - /url: "#menu-shaurma"
+            - text: Шаурма
+            - generic [ref=f8e90]: "4"
+          - link "Бургеры 4" [ref=f8e91] [cursor=pointer]:
+            - /url: "#menu-burgery"
+            - text: Бургеры
+            - generic [ref=f8e92]: "4"
+          - link "Гарниры 7" [ref=f8e93] [cursor=pointer]:
+            - /url: "#menu-garniry"
+            - text: Гарниры
+            - generic [ref=f8e94]: "7"
+          - link "Салаты 6" [ref=f8e95] [cursor=pointer]:
+            - /url: "#menu-salaty"
+            - text: Салаты
+            - generic [ref=f8e96]: "6"
+          - link "Супы 4" [ref=f8e97] [cursor=pointer]:
+            - /url: "#menu-supy"
+            - text: Супы
+            - generic [ref=f8e98]: "4"
+          - link "Соусы 4" [ref=f8e99] [cursor=pointer]:
+            - /url: "#menu-sousy"
+            - text: Соусы
+            - generic [ref=f8e100]: "4"
+          - link "Напитки 3" [ref=f8e101] [cursor=pointer]:
+            - /url: "#menu-napitki"
+            - text: Напитки
+            - generic [ref=f8e102]: "3"
+        - generic [ref=f8e103]:
+          - region [ref=f8e104]:
+            - generic [ref=f8e106]:
+              - heading "Шашлык" [level=3] [ref=f8e107]
+              - paragraph [ref=f8e108]: 6 позиций
+            - generic [ref=f8e109]:
+              - article [ref=f8e110]:
+                - generic [ref=f8e111]:
+                  - img "Куриные крылья гриль в пикантном маринаде с хрустящей корочкой" [ref=f8e113]
+                  - generic [ref=f8e114]:
+                    - generic [ref=f8e115]: Куриные крылья гриль в пикантном маринаде с хрустящей корочкой
+                    - generic [ref=f8e116]: 250 г
+                  - generic [ref=f8e118]:
+                    - generic [ref=f8e119]:
+                      - paragraph [ref=f8e120]: Цена
+                      - paragraph [ref=f8e121]: 359 ₽
+                    - 'button "Добавить в корзину: Куриные крылья гриль в пикантном маринаде с хрустящей корочкой" [ref=f8e122]': В корзину
+              - article [ref=f8e123]:
+                - generic [ref=f8e124]:
+                  - img "Куриный люля-кебаб с восточными специями" [ref=f8e126]
+                  - generic [ref=f8e127]:
+                    - generic [ref=f8e128]: Куриный люля-кебаб с восточными специями
+                    - generic [ref=f8e129]: 200 г
+                  - generic [ref=f8e131]:
+                    - generic [ref=f8e132]:
+                      - paragraph [ref=f8e133]: Цена
+                      - paragraph [ref=f8e134]: 399 ₽
+                    - 'button "Добавить в корзину: Куриный люля-кебаб с восточными специями" [ref=f8e135]': В корзину
+              - article [ref=f8e136]:
+                - generic [ref=f8e137]:
+                  - img "Люля-кебаб из сочной говядины" [ref=f8e139]
+                  - generic [ref=f8e140]:
+                    - generic [ref=f8e141]: Люля-кебаб из сочной говядины
+                    - generic [ref=f8e142]: 200 г
+                  - generic [ref=f8e144]:
+                    - generic [ref=f8e145]:
+                      - paragraph [ref=f8e146]: Цена
+                      - paragraph [ref=f8e147]: 429 ₽
+                    - 'button "Добавить в корзину: Люля-кебаб из сочной говядины" [ref=f8e148]': В корзину
+              - article [ref=f8e149]:
+                - generic [ref=f8e150]:
+                  - img "Шашлык из куриного филе" [ref=f8e152]
+                  - generic [ref=f8e153]:
+                    - generic [ref=f8e154]: Шашлык из куриного филе
+                    - generic [ref=f8e155]: 300 г
+                  - generic [ref=f8e157]:
+                    - generic [ref=f8e158]:
+                      - paragraph [ref=f8e159]: Цена
+                      - paragraph [ref=f8e160]: 419 ₽
+                    - 'button "Добавить в корзину: Шашлык из куриного филе" [ref=f8e161]': В корзину
+              - article [ref=f8e162]:
+                - generic [ref=f8e163]:
+                  - img "Шашлык из свиной корейки, томленный на углях" [ref=f8e165]
+                  - generic [ref=f8e166]:
+                    - generic [ref=f8e167]: Шашлык из свиной корейки, томленный на углях
+                    - generic [ref=f8e168]: 300 г
+                  - generic [ref=f8e170]:
+                    - generic [ref=f8e171]:
+                      - paragraph [ref=f8e172]: Цена
+                      - paragraph [ref=f8e173]: 499 ₽
+                    - 'button "Добавить в корзину: Шашлык из свиной корейки, томленный на углях" [ref=f8e174]': В корзину
+              - article [ref=f8e175]:
+                - generic [ref=f8e176]:
+                  - img "Шашлык из свиной шейки" [ref=f8e178]
+                  - generic [ref=f8e179]:
+                    - generic [ref=f8e180]: Шашлык из свиной шейки
+                    - generic [ref=f8e181]: 300 г
+                  - generic [ref=f8e183]:
+                    - generic [ref=f8e184]:
+                      - paragraph [ref=f8e185]: Цена
+                      - paragraph [ref=f8e186]: 539 ₽
+                    - 'button "Добавить в корзину: Шашлык из свиной шейки" [ref=f8e187]': В корзину
+          - region [ref=f8e188]:
+            - generic [ref=f8e190]:
+              - heading "Горячие блюда" [level=3] [ref=f8e191]
+              - paragraph [ref=f8e192]: 5 позиций
+            - generic [ref=f8e193]:
+              - article [ref=f8e194]:
+                - generic [ref=f8e195]:
+                  - img "Нежное пюре с ароматным люля" [ref=f8e197]
+                  - generic [ref=f8e198]:
+                    - generic [ref=f8e199]: Нежное пюре с ароматным люля
+                    - generic [ref=f8e200]: 400 г
+                  - generic [ref=f8e202]:
+                    - generic [ref=f8e203]:
+                      - paragraph [ref=f8e204]: Цена
+                      - paragraph [ref=f8e205]: 269 ₽
+                    - 'button "Добавить в корзину: Нежное пюре с ароматным люля" [ref=f8e206]': В корзину
+              - article [ref=f8e207]:
+                - generic [ref=f8e208]:
+                  - img "Паста с беконом" [ref=f8e210]
+                  - generic [ref=f8e211]:
+                    - generic [ref=f8e212]: Паста с беконом
+                    - generic [ref=f8e213]: 250 г
+                  - generic [ref=f8e215]:
+                    - generic [ref=f8e216]:
+                      - paragraph [ref=f8e217]: Цена
+                      - paragraph [ref=f8e218]: 359 ₽
+                    - 'button "Добавить в корзину: Паста с беконом" [ref=f8e219]': В корзину
+              - article [ref=f8e220]:
+                - generic [ref=f8e221]:
+                  - img "Паста с курицей и грибами" [ref=f8e223]
+                  - generic [ref=f8e224]:
+                    - generic [ref=f8e225]: Паста с курицей и грибами
+                    - generic [ref=f8e226]: 300 г
+                  - generic [ref=f8e228]:
+                    - generic [ref=f8e229]:
+                      - paragraph [ref=f8e230]: Цена
+                      - paragraph [ref=f8e231]: 299 ₽
+                    - 'button "Добавить в корзину: Паста с курицей и грибами" [ref=f8e232]': В корзину
+              - article [ref=f8e233]:
+                - generic [ref=f8e234]:
+                  - img "Сочная свиная шея с хрустящими дольками" [ref=f8e236]
+                  - generic [ref=f8e237]:
+                    - generic [ref=f8e238]: Сочная свиная шея с хрустящими дольками
+                    - generic [ref=f8e239]: 250 г
+                  - generic [ref=f8e241]:
+                    - generic [ref=f8e242]:
+                      - paragraph [ref=f8e243]: Цена
+                      - paragraph [ref=f8e244]: 339 ₽
+                    - 'button "Добавить в корзину: Сочная свиная шея с хрустящими дольками" [ref=f8e245]': В корзину
+              - article [ref=f8e246]:
+                - generic [ref=f8e247]:
+                  - img "Хачапури на углях в лаваше" [ref=f8e249]
+                  - generic [ref=f8e250]:
+                    - generic [ref=f8e251]: Хачапури на углях в лаваше
+                    - generic [ref=f8e252]: 200 г
+                  - generic [ref=f8e254]:
+                    - generic [ref=f8e255]:
+                      - paragraph [ref=f8e256]: Цена
+                      - paragraph [ref=f8e257]: 299 ₽
+                    - 'button "Добавить в корзину: Хачапури на углях в лаваше" [ref=f8e258]': В корзину
+          - region [ref=f8e259]:
+            - generic [ref=f8e261]:
+              - heading "Шаурма" [level=3] [ref=f8e262]
+              - paragraph [ref=f8e263]: 4 позиций
+            - generic [ref=f8e264]:
+              - article [ref=f8e265]:
+                - generic [ref=f8e266]:
+                  - img "Вегетарианская шаурма со свежими помидорами, огурцами и соусом" [ref=f8e268]
+                  - generic [ref=f8e269]:
+                    - generic [ref=f8e270]: Вегетарианская шаурма со свежими помидорами, огурцами и соусом
+                    - generic [ref=f8e271]: 250 г
+                  - generic [ref=f8e273]:
+                    - generic [ref=f8e274]:
+                      - paragraph [ref=f8e275]: Цена
+                      - paragraph [ref=f8e276]: 239 ₽
+                    - 'button "Добавить в корзину: Вегетарианская шаурма со свежими помидорами, огурцами и соусом" [ref=f8e277]': В корзину
+              - article [ref=f8e278]:
+                - generic [ref=f8e279]:
+                  - img "Шаурма с нежным куриным филе, овощами и соусом" [ref=f8e281]
+                  - generic [ref=f8e282]:
+                    - generic [ref=f8e283]: Шаурма с нежным куриным филе, овощами и соусом
+                    - generic [ref=f8e284]: 300 г
+                  - generic [ref=f8e286]:
+                    - generic [ref=f8e287]:
+                      - paragraph [ref=f8e288]: Цена
+                      - paragraph [ref=f8e289]: 339 ₽
+                    - 'button "Добавить в корзину: Шаурма с нежным куриным филе, овощами и соусом" [ref=f8e290]': В корзину
+              - article [ref=f8e291]:
+                - generic [ref=f8e292]:
+                  - img "Шаурма с сочной говядиной, овощами и соусом" [ref=f8e294]
+                  - generic [ref=f8e295]:
+                    - generic [ref=f8e296]: Шаурма с сочной говядиной, овощами и соусом
+                    - generic [ref=f8e297]: 250 г
+                  - generic [ref=f8e299]:
+                    - generic [ref=f8e300]:
+                      - paragraph [ref=f8e301]: Цена
+                      - paragraph [ref=f8e302]: 429 ₽
+                    - 'button "Добавить в корзину: Шаурма с сочной говядиной, овощами и соусом" [ref=f8e303]': В корзину
+              - article [ref=f8e304]:
+                - generic [ref=f8e305]:
+                  - img "Шаурма со вкусной маринованной свининой" [ref=f8e307]
+                  - generic [ref=f8e308]:
+                    - generic [ref=f8e309]: Шаурма со вкусной маринованной свининой
+                    - generic [ref=f8e310]: 300 г
+                  - generic [ref=f8e312]:
+                    - generic [ref=f8e313]:
+                      - paragraph [ref=f8e314]: Цена
+                      - paragraph [ref=f8e315]: 349 ₽
+                    - 'button "Добавить в корзину: Шаурма со вкусной маринованной свининой" [ref=f8e316]': В корзину
+          - region [ref=f8e317]:
+            - generic [ref=f8e319]:
+              - heading "Бургеры" [level=3] [ref=f8e320]
+              - paragraph [ref=f8e321]: 4 позиций
+            - generic [ref=f8e322]:
+              - article [ref=f8e323]:
+                - generic [ref=f8e324]:
+                  - img "Сочный BBQ Бифбургер" [ref=f8e326]
+                  - generic [ref=f8e327]:
+                    - generic [ref=f8e328]: Сочный BBQ Бифбургер
+                    - generic [ref=f8e329]: 250 г
+                  - generic [ref=f8e331]:
+                    - generic [ref=f8e332]:
+                      - paragraph [ref=f8e333]: Цена
+                      - paragraph [ref=f8e334]: 419 ₽
+                    - 'button "Добавить в корзину: Сочный BBQ Бифбургер" [ref=f8e335]': В корзину
+              - article [ref=f8e336]:
+                - generic [ref=f8e337]:
+                  - img "Сочный BBQ Бифбургер с беконом" [ref=f8e339]
+                  - generic [ref=f8e340]:
+                    - generic [ref=f8e341]: Сочный BBQ Бифбургер с беконом
+                    - generic [ref=f8e342]: 250 г
+                  - generic [ref=f8e344]:
+                    - generic [ref=f8e345]:
+                      - paragraph [ref=f8e346]: Цена
+                      - paragraph [ref=f8e347]: 405 ₽
+                    - 'button "Добавить в корзину: Сочный BBQ Бифбургер с беконом" [ref=f8e348]': В корзину
+              - article [ref=f8e349]:
+                - generic [ref=f8e350]:
+                  - img "Фирменный Чикенбургер от шефа" [ref=f8e352]
+                  - generic [ref=f8e353]:
+                    - generic [ref=f8e354]: Фирменный Чикенбургер от шефа
+                    - generic [ref=f8e355]: 300 г
+                  - generic [ref=f8e357]:
+                    - generic [ref=f8e358]:
+                      - paragraph [ref=f8e359]: Цена
+                      - paragraph [ref=f8e360]: 599 ₽
+                    - 'button "Добавить в корзину: Фирменный Чикенбургер от шефа" [ref=f8e361]': В корзину
+              - article [ref=f8e362]:
+                - generic [ref=f8e363]:
+                  - img "Хрустящий Чикенбургер BBQ с беконом" [ref=f8e365]
+                  - generic [ref=f8e366]:
+                    - generic [ref=f8e367]: Хрустящий Чикенбургер BBQ с беконом
+                    - generic [ref=f8e368]: 250 г
+                  - generic [ref=f8e370]:
+                    - generic [ref=f8e371]:
+                      - paragraph [ref=f8e372]: Цена
+                      - paragraph [ref=f8e373]: 389 ₽
+                    - 'button "Добавить в корзину: Хрустящий Чикенбургер BBQ с беконом" [ref=f8e374]': В корзину
+          - region [ref=f8e375]:
+            - generic [ref=f8e377]:
+              - heading "Гарниры" [level=3] [ref=f8e378]
+              - paragraph [ref=f8e379]: 7 позиций
+            - generic [ref=f8e380]:
+              - article [ref=f8e381]:
+                - generic [ref=f8e382]:
+                  - img "Грибы на углях" [ref=f8e384]
+                  - generic [ref=f8e385]:
+                    - generic [ref=f8e386]: Грибы на углях
+                    - generic [ref=f8e387]: 150 г
+                  - generic [ref=f8e389]:
+                    - generic [ref=f8e390]:
+                      - paragraph [ref=f8e391]: Цена
+                      - paragraph [ref=f8e392]: 229 ₽
+                    - 'button "Добавить в корзину: Грибы на углях" [ref=f8e393]': В корзину
+              - article [ref=f8e394]:
+                - generic [ref=f8e395]:
+                  - img "Картофель на углях" [ref=f8e397]
+                  - generic [ref=f8e398]:
+                    - generic [ref=f8e399]: Картофель на углях
+                    - generic [ref=f8e400]: 200 г
+                  - generic [ref=f8e402]:
+                    - generic [ref=f8e403]:
+                      - paragraph [ref=f8e404]: Цена
+                      - paragraph [ref=f8e405]: 179 ₽
+                    - 'button "Добавить в корзину: Картофель на углях" [ref=f8e406]': В корзину
+              - article [ref=f8e407]:
+                - generic [ref=f8e408]:
+                  - img "Картофель фри" [ref=f8e410]
+                  - generic [ref=f8e411]:
+                    - generic [ref=f8e412]: Картофель фри
+                    - generic [ref=f8e413]: 200 г
+                  - generic [ref=f8e415]:
+                    - generic [ref=f8e416]:
+                      - paragraph [ref=f8e417]: Цена
+                      - paragraph [ref=f8e418]: 169 ₽
+                    - 'button "Добавить в корзину: Картофель фри" [ref=f8e419]': В корзину
+              - article [ref=f8e420]:
+                - generic [ref=f8e421]:
+                  - img "Картошка по-деревенски" [ref=f8e423]
+                  - generic [ref=f8e424]:
+                    - generic [ref=f8e425]: Картошка по-деревенски
+                    - generic [ref=f8e426]: 200 г
+                  - generic [ref=f8e428]:
+                    - generic [ref=f8e429]:
+                      - paragraph [ref=f8e430]: Цена
+                      - paragraph [ref=f8e431]: 179 ₽
+                    - 'button "Добавить в корзину: Картошка по-деревенски" [ref=f8e432]': В корзину
+              - article [ref=f8e433]:
+                - generic [ref=f8e434]:
+                  - img "Лаваш тонкий" [ref=f8e436]
+                  - generic [ref=f8e437]:
+                    - generic [ref=f8e438]: Лаваш тонкий
+                    - generic [ref=f8e439]: 50 г
+                  - generic [ref=f8e441]:
+                    - generic [ref=f8e442]:
+                      - paragraph [ref=f8e443]: Цена
+                      - paragraph [ref=f8e444]: 40 ₽
+                    - 'button "Добавить в корзину: Лаваш тонкий" [ref=f8e445]': В корзину
+              - article [ref=f8e446]:
+                - generic [ref=f8e447]:
+                  - img "Овощи на углях" [ref=f8e449]
+                  - generic [ref=f8e450]:
+                    - generic [ref=f8e451]: Овощи на углях
+                    - generic [ref=f8e452]: 300 г
+                  - generic [ref=f8e454]:
+                    - generic [ref=f8e455]:
+                      - paragraph [ref=f8e456]: Цена
+                      - paragraph [ref=f8e457]: 339 ₽
+                    - 'button "Добавить в корзину: Овощи на углях" [ref=f8e458]': В корзину
+              - article [ref=f8e459]:
+                - generic [ref=f8e460]:
+                  - img "Половинка лепешки" [ref=f8e462]
+                  - generic [ref=f8e463]:
+                    - generic [ref=f8e464]: Половинка лепешки
+                    - generic [ref=f8e465]: 50 г
+                  - generic [ref=f8e467]:
+                    - generic [ref=f8e468]:
+                      - paragraph [ref=f8e469]: Цена
+                      - paragraph [ref=f8e470]: 51 ₽
+                    - 'button "Добавить в корзину: Половинка лепешки" [ref=f8e471]': В корзину
+          - region [ref=f8e472]:
+            - generic [ref=f8e474]:
+              - heading "Салаты" [level=3] [ref=f8e475]
+              - paragraph [ref=f8e476]: 6 позиций
+            - generic [ref=f8e477]:
+              - article [ref=f8e478]:
+                - generic [ref=f8e479]:
+                  - img "Армения" [ref=f8e481]
+                  - generic [ref=f8e482]:
+                    - generic [ref=f8e483]: Армения
+                    - generic [ref=f8e484]: 180 г
+                  - generic [ref=f8e486]:
+                    - generic [ref=f8e487]:
+                      - paragraph [ref=f8e488]: Цена
+                      - paragraph [ref=f8e489]: 339 ₽
+                    - 'button "Добавить в корзину: Армения" [ref=f8e490]': В корзину
+              - article [ref=f8e491]:
+                - generic [ref=f8e492]:
+                  - img "Летний" [ref=f8e494]
+                  - generic [ref=f8e495]:
+                    - generic [ref=f8e496]: Летний
+                    - generic [ref=f8e497]: 170 г
+                  - generic [ref=f8e499]:
+                    - generic [ref=f8e500]:
+                      - paragraph [ref=f8e501]: Цена
+                      - paragraph [ref=f8e502]: 249 ₽
+                    - 'button "Добавить в корзину: Летний" [ref=f8e503]': В корзину
+              - article [ref=f8e504]:
+                - generic [ref=f8e505]:
+                  - img "Салат Греческий" [ref=f8e507]
+                  - generic [ref=f8e508]:
+                    - generic [ref=f8e509]: Салат Греческий
+                    - generic [ref=f8e510]: 180 г
+                  - generic [ref=f8e512]:
+                    - generic [ref=f8e513]:
+                      - paragraph [ref=f8e514]: Цена
+                      - paragraph [ref=f8e515]: 339 ₽
+                    - 'button "Добавить в корзину: Салат Греческий" [ref=f8e516]': В корзину
+              - article [ref=f8e517]:
+                - generic [ref=f8e518]:
+                  - img "Салат Цезарь с креветками" [ref=f8e520]
+                  - generic [ref=f8e521]:
+                    - generic [ref=f8e522]: Салат Цезарь с креветками
+                    - generic [ref=f8e523]: 180 г
+                  - generic [ref=f8e525]:
+                    - generic [ref=f8e526]:
+                      - paragraph [ref=f8e527]: Цена
+                      - paragraph [ref=f8e528]: 399 ₽
+                    - 'button "Добавить в корзину: Салат Цезарь с креветками" [ref=f8e529]': В корзину
+              - article [ref=f8e530]:
+                - generic [ref=f8e531]:
+                  - img "Салат Цезарь с курицей" [ref=f8e533]
+                  - generic [ref=f8e534]:
+                    - generic [ref=f8e535]: Салат Цезарь с курицей
+                    - generic [ref=f8e536]: 180 г
+                  - generic [ref=f8e538]:
+                    - generic [ref=f8e539]:
+                      - paragraph [ref=f8e540]: Цена
+                      - paragraph [ref=f8e541]: 399 ₽
+                    - 'button "Добавить в корзину: Салат Цезарь с курицей" [ref=f8e542]': В корзину
+              - article [ref=f8e543]:
+                - generic [ref=f8e544]:
+                  - img "Салат фирменный Жан Клод Мангал" [ref=f8e546]
+                  - generic [ref=f8e547]:
+                    - generic [ref=f8e548]: Салат фирменный Жан Клод Мангал
+                    - generic [ref=f8e549]: 180 г
+                  - generic [ref=f8e551]:
+                    - generic [ref=f8e552]:
+                      - paragraph [ref=f8e553]: Цена
+                      - paragraph [ref=f8e554]: 339 ₽
+                    - 'button "Добавить в корзину: Салат фирменный Жан Клод Мангал" [ref=f8e555]': В корзину
+          - region [ref=f8e556]:
+            - generic [ref=f8e558]:
+              - heading "Супы" [level=3] [ref=f8e559]
+              - paragraph [ref=f8e560]: 4 позиций
+            - generic [ref=f8e561]:
+              - article [ref=f8e562]:
+                - generic [ref=f8e563]:
+                  - img "Борщ" [ref=f8e565]
+                  - generic [ref=f8e566]:
+                    - generic [ref=f8e567]: Борщ
+                    - generic [ref=f8e568]: 500 г
+                  - generic [ref=f8e570]:
+                    - generic [ref=f8e571]:
+                      - paragraph [ref=f8e572]: Цена
+                      - paragraph [ref=f8e573]: 279 ₽
+                    - 'button "Добавить в корзину: Борщ" [ref=f8e574]': В корзину
+              - article [ref=f8e575]:
+                - generic [ref=f8e576]:
+                  - img "Солянка" [ref=f8e578]
+                  - generic [ref=f8e579]:
+                    - generic [ref=f8e580]: Солянка
+                    - generic [ref=f8e581]: 500 г
+                  - generic [ref=f8e583]:
+                    - generic [ref=f8e584]:
+                      - paragraph [ref=f8e585]: Цена
+                      - paragraph [ref=f8e586]: 359 ₽
+                    - 'button "Добавить в корзину: Солянка" [ref=f8e587]': В корзину
+              - article [ref=f8e588]:
+                - generic [ref=f8e589]:
+                  - img "Суп Куриный" [ref=f8e591]
+                  - generic [ref=f8e592]:
+                    - generic [ref=f8e593]: Суп Куриный
+                    - generic [ref=f8e594]: 500 г
+                  - generic [ref=f8e596]:
+                    - generic [ref=f8e597]:
+                      - paragraph [ref=f8e598]: Цена
+                      - paragraph [ref=f8e599]: 259 ₽
+                    - 'button "Добавить в корзину: Суп Куриный" [ref=f8e600]': В корзину
+              - article [ref=f8e601]:
+                - generic [ref=f8e602]:
+                  - img "Харчо" [ref=f8e604]
+                  - generic [ref=f8e605]:
+                    - generic [ref=f8e606]: Харчо
+                    - generic [ref=f8e607]: 500 г
+                  - generic [ref=f8e609]:
+                    - generic [ref=f8e610]:
+                      - paragraph [ref=f8e611]: Цена
+                      - paragraph [ref=f8e612]: 299 ₽
+                    - 'button "Добавить в корзину: Харчо" [ref=f8e613]': В корзину
+          - region [ref=f8e614]:
+            - generic [ref=f8e616]:
+              - heading "Соусы" [level=3] [ref=f8e617]
+              - paragraph [ref=f8e618]: 4 позиций
+            - generic [ref=f8e619]:
+              - article [ref=f8e620]:
+                - generic [ref=f8e621]:
+                  - img "Соус Острый" [ref=f8e623]
+                  - generic [ref=f8e624]:
+                    - generic [ref=f8e625]: Соус Острый
+                    - generic [ref=f8e626]: 50 г
+                  - generic [ref=f8e628]:
+                    - generic [ref=f8e629]:
+                      - paragraph [ref=f8e630]: Цена
+                      - paragraph [ref=f8e631]: 65 ₽
+                    - 'button "Добавить в корзину: Соус Острый" [ref=f8e632]': В корзину
+              - article [ref=f8e633]:
+                - generic [ref=f8e634]:
+                  - img "Соус Сырный" [ref=f8e636]
+                  - generic [ref=f8e637]:
+                    - generic [ref=f8e638]: Соус Сырный
+                    - generic [ref=f8e639]: 50 г
+                  - generic [ref=f8e641]:
+                    - generic [ref=f8e642]:
+                      - paragraph [ref=f8e643]: Цена
+                      - paragraph [ref=f8e644]: 65 ₽
+                    - 'button "Добавить в корзину: Соус Сырный" [ref=f8e645]': В корзину
+              - article [ref=f8e646]:
+                - generic [ref=f8e647]:
+                  - img "Соус Цехтон" [ref=f8e649]
+                  - generic [ref=f8e650]:
+                    - generic [ref=f8e651]: Соус Цехтон
+                    - generic [ref=f8e652]: 50 г
+                  - generic [ref=f8e654]:
+                    - generic [ref=f8e655]:
+                      - paragraph [ref=f8e656]: Цена
+                      - paragraph [ref=f8e657]: 65 ₽
+                    - 'button "Добавить в корзину: Соус Цехтон" [ref=f8e658]': В корзину
+              - article [ref=f8e659]:
+                - generic [ref=f8e660]:
+                  - img "Соус Шашлычный" [ref=f8e662]
+                  - generic [ref=f8e663]:
+                    - generic [ref=f8e664]: Соус Шашлычный
+                    - generic [ref=f8e665]: 50 г
+                  - generic [ref=f8e667]:
+                    - generic [ref=f8e668]:
+                      - paragraph [ref=f8e669]: Цена
+                      - paragraph [ref=f8e670]: 65 ₽
+                    - 'button "Добавить в корзину: Соус Шашлычный" [ref=f8e671]': В корзину
+          - region [ref=f8e672]:
+            - generic [ref=f8e674]:
+              - heading "Напитки" [level=3] [ref=f8e675]
+              - paragraph [ref=f8e676]: 3 позиций
+            - generic [ref=f8e677]:
+              - article [ref=f8e678]:
+                - generic [ref=f8e679]:
+                  - img "Добрый Кола" [ref=f8e681]
+                  - generic [ref=f8e682]:
+                    - generic [ref=f8e683]: Добрый Кола
+                    - generic [ref=f8e684]: 500 мл
+                  - generic [ref=f8e686]:
+                    - generic [ref=f8e687]:
+                      - paragraph [ref=f8e688]: Цена
+                      - paragraph [ref=f8e689]: 302 ₽
+                    - 'button "Добавить в корзину: Добрый Кола" [ref=f8e690]': В корзину
+              - article [ref=f8e691]:
+                - generic [ref=f8e692]:
+                  - img "Добрый Кола" [ref=f8e694]
+                  - generic [ref=f8e695]:
+                    - generic [ref=f8e696]: Добрый Кола
+                    - generic [ref=f8e697]: 330 мл
+                  - generic [ref=f8e699]:
+                    - generic [ref=f8e700]:
+                      - paragraph [ref=f8e701]: Цена
+                      - paragraph [ref=f8e702]: 249 ₽
+                    - 'button "Добавить в корзину: Добрый Кола" [ref=f8e703]': В корзину
+              - article [ref=f8e704]:
+                - generic [ref=f8e705]:
+                  - img "Черноголовка лимонад" [ref=f8e707]
+                  - generic [ref=f8e708]:
+                    - generic [ref=f8e709]: Черноголовка лимонад
+                    - generic [ref=f8e710]: 500 мл
+                  - generic [ref=f8e712]:
+                    - generic [ref=f8e713]:
+                      - paragraph [ref=f8e714]: Цена
+                      - paragraph [ref=f8e715]: 249 ₽
+                    - 'button "Добавить в корзину: Черноголовка лимонад" [ref=f8e716]': В корзину
+    - generic [ref=f8e718]:
+      - generic [ref=f8e720]:
+        - img "Банкетный стол с блюдами ЖанКлод Мангал" [ref=f8e723]
+        - generic [ref=f8e724]:
+          - img "Тёплая атмосфера для торжества" [ref=f8e726]
+          - img "Блюда для банкетов и встреч" [ref=f8e728]
+      - generic [ref=f8e729]:
+        - heading "Банкеты и торжества" [level=2] [ref=f8e730]
+        - paragraph [ref=f8e731]: Мы знаем, как сделать ваш праздник вкусным и уютным. Дни рождения, корпоративы или встречи с друзьями — в «ЖанКлод Мангал» вы получаете тёплую атмосферу, сочное мясо на углях и никакой суеты. Мы берём на себя готовку и сервис, чтобы вы могли наслаждаться общением. Приходите большой компанией — накроем стол, нажарим мяса и сделаем вечер незабываемым.
+        - link "Оставить заявку" [ref=f8e732] [cursor=pointer]:
+          - /url: tel:+79033086289
+    - region [ref=f8e733]:
+      - generic [ref=f8e826]:
+        - generic [ref=f8e737]:
+          - generic [ref=f8e738]:
+            - heading "Отзывы и как нас найти" [level=2] [ref=f8e739]
+            - generic [ref=f8e740]:
+              - strong [ref=f8e741]: 4,7
+              - generic [ref=f8e742]:
+                - img "Рейтинг 4,7 из 5" [ref=f8e743]
+                - paragraph [ref=f8e754]: 873 оценки · 421 отзыв
+            - generic [ref=f8e755]:
+              - article [ref=f8e756]:
+                - generic [ref=f8e757]: Яндекс Карты
+                - generic [ref=f8e763]:
+                  - blockquote [ref=f8e767]: «Всегда очень вкусная еда и бизнес-ланчи.»
+                  - paragraph [ref=f8e768]: — Rustavelli4
+              - article [ref=f8e769]:
+                - generic [ref=f8e770]: Яндекс Карты
+                - generic [ref=f8e776]:
+                  - blockquote [ref=f8e780]: «Замечательное обслуживание, приятная атмосфера и чистота.»
+                  - paragraph [ref=f8e781]: — Алла Макарова
+            - link "Смотреть отзывы на Яндекс Картах" [ref=f8e782] [cursor=pointer]:
+              - /url: https://yandex.ru/maps/org/zhan_klod_mangal/222834997712/reviews/
+          - generic [ref=f8e787]:
+            - iframe [ref=f8e789]
+            - article [ref=f8e790]:
+              - generic [ref=f8e791]: Яндекс Карты
+              - generic [ref=f8e797]:
+                - blockquote [ref=f8e801]: «Мясо сочное, вкусное, доставили за 30 минут, горячее.»
+                - paragraph [ref=f8e802]: — Лилит А.
+            - link "Построить маршрут" [ref=f8e803] [cursor=pointer]:
+              - /url: https://yandex.ru/maps/51/samara/?ll=50.224685%2C53.250859&mode=routes&rtext=~53.250859%2C50.224685&rtt=auto&z=15
+        - paragraph [ref=f8e806]:
+          - text: "Данные и отзывы: Яндекс Карты. Проверено"
+          - time [ref=f8e807]: 6 июля 2026 года
+          - text: .
+    - generic [ref=f8e814]:
+      - heading [level=2] [ref=f8e815]:
+        - text: "КонтактыТелефон:"
+        - link "+7 (927) 010-47-25" [ref=f8e816] [cursor=pointer]:
+          - /url: tel:+79270104725
+        - link "+7 (903) 308-62-89" [ref=f8e817] [cursor=pointer]:
+          - /url: tel:+79033086289
+        - text: "Адрес:"
+        - link "Самара, просп. Кирова, 393В" [ref=f8e818] [cursor=pointer]:
+          - /url: https://yandex.com/maps/51/samara/house/prospekt_kirova_393v/YUkYdAVkQUUPQFtpfX50cXRrYA==/
+      - generic [ref=f8e819]:
+        - strong [ref=f8e820]: Как мы доставляем
+        - emphasis [ref=f8e821]: "До 3 км:"
+        - text: при заказе от 2500 руб — бесплатно, до 2500 руб — 250 руб.
+        - emphasis [ref=f8e822]: "От 3 км:"
+        - text: 350 руб (или бесплатно от 3000 руб).
+      - group "Социальные сети" [ref=f8e823]:
+        - link "Telegram" [ref=f8e824] [cursor=pointer]:
+          - /url: http://t.me/mangaljanklod
+        - link "Instagram" [ref=f8e825] [cursor=pointer]:
+          - /url: https://www.instagram.com/mangalzhanklod/
