@@ -324,22 +324,38 @@ const rawMenuItems: MenuItem[] = [
     id: "dobryy-kola-500",
     category: "Напитки",
     name: "Добрый Кола",
-    price: 302,
+    price: 190,
     weight: "500 мл"
   },
   {
     id: "dobryy-kola-330",
     category: "Напитки",
     name: "Добрый Кола",
-    price: 249,
+    price: 170,
     weight: "330 мл"
   },
   {
     id: "chernogolovka-limonad",
     category: "Напитки",
     name: "Черноголовка лимонад",
-    price: 249,
+    price: 150,
     weight: "500 мл"
+  },
+  {
+    id: "chernogolovka-limonad-tarhun",
+    category: "Напитки",
+    name: "Черноголовка лимонад Тархун",
+    price: 150,
+    weight: "500 мл",
+    image: `/images/${encodeURIComponent("Черноголовка лимонад тархун-dark.png")}`
+  },
+  {
+    id: "chernogolovka-limonad-baykal",
+    category: "Напитки",
+    name: "Черноголовка лимонад Байкал",
+    price: 150,
+    weight: "500 мл",
+    image: `/images/${encodeURIComponent("Черноголовка лимонад байкал-dark.png")}`
   }
 ];
 

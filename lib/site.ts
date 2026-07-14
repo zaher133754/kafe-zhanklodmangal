@@ -47,6 +47,10 @@ export const images = {
   },
   about: [
     {
+      src: "/images/фото1.png",
+      alt: "Блюдо ЖанКлод Мангал"
+    },
+    {
       src: "/images/about-kebab.webp",
       alt: "Шашлык и мясо на шампурах в ЖанКлод Мангал"
     },
@@ -57,6 +61,10 @@ export const images = {
     {
       src: "/images/about-dessert.webp",
       alt: "Десерт и напиток в кафе ЖанКлод Мангал"
+    },
+    {
+      src: "/images/фото2.png",
+      alt: "Блюдо на углях в ЖанКлод Мангал"
     }
   ],
   menu: [
