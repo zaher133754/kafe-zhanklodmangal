@@ -417,9 +417,7 @@ const menuImageById: Partial<Record<MenuItem["id"], string>> = {
   solyanka: menuImage("Солянка.jfif"),
   "sup-kurinyy": menuImage("Суп Куриный.jfif"),
   harcho: menuImage("Харчо.jfif"),
-  "vegetarianskaya-shaurma": menuImage(
-    "Вегетарианская шаурма со свежими помидорами, огурцами и соусом.jfif"
-  ),
+  "vegetarianskaya-shaurma": menuImage("veg-shaurma.jfif"),
   "shaurma-s-kurinym-file": menuImage(
     "Шаурма с нежным куриным филе, овощами и соусом.jfif"
   ),

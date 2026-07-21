@@ -130,7 +130,10 @@ export async function deliverOrderToTelegram(
   const token = process.env.TELEGRAM_BOT_TOKEN?.trim();
   const chatId = process.env.TELEGRAM_CHAT_ID?.trim();
   const silent = process.env.TELEGRAM_SILENT === "true";
-  const proxyUrl = process.env.TELEGRAM_PROXY_URL?.trim() || "";
+  const proxyUrl =
+    process.env.NODE_ENV === "production"
+      ? ""
+      : process.env.TELEGRAM_PROXY_URL?.trim() || "";
 
   if (!token || !chatId) {
     throw new Error(
