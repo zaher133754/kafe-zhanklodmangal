@@ -1,5 +1,6 @@
 import "server-only";
 import nodemailer from "nodemailer";
+import { deliverOrderToTelegram } from "@/lib/telegram-notifications";
 
 export type OrderItem = {
   name: string;
@@ -34,7 +35,7 @@ export type ValidatedOrder = {
 
 export type OrderDeliveryResult = {
   delivered: true;
-  channel: "email";
+  channels: Array<"email" | "telegram">;
 };
 
 function clean(value: unknown, maxLength: number) {
@@ -155,16 +156,22 @@ export function formatOrderEmail(order: ValidatedOrder, orderNumber: string) {
   return lines.filter(Boolean).join("\n");
 }
 
-export async function deliverCheckoutOrder(
+async function deliverOrderToEmail(
   order: ValidatedOrder,
   orderNumber: string
-): Promise<OrderDeliveryResult> {
+): Promise<void> {
   const host = process.env.SMTP_HOST;
   const user = process.env.SMTP_USER;
   const pass = process.env.SMTP_PASS;
   const port = Number(process.env.SMTP_PORT ?? 587);
   const secure = process.env.SMTP_SECURE === "true";
   const to = process.env.ORDER_EMAIL;
+  const from = process.env.SMTP_FROM?.trim() || user;
+  const configuredTimeout = Number(process.env.SMTP_TIMEOUT_MS ?? 12_000);
+  const timeoutMs =
+    Number.isFinite(configuredTimeout) && configuredTimeout >= 5_000
+      ? configuredTimeout
+      : 12_000;
 
   if (!host || !to || !user || !pass) {
     throw new Error("Не настроены SMTP-переменные для отправки заказа.");
@@ -180,15 +187,64 @@ export async function deliverCheckoutOrder(
     host,
     port,
     secure,
-    auth: { user, pass }
+    auth: { user, pass },
+    connectionTimeout: timeoutMs,
+    greetingTimeout: timeoutMs,
+    socketTimeout: timeoutMs
   });
 
-  await transporter.sendMail({
-    from: user,
-    to,
-    subject: `Новый заказ №${orderNumber} с сайта Жан Клод Мангал`,
-    text: formatOrderEmail(order, orderNumber)
-  });
+  let timeout: ReturnType<typeof setTimeout> | undefined;
+  try {
+    await Promise.race([
+      transporter.sendMail({
+        from,
+        to,
+        subject: `Новый заказ №${orderNumber} с сайта Жан Клод Мангал`,
+        text: formatOrderEmail(order, orderNumber)
+      }),
+      new Promise<never>((_, reject) => {
+        timeout = setTimeout(
+          () => reject(new Error(`SMTP не ответил за ${timeoutMs / 1000} секунд.`)),
+          timeoutMs
+        );
+      })
+    ]);
+  } finally {
+    if (timeout) clearTimeout(timeout);
+    transporter.close();
+  }
+}
 
-  return { delivered: true, channel: "email" };
+export async function deliverCheckoutOrder(
+  order: ValidatedOrder,
+  orderNumber: string
+): Promise<OrderDeliveryResult> {
+  const orderText = formatOrderEmail(order, orderNumber);
+  const deliveries = await Promise.allSettled([
+    deliverOrderToEmail(order, orderNumber),
+    deliverOrderToTelegram(orderText)
+  ]);
+
+  const channels: Array<"email" | "telegram"> = [];
+
+  if (deliveries[0].status === "fulfilled") channels.push("email");
+  if (deliveries[1].status === "fulfilled") channels.push("telegram");
+
+  const errors = deliveries
+    .filter((result): result is PromiseRejectedResult => result.status === "rejected")
+    .map((result) =>
+      result.reason instanceof Error ? result.reason.message : String(result.reason)
+    );
+
+  if (channels.length === 0) {
+    throw new Error(`Не удалось отправить заказ: ${errors.join("; ")}`);
+  }
+
+  if (errors.length > 0) {
+    console.error(
+      `[order ${orderNumber}] Заказ доставлен только через ${channels.join(", ")}: ${errors.join("; ")}`
+    );
+  }
+
+  return { delivered: true, channels };
 }

@@ -376,9 +376,7 @@ const menuImageById: Partial<Record<MenuItem["id"], string>> = {
   "salat-firmennyy-zhan-klod-mangal": menuImage(
     "Салат фирменный Жан Клод Мангал.jfif"
   ),
-  "kurinye-krylya-gril": menuImage(
-    "Куриные крылья гриль в пикантном маринаде с хрустящей корочкой.jfif"
-  ),
+  "kurinye-krylya-gril": menuImage("chicken-wings-grill.jfif"),
   "kurinyy-lyulya-kebab": menuImage(
     "Куриный люля-кебаб с восточными специями.jfif"
   ),

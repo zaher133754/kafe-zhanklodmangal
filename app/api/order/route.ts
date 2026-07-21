@@ -8,9 +8,13 @@ export async function POST(request: Request) {
   try {
     const order = validateOrderPayload(await request.json());
     const orderNumber = generateOrderNumber();
-    await deliverCheckoutOrder(order, orderNumber);
+    const delivery = await deliverCheckoutOrder(order, orderNumber);
 
-    return NextResponse.json({ success: true, orderNumber });
+    return NextResponse.json({
+      success: true,
+      orderNumber,
+      channels: delivery.channels
+    });
   } catch (error) {
     return NextResponse.json(
       {
