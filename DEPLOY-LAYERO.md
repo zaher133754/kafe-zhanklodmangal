@@ -21,9 +21,13 @@ ORDER_EMAIL=ogannesigityan@yandex.ru
 TELEGRAM_BOT_TOKEN=токен_от_BotFather
 TELEGRAM_CHAT_ID=id_личного_чата_или_закрытой_группы
 TELEGRAM_SILENT=false
+TELEGRAM_RELAY_URL=https://2-26-111-48.sslip.io/telegram/order
+TELEGRAM_RELAY_SECRET=общий_секретный_ключ
 ```
 
 `TELEGRAM_PROXY_URL` в Layero не задавайте и удалите её из панели, если она была добавлена: сервер хостинга должен обращаться к Telegram напрямую. Код принудительно игнорирует локальный прокси в production. Эта переменная нужна только для локального запуска из сети, где Telegram доступен через прокси.
+
+Если прямые запросы Layero к Telegram завершаются по таймауту, используйте подготовленный Cloudflare Worker из `C:\Users\admin\Desktop\BOTzakazisite\telegram-relay`. В этом случае сайт отправляет заказы через `TELEGRAM_RELAY_URL`, а `TELEGRAM_RELAY_SECRET` защищает endpoint от посторонних запросов. Токен бота и ID чата хранятся в секретах Worker.
 
 Секреты нельзя добавлять в Git или в переменные с префиксом `NEXT_PUBLIC_`. После изменения переменных окружения создайте новый деплой.
 
