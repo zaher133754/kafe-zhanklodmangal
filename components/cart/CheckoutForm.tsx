@@ -11,6 +11,30 @@ type CheckoutFormProps = {
 
 type PickupType = "delivery" | "pickup";
 
+const ORDER_RETRY_DELAYS_MS = [1_500, 2_500, 4_000];
+
+function wait(milliseconds: number) {
+  return new Promise((resolve) => setTimeout(resolve, milliseconds));
+}
+
+async function submitOrder(body: string) {
+  for (let attempt = 0; attempt <= ORDER_RETRY_DELAYS_MS.length; attempt += 1) {
+    const response = await fetch("/api/order", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body
+    });
+
+    if (response.status !== 503 || attempt === ORDER_RETRY_DELAYS_MS.length) {
+      return response;
+    }
+
+    await wait(ORDER_RETRY_DELAYS_MS[attempt]);
+  }
+
+  throw new Error("Не удалось дождаться запуска сервера.");
+}
+
 function formatPrice(value: number) {
   return new Intl.NumberFormat("ru-RU").format(value);
 }
@@ -75,10 +99,8 @@ export function CheckoutForm({ onSubmitted }: CheckoutFormProps) {
     setMessage("");
 
     try {
-      const response = await fetch("/api/order", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
+      const response = await submitOrder(
+        JSON.stringify({
           customerName,
           phone,
           deliveryType: pickupType,
@@ -87,7 +109,7 @@ export function CheckoutForm({ onSubmitted }: CheckoutFormProps) {
           items: orderItems,
           total: totalPrice
         })
-      });
+      );
       const result = (await response.json()) as {
         success?: boolean;
         orderNumber?: string;
