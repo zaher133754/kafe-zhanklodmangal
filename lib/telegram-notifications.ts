@@ -49,7 +49,12 @@ function telegramRequest(token: string, payload: string, proxyUrl: string) {
         method: "POST",
         ...(proxyUrl
           ? { agent: new HttpsProxyAgent(proxyUrl) }
-          : { family: 4, agent: false }),
+          : {
+              agent: false,
+              family: 0,
+              autoSelectFamily: true,
+              autoSelectFamilyAttemptTimeout: 500
+            }),
         headers: {
           "content-type": "application/json",
           "content-length": Buffer.byteLength(payload)
