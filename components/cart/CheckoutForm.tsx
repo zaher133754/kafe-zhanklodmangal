@@ -4,6 +4,11 @@ import { useMemo, useState, type FormEvent } from "react";
 import { Send } from "lucide-react";
 import { useCart } from "@/components/cart/CartProvider";
 import { Button } from "@/components/ui/button";
+import {
+  calculateDeliveryCost,
+  DELIVERY_COST,
+  FREE_DELIVERY_THRESHOLD
+} from "@/lib/delivery";
 
 type CheckoutFormProps = {
   onSubmitted: (orderNumber: string) => void;
@@ -51,6 +56,8 @@ export function CheckoutForm({ onSubmitted }: CheckoutFormProps) {
     "idle"
   );
   const [message, setMessage] = useState("");
+  const deliveryCost = calculateDeliveryCost(pickupType, totalPrice);
+  const grandTotal = totalPrice + deliveryCost;
 
   const orderItems = useMemo(
     () =>
@@ -217,11 +224,32 @@ export function CheckoutForm({ onSubmitted }: CheckoutFormProps) {
         />
       </label>
 
-      <div className="rounded-xl border border-gold/18 bg-coal px-4 py-3">
-        <div className="flex items-center justify-between gap-4">
-          <span className="text-sm font-bold text-smoke">Итого к заказу</span>
+      <div className="grid gap-2 rounded-xl border border-gold/18 bg-coal px-4 py-3">
+        <div className="flex items-center justify-between gap-4 text-sm">
+          <span className="font-medium text-smoke">Сумма заказа</span>
+          <span className="font-bold text-cream">{formatPrice(totalPrice)} ₽</span>
+        </div>
+        <div className="flex items-center justify-between gap-4 text-sm">
+          <span className="font-medium text-smoke">
+            {pickupType === "delivery" ? "Доставка" : "Самовывоз"}
+          </span>
+          <span className="font-bold text-cream">
+            {deliveryCost === 0 ? "Бесплатно" : `${formatPrice(deliveryCost)} ₽`}
+          </span>
+        </div>
+        {pickupType === "delivery" ? (
+          <p className="border-b border-gold/12 pb-3 text-xs font-medium leading-relaxed text-smoke">
+            При заказе до {formatPrice(FREE_DELIVERY_THRESHOLD)} ₽ доставка стоит{" "}
+            {formatPrice(DELIVERY_COST)} ₽, от{" "}
+            {formatPrice(FREE_DELIVERY_THRESHOLD)} ₽ — бесплатно.
+          </p>
+        ) : (
+          <div className="border-b border-gold/12 pb-1" aria-hidden />
+        )}
+        <div className="flex items-center justify-between gap-4 pt-1">
+          <span className="text-sm font-bold text-smoke">Итого к оплате</span>
           <strong className="text-xl font-extrabold text-ember">
-            {formatPrice(totalPrice)} ₽
+            {formatPrice(grandTotal)} ₽
           </strong>
         </div>
       </div>

@@ -52,7 +52,7 @@ const serviceFacts = [
   },
   {
     icon: Truck,
-    label: "Бесплатно от 2500 рублей"
+    label: "Бесплатно от 3 000 рублей"
   }
 ] as const;
 

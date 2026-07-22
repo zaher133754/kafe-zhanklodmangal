@@ -1,5 +1,6 @@
 import "server-only";
 import nodemailer from "nodemailer";
+import { calculateDeliveryCost } from "@/lib/delivery";
 import { deliverOrderToTelegram } from "@/lib/telegram-notifications";
 
 export type OrderItem = {
@@ -12,8 +13,6 @@ export type CheckoutOrderPayload = {
   customerName: string;
   phone: string;
   deliveryType: "delivery" | "pickup" | string;
-  deliveryZone?: string;
-  deliveryCost?: number;
   address?: string;
   comment?: string;
   items: OrderItem[];
@@ -24,7 +23,6 @@ export type ValidatedOrder = {
   customerName: string;
   phone: string;
   deliveryType: "delivery" | "pickup" | string;
-  deliveryZone: string;
   deliveryCost: number;
   address?: string;
   comment?: string;
@@ -68,8 +66,6 @@ export function validateOrderPayload(body: unknown): ValidatedOrder {
   const customerName = clean(source.customerName, 80);
   const phone = clean(source.phone, 40);
   const deliveryType = clean(source.deliveryType, 40) || "delivery";
-  const deliveryZone = clean(source.deliveryZone, 120);
-  const deliveryCost = Math.max(0, Math.round(cleanNumber(source.deliveryCost)));
   const address = clean(source.address, 240);
   const comment = clean(source.comment, 800);
   const rawItems = Array.isArray(source.items) ? source.items : [];
@@ -105,13 +101,13 @@ export function validateOrderPayload(body: unknown): ValidatedOrder {
   }
 
   const total = items.reduce((sum, item) => sum + item.total, 0);
+  const deliveryCost = calculateDeliveryCost(deliveryType, total);
   const grandTotal = total + deliveryCost;
 
   return {
     customerName,
     phone,
     deliveryType,
-    deliveryZone,
     deliveryCost,
     address: deliveryType === "delivery" ? address : "",
     comment,
@@ -138,7 +134,6 @@ export function formatOrderEmail(order: ValidatedOrder, orderNumber: string) {
     `Имя: ${order.customerName}`,
     `Телефон: ${order.phone}`,
     `Тип получения: ${deliveryLabel}`,
-    `Зона доставки: ${order.deliveryZone || "—"}`,
     order.address ? `Адрес доставки: ${order.address}` : "Адрес доставки: —",
     order.comment ? `Комментарий: ${order.comment}` : "Комментарий: —",
     "",
@@ -149,7 +144,7 @@ export function formatOrderEmail(order: ValidatedOrder, orderNumber: string) {
     ),
     "",
     `Сумма блюд: ${money(order.total)} ₽`,
-    `Стоимость доставки: ${money(order.deliveryCost)} ₽`,
+    `Стоимость доставки: ${money(order.deliveryCost)} ₽${order.deliveryCost === 0 ? " (бесплатно)" : ""}`,
     `Итоговая сумма: ${money(order.grandTotal)} ₽`
   ];
 
