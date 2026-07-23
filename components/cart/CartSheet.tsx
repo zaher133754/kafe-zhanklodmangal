@@ -10,7 +10,10 @@ import {
   ShoppingBag,
   Trash2
 } from "lucide-react";
-import { CheckoutForm } from "@/components/cart/CheckoutForm";
+import {
+  CheckoutForm,
+  type FulfillmentType
+} from "@/components/cart/CheckoutForm";
 import { useCart } from "@/components/cart/CartProvider";
 import { Button } from "@/components/ui/button";
 import {
@@ -43,6 +46,8 @@ export function CartSheet() {
   } = useCart();
   const [step, setStep] = useState<CartStep>("cart");
   const [orderNumber, setOrderNumber] = useState("");
+  const [submittedFulfillmentType, setSubmittedFulfillmentType] =
+    useState<FulfillmentType>("delivery");
   const [isOrderNumberCopied, setIsOrderNumberCopied] = useState(false);
 
   useEffect(() => {
@@ -56,6 +61,7 @@ export function CartSheet() {
       const timer = window.setTimeout(() => {
         setStep("cart");
         setOrderNumber("");
+        setSubmittedFulfillmentType("delivery");
         setIsOrderNumberCopied(false);
       }, 180);
       return () => window.clearTimeout(timer);
@@ -112,9 +118,11 @@ export function CartSheet() {
               </SheetTitle>
               <SheetDescription className="mt-1 text-sm leading-relaxed text-smoke">
                 {step === "checkout"
-                  ? "Оставьте контакты, и мы подтвердим заказ."
+                  ? "Выберите тип получения и оставьте контакты."
                   : step === "success"
-                    ? "Спасибо. Мы скоро свяжемся с вами для подтверждения."
+                    ? submittedFulfillmentType === "cafe"
+                      ? "Сотрудник кафе подтвердит заказ по телефону."
+                      : "Спасибо. Мы скоро свяжемся с вами для подтверждения."
                     : hasItems
                       ? `${totalItems} позиций · ${formatPrice(totalPrice)} ₽`
                       : "Добавьте блюда из меню."}
@@ -131,7 +139,9 @@ export function CartSheet() {
                   <ShoppingBag className="h-7 w-7" aria-hidden />
                 </div>
                 <h3 className="mt-5 text-2xl font-extrabold text-cream">
-                  Заказ отправлен!
+                  {submittedFulfillmentType === "cafe"
+                    ? "Заказ принят."
+                    : "Заказ отправлен!"}
                 </h3>
                 {orderNumber ? (
                   <div className="mx-auto mt-5 max-w-[320px] rounded-2xl border border-gold/28 bg-coal px-5 py-4">
@@ -159,7 +169,9 @@ export function CartSheet() {
                   </div>
                 ) : null}
                 <p className="mx-auto mt-5 max-w-[300px] text-sm leading-relaxed text-smoke">
-                  Мы скоро свяжемся с вами для подтверждения.
+                  {submittedFulfillmentType === "cafe"
+                    ? "Сотрудник кафе подтвердит его."
+                    : "Мы скоро свяжемся с вами для подтверждения."}
                 </p>
                 <Button
                   type="button"
@@ -172,8 +184,12 @@ export function CartSheet() {
             </div>
           ) : step === "checkout" ? (
             <CheckoutForm
-              onSubmitted={(submittedOrderNumber) => {
+              onSubmitted={({
+                orderNumber: submittedOrderNumber,
+                deliveryType
+              }) => {
                 setOrderNumber(submittedOrderNumber);
+                setSubmittedFulfillmentType(deliveryType);
                 setIsOrderNumberCopied(false);
                 setStep("success");
               }}

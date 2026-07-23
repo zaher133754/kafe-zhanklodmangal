@@ -1,5 +1,12 @@
 import "server-only";
 import nodemailer from "nodemailer";
+import {
+  CAFE_CLOSE_TIME,
+  CAFE_OPEN_TIME,
+  getTodayInSamara,
+  isCafeVisitTime,
+  isFutureSamaraVisit
+} from "@/lib/cafe-visit";
 import { calculateDeliveryCost } from "@/lib/delivery";
 import { deliverOrderToTelegram } from "@/lib/telegram-notifications";
 
@@ -9,11 +16,16 @@ export type OrderItem = {
   quantity: number;
 };
 
+export type FulfillmentType = "delivery" | "pickup" | "cafe";
+
 export type CheckoutOrderPayload = {
   customerName: string;
   phone: string;
-  deliveryType: "delivery" | "pickup" | string;
+  deliveryType: FulfillmentType;
   address?: string;
+  visitDate?: string;
+  visitTime?: string;
+  guestCount?: number;
   comment?: string;
   items: OrderItem[];
   total?: number;
@@ -22,9 +34,12 @@ export type CheckoutOrderPayload = {
 export type ValidatedOrder = {
   customerName: string;
   phone: string;
-  deliveryType: "delivery" | "pickup" | string;
+  deliveryType: FulfillmentType;
   deliveryCost: number;
   address?: string;
+  visitDate?: string;
+  visitTime?: string;
+  guestCount?: number;
   comment?: string;
   items: Array<OrderItem & { total: number }>;
   total: number;
@@ -49,6 +64,13 @@ function isPhoneLike(value: string) {
   return value.replace(/\D/g, "").length >= 10;
 }
 
+function isIsoDate(value: string) {
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(value)) return false;
+
+  const date = new Date(`${value}T00:00:00Z`);
+  return Number.isFinite(date.getTime()) && date.toISOString().startsWith(value);
+}
+
 function money(value: number) {
   return new Intl.NumberFormat("ru-RU").format(value);
 }
@@ -61,14 +83,38 @@ function formatOrderDateTime(date = new Date()) {
   }).format(date);
 }
 
+function formatVisitDate(value: string) {
+  return new Intl.DateTimeFormat("ru-RU", {
+    dateStyle: "long",
+    timeZone: "Europe/Samara"
+  }).format(new Date(`${value}T12:00:00+04:00`));
+}
+
+function fulfillmentLabel(type: FulfillmentType) {
+  if (type === "delivery") return "Доставка";
+  if (type === "pickup") return "Самовывоз";
+  return "В кафе ко времени";
+}
+
 export function validateOrderPayload(body: unknown): ValidatedOrder {
   const source = body as Partial<CheckoutOrderPayload>;
   const customerName = clean(source.customerName, 80);
   const phone = clean(source.phone, 40);
-  const deliveryType = clean(source.deliveryType, 40) || "delivery";
+  const rawDeliveryType = clean(source.deliveryType, 40) || "delivery";
   const address = clean(source.address, 240);
+  const visitDate = clean(source.visitDate, 10);
+  const visitTime = clean(source.visitTime, 5);
+  const guestCount = cleanNumber(source.guestCount);
   const comment = clean(source.comment, 800);
   const rawItems = Array.isArray(source.items) ? source.items : [];
+
+  if (!(["delivery", "pickup", "cafe"] as const).includes(
+    rawDeliveryType as FulfillmentType
+  )) {
+    throw new Error("Выберите корректный тип получения.");
+  }
+
+  const deliveryType = rawDeliveryType as FulfillmentType;
 
   if (!customerName) {
     throw new Error("Укажите имя.");
@@ -80,6 +126,30 @@ export function validateOrderPayload(body: unknown): ValidatedOrder {
 
   if (deliveryType === "delivery" && !address) {
     throw new Error("Укажите адрес доставки.");
+  }
+
+  if (deliveryType === "cafe") {
+    if (!isIsoDate(visitDate)) {
+      throw new Error("Укажите корректную дату визита в кафе.");
+    }
+
+    if (visitDate !== getTodayInSamara()) {
+      throw new Error("Заказ в кафе ко времени можно оформить только на сегодня.");
+    }
+
+    if (!isCafeVisitTime(visitTime)) {
+      throw new Error(
+        `Выберите время с ${CAFE_OPEN_TIME} до ${CAFE_CLOSE_TIME}.`
+      );
+    }
+
+    if (!Number.isInteger(guestCount) || guestCount < 1 || guestCount > 100) {
+      throw new Error("Укажите количество гостей от 1 до 100.");
+    }
+
+    if (!isFutureSamaraVisit(visitDate, visitTime)) {
+      throw new Error("Выберите время позже текущего.");
+    }
   }
 
   const items = rawItems
@@ -110,6 +180,9 @@ export function validateOrderPayload(body: unknown): ValidatedOrder {
     deliveryType,
     deliveryCost,
     address: deliveryType === "delivery" ? address : "",
+    visitDate: deliveryType === "cafe" ? visitDate : undefined,
+    visitTime: deliveryType === "cafe" ? visitTime : undefined,
+    guestCount: deliveryType === "cafe" ? guestCount : undefined,
     comment,
     items,
     total,
@@ -118,23 +191,25 @@ export function validateOrderPayload(body: unknown): ValidatedOrder {
 }
 
 export function formatOrderEmail(order: ValidatedOrder, orderNumber: string) {
-  const deliveryLabel =
-    order.deliveryType === "delivery"
-      ? "Доставка"
-      : order.deliveryType === "pickup"
-        ? "Самовывоз"
-        : order.deliveryType;
-
   const lines = [
     `Номер заказа: ${orderNumber}`,
     `Дата и время заказа: ${formatOrderDateTime()}`,
     "",
-    "Новый заказ с сайта Жан Клод Мангал",
+    order.deliveryType === "cafe"
+      ? "Новый заказ в кафе ко времени — требуется подтверждение"
+      : "Новый заказ с сайта Жан Клод Мангал",
     "",
     `Имя: ${order.customerName}`,
     `Телефон: ${order.phone}`,
-    `Тип получения: ${deliveryLabel}`,
-    order.address ? `Адрес доставки: ${order.address}` : "Адрес доставки: —",
+    `Тип получения: ${fulfillmentLabel(order.deliveryType)}`,
+    ...(order.address ? [`Адрес доставки: ${order.address}`] : []),
+    ...(order.visitDate && order.visitTime && order.guestCount
+      ? [
+          `Дата визита: ${formatVisitDate(order.visitDate)}`,
+          `Время визита: ${order.visitTime}`,
+          `Количество гостей: ${order.guestCount}`
+        ]
+      : []),
     order.comment ? `Комментарий: ${order.comment}` : "Комментарий: —",
     "",
     "Состав заказа:",
@@ -144,11 +219,15 @@ export function formatOrderEmail(order: ValidatedOrder, orderNumber: string) {
     ),
     "",
     `Сумма блюд: ${money(order.total)} ₽`,
-    `Стоимость доставки: ${money(order.deliveryCost)} ₽${order.deliveryCost === 0 ? " (бесплатно)" : ""}`,
+    ...(order.deliveryType === "delivery"
+      ? [
+          `Стоимость доставки: ${money(order.deliveryCost)} ₽${order.deliveryCost === 0 ? " (бесплатно)" : ""}`
+        ]
+      : []),
     `Итоговая сумма: ${money(order.grandTotal)} ₽`
   ];
 
-  return lines.filter(Boolean).join("\n");
+  return lines.join("\n");
 }
 
 async function deliverOrderToEmail(
@@ -194,7 +273,10 @@ async function deliverOrderToEmail(
       transporter.sendMail({
         from,
         to,
-        subject: `Новый заказ №${orderNumber} с сайта Жан Клод Мангал`,
+        subject:
+          order.deliveryType === "cafe"
+            ? `Заказ в кафе ко времени №${orderNumber} — подтвердить`
+            : `Новый заказ №${orderNumber} с сайта Жан Клод Мангал`,
         text: formatOrderEmail(order, orderNumber)
       }),
       new Promise<never>((_, reject) => {
