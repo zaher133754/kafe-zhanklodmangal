@@ -50,15 +50,27 @@ export const metadata: Metadata = {
     }
   },
   icons: {
-    icon: {
-      url: "/apple-touch-icon.png",
-      type: "image/png"
-    },
+    icon: [
+      {
+        url: "/favicon.png",
+        type: "image/png",
+        sizes: "120x120"
+      },
+      {
+        url: "/favicon.ico",
+        type: "image/x-icon",
+        sizes: "32x32"
+      }
+    ],
     shortcut: {
-      url: "/apple-touch-icon.png",
-      type: "image/png"
+      url: "/favicon.ico",
+      type: "image/x-icon"
     },
-    apple: "/apple-touch-icon.png"
+    apple: {
+      url: "/apple-touch-icon.png",
+      type: "image/png",
+      sizes: "180x180"
+    },
   },
   formatDetection: {
     telephone: false
