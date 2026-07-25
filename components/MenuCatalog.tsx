@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import { useState } from "react";
-import { motion, useReducedMotion } from "motion/react";
 import { Minus, Plus, ShoppingCart } from "lucide-react";
 import {
   menuCategories,
@@ -175,7 +174,6 @@ function CategorySection({ category }: { category: Category }) {
 }
 
 export function MenuCatalog() {
-  const prefersReducedMotion = useReducedMotion();
   const [isExpanded, setIsExpanded] = useState(false);
   const [activeCategory, setActiveCategory] =
     useState<CategoryFilter>(FEATURED_CATEGORY);
@@ -186,12 +184,18 @@ export function MenuCatalog() {
     ? menuCategories
     : [lastSelectedCategory];
 
+  function getScrollBehavior(): ScrollBehavior {
+    return window.matchMedia("(prefers-reduced-motion: reduce)").matches
+      ? "auto"
+      : "smooth";
+  }
+
   function scrollToCategory(category: Category) {
     requestAnimationFrame(() => {
       document
         .getElementById(`menu-${getCategoryAnchor(category)}`)
         ?.scrollIntoView({
-          behavior: prefersReducedMotion ? "auto" : "smooth",
+          behavior: getScrollBehavior(),
           block: "start"
         });
     });
@@ -227,7 +231,7 @@ export function MenuCatalog() {
         Math.abs(menuSection.getBoundingClientRect().top) > window.innerHeight * 0.75
       ) {
         menuSection.scrollIntoView({
-          behavior: prefersReducedMotion ? "auto" : "smooth",
+          behavior: getScrollBehavior(),
           block: "start"
         });
       }
@@ -281,23 +285,14 @@ export function MenuCatalog() {
         </nav>
       </div>
 
-      <motion.div
-        key={isExpanded ? "expanded" : "collapsed"}
+      <div
         id={CATALOG_CONTENT_ID}
-        initial={
-          isExpanded && !prefersReducedMotion ? { opacity: 0, y: 8 } : false
-        }
-        animate={{ opacity: 1, y: 0 }}
-        transition={{
-          duration: prefersReducedMotion ? 0 : 0.22,
-          ease: [0.22, 1, 0.36, 1]
-        }}
-        className="mt-5 grid min-w-0 gap-9 pb-6 sm:mt-7 sm:gap-12 sm:pb-8"
+        className={`mt-5 grid min-w-0 gap-9 pb-6 sm:mt-7 sm:gap-12 sm:pb-8 ${isExpanded ? "menu-catalog-expanded" : ""}`}
       >
         {visibleCategories.map((category) => (
           <CategorySection category={category} key={category} />
         ))}
-      </motion.div>
+      </div>
 
       <div className="flex justify-center pb-24 pt-2 sm:pb-0 sm:pt-4">
         <Button

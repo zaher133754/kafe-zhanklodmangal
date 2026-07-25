@@ -1,5 +1,4 @@
 @import "tailwindcss";
-@import "tw-animate-css";
 @import "shadcn/tailwind.css";
 
 @custom-variant dark (&:is(.dark *));
@@ -194,39 +193,12 @@ section[id] {
   transform: translateY(-4px);
 }
 
-.benefit-card {
-  border: 1px solid rgb(240 204 131 / 16%);
-  border-radius: 18px;
-  background: linear-gradient(135deg, rgb(8 5 3 / 58%), rgb(39 20 10 / 34%));
-  box-shadow: 0 14px 42px rgb(0 0 0 / 18%);
-  backdrop-filter: blur(10px);
-  transition:
-    border-color 350ms var(--ease-premium),
-    background 350ms var(--ease-premium),
-    transform 350ms var(--ease-premium);
-}
-
-.benefit-card:hover {
-  border-color: rgb(240 204 131 / 34%);
-  background: linear-gradient(135deg, rgb(8 5 3 / 72%), rgb(72 31 10 / 42%));
-  transform: translateX(-3px);
-}
-
 .hero-overlay {
   position: absolute;
   inset: 0;
   background:
     linear-gradient(90deg, rgb(5 3 2 / 92%) 0%, rgb(5 3 2 / 78%) 42%, rgb(5 3 2 / 22%) 72%, rgb(5 3 2 / 46%) 100%),
     linear-gradient(180deg, rgb(5 3 2 / 28%) 0%, rgb(5 3 2 / 8%) 50%, rgb(11 7 5 / 88%) 100%);
-}
-
-.hero-grain {
-  position: absolute;
-  inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.82' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.75'/%3E%3C/svg%3E");
-  mix-blend-mode: soft-light;
-  opacity: 0.035;
-  pointer-events: none;
 }
 
 .nav-link {
@@ -351,6 +323,53 @@ section[id] {
   contain-intrinsic-size: 900px;
 }
 
+@keyframes menu-catalog-enter {
+  from {
+    opacity: 0.92;
+    transform: translate3d(0, 8px, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes cart-float-enter {
+  from {
+    opacity: 0.92;
+    transform: translate3d(0, 12px, 0) scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+@keyframes cart-float-pulse {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+
+  50% {
+    transform: translate3d(0, -2px, 0) scale(1.045);
+  }
+}
+
+.menu-catalog-expanded {
+  animation: menu-catalog-enter 220ms var(--ease-premium);
+}
+
+.cart-float-enter {
+  animation: cart-float-enter 240ms var(--ease-premium);
+}
+
+.cart-float-pulse {
+  animation: cart-float-pulse 280ms var(--ease-premium);
+}
+
 @media (max-width: 640px) {
   :root,
   .dark {
@@ -370,8 +389,7 @@ section[id] {
     border-radius: 20px;
   }
 
-  .media-card:hover,
-  .benefit-card:hover {
+  .media-card:hover {
     transform: none;
   }
 

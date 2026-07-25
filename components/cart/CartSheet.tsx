@@ -1,5 +1,6 @@
 "use client";
 
+import dynamic from "next/dynamic";
 import { useEffect, useState } from "react";
 import {
   ArrowLeft,
@@ -10,10 +11,7 @@ import {
   ShoppingBag,
   Trash2
 } from "lucide-react";
-import {
-  CheckoutForm,
-  type FulfillmentType
-} from "@/components/cart/CheckoutForm";
+import type { FulfillmentType } from "@/components/cart/CheckoutForm";
 import { useCart } from "@/components/cart/CartProvider";
 import { Button } from "@/components/ui/button";
 import {
@@ -24,6 +22,21 @@ import {
   SheetHeader,
   SheetTitle
 } from "@/components/ui/sheet";
+
+const CheckoutForm = dynamic(
+  () =>
+    import("@/components/cart/CheckoutForm").then(
+      (module) => module.CheckoutForm
+    ),
+  {
+    ssr: false,
+    loading: () => (
+      <p className="py-12 text-center text-sm font-medium text-smoke" role="status">
+        Загружаем оформление заказа…
+      </p>
+    )
+  }
+);
 
 type CartStep = "cart" | "checkout" | "success";
 

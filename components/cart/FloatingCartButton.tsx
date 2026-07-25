@@ -1,7 +1,5 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { motion, useReducedMotion } from "motion/react";
 import { ShoppingCart } from "lucide-react";
 import { useCart } from "@/components/cart/CartProvider";
 import { Button } from "@/components/ui/button";
@@ -27,35 +25,16 @@ function formatDishCount(value: number) {
 
 export function FloatingCartButton() {
   const { lastAddedAt, openCart, totalItems, totalPrice } = useCart();
-  const prefersReducedMotion = useReducedMotion();
-  const [pulseKey, setPulseKey] = useState(0);
-
-  useEffect(() => {
-    if (lastAddedAt > 0) {
-      setPulseKey((value) => value + 1);
-    }
-  }, [lastAddedAt]);
 
   if (totalItems === 0) {
     return null;
   }
 
   return (
-    <motion.div
-      className="fixed bottom-4 right-4 z-40 max-w-[calc(100vw-32px)] pb-[env(safe-area-inset-bottom)] sm:bottom-8 sm:right-8 sm:pb-0 lg:right-16"
-      initial={prefersReducedMotion ? false : { opacity: 0, y: 18, scale: 0.96 }}
-      animate={prefersReducedMotion ? { opacity: 1 } : { opacity: 1, y: 0, scale: 1 }}
-      transition={{ duration: 0.24, ease: [0.22, 1, 0.36, 1] }}
+    <div
+      className="cart-float-enter fixed bottom-4 right-4 z-40 max-w-[calc(100vw-32px)] pb-[env(safe-area-inset-bottom)] sm:bottom-8 sm:right-8 sm:pb-0 lg:right-16"
     >
-      <motion.div
-        key={pulseKey}
-        animate={
-          prefersReducedMotion
-            ? undefined
-            : { scale: [1, 1.045, 1], y: [0, -2, 0] }
-        }
-        transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
-      >
+      <div className="cart-float-pulse" key={lastAddedAt}>
         <Button
           type="button"
           aria-label={`Открыть корзину: ${formatDishCount(totalItems)}, ${formatPrice(totalPrice)} ₽`}
@@ -77,7 +56,7 @@ export function FloatingCartButton() {
             </span>
           </span>
         </Button>
-      </motion.div>
-    </motion.div>
+      </div>
+    </div>
   );
 }

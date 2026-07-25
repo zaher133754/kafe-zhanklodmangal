@@ -70,7 +70,7 @@ export function Header() {
   }
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 border-b border-gold/15 bg-charcoal/[0.96] shadow-[0_10px_40px_rgba(0,0,0,0.28)] backdrop-blur-xl">
+    <header className="fixed inset-x-0 top-0 z-50 border-b border-gold/15 bg-charcoal/[0.98] shadow-[0_10px_40px_rgba(0,0,0,0.28)]">
       <div
         className="container-tilda flex h-[var(--header-height)] items-center justify-between gap-3"
       >

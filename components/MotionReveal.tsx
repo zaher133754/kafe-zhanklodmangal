@@ -1,13 +1,12 @@
 "use client";
 
-import { animate, inView } from "motion/react";
-import { useLayoutEffect } from "react";
+import { useEffect } from "react";
 
 const EASE_OUT = [0.22, 1, 0.36, 1] as const;
 const MAX_DELAY_SECONDS = 0.16;
 
 export function MotionReveal() {
-  useLayoutEffect(() => {
+  useEffect(() => {
     const elements = Array.from(
       document.querySelectorAll<HTMLElement>("[data-reveal]")
     );
@@ -23,11 +22,14 @@ export function MotionReveal() {
       return;
     }
 
-    const animations = new Set<{ stop: () => void }>();
-    const stopObservers = elements.map((element) =>
-      inView(
-        element,
-        () => {
+    const animations = new Set<Animation>();
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+
+          const element = entry.target as HTMLElement;
+          observer.unobserve(element);
           if (element.dataset.revealed === "true") return;
           element.dataset.revealed = "true";
 
@@ -35,37 +37,35 @@ export function MotionReveal() {
             Number(element.dataset.revealDelay ?? 0) / 1000,
             MAX_DELAY_SECONDS
           );
-          const controls = animate(
-            element,
+          const animation = element.animate(
+            [
+              { opacity: 0.86, transform: "translate3d(0, 12px, 0)" },
+              { opacity: 1, transform: "translate3d(0, 0, 0)" }
+            ],
             {
-              opacity: [0.86, 1],
-              transform: [
-                "translate3d(0, 12px, 0)",
-                "translate3d(0, 0, 0)"
-              ]
-            },
-            {
-              duration: 0.42,
-              delay,
-              ease: EASE_OUT
+              duration: 420,
+              delay: delay * 1000,
+              easing: `cubic-bezier(${EASE_OUT.join(",")})`,
+              fill: "none"
             }
           );
 
-          animations.add(controls);
-          void controls.then(() => {
-            animations.delete(controls);
-            element.style.removeProperty("opacity");
-            element.style.removeProperty("transform");
-            element.style.removeProperty("will-change");
-          });
-        },
-        { amount: 0.14, margin: "0px 0px -10% 0px" }
-      )
+          animations.add(animation);
+          animation.addEventListener(
+            "finish",
+            () => animations.delete(animation),
+            { once: true }
+          );
+        });
+      },
+      { threshold: 0.14, rootMargin: "0px 0px -10% 0px" }
     );
 
+    elements.forEach((element) => observer.observe(element));
+
     return () => {
-      stopObservers.forEach((stop) => stop());
-      animations.forEach((controls) => controls.stop());
+      observer.disconnect();
+      animations.forEach((animation) => animation.cancel());
     };
   }, []);
 

@@ -1,4 +1,7 @@
 import { MenuCatalog } from "@/components/MenuCatalog";
+import { CartOverlay } from "@/components/cart/CartOverlay";
+import { CartProvider } from "@/components/cart/CartProvider";
+import { FloatingCartButton } from "@/components/cart/FloatingCartButton";
 
 export function MenuSection() {
   return (
@@ -24,7 +27,11 @@ export function MenuSection() {
             каждый ваш заказ стал событием.
           </p>
         </div>
-        <MenuCatalog />
+        <CartProvider>
+          <MenuCatalog />
+          <FloatingCartButton />
+          <CartOverlay />
+        </CartProvider>
       </div>
     </section>
   );
