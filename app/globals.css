@@ -3,17 +3,9 @@
 
 @custom-variant dark (&:is(.dark *));
 
-@font-face {
-  font-family: "TildaSans";
-  font-style: normal;
-  font-weight: 250 1000;
-  font-display: swap;
-  src: url("/fonts/tildasans-vf.woff2") format("woff2-variations");
-}
-
 @theme {
-  --font-sans: "TildaSans", Arial, sans-serif;
-  --font-heading: "TildaSans", Arial, sans-serif;
+  --font-sans: var(--font-tilda-sans), Arial, sans-serif;
+  --font-heading: var(--font-tilda-sans), Arial, sans-serif;
   --color-charcoal: #070504;
   --color-pit: #0b0705;
   --color-espresso: #120b07;

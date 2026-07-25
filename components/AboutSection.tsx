@@ -40,7 +40,7 @@ export function AboutSection() {
                   alt={image.alt}
                   fill
                   quality={60}
-                  sizes="(max-width: 767px) 45vw, (max-width: 1279px) 30vw, 358px"
+                  sizes="(max-width: 767px) 45vw, (max-width: 1279px) 30vw, (max-width: 1910px) calc((100vw - 104px) / 5), 358px"
                   className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.035]"
                 />
               </div>

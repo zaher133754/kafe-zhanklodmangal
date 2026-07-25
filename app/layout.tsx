@@ -1,6 +1,18 @@
 import type { Metadata, Viewport } from "next";
+import localFont from "next/font/local";
 import "./globals.css";
 import { images, site } from "@/lib/site";
+import appleTouchIcon from "@/public/apple-touch-icon.png";
+import favicon from "@/public/favicon.ico";
+
+const tildaSans = localFont({
+  src: "../public/fonts/tildasans-vf.woff2",
+  variable: "--font-tilda-sans",
+  display: "swap",
+  preload: true,
+  weight: "250 1000",
+  fallback: ["Arial", "sans-serif"]
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
@@ -47,27 +59,20 @@ export const metadata: Metadata = {
     }
   },
   icons: {
-    icon: [
-      {
-        url: "/favicon.png",
-        type: "image/png",
-        sizes: "120x120"
-      },
-      {
-        url: "/favicon.ico",
-        type: "image/x-icon",
-        sizes: "32x32"
-      }
-    ],
+    icon: {
+      url: favicon.src,
+      type: "image/x-icon",
+      sizes: "32x32"
+    },
     shortcut: {
-      url: "/favicon.ico",
+      url: favicon.src,
       type: "image/x-icon"
     },
     apple: {
-      url: "/apple-touch-icon.png",
+      url: appleTouchIcon.src,
       type: "image/png",
       sizes: "180x180"
-    },
+    }
   },
   formatDetection: {
     telephone: false
@@ -87,7 +92,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ru" className="dark">
+    <html lang="ru" className={`${tildaSans.variable} dark`}>
       <body>{children}</body>
     </html>
   );
