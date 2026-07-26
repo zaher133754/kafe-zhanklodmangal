@@ -1,5 +1,14 @@
 import Image from "next/image";
-import { images, site } from "@/lib/site";
+import { site } from "@/lib/site";
+import banquetFood from "@/public/images/banquet-food.webp";
+import banquetHall from "@/public/images/banquet-hall.webp";
+import banquetTable from "@/public/images/banquet-table.webp";
+
+const banquetImages = [
+  { src: banquetTable, alt: "Банкетный стол с блюдами ЖанКлод Мангал" },
+  { src: banquetHall, alt: "Тёплая атмосфера для торжества" },
+  { src: banquetFood, alt: "Блюда для банкетов и встреч" }
+] as const;
 
 export function BanquetsSection() {
   return (
@@ -13,9 +22,11 @@ export function BanquetsSection() {
             <div className="w-[60%] pr-2.5">
               <div className="media-card group relative aspect-[100/135] overflow-hidden">
                 <Image
-                  src={images.banquets[0].src}
-                  alt={images.banquets[0].alt}
+                  src={banquetImages[0].src}
+                  alt={banquetImages[0].alt}
                   fill
+                  placeholder="blur"
+                  fetchPriority="low"
                   sizes="(max-width: 768px) 55vw, 340px"
                   className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
                 />
@@ -24,18 +35,22 @@ export function BanquetsSection() {
             <div className="w-[40%] pl-2.5">
               <div className="media-card group relative mt-[40%] aspect-[100/120] overflow-hidden sm:mt-[30%] md:mt-[40%]">
                 <Image
-                  src={images.banquets[1].src}
-                  alt={images.banquets[1].alt}
+                  src={banquetImages[1].src}
+                  alt={banquetImages[1].alt}
                   fill
+                  placeholder="blur"
+                  fetchPriority="low"
                   sizes="(max-width: 768px) 36vw, 230px"
                   className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
                 />
               </div>
               <div className="media-card group relative mt-5 hidden aspect-square w-[160%] -translate-x-1/2 overflow-hidden sm:block">
                 <Image
-                  src={images.banquets[2].src}
-                  alt={images.banquets[2].alt}
+                  src={banquetImages[2].src}
+                  alt={banquetImages[2].alt}
                   fill
+                  placeholder="blur"
+                  fetchPriority="low"
                   sizes="(max-width: 768px) 58vw, 360px"
                   className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
                 />
@@ -44,9 +59,11 @@ export function BanquetsSection() {
           </div>
           <div className="media-card group relative mt-5 aspect-[16/9] overflow-hidden sm:hidden">
             <Image
-              src={images.banquets[2].src}
-              alt={images.banquets[2].alt}
+              src={banquetImages[2].src}
+              alt={banquetImages[2].alt}
               fill
+              placeholder="blur"
+              fetchPriority="low"
               sizes="86vw"
               className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
             />

@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { preload } from "react-dom";
 import {
   CalendarClock,
   Clock3,
@@ -8,6 +9,21 @@ import {
   UtensilsCrossed
 } from "lucide-react";
 import { site } from "@/lib/site";
+import heroBackground1280 from "@/public/images/hero-bg-1280.avif";
+import heroBackground1672 from "@/public/images/hero-bg-1672.avif";
+import heroBackground640 from "@/public/images/hero-bg-640.avif";
+import heroBackground960 from "@/public/images/hero-bg-960.avif";
+import heroCard from "@/public/images/hero-card.avif";
+
+const heroBackgroundSrcSet = [
+  `${heroBackground640.src} 640w`,
+  `${heroBackground960.src} 960w`,
+  `${heroBackground1280.src} 1280w`,
+  `${heroBackground1672.src} 1672w`
+].join(", ");
+
+const heroBackgroundBlur =
+  "data:image/webp;base64,UklGRjwAAABXRUJQVlA4IDAAAADQAQCdASoQAAkAA8BgJYgCdAD0bK3fgAD+9tenyxV6oxue0mzt39yBTsy/+u0gAAA=";
 
 const serviceFacts = [
   {
@@ -25,24 +41,37 @@ const serviceFacts = [
 ] as const;
 
 export function Hero() {
+  preload(heroBackground1672.src, {
+    as: "image",
+    type: "image/avif",
+    fetchPriority: "high",
+    imageSrcSet: heroBackgroundSrcSet,
+    imageSizes: "100vw"
+  });
+
   return (
     <section
       id="top"
       className="relative isolate min-h-svh overflow-hidden bg-charcoal pt-[var(--header-height)]"
     >
       <div
-        className="absolute inset-0 -z-30"
+        className="absolute inset-0 -z-30 bg-cover bg-[62%_center] md:bg-center"
+        style={{ backgroundImage: `url(${heroBackgroundBlur})` }}
         aria-hidden
       >
-        <Image
-          src="/images/herofoto.avif"
-          alt="Фотография мангальной кухни Жан Клод Мангал"
-          fill
-          priority
-          fetchPriority="high"
-          quality={55}
+        {/* This pre-sized immutable asset avoids Layero's uncached image transformer. */}
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={heroBackground1672.src}
+          srcSet={heroBackgroundSrcSet}
           sizes="100vw"
-          className="object-cover object-[62%_center] md:object-center"
+          alt="Фотография мангальной кухни Жан Клод Мангал"
+          fetchPriority="high"
+          loading="eager"
+          decoding="async"
+          width={heroBackground1672.width}
+          height={heroBackground1672.height}
+          className="absolute inset-0 h-full w-full object-cover object-[62%_center] md:object-center"
         />
       </div>
 
@@ -105,11 +134,14 @@ export function Hero() {
             <div className="absolute -inset-3 rounded-[32px] bg-gradient-to-br from-gold/25 via-ember/10 to-transparent blur-2xl" aria-hidden />
             <div className="relative aspect-[4/5] max-h-[780px] overflow-hidden rounded-[28px] border border-gold/25 bg-coal shadow-[0_28px_80px_rgba(0,0,0,0.48)] sm:aspect-[5/4] lg:aspect-[4/5]">
               <Image
-                src="/images/about-kebab.webp"
+                src={heroCard}
                 alt="Шашлык на мангале в кафе «Жан Клод Мангал»"
                 fill
-                quality={78}
-                sizes="(max-width: 1023px) 1px, (max-width: 1279px) 44vw, 640px"
+                unoptimized
+                placeholder="blur"
+                loading="lazy"
+                fetchPriority="high"
+                decoding="async"
                 className="object-cover transition-transform duration-700 hover:scale-[1.025]"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-charcoal/40 via-transparent to-gold/5" aria-hidden />

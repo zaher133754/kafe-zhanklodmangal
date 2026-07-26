@@ -45,28 +45,6 @@ export const images = {
     telegram: "/images/social-telegram.webp",
     instagram: "/images/social-instagram.webp"
   },
-  about: [
-    {
-      src: "/images/фото1.png",
-      alt: "Блюдо ЖанКлод Мангал"
-    },
-    {
-      src: "/images/about-kebab.webp",
-      alt: "Шашлык и мясо на шампурах в ЖанКлод Мангал"
-    },
-    {
-      src: "/images/about-grill.webp",
-      alt: "Блюда с мангала, овощи и лаваш"
-    },
-    {
-      src: "/images/about-dessert.webp",
-      alt: "Десерт и напиток в кафе ЖанКлод Мангал"
-    },
-    {
-      src: "/images/фото2.png",
-      alt: "Блюдо на углях в ЖанКлод Мангал"
-    }
-  ],
   menu: [
     {
       src: "/images/menu-page-01.webp",
@@ -107,20 +85,6 @@ export const images = {
     {
       src: "/images/menu-page-10.webp",
       alt: "Страница меню ЖанКлод Мангал 10"
-    }
-  ],
-  banquets: [
-    {
-      src: "/images/banquet-table.webp",
-      alt: "Банкетный стол с блюдами ЖанКлод Мангал"
-    },
-    {
-      src: "/images/banquet-hall.webp",
-      alt: "Тёплая атмосфера для торжества"
-    },
-    {
-      src: "/images/banquet-food.webp",
-      alt: "Блюда для банкетов и встреч"
     }
   ]
 } as const;

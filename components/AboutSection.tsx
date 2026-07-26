@@ -1,5 +1,20 @@
 import Image from "next/image";
-import { images } from "@/lib/site";
+import aboutDessert from "@/public/images/about-dessert.webp";
+import aboutFood1 from "@/public/images/about-food-1.webp";
+import aboutFood2 from "@/public/images/about-food-2.webp";
+import aboutGrill from "@/public/images/about-grill.webp";
+import aboutKebab from "@/public/images/about-kebab.webp";
+
+const aboutImages = [
+  { src: aboutFood1, alt: "Блюдо ЖанКлод Мангал" },
+  {
+    src: aboutKebab,
+    alt: "Шашлык и мясо на шампурах в ЖанКлод Мангал"
+  },
+  { src: aboutGrill, alt: "Блюда с мангала, овощи и лаваш" },
+  { src: aboutDessert, alt: "Десерт и напиток в кафе ЖанКлод Мангал" },
+  { src: aboutFood2, alt: "Блюдо на углях в ЖанКлод Мангал" }
+] as const;
 
 export function AboutSection() {
   return (
@@ -28,18 +43,22 @@ export function AboutSection() {
         </div>
 
         <div className="mt-16 grid grid-cols-2 justify-items-center gap-3 sm:gap-5 md:mt-24 md:grid-cols-6 md:gap-8 xl:relative xl:left-1/2 xl:w-[min(calc(100vw-40px),1854px)] xl:-translate-x-1/2 xl:grid-cols-5 xl:gap-4">
-          {images.about.map((image, index) => (
+          {aboutImages.map((image, index) => (
               <div
                 className="media-card group relative aspect-square w-full max-w-[300px] overflow-hidden max-md:last:col-span-2 md:col-span-2 md:max-w-[360px] md:[&:nth-child(4)]:col-start-2 xl:col-span-1 xl:max-w-[358px] xl:[&:nth-child(4)]:col-start-auto"
                 data-reveal
                 data-reveal-delay={Math.min(index * 55, 160)}
-                key={image.src}
+                key={image.src.src}
               >
                 <Image
                   src={image.src}
                   alt={image.alt}
                   fill
                   quality={60}
+                  placeholder="blur"
+                  loading="lazy"
+                  fetchPriority="low"
+                  decoding="async"
                   sizes="(max-width: 767px) 45vw, (max-width: 1279px) 30vw, (max-width: 1910px) calc((100vw - 104px) / 5), 358px"
                   className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.035]"
                 />

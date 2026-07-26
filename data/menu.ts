@@ -1,3 +1,6 @@
+import type { StaticImageData } from "next/image";
+import { getOptimizedMenuImage } from "@/data/menu-images";
+
 export type MenuItem = {
   id: string;
   category: string;
@@ -5,7 +8,7 @@ export type MenuItem = {
   description?: string;
   price: number;
   weight: string;
-  image?: string;
+  image?: StaticImageData;
   popular?: boolean;
 };
 
@@ -36,7 +39,7 @@ const rawMenuItems: MenuItem[] = [
     name: "Грибы на углях",
     price: 229,
     weight: "150 г",
-    image: "/menu/%D0%93%D1%80%D0%B8%D0%B1%D1%8B%20%D0%BD%D0%B0%20%D1%83%D0%B3%D0%BB%D1%8F%D1%85.jfif"
+    image: getOptimizedMenuImage("Грибы на углях.jfif")
   },
   {
     id: "kartofel-na-uglyah",
@@ -44,7 +47,7 @@ const rawMenuItems: MenuItem[] = [
     name: "Картофель на углях",
     price: 179,
     weight: "200 г",
-    image: "/menu/%D0%9A%D0%B0%D1%80%D1%82%D0%BE%D1%84%D0%B5%D0%BB%D1%8C%20%D0%BD%D0%B0%20%D1%83%D0%B3%D0%BB%D1%8F%D1%85.jfif",
+    image: getOptimizedMenuImage("Картофель на углях.jfif"),
     popular: true
   },
   {
@@ -53,7 +56,7 @@ const rawMenuItems: MenuItem[] = [
     name: "Картофель фри",
     price: 169,
     weight: "200 г",
-    image: "/menu/%D0%9A%D0%B0%D1%80%D1%82%D0%BE%D1%84%D0%B5%D0%BB%D1%8C%20%D1%84%D1%80%D0%B8.jfif"
+    image: getOptimizedMenuImage("Картофель фри.jfif")
   },
   {
     id: "kartoshka-po-derevenski",
@@ -61,7 +64,7 @@ const rawMenuItems: MenuItem[] = [
     name: "Картошка по-деревенски",
     price: 179,
     weight: "200 г",
-    image: "/menu/%D0%9A%D0%B0%D1%80%D1%82%D0%BE%D1%88%D0%BA%D0%B0%20%D0%BF%D0%BE-%D0%B4%D0%B5%D1%80%D0%B5%D0%B2%D0%B5%D0%BD%D1%81%D0%BA%D0%B8.jfif"
+    image: getOptimizedMenuImage("Картошка по-деревенски.jfif")
   },
   {
     id: "lavash-tonkiy",
@@ -69,7 +72,7 @@ const rawMenuItems: MenuItem[] = [
     name: "Лаваш тонкий",
     price: 40,
     weight: "50 г",
-    image: "/menu/%D0%9B%D0%B0%D0%B2%D0%B0%D1%88%20%D1%82%D0%BE%D0%BD%D0%BA%D0%B8%D0%B9.jfif"
+    image: getOptimizedMenuImage("Лаваш тонкий.jfif")
   },
   {
     id: "ovoshchi-na-uglyah",
@@ -77,7 +80,7 @@ const rawMenuItems: MenuItem[] = [
     name: "Овощи на углях",
     price: 339,
     weight: "300 г",
-    image: "/menu/%D0%9E%D0%B2%D0%BE%D1%89%D0%B8%20%D0%BD%D0%B0%20%D1%83%D0%B3%D0%BB%D1%8F%D1%85.jfif"
+    image: getOptimizedMenuImage("Овощи на углях.jfif")
   },
   {
     id: "polovinka-lepeshki",
@@ -85,7 +88,7 @@ const rawMenuItems: MenuItem[] = [
     name: "Половинка лепешки",
     price: 51,
     weight: "50 г",
-    image: "/menu/%D0%9F%D0%BE%D0%BB%D0%BE%D0%B2%D0%B8%D0%BD%D0%BA%D0%B0%20%D0%BB%D0%B5%D0%BF%D0%B5%D1%88%D0%BA%D0%B8.jfif"
+    image: getOptimizedMenuImage("Половинка лепешки.jfif")
   },
   {
     id: "armeniya",
@@ -347,7 +350,7 @@ const rawMenuItems: MenuItem[] = [
     name: "Черноголовка лимонад Тархун",
     price: 150,
     weight: "500 мл",
-    image: `/images/${encodeURIComponent("Черноголовка лимонад тархун-dark.png")}`
+    image: getOptimizedMenuImage("Черноголовка лимонад тархун-dark.png")
   },
   {
     id: "chernogolovka-limonad-baykal",
@@ -355,19 +358,15 @@ const rawMenuItems: MenuItem[] = [
     name: "Черноголовка лимонад Байкал",
     price: 150,
     weight: "500 мл",
-    image: `/images/${encodeURIComponent("Черноголовка лимонад байкал-dark.png")}`
+    image: getOptimizedMenuImage("Черноголовка лимонад байкал-dark.png")
   }
 ];
 
 function menuImage(fileName: string) {
-  return `/menu/${encodeURIComponent(fileName)}`;
+  return getOptimizedMenuImage(fileName);
 }
 
-function versionedMenuImage(fileName: string, version: string) {
-  return `${menuImage(fileName)}?v=${version}`;
-}
-
-const menuImageById: Partial<Record<MenuItem["id"], string>> = {
+const menuImageById: Partial<Record<MenuItem["id"], StaticImageData>> = {
   armeniya: menuImage("Армения.jfif"),
   letniy: menuImage("Летний.jfif"),
   "salat-grecheskiy": menuImage("Салат Греческий.jfif"),
@@ -427,12 +426,9 @@ const menuImageById: Partial<Record<MenuItem["id"], string>> = {
   "shaurma-so-svininoy": menuImage(
     "Шаурма со вкусной маринованной свининой.jfif"
   ),
-  "dobryy-kola-500": versionedMenuImage("Добрый Кола.png", "20260708-030526"),
+  "dobryy-kola-500": menuImage("Добрый Кола.png"),
   "dobryy-kola-330": menuImage("Добрый Кола в банке.webp"),
-  "chernogolovka-limonad": versionedMenuImage(
-    "Черноголовка лимонад.png",
-    "20260708-030534"
-  )
+  "chernogolovka-limonad": menuImage("Черноголовка лимонад.png")
 };
 
 export const menuItems: MenuItem[] = rawMenuItems.map((item) => ({
