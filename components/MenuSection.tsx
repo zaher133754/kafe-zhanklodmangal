@@ -2,11 +2,12 @@ import { MenuCatalog } from "@/components/MenuCatalog";
 import { CartOverlay } from "@/components/cart/CartOverlay";
 import { CartProvider } from "@/components/cart/CartProvider";
 import { FloatingCartButton } from "@/components/cart/FloatingCartButton";
+import { DishDetailsDialog } from "@/components/menu/DishDetailsDialog";
 
 export function MenuSection() {
   return (
     <CartProvider>
-      <section id="menu" className="section-surface cv-auto bg-espresso py-16 sm:py-[88px] md:py-[132px]">
+      <section id="menu" className="section-surface bg-espresso py-16 sm:py-[88px] md:py-[132px]">
         <div className="container-tilda">
           <div className="mx-auto max-w-[820px]">
             <h2
@@ -31,6 +32,7 @@ export function MenuSection() {
           <MenuCatalog />
         </div>
       </section>
+      <DishDetailsDialog />
       <FloatingCartButton />
       <CartOverlay />
     </CartProvider>

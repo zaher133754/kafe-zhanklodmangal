@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { ExternalLink, Menu, Minus, Phone, X } from "lucide-react";
 import {
   type KeyboardEvent,
@@ -74,8 +75,9 @@ export function Header() {
       <div
         className="container-tilda flex h-[var(--header-height)] items-center justify-between gap-3"
       >
-        <a
-          href="#top"
+        <Link
+          href="/#top"
+          prefetch={false}
           className="focus-ring relative h-[54px] w-[124px] shrink-0 transition-[opacity,transform] duration-300 hover:scale-[1.02] hover:opacity-95 sm:w-[150px]"
           aria-label="ЖанКлод Мангал — на главную"
           onClick={closeMenu}
@@ -87,7 +89,7 @@ export function Header() {
             sizes="(max-width: 639px) 124px, 150px"
             className="object-contain"
           />
-        </a>
+        </Link>
 
         <nav className="hidden min-w-0 flex-1 items-center justify-center xl:flex" aria-label="Основная навигация">
           <ul className="flex items-center gap-5 text-[12px] font-bold uppercase tracking-[0.04em] 2xl:gap-7 2xl:text-[13px]">
@@ -162,8 +164,9 @@ export function Header() {
       >
         <div className="ml-auto flex h-full w-full max-w-[430px] flex-col border-l border-ember/25 bg-charcoal shadow-[-12px_0_40px_rgba(0,0,0,0.32)]">
           <div className="flex h-[var(--header-height)] shrink-0 items-center justify-between border-b border-gold/15 px-[18px] sm:px-7">
-            <a
-              href="#top"
+            <Link
+              href="/#top"
+              prefetch={false}
               className="focus-ring relative h-[52px] w-[124px]"
               aria-label="ЖанКлод Мангал — на главную"
               onClick={closeMenu}
@@ -175,7 +178,7 @@ export function Header() {
                 sizes="124px"
                 className="object-contain"
               />
-            </a>
+            </Link>
             <button
               ref={closeButtonRef}
               type="button"

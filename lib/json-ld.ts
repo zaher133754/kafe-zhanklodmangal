@@ -36,7 +36,7 @@ export function restaurantJsonLd() {
         closes: "23:59"
       }
     ],
-    hasMenu: `${site.url}/#menu`,
+    hasMenu: `${site.url}/menu`,
     sameAs: [site.telegram, site.instagram, site.yandexOrgUrl]
   };
 }

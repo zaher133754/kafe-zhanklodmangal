@@ -30,11 +30,11 @@ export const site = {
 } as const;
 
 export const navItems = [
-  { label: "О нас", href: "#onas", external: false },
-  { label: "Меню", href: "#menu", external: false },
-  { label: "Банкеты", href: "#ban", external: false },
-  { label: "Отзывы", href: "#reviews", external: false },
-  { label: "Контакты", href: "#contacts", external: false }
+  { label: "О нас", href: "/#onas", external: false },
+  { label: "Меню", href: "/menu", external: false },
+  { label: "Банкеты", href: "/#ban", external: false },
+  { label: "Отзывы", href: "/#reviews", external: false },
+  { label: "Контакты", href: "/#contacts", external: false }
 ] as const;
 
 export const images = {

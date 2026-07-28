@@ -354,6 +354,10 @@ section[id] {
   animation: menu-catalog-enter 220ms var(--ease-premium);
 }
 
+.home-menu-catalog[data-expanded="false"] [data-menu-group-index]:nth-child(n + 5) {
+  display: none;
+}
+
 .cart-float-enter {
   animation: cart-float-enter 240ms var(--ease-premium);
 }

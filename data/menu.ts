@@ -5,7 +5,7 @@ export type MenuItem = {
   id: string;
   category: string;
   name: string;
-  description?: string;
+  composition?: string;
   price: number;
   weight: string;
   image?: StaticImageData;
@@ -431,7 +431,83 @@ const menuImageById: Partial<Record<MenuItem["id"], StaticImageData>> = {
   "chernogolovka-limonad": menuImage("Черноголовка лимонад.png")
 };
 
-export const menuItems: MenuItem[] = rawMenuItems.map((item) => ({
-  ...item,
-  image: item.image ?? menuImageById[item.id]
-}));
+const menuCompositionById: Partial<Record<MenuItem["id"], string>> = {
+  "griby-na-uglyah": "Запечённые на углях, в пряном маринаде.",
+  "kartofel-na-uglyah": "Картофель, лук репчатый, зелень.",
+  "kartofel-fri": "Картофель фри, прожаренный во фритюре.",
+  "kartoshka-po-derevenski":
+    "Картофель по-деревенски, прожаренный во фритюре.",
+  "ovoshchi-na-uglyah":
+    "Помидор, перец болгарский, баклажан, зелень.",
+  "polovinka-lepeshki":
+    "Хрустящая половинка лепёшки, обжаренная на углях.",
+  armeniya:
+    "Говядина, помидор, грибы, грецкий орех, лук, соус BBQ, майонез.",
+  letniy: "Помидоры, огурцы, болгарский перец, красный лук.",
+  "salat-grecheskiy":
+    "Салат, сыр, оливки, помидор, огурец, лук, оливковое масло.",
+  "salat-cezar-s-krevetkami":
+    "Салат, креветки, сыр, соус, черри, сухарики.",
+  "salat-cezar-s-kuritsey":
+    "Курица, сыр, соус, черри, салат.",
+  "salat-firmennyy-zhan-klod-mangal":
+    "Грибы, курица, кукуруза, грецкий орех, маринованный огурец, сыр, соус цахтон.",
+  "kurinye-krylya-gril":
+    "Сочные куриные крылья, пикантный соус, паприка, пряности.",
+  "kurinyy-lyulya-kebab":
+    "Люля-кебаб из куриного филе, подаётся с соусом сацебели.",
+  "lyulya-kebab-iz-sochnoy-govyadiny":
+    "Люля-кебаб из говядины с кавказскими специями, тонким лавашем и луком, подаётся с соусом сацебели.",
+  "shashlyk-iz-kurinogo-file":
+    "Люля-кебаб из куриного филе, подаётся с соусом сацебели, луком, помидорами и огурцами.",
+  "shashlyk-iz-svinoy-koreyki":
+    "Свинина на ароматной косточке в фирменных специях, подаётся с соусом сацебели, репчатым луком, помидорами и огурцами.",
+  "shashlyk-iz-svinoy-sheyki":
+    "Сочный шашлык из свиной шеи, красный соус, лук репчатый, зелень.",
+  "nezhnoe-pyure-s-aromatnym-lyulya":
+    "Картофель, курица, помидор, лук.",
+  "pasta-s-bekonom": "Паста, бекон, сливки.",
+  "pasta-s-kuritsey-i-gribami": "Паста, грибы, курица, сливки.",
+  "sochnaya-svinaya-sheya-s-hrustyashchimi-dolkami":
+    "Картофель, свиная шея, красный соус, маринованный лук.",
+  "hachapuri-na-uglyah-v-lavashe": "Сулугуни, гауда, яйцо.",
+  "sochnyy-bbq-bifburger":
+    "Сочная говяжья котлета с насыщенным вкусом, тянущийся сыр, свежий салат, помидор, маринованный огурец и красный лук в мягкой булочке с кунжутом. Дополняем всё ароматным соусом BBQ — насыщенно, сочно и по-настоящему мясно.",
+  "sochnyy-bbq-bifburger-s-bekonom":
+    "Сочная говяжья котлета с насыщенным вкусом, вкуснейший бекон, тянущийся сыр, свежий салат, помидор, маринованный огурец и красный лук в мягкой булочке с кунжутом. Дополняем всё ароматным соусом BBQ — насыщенно, сочно и по-настоящему мясно.",
+  "firmennyy-chikenburger-ot-shefa":
+    "Хрустящая куриная котлета, ароматный бекон, тянущийся сыр, свежий салат, сочный помидор, маринованный огурец и красный лук — всё это в мягкой булочке с кунжутом. Дополняем всё кетчупом и фирменным бургер-соусом — насыщенно, сочно и очень вкусно.",
+  "hrustyashchiy-chikenburger-bbq-s-bekonom":
+    "Хрустящая куриная котлета, ароматный бекон, тянущийся сыр, свежий салат, сочный помидор, маринованный огурец и красный лук — в мягкой булочке с кунжутом. Дополняем всё кетчупом и фирменным бургер-соусом — насыщенно, сочно и очень вкусно.",
+  "sous-ostryy": "Перец.",
+  "sous-syrnyy": "Соус сырный.",
+  "sous-cekhton": "Майонез, чеснок, укроп.",
+  "sous-shashlychnyy":
+    "Томатная паста, кинза, репчатый лук, перец.",
+  borshch: "Говядина, капуста, картофель, свёкла, морковь.",
+  solyanka:
+    "Колбасы, оливки, маслины, солёный огурец, свинина, курица, зелень, морковь, лимон.",
+  "sup-kurinyy":
+    "Курица, картофель, вермишель, морковь, репчатый лук.",
+  harcho: "Говядина, рис, томатная паста, лук репчатый.",
+  "vegetarianskaya-shaurma":
+    "Пекинская капуста, картофель фри, жареные грибы, помидор, огурец, соус, лаваш.",
+  "shaurma-s-kurinym-file":
+    "Курица, огурец, пекинская капуста, помидор, фирменный соус, лаваш.",
+  "shaurma-s-govyadinoy":
+    "Говядина, помидор, пекинская капуста, маринованный огурец, соус, лаваш.",
+  "shaurma-so-svininoy":
+    "Свинина, огурец, помидор, пекинская капуста, фирменный соус, лаваш."
+};
+
+export type MenuItemWithImage = MenuItem & { image: StaticImageData };
+
+export const menuItems: MenuItemWithImage[] = rawMenuItems.map((item) => {
+  const image = item.image ?? menuImageById[item.id];
+
+  if (!image) {
+    throw new Error(`Menu image is missing: ${item.id}`);
+  }
+
+  return { ...item, image, composition: menuCompositionById[item.id] };
+});
