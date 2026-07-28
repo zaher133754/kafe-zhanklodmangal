@@ -74,7 +74,6 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
   return (
     <MenuPageShell
       title={page.heading}
-      description={page.shortDescription}
       groups={groups}
       activeCategory={slug}
       structuredData={[

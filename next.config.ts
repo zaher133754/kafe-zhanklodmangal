@@ -43,15 +43,6 @@ const securityHeaders = [
 
 const nextConfig: NextConfig = {
   output: "standalone",
-  async redirects() {
-    return [
-      {
-        source: "/menu/lyulya-kebab",
-        destination: "/menu/shashlyk",
-        permanent: true
-      }
-    ];
-  },
   async headers() {
     return [
       {

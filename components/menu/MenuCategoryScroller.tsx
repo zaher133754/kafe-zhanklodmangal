@@ -36,7 +36,7 @@ export function MenuCategoryScroller({
   return (
     <nav
       ref={navRef}
-      className="container-tilda overflow-x-auto py-3 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+      className="container-tilda overflow-x-auto py-3 [scrollbar-width:none] lg:overflow-x-visible [&::-webkit-scrollbar]:hidden"
       aria-label="Разделы меню"
     >
       {children}

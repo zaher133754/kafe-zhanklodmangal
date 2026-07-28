@@ -2,6 +2,7 @@ import { menuItems, type MenuItemWithImage } from "@/data/menu";
 
 export const menuCategorySlugs = [
   "shashlyk",
+  "lyulya-kebab",
   "shaurma",
   "burgery",
   "goryachie-blyuda",
@@ -29,15 +30,28 @@ export const menuCategoryPages: readonly MenuCategoryPage[] = [
     label: "Шашлык",
     heading: "Шашлык с доставкой по Самаре",
     shortDescription:
-      "Шашлык, куриные крылья и люля-кебаб с мангала: фотографии, актуальный вес и цены.",
+      "Шашлык из свинины и курицы, а также куриные крылья с мангала: фотографии, актуальный вес и цены.",
     metaDescription:
-      "Заказать шашлык и люля-кебаб с доставкой по Самаре. Свинина, курица, говядина и куриные крылья с мангала — фото, вес и цены.",
+      "Заказать шашлык с доставкой по Самаре. Свинина, курица и куриные крылья с мангала — фотографии, вес и актуальные цены.",
     keywords: [
       "шашлык Самара",
       "доставка шашлыка Самара",
-      "заказать шашлык Самара",
+      "заказать шашлык Самара"
+    ]
+  },
+  {
+    slug: "lyulya-kebab",
+    label: "Люля-кебаб",
+    heading: "Люля-кебаб с доставкой по Самаре",
+    shortDescription:
+      "Куриный люля-кебаб и люля-кебаб из сочной говядины: фотографии, актуальный вес и цены.",
+    metaDescription:
+      "Заказать люля-кебаб с доставкой по Самаре. Куриный люля-кебаб и люля-кебаб из говядины — фотографии, состав, вес и актуальные цены.",
+    keywords: [
       "люля кебаб Самара",
-      "доставка люля кебаб Самара"
+      "люля-кебаб Самара",
+      "доставка люля кебаб Самара",
+      "заказать люля кебаб Самара"
     ]
   },
   {
@@ -139,7 +153,18 @@ export function getMenuCategoryItems(
 ): MenuItemWithImage[] {
   switch (slug) {
     case "shashlyk":
-      return menuItems.filter((item) => item.category === "Шашлык");
+      return menuItems.filter(
+        (item) =>
+          item.category === "Шашлык" &&
+          item.id !== "kurinyy-lyulya-kebab" &&
+          item.id !== "lyulya-kebab-iz-sochnoy-govyadiny"
+      );
+    case "lyulya-kebab":
+      return menuItems.filter(
+        (item) =>
+          item.id === "kurinyy-lyulya-kebab" ||
+          item.id === "lyulya-kebab-iz-sochnoy-govyadiny"
+      );
     case "goryachie-blyuda":
       return menuItems.filter((item) => item.category === "Горячие блюда");
     case "shaurma":
@@ -160,7 +185,7 @@ export function getMenuCategoryItems(
 }
 
 export type MenuGroup = {
-  id: string;
+  id: MenuCategorySlug;
   title: string;
   items: MenuItemWithImage[];
 };
@@ -171,4 +196,15 @@ export const fullMenuGroups: MenuGroup[] = menuCategorySlugs.map((slug) => ({
   items: getMenuCategoryItems(slug)
 }));
 
-export const featuredMenuGroups: MenuGroup[] = fullMenuGroups.slice(0, 4);
+export const homeMenuGroups: MenuGroup[] = menuCategoryPages
+  .filter((category) => category.slug !== "lyulya-kebab")
+  .map((category) => ({
+    id: category.slug,
+    title: category.label,
+    items:
+      category.slug === "shashlyk"
+        ? menuItems.filter((item) => item.category === "Шашлык")
+        : getMenuCategoryItems(category.slug)
+  }));
+
+export const featuredMenuGroups: MenuGroup[] = homeMenuGroups.slice(0, 4);

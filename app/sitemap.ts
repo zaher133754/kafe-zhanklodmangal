@@ -3,7 +3,7 @@ import { menuCategorySlugs } from "@/data/menu-pages";
 import { site } from "@/lib/site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const lastModified = new Date("2026-07-26");
+  const lastModified = new Date("2026-07-28");
 
   return [
     {

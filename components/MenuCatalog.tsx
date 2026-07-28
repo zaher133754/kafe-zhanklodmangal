@@ -1,16 +1,12 @@
 import { HomeMenuCatalog } from "@/components/menu/HomeMenuCatalog";
 import { ServerMenuCatalog } from "@/components/menu/ServerMenuCatalog";
-import {
-  fullMenuGroups,
-  getMenuCategoryItems,
-  menuCategoryPages
-} from "@/data/menu-pages";
+import { homeMenuGroups } from "@/data/menu-pages";
 import { menuItems } from "@/data/menu";
 
-const homeMenuCategories = menuCategoryPages.map((category) => ({
-  slug: category.slug,
-  label: category.label,
-  count: getMenuCategoryItems(category.slug).length
+const homeMenuCategories = homeMenuGroups.map((group) => ({
+  slug: group.id,
+  label: group.title,
+  count: group.items.length
 }));
 
 export function MenuCatalog() {
@@ -21,7 +17,7 @@ export function MenuCatalog() {
         totalItems={menuItems.length}
       >
         <ServerMenuCatalog
-          groups={fullMenuGroups}
+          groups={homeMenuGroups}
           eagerFirstItems={false}
         />
       </HomeMenuCatalog>

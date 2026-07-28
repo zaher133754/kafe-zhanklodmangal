@@ -17,7 +17,7 @@ import { site } from "@/lib/site";
 
 type MenuPageShellProps = {
   title: string;
-  description: string;
+  description?: string;
   groups: MenuGroup[];
   activeCategory: MenuCategorySlug | "all";
   structuredData: object[];
@@ -67,13 +67,11 @@ export function MenuPageShell({
               <h1 className="mt-3 text-[clamp(36px,6vw,72px)] font-extrabold leading-[1.02] tracking-[-0.035em] text-flame">
                 {title}
               </h1>
-              <p className="mt-5 max-w-[760px] text-[17px] leading-relaxed text-cream/78 sm:text-xl">
-                {description}
-              </p>
-              <p className="mt-4 max-w-[760px] text-sm leading-relaxed text-smoke">
-                Нажмите на фотографию или название блюда, чтобы открыть крупную
-                карточку и посмотреть состав.
-              </p>
+              {description ? (
+                <p className="mt-5 max-w-[760px] text-[17px] leading-relaxed text-cream/78 sm:text-xl">
+                  {description}
+                </p>
+              ) : null}
             </div>
           </div>
         </section>
@@ -81,7 +79,7 @@ export function MenuPageShell({
         <section id="menu" className="section-surface pb-24 sm:pb-28">
           <div className="sticky top-[var(--header-height)] z-30 border-b border-gold/14 bg-espresso/96 shadow-[0_12px_34px_rgb(0_0_0/0.22)] backdrop-blur-md">
             <MenuCategoryScroller activeCategory={activeCategory}>
-              <div className="flex min-w-max gap-2">
+              <div className="flex min-w-max gap-2 lg:min-w-0 lg:flex-wrap">
                 <Link
                   href="/menu"
                   prefetch={false}

@@ -24,10 +24,12 @@ function formatItemCount(value: number) {
 
 function DishCard({
   item,
-  eager
+  eager,
+  categoryLabel
 }: {
   item: MenuItemWithImage;
   eager: boolean;
+  categoryLabel: string;
 }) {
   return (
     <article
@@ -41,6 +43,7 @@ function DishCard({
           type="button"
           data-dish-dialog-trigger
           data-dish-id={item.id}
+          data-dish-category-label={categoryLabel}
           aria-haspopup="dialog"
           aria-label={`Открыть карточку блюда: ${item.name}`}
           className="focus-ring group relative aspect-[4/3] w-full overflow-hidden border-b border-gold/14 bg-coal text-left"
@@ -71,6 +74,7 @@ function DishCard({
             type="button"
             data-dish-dialog-trigger
             data-dish-id={item.id}
+            data-dish-category-label={categoryLabel}
             aria-haspopup="dialog"
             className="focus-ring min-h-[2.75rem] text-left text-[14px] font-extrabold leading-5 text-cream transition-colors hover:text-ember-soft sm:text-base sm:leading-[1.35]"
           >
@@ -135,6 +139,7 @@ export function ServerMenuCatalog({
               <DishCard
                 item={item}
                 eager={eagerFirstItems && groupIndex === 0 && itemIndex < 4}
+                categoryLabel={group.title}
                 key={item.id}
               />
             ))}

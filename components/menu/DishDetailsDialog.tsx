@@ -14,8 +14,13 @@ function formatPrice(value: number) {
 
 export function DishDetailsDialog() {
   const dialogRef = useRef<HTMLDialogElement>(null);
-  const [selectedId, setSelectedId] = useState<string | null>(null);
-  const selectedItem = selectedId ? menuItemById.get(selectedId) : undefined;
+  const [selectedDish, setSelectedDish] = useState<{
+    id: string;
+    categoryLabel?: string;
+  } | null>(null);
+  const selectedItem = selectedDish
+    ? menuItemById.get(selectedDish.id)
+    : undefined;
 
   useEffect(() => {
     function openDishDetails(event: MouseEvent) {
@@ -32,7 +37,10 @@ export function DishDetailsDialog() {
         return;
       }
 
-      setSelectedId(itemId);
+      setSelectedDish({
+        id: itemId,
+        categoryLabel: trigger.dataset.dishCategoryLabel
+      });
     }
 
     document.addEventListener("click", openDishDetails);
@@ -65,7 +73,7 @@ export function DishDetailsDialog() {
       onCancel={() => document.body.classList.remove("modal-open")}
       onClose={() => {
         document.body.classList.remove("modal-open");
-        setSelectedId(null);
+        setSelectedDish(null);
       }}
       onMouseDown={(event) => {
         if (event.target === event.currentTarget) {
@@ -102,7 +110,7 @@ export function DishDetailsDialog() {
 
           <div className="flex min-w-0 flex-col p-5 sm:p-7 md:p-9">
             <p className="text-xs font-extrabold uppercase tracking-[0.14em] text-gold-soft">
-              {selectedItem.category}
+              {selectedDish?.categoryLabel ?? selectedItem.category}
             </p>
             <h2
               id="dish-dialog-title"
