@@ -1,6 +1,8 @@
 import type { Metadata, Viewport } from "next";
 import localFont from "next/font/local";
+import { Suspense } from "react";
 import "./globals.css";
+import { YandexMetrika } from "@/components/analytics/YandexMetrika";
 import { images, site } from "@/lib/site";
 import appleTouchIcon from "@/public/apple-touch-icon.png";
 import favicon from "@/public/favicon.ico";
@@ -13,6 +15,15 @@ const tildaSans = localFont({
   weight: "250 1000",
   fallback: ["Arial", "sans-serif"]
 });
+
+const yandexMetrikaId = Number(
+  process.env.NEXT_PUBLIC_YANDEX_METRIKA_ID
+);
+const isYandexMetrikaEnabled =
+  Number.isInteger(yandexMetrikaId) &&
+  yandexMetrikaId > 0 &&
+  (process.env.NODE_ENV === "production" ||
+    process.env.NEXT_PUBLIC_YANDEX_METRIKA_DEBUG === "true");
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
@@ -93,7 +104,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ru" className={`${tildaSans.variable} dark`}>
-      <body>{children}</body>
+      <body>
+        {children}
+        {isYandexMetrikaEnabled ? (
+          <Suspense fallback={null}>
+            <YandexMetrika counterId={yandexMetrikaId} />
+          </Suspense>
+        ) : null}
+      </body>
     </html>
   );
 }
