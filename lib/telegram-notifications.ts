@@ -1,4 +1,5 @@
 import "server-only";
+import { randomBytes } from "node:crypto";
 import { request as httpsRequest } from "node:https";
 import { HttpsProxyAgent } from "https-proxy-agent";
 
@@ -122,7 +123,8 @@ async function sendMessage(
   chatId: string,
   text: string,
   silent: boolean,
-  proxyUrl: string
+  proxyUrl: string,
+  callbackData?: string
 ) {
   let lastError: Error | undefined;
 
@@ -134,7 +136,16 @@ async function sendMessage(
           chat_id: chatId,
           text,
           disable_notification: silent,
-          link_preview_options: { is_disabled: true }
+          link_preview_options: { is_disabled: true },
+          ...(callbackData
+            ? {
+                reply_markup: {
+                  inline_keyboard: [
+                    [{ text: "✅ Принять заказ", callback_data: callbackData }]
+                  ]
+                }
+              }
+            : {})
         }),
         proxyUrl
       );
@@ -152,7 +163,10 @@ async function sendMessageThroughRelay(
   relayUrl: string,
   relaySecret: string,
   text: string,
-  silent: boolean
+  silent: boolean,
+  orderNumber: string,
+  acceptanceId: string,
+  showAcceptButton: boolean
 ) {
   const url = new URL(relayUrl);
   const isLocalRelay =
@@ -172,7 +186,13 @@ async function sendMessageThroughRelay(
           authorization: `Bearer ${relaySecret}`,
           "content-type": "application/json"
         },
-        body: JSON.stringify({ text, silent }),
+        body: JSON.stringify({
+          text,
+          silent,
+          orderNumber,
+          acceptanceId,
+          showAcceptButton
+        }),
         cache: "no-store",
         signal: AbortSignal.timeout(TELEGRAM_TIMEOUT_MS)
       });
@@ -193,7 +213,8 @@ async function sendMessageThroughRelay(
 }
 
 export async function deliverOrderToTelegram(
-  orderText: string
+  orderText: string,
+  orderNumber: string
 ): Promise<TelegramDeliveryResult> {
   const token = process.env.TELEGRAM_BOT_TOKEN?.trim();
   const chatId = process.env.TELEGRAM_CHAT_ID?.trim();
@@ -217,15 +238,33 @@ export async function deliverOrderToTelegram(
     );
   }
 
+  const acceptanceId = randomBytes(12).toString("hex");
+  const callbackData = `accept_order:${orderNumber}:${acceptanceId}`;
   const chunks = splitMessage(`📩 ${orderText}`);
   for (let index = 0; index < chunks.length; index += 1) {
     const prefix = chunks.length > 1 ? `(${index + 1}/${chunks.length})\n` : "";
     const text = `${prefix}${chunks[index]}`;
+    const showAcceptButton = index === chunks.length - 1;
 
     if (relayUrl && relaySecret) {
-      await sendMessageThroughRelay(relayUrl, relaySecret, text, silent);
+      await sendMessageThroughRelay(
+        relayUrl,
+        relaySecret,
+        text,
+        silent,
+        orderNumber,
+        acceptanceId,
+        showAcceptButton
+      );
     } else {
-      await sendMessage(token!, chatId!, text, silent, proxyUrl);
+      await sendMessage(
+        token!,
+        chatId!,
+        text,
+        silent,
+        proxyUrl,
+        showAcceptButton ? callbackData : undefined
+      );
     }
   }
 

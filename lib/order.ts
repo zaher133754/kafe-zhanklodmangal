@@ -299,7 +299,7 @@ export async function deliverCheckoutOrder(
   const orderText = formatOrderEmail(order, orderNumber);
   const deliveries = await Promise.allSettled([
     deliverOrderToEmail(order, orderNumber),
-    deliverOrderToTelegram(orderText)
+    deliverOrderToTelegram(orderText, orderNumber)
   ]);
 
   const channels: Array<"email" | "telegram"> = [];
