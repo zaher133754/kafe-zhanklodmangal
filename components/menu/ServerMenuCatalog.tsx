@@ -102,6 +102,51 @@ function DishCard({
   );
 }
 
+export function ServerMenuGroup({
+  group,
+  groupIndex,
+  eagerFirstItems
+}: {
+  group: MenuGroup;
+  groupIndex: number;
+  eagerFirstItems: boolean;
+}) {
+  return (
+    <section
+      id={group.id}
+      data-menu-group-index={groupIndex}
+      className="scroll-mt-40"
+      style={{ scrollMarginTop: "calc(var(--header-height) + 84px)" }}
+      aria-labelledby={`menu-group-${group.id}`}
+    >
+      <div className="mb-5 flex items-end justify-between gap-4 sm:mb-7">
+        <div>
+          <h2
+            id={`menu-group-${group.id}`}
+            className="text-2xl font-extrabold leading-tight text-cream sm:text-3xl lg:text-[38px]"
+          >
+            {group.title}
+          </h2>
+          <p className="mt-1.5 text-sm font-medium text-smoke">
+            {formatItemCount(group.items.length)}
+          </p>
+        </div>
+      </div>
+
+      <div className="grid min-w-0 grid-cols-2 gap-2.5 sm:gap-4 md:grid-cols-3 xl:grid-cols-4">
+        {group.items.map((item, itemIndex) => (
+          <DishCard
+            item={item}
+            eager={eagerFirstItems && groupIndex === 0 && itemIndex < 4}
+            categoryLabel={group.title}
+            key={item.id}
+          />
+        ))}
+      </div>
+    </section>
+  );
+}
+
 export function ServerMenuCatalog({
   groups,
   eagerFirstItems = true
@@ -112,39 +157,12 @@ export function ServerMenuCatalog({
   return (
     <div className="grid gap-14 sm:gap-18">
       {groups.map((group, groupIndex) => (
-        <section
-          id={group.id}
-          data-menu-group-index={groupIndex}
-          className="scroll-mt-40"
-          style={{ scrollMarginTop: "calc(var(--header-height) + 84px)" }}
-          aria-labelledby={`menu-group-${group.id}`}
+        <ServerMenuGroup
+          group={group}
+          groupIndex={groupIndex}
+          eagerFirstItems={eagerFirstItems}
           key={group.id}
-        >
-          <div className="mb-5 flex items-end justify-between gap-4 sm:mb-7">
-            <div>
-              <h2
-                id={`menu-group-${group.id}`}
-                className="text-2xl font-extrabold leading-tight text-cream sm:text-3xl lg:text-[38px]"
-              >
-                {group.title}
-              </h2>
-              <p className="mt-1.5 text-sm font-medium text-smoke">
-                {formatItemCount(group.items.length)}
-              </p>
-            </div>
-          </div>
-
-          <div className="grid min-w-0 grid-cols-2 gap-2.5 sm:gap-4 md:grid-cols-3 xl:grid-cols-4">
-            {group.items.map((item, itemIndex) => (
-              <DishCard
-                item={item}
-                eager={eagerFirstItems && groupIndex === 0 && itemIndex < 4}
-                categoryLabel={group.title}
-                key={item.id}
-              />
-            ))}
-          </div>
-        </section>
+        />
       ))}
     </div>
   );

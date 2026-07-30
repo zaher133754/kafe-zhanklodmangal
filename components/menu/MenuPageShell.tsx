@@ -3,9 +3,13 @@ import { CartOverlay } from "@/components/cart/CartOverlay";
 import { CartProvider } from "@/components/cart/CartProvider";
 import { FloatingCartButton } from "@/components/cart/FloatingCartButton";
 import { Header } from "@/components/Header";
+import { MenuCatalogBrowser } from "@/components/menu/MenuCatalogBrowser";
 import { DishDetailsDialog } from "@/components/menu/DishDetailsDialog";
 import { MenuCategoryScroller } from "@/components/menu/MenuCategoryScroller";
-import { ServerMenuCatalog } from "@/components/menu/ServerMenuCatalog";
+import {
+  ServerMenuCatalog,
+  ServerMenuGroup
+} from "@/components/menu/ServerMenuCatalog";
 import {
   getMenuCategoryItems,
   menuCategoryPages,
@@ -77,53 +81,71 @@ export function MenuPageShell({
         </section>
 
         <section id="menu" className="section-surface pb-24 sm:pb-28">
-          <div className="sticky top-[var(--header-height)] z-30 border-b border-gold/14 bg-espresso/96 shadow-[0_12px_34px_rgb(0_0_0/0.22)] backdrop-blur-md">
-            <MenuCategoryScroller activeCategory={activeCategory}>
-              <div className="flex min-w-max gap-2 lg:min-w-0 lg:flex-wrap">
-                <Link
-                  href="/menu"
-                  prefetch={false}
-                  aria-current={activeCategory === "all" ? "page" : undefined}
-                  className={
-                    activeCategory === "all"
-                      ? "focus-ring inline-flex min-h-11 items-center gap-2 rounded-lg border border-ember bg-ember px-4 text-sm font-extrabold text-white"
-                      : "focus-ring inline-flex min-h-11 items-center gap-2 rounded-lg border border-gold/20 bg-charcoal/72 px-4 text-sm font-bold text-cream transition-colors hover:border-ember/55 hover:text-ember-soft"
-                  }
-                >
-                  Все
-                  <span className="rounded bg-white/12 px-1.5 py-0.5 text-xs">
-                    {menuItems.length}
-                  </span>
-                </Link>
-                {menuCategoryPages.map((category) => {
-                  const isActive = activeCategory === category.slug;
-
-                  return (
+          {activeCategory === "all" ? (
+            <MenuCatalogBrowser
+              totalItems={menuItems.length}
+              categories={menuCategoryPages.map((category) => ({
+                slug: category.slug,
+                label: category.label,
+                count: getMenuCategoryItems(category.slug).length
+              }))}
+              groups={groups.map((group, groupIndex) => ({
+                slug: group.id,
+                content: (
+                  <ServerMenuGroup
+                    group={group}
+                    groupIndex={groupIndex}
+                    eagerFirstItems
+                  />
+                )
+              }))}
+            />
+          ) : (
+            <>
+              <div className="sticky top-[var(--header-height)] z-30 border-b border-gold/14 bg-espresso/96 shadow-[0_12px_34px_rgb(0_0_0/0.22)] backdrop-blur-md">
+                <MenuCategoryScroller activeCategory={activeCategory}>
+                  <div className="flex min-w-max gap-2 lg:min-w-0 lg:flex-wrap">
                     <Link
-                      href={`/menu/${category.slug}`}
+                      href="/menu"
                       prefetch={false}
-                      aria-current={isActive ? "page" : undefined}
-                      className={
-                        isActive
-                          ? "focus-ring inline-flex min-h-11 items-center gap-2 rounded-lg border border-ember bg-ember px-4 text-sm font-extrabold text-white"
-                          : "focus-ring inline-flex min-h-11 items-center gap-2 rounded-lg border border-gold/20 bg-charcoal/72 px-4 text-sm font-bold text-cream transition-colors hover:border-ember/55 hover:text-ember-soft"
-                      }
-                      key={category.slug}
+                      className="focus-ring inline-flex min-h-11 items-center gap-2 rounded-lg border border-gold/20 bg-charcoal/72 px-4 text-sm font-bold text-cream transition-colors hover:border-ember/55 hover:text-ember-soft"
                     >
-                      {category.label}
+                      Все
                       <span className="rounded bg-white/12 px-1.5 py-0.5 text-xs">
-                        {getMenuCategoryItems(category.slug).length}
+                        {menuItems.length}
                       </span>
                     </Link>
-                  );
-                })}
-              </div>
-            </MenuCategoryScroller>
-          </div>
+                    {menuCategoryPages.map((category) => {
+                      const isActive = activeCategory === category.slug;
 
-          <div className="container-tilda pt-10 sm:pt-14">
-            <ServerMenuCatalog groups={groups} />
-          </div>
+                      return (
+                        <Link
+                          href={`/menu/${category.slug}`}
+                          prefetch={false}
+                          aria-current={isActive ? "page" : undefined}
+                          className={
+                            isActive
+                              ? "focus-ring inline-flex min-h-11 items-center gap-2 rounded-lg border border-ember bg-ember px-4 text-sm font-extrabold text-white"
+                              : "focus-ring inline-flex min-h-11 items-center gap-2 rounded-lg border border-gold/20 bg-charcoal/72 px-4 text-sm font-bold text-cream transition-colors hover:border-ember/55 hover:text-ember-soft"
+                          }
+                          key={category.slug}
+                        >
+                          {category.label}
+                          <span className="rounded bg-white/12 px-1.5 py-0.5 text-xs">
+                            {getMenuCategoryItems(category.slug).length}
+                          </span>
+                        </Link>
+                      );
+                    })}
+                  </div>
+                </MenuCategoryScroller>
+              </div>
+
+              <div className="container-tilda pt-10 sm:pt-14">
+                <ServerMenuCatalog groups={groups} />
+              </div>
+            </>
+          )}
         </section>
       </main>
 

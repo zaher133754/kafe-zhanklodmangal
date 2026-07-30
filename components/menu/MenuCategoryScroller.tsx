@@ -14,7 +14,7 @@ export function MenuCategoryScroller({
 
   useEffect(() => {
     const nav = navRef.current;
-    const activeLink = nav?.querySelector<HTMLElement>('[aria-current="page"]');
+    const activeLink = nav?.querySelector<HTMLElement>("[aria-current]");
 
     if (!nav || !activeLink) {
       return;
