@@ -28,7 +28,7 @@ export const menuCategoryPages: readonly MenuCategoryPage[] = [
   {
     slug: "shashlyk",
     label: "Шашлык",
-    heading: "Шашлык с доставкой по Самаре",
+    heading: "Шашлык с быстрой доставкой по Самаре",
     shortDescription:
       "Шашлык из свинины и курицы, а также куриные крылья с мангала: фотографии, актуальный вес и цены.",
     metaDescription:
@@ -42,7 +42,7 @@ export const menuCategoryPages: readonly MenuCategoryPage[] = [
   {
     slug: "lyulya-kebab",
     label: "Люля-кебаб",
-    heading: "Люля-кебаб с доставкой по Самаре",
+    heading: "Люля-кебаб с быстрой доставкой по Самаре",
     shortDescription:
       "Куриный люля-кебаб и люля-кебаб из сочной говядины: фотографии, актуальный вес и цены.",
     metaDescription:
@@ -57,7 +57,7 @@ export const menuCategoryPages: readonly MenuCategoryPage[] = [
   {
     slug: "shaurma",
     label: "Шаурма",
-    heading: "Шаурма с доставкой по Самаре",
+    heading: "Шаурма с быстрой доставкой по Самаре",
     shortDescription:
       "Шаурма с курицей, говядиной, свининой и овощами — фотографии, вес и цены.",
     metaDescription:
@@ -67,7 +67,7 @@ export const menuCategoryPages: readonly MenuCategoryPage[] = [
   {
     slug: "burgery",
     label: "Бургеры",
-    heading: "Бургеры с доставкой по Самаре",
+    heading: "Бургеры с быстрой доставкой по Самаре",
     shortDescription:
       "Бифбургеры и чикенбургеры от «Жан Клод Мангал» — фотографии, вес и цены.",
     metaDescription:
@@ -77,7 +77,7 @@ export const menuCategoryPages: readonly MenuCategoryPage[] = [
   {
     slug: "goryachie-blyuda",
     label: "Горячие блюда",
-    heading: "Горячие блюда с доставкой по Самаре",
+    heading: "Горячие блюда с быстрой доставкой по Самаре",
     shortDescription:
       "Паста, мясные блюда и хачапури на углях — фотографии, вес и актуальные цены.",
     metaDescription:
@@ -91,7 +91,7 @@ export const menuCategoryPages: readonly MenuCategoryPage[] = [
   {
     slug: "garniry",
     label: "Гарниры",
-    heading: "Гарниры с доставкой по Самаре",
+    heading: "Гарниры с быстрой доставкой по Самаре",
     shortDescription:
       "Картофель, овощи и грибы на углях, лаваш и лепёшка к основным блюдам.",
     metaDescription:
@@ -101,7 +101,7 @@ export const menuCategoryPages: readonly MenuCategoryPage[] = [
   {
     slug: "salaty",
     label: "Салаты",
-    heading: "Салаты с доставкой по Самаре",
+    heading: "Салаты с быстрой доставкой по Самаре",
     shortDescription:
       "Свежие и сытные салаты к блюдам на мангале — фотографии, вес и цены.",
     metaDescription:
@@ -111,7 +111,7 @@ export const menuCategoryPages: readonly MenuCategoryPage[] = [
   {
     slug: "supy",
     label: "Супы",
-    heading: "Супы с доставкой по Самаре",
+    heading: "Супы с быстрой доставкой по Самаре",
     shortDescription:
       "Борщ, солянка, харчо и куриный суп — фотографии, объём порции и цены.",
     metaDescription:
@@ -121,7 +121,7 @@ export const menuCategoryPages: readonly MenuCategoryPage[] = [
   {
     slug: "sousy",
     label: "Соусы",
-    heading: "Соусы к шашлыку и блюдам на мангале",
+    heading: "Соусы с быстрой доставкой по Самаре",
     shortDescription:
       "Острый, сырный, шашлычный соус и цехтон к вашему заказу.",
     metaDescription:
@@ -131,7 +131,7 @@ export const menuCategoryPages: readonly MenuCategoryPage[] = [
   {
     slug: "napitki",
     label: "Напитки",
-    heading: "Напитки с доставкой по Самаре",
+    heading: "Напитки с быстрой доставкой по Самаре",
     shortDescription:
       "Газированные напитки к шашлыку, шаурме и бургерам — объём и цены.",
     metaDescription:

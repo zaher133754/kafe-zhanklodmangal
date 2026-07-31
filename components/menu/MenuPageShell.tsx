@@ -113,7 +113,8 @@ export function MenuPageShell({
                   <div className="flex min-w-max gap-2 lg:min-w-0 lg:flex-wrap">
                     <Link
                       href="/menu"
-                      prefetch={false}
+                      prefetch
+                      scroll={false}
                       className="focus-ring inline-flex min-h-11 items-center gap-2 rounded-lg border border-gold/20 bg-charcoal/72 px-4 text-sm font-bold text-cream transition-colors hover:border-ember/55 hover:text-ember-soft"
                     >
                       Все
@@ -127,7 +128,8 @@ export function MenuPageShell({
                       return (
                         <Link
                           href={`/menu/${category.slug}`}
-                          prefetch={false}
+                          prefetch
+                          scroll={false}
                           aria-current={isActive ? "page" : undefined}
                           className={
                             isActive

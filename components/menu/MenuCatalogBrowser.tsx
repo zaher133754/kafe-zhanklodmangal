@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import {
-  useEffect,
   useRef,
   useState,
   type MouseEvent,
@@ -39,23 +38,6 @@ function shouldUseRegularNavigation(event: MouseEvent<HTMLAnchorElement>) {
   );
 }
 
-function getCategoryFromPathname(
-  pathname: string,
-  categories: readonly MenuBrowserCategory[]
-): ActiveCategory | null {
-  const normalizedPathname = pathname.replace(/\/$/, "");
-
-  if (normalizedPathname === "/menu") {
-    return "all";
-  }
-
-  const categorySlug = normalizedPathname.match(/^\/menu\/([^/]+)$/)?.[1];
-
-  return (
-    categories.find((category) => category.slug === categorySlug)?.slug ?? null
-  );
-}
-
 export function MenuCatalogBrowser({
   categories,
   groups,
@@ -74,25 +56,6 @@ export function MenuCatalogBrowser({
       ? "Все блюда"
       : categories.find((category) => category.slug === activeCategory)?.label;
 
-  useEffect(() => {
-    function syncCategoryWithHistory() {
-      const category = getCategoryFromPathname(
-        window.location.pathname,
-        categories
-      );
-
-      if (category !== null) {
-        setActiveCategory(category);
-      }
-    }
-
-    window.addEventListener("popstate", syncCategoryWithHistory);
-
-    return () => {
-      window.removeEventListener("popstate", syncCategoryWithHistory);
-    };
-  }, [categories]);
-
   function selectCategory(
     event: MouseEvent<HTMLAnchorElement>,
     category: ActiveCategory
@@ -101,22 +64,15 @@ export function MenuCatalogBrowser({
       return;
     }
 
-    event.preventDefault();
-
     const catalog = catalogRef.current;
     const catalogTop = catalog?.getBoundingClientRect().top;
     const shouldRestoreCatalogPosition =
       catalogTop !== undefined &&
       (catalogTop < 0 || catalogTop > window.innerHeight * 0.68);
 
-    const nextPath =
-      category === "all" ? "/menu" : `/menu/${category}`;
-
+    // Give immediate visual feedback while Next.js completes the prefetched
+    // route transition and replaces the page metadata, H1 and breadcrumbs.
     setActiveCategory(category);
-
-    if (window.location.pathname.replace(/\/$/, "") !== nextPath) {
-      window.history.pushState(null, "", nextPath);
-    }
 
     if (shouldRestoreCatalogPosition) {
       window.requestAnimationFrame(() => {
@@ -135,7 +91,8 @@ export function MenuCatalogBrowser({
           <div className="flex min-w-max gap-2 lg:min-w-0 lg:flex-wrap">
             <Link
               href="/menu"
-              prefetch={false}
+              prefetch
+              scroll={false}
               aria-current={activeCategory === "all" ? "page" : undefined}
               className={
                 activeCategory === "all"
@@ -156,7 +113,8 @@ export function MenuCatalogBrowser({
               return (
                 <Link
                   href={`/menu/${category.slug}`}
-                  prefetch={false}
+                  prefetch
+                  scroll={false}
                   aria-current={isActive ? "page" : undefined}
                   className={
                     isActive ? activeLinkClassName : inactiveLinkClassName
