@@ -122,7 +122,7 @@ const rawMenuItems: MenuItem[] = [
     id: "salat-cezar-s-kuritsey",
     category: "Салаты",
     name: "Салат Цезарь с курицей",
-    price: 399,
+    price: 339,
     weight: "180 г"
   },
   {

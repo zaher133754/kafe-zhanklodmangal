@@ -114,7 +114,7 @@ export function YandexMetrika({ counterId }: YandexMetrikaProps) {
     <>
       <Script
         id="yandex-metrika"
-        strategy="afterInteractive"
+        strategy="lazyOnload"
         dangerouslySetInnerHTML={{
           __html: getInitializationScript(counterId)
         }}

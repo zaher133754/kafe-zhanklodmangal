@@ -12,11 +12,13 @@ import { site } from "@/lib/site";
 import heroBackground1280 from "@/public/images/hero-bg-1280.avif";
 import heroBackground1672 from "@/public/images/hero-bg-1672.avif";
 import heroBackground640 from "@/public/images/hero-bg-640.avif";
+import heroBackground768 from "@/public/images/hero-bg-768.avif";
 import heroBackground960 from "@/public/images/hero-bg-960.avif";
 import heroCard from "@/public/images/hero-card.avif";
 
 const heroBackgroundSrcSet = [
   `${heroBackground640.src} 640w`,
+  `${heroBackground768.src} 768w`,
   `${heroBackground960.src} 960w`,
   `${heroBackground1280.src} 1280w`,
   `${heroBackground1672.src} 1672w`

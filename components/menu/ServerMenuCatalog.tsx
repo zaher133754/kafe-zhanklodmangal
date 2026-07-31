@@ -1,7 +1,18 @@
-import Image from "next/image";
+import Image, { type StaticImageData } from "next/image";
 import { DishCartControls } from "@/components/menu/DishCartControls";
 import type { MenuGroup } from "@/data/menu-pages";
 import type { MenuItemWithImage } from "@/data/menu";
+
+function getMenuCardImageSrc(image: StaticImageData, width: 320 | 480) {
+  const sourceName = decodeURIComponent(
+    image.src.slice(image.src.lastIndexOf("/") + 1)
+  );
+  const fileName = sourceName.replace(/\.[^.]+\.avif$/, ".avif");
+
+  const directory = width === 320 ? "menu-cards" : "menu-cards-480";
+
+  return `/images/${directory}/${fileName}`;
+}
 
 function formatPrice(value: number) {
   return new Intl.NumberFormat("ru-RU").format(value);
@@ -31,6 +42,10 @@ function DishCard({
   eager: boolean;
   categoryLabel: string;
 }) {
+  const cardImage320Src = encodeURI(getMenuCardImageSrc(item.image, 320));
+  const cardImage480Src = encodeURI(getMenuCardImageSrc(item.image, 480));
+  const fullImageSrc = encodeURI(item.image.src);
+
   return (
     <article
       id={`dish-${item.id}`}
@@ -46,24 +61,44 @@ function DishCard({
           data-dish-category-label={categoryLabel}
           aria-haspopup="dialog"
           aria-label={`Открыть карточку блюда: ${item.name}`}
-          className="focus-ring group relative aspect-[4/3] w-full overflow-hidden border-b border-gold/14 bg-coal text-left"
+          className="focus-ring group relative aspect-[4/3] min-w-0 w-full overflow-hidden border-b border-gold/14 bg-coal text-left"
         >
-          <Image
-            src={item.image}
-            alt={item.name}
-            fill
-            unoptimized
-            placeholder="blur"
-            priority={eager}
-            loading={eager ? "eager" : "lazy"}
-            sizes="(max-width: 639px) calc((100vw - 46px) / 2), (max-width: 1023px) 30vw, 285px"
-            className={
-              item.category === "Напитки"
-                ? "object-contain p-2 transition-transform duration-500 group-hover:scale-[1.02] sm:p-3"
-                : "object-cover transition-transform duration-500 group-hover:scale-[1.035]"
-            }
-            itemProp="image"
-          />
+          {item.category === "Напитки" ? (
+            <Image
+              src={item.image}
+              alt={item.name}
+              fill
+              unoptimized
+              placeholder="blur"
+              priority={eager}
+              loading={eager ? "eager" : "lazy"}
+              sizes="(max-width: 639px) calc((100vw - 46px) / 2), (max-width: 1023px) 30vw, 285px"
+              className="object-contain p-2 transition-transform duration-500 group-hover:scale-[1.02] sm:p-3"
+              itemProp="image"
+            />
+          ) : (
+            /* Static responsive variants keep image requests cacheable on Layero. */
+            /* eslint-disable-next-line @next/next/no-img-element */
+            <img
+              src={fullImageSrc}
+              srcSet={`${cardImage320Src} 320w, ${cardImage480Src} 480w, ${fullImageSrc} ${item.image.width}w`}
+              alt={item.name}
+              loading={eager ? "eager" : "lazy"}
+              fetchPriority={eager ? "high" : "auto"}
+              decoding="async"
+              width={item.image.width}
+              height={item.image.height}
+              sizes="(max-width: 639px) calc((100vw - 46px) / 2), (max-width: 1023px) 30vw, 285px"
+              className="absolute inset-0 h-full min-w-0 w-full object-cover transition-transform duration-500 group-hover:scale-[1.035]"
+              style={{
+                backgroundImage: `url(${item.image.blurDataURL})`,
+                backgroundPosition: "center",
+                backgroundRepeat: "no-repeat",
+                backgroundSize: "cover"
+              }}
+              itemProp="image"
+            />
+          )}
           <span className="absolute bottom-2 right-2 rounded-md border border-white/15 bg-black/68 px-2 py-1 text-[11px] font-extrabold text-white backdrop-blur-sm sm:bottom-3 sm:right-3 sm:text-xs">
             Подробнее
           </span>
@@ -115,7 +150,7 @@ export function ServerMenuGroup({
     <section
       id={group.id}
       data-menu-group-index={groupIndex}
-      className="scroll-mt-40"
+      className={`scroll-mt-40 ${groupIndex === 0 ? "" : "cv-auto"}`}
       style={{ scrollMarginTop: "calc(var(--header-height) + 84px)" }}
       aria-labelledby={`menu-group-${group.id}`}
     >

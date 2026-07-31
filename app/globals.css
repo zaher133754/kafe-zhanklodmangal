@@ -312,7 +312,7 @@ section[id] {
 
 .cv-auto {
   content-visibility: auto;
-  contain-intrinsic-size: 900px;
+  contain-intrinsic-size: 0 900px;
 }
 
 @keyframes menu-catalog-enter {
