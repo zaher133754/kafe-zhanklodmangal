@@ -9,6 +9,9 @@ export const dynamic = "force-static";
 const title = "Меню кафе «Жан Клод Мангал» с доставкой по Самаре";
 const description =
   "Выбирайте шашлык, люля-кебаб, шаурму, бургеры, горячие блюда, гарниры, салаты, супы, соусы и напитки. В карточках указаны актуальные цены, вес, состав и фотографии. Быстрая доставка по Самаре, самовывоз и предварительный заказ блюд к столу в кафе.";
+const menuTitle =
+  "Выбирайте шашлык, люля‑кебаб, шаурму, бургеры, гарниры";
+const menuDescription = "с быстрой доставкой по Самаре.";
 
 export const metadata: Metadata = {
   title,
@@ -43,8 +46,8 @@ export default function MenuPage() {
 
   return (
     <MenuPageShell
-      title={title}
-      description={description}
+      title={menuTitle}
+      description={menuDescription}
       groups={fullMenuGroups}
       activeCategory="all"
       structuredData={[

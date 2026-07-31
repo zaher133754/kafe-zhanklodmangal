@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import {
+  useEffect,
   useRef,
   useState,
   type MouseEvent,
@@ -38,6 +39,23 @@ function shouldUseRegularNavigation(event: MouseEvent<HTMLAnchorElement>) {
   );
 }
 
+function getCategoryFromPathname(
+  pathname: string,
+  categories: readonly MenuBrowserCategory[]
+): ActiveCategory | null {
+  const normalizedPathname = pathname.replace(/\/$/, "");
+
+  if (normalizedPathname === "/menu") {
+    return "all";
+  }
+
+  const categorySlug = normalizedPathname.match(/^\/menu\/([^/]+)$/)?.[1];
+
+  return (
+    categories.find((category) => category.slug === categorySlug)?.slug ?? null
+  );
+}
+
 export function MenuCatalogBrowser({
   categories,
   groups,
@@ -56,6 +74,25 @@ export function MenuCatalogBrowser({
       ? "Все блюда"
       : categories.find((category) => category.slug === activeCategory)?.label;
 
+  useEffect(() => {
+    function syncCategoryWithHistory() {
+      const category = getCategoryFromPathname(
+        window.location.pathname,
+        categories
+      );
+
+      if (category !== null) {
+        setActiveCategory(category);
+      }
+    }
+
+    window.addEventListener("popstate", syncCategoryWithHistory);
+
+    return () => {
+      window.removeEventListener("popstate", syncCategoryWithHistory);
+    };
+  }, [categories]);
+
   function selectCategory(
     event: MouseEvent<HTMLAnchorElement>,
     category: ActiveCategory
@@ -72,7 +109,14 @@ export function MenuCatalogBrowser({
       catalogTop !== undefined &&
       (catalogTop < 0 || catalogTop > window.innerHeight * 0.68);
 
+    const nextPath =
+      category === "all" ? "/menu" : `/menu/${category}`;
+
     setActiveCategory(category);
+
+    if (window.location.pathname.replace(/\/$/, "") !== nextPath) {
+      window.history.pushState(null, "", nextPath);
+    }
 
     if (shouldRestoreCatalogPosition) {
       window.requestAnimationFrame(() => {
@@ -92,7 +136,7 @@ export function MenuCatalogBrowser({
             <Link
               href="/menu"
               prefetch={false}
-              aria-current={activeCategory === "all" ? "true" : undefined}
+              aria-current={activeCategory === "all" ? "page" : undefined}
               className={
                 activeCategory === "all"
                   ? activeLinkClassName
@@ -113,7 +157,7 @@ export function MenuCatalogBrowser({
                 <Link
                   href={`/menu/${category.slug}`}
                   prefetch={false}
-                  aria-current={isActive ? "true" : undefined}
+                  aria-current={isActive ? "page" : undefined}
                   className={
                     isActive ? activeLinkClassName : inactiveLinkClassName
                   }

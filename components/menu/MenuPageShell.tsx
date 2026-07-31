@@ -68,11 +68,17 @@ export function MenuPageShell({
               <p className="text-xs font-extrabold uppercase tracking-[0.16em] text-gold-soft sm:text-sm">
                 Кафе «Жан Клод Мангал» · Самара
               </p>
-              <h1 className="mt-3 text-[clamp(36px,6vw,72px)] font-extrabold leading-[1.02] tracking-[-0.035em] text-flame">
+              <h1
+                className={
+                  activeCategory === "all"
+                    ? "mt-3 max-w-[840px] text-balance text-[clamp(32px,4.6vw,56px)] font-extrabold leading-[1.08] tracking-[-0.03em] text-flame"
+                    : "mt-3 text-balance text-[clamp(36px,6vw,72px)] font-extrabold leading-[1.02] tracking-[-0.035em] text-flame"
+                }
+              >
                 {title}
               </h1>
               {description ? (
-                <p className="mt-5 max-w-[760px] text-[17px] leading-relaxed text-cream/78 sm:text-xl">
+                <p className="mt-4 max-w-[60ch] text-pretty text-lg font-bold leading-snug tracking-[-0.01em] text-cream/86 sm:text-2xl">
                   {description}
                 </p>
               ) : null}
