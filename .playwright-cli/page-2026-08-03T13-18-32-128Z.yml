@@ -1,0 +1,142 @@
+- generic [active] [ref=f7e1]:
+  - generic [ref=f7e2]:
+    - banner [ref=f7e4]:
+      - generic [ref=f7e5]:
+        - generic [ref=f7e6]:
+          - button "Main menu" [ref=f7e7] [cursor=pointer]
+          - link "Google Search Console" [ref=f7e12] [cursor=pointer]:
+            - /url: ./search-console?resource_id=https%3A%2F%2Fzhanklodmangal.ru%2F
+        - generic [ref=f7e14]:
+          - search [ref=f7e16]:
+            - generic [ref=f7e22]:
+              - textbox [disabled] [ref=f7e23]: Inspect any URL in 'https://zhanklodmangal.ru/'
+              - combobox "Inspect any URL in http://zhanklodmangal.ru/" [ref=f7e24]
+            - button "Search" [ref=f7e25] [cursor=pointer]
+          - generic [ref=f7e29]:
+            - generic [ref=f7e31]:
+              - button "Help" [ref=f7e33] [cursor=pointer]:
+                - generic [ref=f7e34]: 
+              - button "User settings" [ref=f7e38] [cursor=pointer]
+            - 'button "Unread messages: 1" [ref=f7e45] [cursor=pointer]':
+              - generic [ref=f7e47]:
+                - generic [ref=f7e48]: 
+                - generic [ref=f7e912]: "1"
+        - generic [ref=f7e50]:
+          - button "Google apps" [ref=f7e54] [cursor=pointer]
+          - 'button "Google Account: Прибыльные Решения (zaharyan1997@gmail.com)" [ref=f7e60] [cursor=pointer]'
+    - dialog "navigational drawer" [ref=f7e66]:
+      - navigation "Primary" [ref=f7e69]:
+        - button "Search property" [ref=f7e916] [cursor=pointer]:
+          - img "favicon" [ref=f7e918]
+          - combobox "https://zhanklodmangal.ru/" [ref=f7e926]
+          - generic [ref=f7e927]: 
+        - generic [ref=f7e85]:
+          - generic [ref=f7e86]:
+            - generic [ref=f7e87]:
+              - generic:
+                - link "Overview":
+                  - /url: ./search-console?resource_id=http%3A%2F%2Fzhanklodmangal.ru%2F
+                  - generic: home
+              - generic:
+                - link "Insights":
+                  - /url: ./search-console/performance/insights?resource_id=http%3A%2F%2Fzhanklodmangal.ru%2F
+                  - generic: lightbulb_2
+              - generic:
+                - link "Performance":
+                  - /url: ./search-console/performance/search-analytics?resource_id=http%3A%2F%2Fzhanklodmangal.ru%2F
+                  - generic: trending_up
+              - generic:
+                - button "URL inspection":
+                  - generic: search
+            - generic [ref=f7e118]:
+              - generic [ref=f7e120]:
+                - generic [ref=f7e121]: Indexing
+                - button "Indexing report section" [expanded] [ref=f7e125] [cursor=pointer]:
+                  - generic [ref=f7e126]: keyboard_arrow_up
+              - generic [ref=f7e131]:
+                - generic:
+                  - link "Pages":
+                    - /url: ./search-console/index?resource_id=http%3A%2F%2Fzhanklodmangal.ru%2F
+                    - generic: file_copy
+                - generic:
+                  - link "Sitemaps":
+                    - /url: ./search-console/sitemaps?resource_id=http%3A%2F%2Fzhanklodmangal.ru%2F
+                    - generic: account_tree
+                - generic:
+                  - link "Removals":
+                    - /url: ./search-console/removals?resource_id=http%3A%2F%2Fzhanklodmangal.ru%2F
+                    - generic: visibility_off
+            - generic [ref=f7e155]:
+              - generic [ref=f7e157]:
+                - generic [ref=f7e158]: Experience
+                - button "Experience report section" [expanded] [ref=f7e162] [cursor=pointer]:
+                  - generic [ref=f7e163]: keyboard_arrow_up
+              - generic [ref=f7e168]:
+                - generic:
+                  - link "Core web vitals":
+                    - /url: ./search-console/core-web-vitals?resource_id=http%3A%2F%2Fzhanklodmangal.ru%2F
+                    - generic: speed
+            - generic [ref=f7e180]:
+              - generic [ref=f7e181]: Security & Manual Actions
+              - button "Security & Manual Actions report section" [ref=f7e185] [cursor=pointer]:
+                - generic [ref=f7e186]: keyboard_arrow_down
+            - generic [ref=f7e188]:
+              - generic:
+                - link "Links report":
+                  - /url: ./search-console/links?resource_id=http%3A%2F%2Fzhanklodmangal.ru%2F
+                  - generic: link_2
+                  - generic: Links
+              - generic:
+                - link "Achievements":
+                  - /url: ./search-console/achievements?resource_id=http%3A%2F%2Fzhanklodmangal.ru%2F
+                  - generic: trophy
+              - generic:
+                - link "Settings":
+                  - /url: ./search-console/settings?resource_id=http%3A%2F%2Fzhanklodmangal.ru%2F
+                  - generic: settings
+          - generic [ref=f7e210]:
+            - generic [ref=f7e212]:
+              - generic:
+                - button "Submit feedback":
+                  - generic: feedback
+              - generic:
+                - button "About Search Console":
+                  - generic: info
+            - generic [ref=f7e229]:
+              - link "Privacy" [ref=f7e230] [cursor=pointer]:
+                - /url: https://myaccount.google.com/privacypolicy?hl=en-GB
+              - link "Terms" [ref=f7e231] [cursor=pointer]:
+                - /url: https://myaccount.google.com/termsofservice?hl=en-GB
+    - generic [ref=f7e932]:
+      - navigation "Breadcrumbs" [ref=f7e937]:
+        - heading "Page indexing" [level=1] [ref=f7e940]
+      - main [ref=f7e944]:
+        - generic [ref=f7e945]:
+          - generic [ref=f7e947]:
+            - generic [ref=f7e948]: 
+            - generic [ref=f7e949]: Processing data, please check again in a day or so
+          - generic [ref=f7e952]:
+            - generic [ref=f7e954]:
+              - generic [ref=f7e957]:
+                - generic [ref=f7e958]: info_filled
+                - generic [ref=f7e959]:
+                  - generic [ref=f7e960]: Why pages aren’t indexed
+                  - generic [ref=f7e961]: Pages that aren’t indexed can’t be served on Google
+              - button "Filter table rows" [ref=f7e966] [cursor=pointer]:
+                - generic [ref=f7e967]: 
+            - table [ref=f7e971]:
+              - rowgroup [ref=f7e972]:
+                - row [ref=f7e973]:
+                  - columnheader "Reason" [ref=f7e974]
+                  - columnheader [ref=f7e980]:
+                    - generic [ref=f7e982]:
+                      - text: Source
+                      - button "null" [ref=f7e985] [cursor=pointer]:
+                        - generic [ref=f7e986]: 
+                  - columnheader "Validation" [ref=f7e990]
+                  - columnheader "Trend" [ref=f7e996]
+                  - columnheader "Pages" [ref=f7e999]
+            - generic [ref=f7e1006]:
+              - generic [ref=f7e1007]: 
+              - generic [ref=f7e1008]: Processing data, please check again in a day or so
+  - generic [ref=f7e884]: Page indexing

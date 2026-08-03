@@ -1,0 +1,146 @@
+- generic [ref=f7e1]:
+  - generic [ref=f7e2]:
+    - banner [ref=f7e4]:
+      - generic [ref=f7e5]:
+        - generic [ref=f7e6]:
+          - button "Main menu" [ref=f7e7] [cursor=pointer]
+          - link "Google Search Console" [ref=f7e12] [cursor=pointer]:
+            - /url: ./search-console?resource_id=https%3A%2F%2Fzhanklodmangal.ru%2F
+        - generic [ref=f7e14]:
+          - search [ref=f7e16]:
+            - generic [ref=f7e22]:
+              - textbox [disabled] [ref=f7e23]: Inspect any URL in 'https://zhanklodmangal.ru/'
+              - combobox "Inspect any URL in http://zhanklodmangal.ru/" [ref=f7e24]
+            - button "Search" [ref=f7e25] [cursor=pointer]
+          - generic [ref=f7e29]:
+            - generic [ref=f7e31]:
+              - button "Help" [ref=f7e33] [cursor=pointer]:
+                - generic [ref=f7e34]: 
+              - button "User settings" [ref=f7e38] [cursor=pointer]
+            - 'button "Unread messages: 1" [ref=f7e45] [cursor=pointer]':
+              - generic [ref=f7e47]:
+                - generic [ref=f7e48]: 
+                - generic [ref=f7e1184]: "1"
+        - generic [ref=f7e50]:
+          - button "Google apps" [ref=f7e54] [cursor=pointer]
+          - 'button "Google Account: Прибыльные Решения (zaharyan1997@gmail.com)" [ref=f7e60] [cursor=pointer]'
+    - dialog "navigational drawer" [ref=f7e1011]:
+      - navigation "Primary" [ref=f7e1014]:
+        - button "Search property" [ref=f7e1018] [cursor=pointer]:
+          - img "favicon" [ref=f7e1020]
+          - combobox "https://zhanklodmangal.ru/" [ref=f7e1028]
+          - generic [ref=f7e1029]: 
+        - generic [ref=f7e1030]:
+          - generic [ref=f7e1031]:
+            - generic [ref=f7e1032]:
+              - link [ref=f7e1034] [cursor=pointer]:
+                - /url: ./search-console?resource_id=https%3A%2F%2Fzhanklodmangal.ru%2F
+                - generic [ref=f7e1035]: home
+              - link [ref=f7e1041] [cursor=pointer]:
+                - /url: ./search-console/performance/insights?resource_id=https%3A%2F%2Fzhanklodmangal.ru%2F
+                - generic [ref=f7e1042]: lightbulb_2
+              - link [ref=f7e1048] [cursor=pointer]:
+                - /url: ./search-console/performance/search-analytics?resource_id=https%3A%2F%2Fzhanklodmangal.ru%2F
+                - generic [ref=f7e1049]: trending_up
+              - button [ref=f7e1055] [cursor=pointer]:
+                - generic [ref=f7e1056]: search
+            - generic [ref=f7e1063]:
+              - generic [ref=f7e1065]:
+                - generic [ref=f7e1066]: Indexing
+                - button "Indexing report section" [expanded] [ref=f7e1070] [cursor=pointer]:
+                  - generic [ref=f7e1071]: keyboard_arrow_up
+              - generic [ref=f7e1076]:
+                - link [ref=f7e1078] [cursor=pointer]:
+                  - /url: ./search-console/index?resource_id=https%3A%2F%2Fzhanklodmangal.ru%2F
+                  - generic [ref=f7e1079]: file_copy
+                - link [ref=f7e1085] [cursor=pointer]:
+                  - /url: ./search-console/sitemaps?resource_id=https%3A%2F%2Fzhanklodmangal.ru%2F
+                  - generic [ref=f7e1086]: account_tree
+                - link [ref=f7e1092] [cursor=pointer]:
+                  - /url: ./search-console/removals?resource_id=https%3A%2F%2Fzhanklodmangal.ru%2F
+                  - generic [ref=f7e1093]: visibility_off
+            - generic [ref=f7e1100]:
+              - generic [ref=f7e1102]:
+                - generic [ref=f7e1103]: Experience
+                - button "Experience report section" [expanded] [ref=f7e1107] [cursor=pointer]:
+                  - generic [ref=f7e1108]: keyboard_arrow_up
+              - generic [ref=f7e1113]:
+                - link [ref=f7e1115] [cursor=pointer]:
+                  - /url: ./search-console/core-web-vitals?resource_id=https%3A%2F%2Fzhanklodmangal.ru%2F
+                  - generic [ref=f7e1116]: speed
+                - link [ref=f7e1122] [cursor=pointer]:
+                  - /url: ./search-console/https?resource_id=https%3A%2F%2Fzhanklodmangal.ru%2F
+                  - generic [ref=f7e1123]: lock
+            - generic [ref=f7e1132]:
+              - generic [ref=f7e1133]: Security & Manual Actions
+              - button "Security & Manual Actions report section" [ref=f7e1137] [cursor=pointer]:
+                - generic [ref=f7e1138]: keyboard_arrow_down
+            - generic [ref=f7e1140]:
+              - link "Links report" [ref=f7e1142] [cursor=pointer]:
+                - /url: ./search-console/links?resource_id=https%3A%2F%2Fzhanklodmangal.ru%2F
+                - generic [ref=f7e1143]: link_2
+                - generic [ref=f7e1145]: Links
+              - link [ref=f7e1149] [cursor=pointer]:
+                - /url: ./search-console/achievements?resource_id=https%3A%2F%2Fzhanklodmangal.ru%2F
+                - generic [ref=f7e1150]: trophy
+              - link [ref=f7e1156] [cursor=pointer]:
+                - /url: ./search-console/settings?resource_id=https%3A%2F%2Fzhanklodmangal.ru%2F
+                - generic [ref=f7e1157]: settings
+          - generic [ref=f7e1162]:
+            - generic [ref=f7e1164]:
+              - button [ref=f7e1166] [cursor=pointer]:
+                - generic [ref=f7e1167]: feedback
+              - button [ref=f7e1173] [cursor=pointer]:
+                - generic [ref=f7e1174]: info
+            - generic [ref=f7e1181]:
+              - link "Privacy" [ref=f7e1182] [cursor=pointer]:
+                - /url: https://myaccount.google.com/privacypolicy?hl=en-GB
+              - link "Terms" [ref=f7e1183] [cursor=pointer]:
+                - /url: https://myaccount.google.com/termsofservice?hl=en-GB
+    - generic [ref=f7e1187]:
+      - navigation "Breadcrumbs" [ref=f7e1192]:
+        - heading "Sitemaps" [level=1] [ref=f7e1195]
+      - main [ref=f7e1199]:
+        - generic [ref=f7e1202]:
+          - generic [ref=f7e1203]: Add a new sitemap
+          - generic [ref=f7e1204]:
+            - generic [ref=f7e1205]:
+              - generic [ref=f7e1206]: https://zhanklodmangal.ru/
+              - generic [ref=f7e1211]:
+                - textbox "Enter sitemap URL" [active] [ref=f7e1212]
+                - generic: Enter sitemap URL
+            - button "Submit" [disabled] [ref=f7e1216]
+        - generic [ref=f7e1223]:
+          - generic [ref=f7e1224]:
+            - heading "Submitted sitemaps" [level=1] [ref=f7e1225]
+            - button "Filter table rows" [ref=f7e1229] [cursor=pointer]:
+              - generic [ref=f7e1230]: 
+          - table [ref=f7e1234]:
+            - rowgroup [ref=f7e1235]:
+              - row [ref=f7e1236]:
+                - columnheader "Sitemap" [ref=f7e1237]
+                - columnheader "Type" [ref=f7e1241]
+                - columnheader "Submitted" [ref=f7e1245]
+                - columnheader "Last read" [ref=f7e1249]
+                - columnheader "Status" [ref=f7e1253]
+                - columnheader "Discovered pages" [ref=f7e1257]
+                - columnheader "Discovered videos" [ref=f7e1261]
+                - columnheader [ref=f7e1265]
+            - rowgroup
+          - generic [ref=f7e1268]:
+            - generic [ref=f7e1270]:
+              - generic [ref=f7e1271]: "Rows per page:"
+              - listbox "Number of rows per page" [ref=f7e1272] [cursor=pointer]:
+                - option "5"
+                - option "10" [selected] [ref=f7e1273]
+                - option "25"
+                - option "50"
+                - option "100"
+                - option "250"
+                - option "500"
+            - generic [ref=f7e1274]:
+              - generic [ref=f7e1275]: 0-0 of 0
+              - generic [ref=f7e1276]:
+                - generic [ref=f7e1277]: 
+                - generic [ref=f7e1279]: 
+  - generic [ref=f7e884]: Sitemaps

@@ -1,0 +1,130 @@
+- generic [ref=e5]:
+  - generic [ref=e6]:
+    - img "Search Console" [ref=e7]
+    - link "Попробовать" [ref=e9] [cursor=pointer]:
+      - /url: https://accounts.google.com/ServiceLogin?service=sitemaps&hl=ru&continue=https://search.google.com/search-console?utm_source%3Dabout-page
+  - generic [ref=e13]:
+    - generic [ref=e18]:
+      - generic [ref=e19]: Обеспечьте вашему сайту более высокие позиции в Google Поиске
+      - generic [ref=e20]:
+        - generic [ref=e21]: Инструменты и отчеты Search Console позволяют оценивать рейтинг сайта и количество переходов на него из Google, устранять ошибки и добиваться высоких позиций в результатах поиска.
+        - link "Попробовать" [ref=e23] [cursor=pointer]:
+          - /url: https://accounts.google.com/ServiceLogin?service=sitemaps&hl=ru&continue=https://search.google.com/search-console?utm_source%3Dabout-page
+    - generic [ref=e31]:
+      - generic [ref=e32]: Оптимизируйте свой контент с помощью отчета "Анализ поисковых запросов"
+      - generic [ref=e33]: Получайте сведения о том, по каким запросам посетители находят ваш сайт. Анализируйте данные о показах и рейтинге ваших веб-страниц в результатах поиска Google, а также о кликах по этим результатам.
+    - generic [ref=e38]:
+      - generic [ref=e39]: Добавьте свой контент в результаты поиска Google
+      - generic [ref=e40]: Отправляйте в Google отдельные URL и их списки в файлах Sitemap. Следите за тем, чтобы после каждого внесенного вами изменения своевременно выполнялось индексирование сайта.
+    - generic [ref=e45]:
+      - generic [ref=e46]: Устраняйте проблемы на своем сайте, своевременно получая оповещения
+      - generic [ref=e47]: Получайте по электронной почте уведомления от Google о проблемах на вашем сайте. Вы будете получать перечень URL соответствующих страниц и сможете сообщать Google об исправлении этих ошибок.
+    - generic [ref=e52]:
+      - generic [ref=e53]: Узнайте, как Google воспринимает ваш сайт
+      - generic [ref=e54]: Инструмент проверки URL получает непосредственно из индекса Google детальные сведения об индексировании и сканировании веб-страниц, а также об их показах в результатах поиска.
+    - generic [ref=e56]:
+      - generic [ref=e57]:
+        - generic [ref=e58]: Обучение работе с Search Console
+        - generic [ref=e59]: Узнайте, как оптимизировать свой сайт для Google и увеличить бесплатный трафик
+      - generic [ref=e60]:
+        - link "Знакомство с Search Console" [ref=e61] [cursor=pointer]:
+          - /url: https://www.youtube.com/watch?v=ONr5Z7VhNFI&list=PLKoqnv2vTMUOnQn-lNDfT38X9gA_CHxTo&index=1
+          - generic [ref=e64]:
+            - generic [ref=e65]: 
+            - generic [ref=e68]: Знакомство с Search Console
+        - link "7 способов доказать, что сайт ваш" [ref=e69] [cursor=pointer]:
+          - /url: https://www.youtube.com/watch?v=N4PmE3LysUM&list=PLKoqnv2vTMUOnQn-lNDfT38X9gA_CHxTo&index=8
+          - generic [ref=e72]:
+            - generic [ref=e73]: 
+            - generic [ref=e76]: 7 способов доказать, что сайт ваш
+        - link "Отчеты в Search Console" [ref=e77] [cursor=pointer]:
+          - /url: https://www.youtube.com/watch?v=wTwnFcWUM3k&list=PLKoqnv2vTMUOnQn-lNDfT38X9gA_CHxTo&index=6
+          - generic [ref=e80]:
+            - generic [ref=e81]: 
+            - generic [ref=e84]: Отчеты в Search Console
+        - link "Инструмент проверки URL" [ref=e85] [cursor=pointer]:
+          - /url: https://www.youtube.com/watch?v=Pe_-TkdbXN0&list=PLKoqnv2vTMUOnQn-lNDfT38X9gA_CHxTo&index=5
+          - generic [ref=e88]:
+            - generic [ref=e89]: 
+            - generic [ref=e92]: Инструмент проверки URL
+      - link "Другие видео" [ref=e94] [cursor=pointer]:
+        - /url: https://www.youtube.com/playlist?list=PLKoqnv2vTMUOnQn-lNDfT38X9gA_CHxTo
+    - generic [ref=e99]:
+      - generic [ref=e100]: Оптимизируйте свой сайт
+      - generic [ref=e101]:
+        - generic [ref=e102]:
+          - generic [ref=e104]: Страница AMP
+          - generic [ref=e105]: Проверяйте свои AMP-страницы с помощью инструментов и отчетов Search Console.
+          - link "Подробнее" [ref=e106] [cursor=pointer]:
+            - /url: https://support.google.com/webmasters/answer/7450883?hl=ru
+        - generic [ref=e107]:
+          - generic [ref=e109]: Core Web Vitals
+          - generic [ref=e110]: Отслеживайте показатели Core Web Vitals своего сайта при просмотре на компьютерах и мобильных устройствах, используя отчеты Search Console.
+          - link "Подробнее" [ref=e111] [cursor=pointer]:
+            - /url: https://support.google.com/webmasters/answer/9205520?hl=ru
+        - generic [ref=e112]:
+          - generic [ref=e114]: Расширенные результаты
+          - generic [ref=e115]: Используйте структурированные данные разных типов для показа в Google Поиске расширенных результатов, например вакансий или рецептов с вашего сайта. Собирайте статистику и оптимизируйте структурированные данные с помощью отчетов Search Console.
+          - link "Подробнее" [ref=e116] [cursor=pointer]:
+            - /url: https://support.google.com/webmasters/answer/7552505?hl=ru
+    - generic [ref=e119]:
+      - generic [ref=e120]: Сделайте свой сайт более заметным в Google Поиске
+      - link "Перейти в Google Search Console" [ref=e122] [cursor=pointer]:
+        - /url: https://accounts.google.com/ServiceLogin?service=sitemaps&hl=ru&continue=https://search.google.com/search-console?utm_source%3Dabout-page
+        - text: Перейти в Google Search Console
+        - generic [ref=e123]: 
+    - generic [ref=e125]:
+      - generic [ref=e126]:
+        - generic [ref=e127]: "Подписаться:"
+        - generic [ref=e128]:
+          - link [ref=e129] [cursor=pointer]:
+            - /url: https://twitter.com/googlewmc
+          - link [ref=e132] [cursor=pointer]:
+            - /url: https://plus.google.com/s/googlewebmasters?hl=ru
+            - generic [ref=e133]: 
+          - link [ref=e134] [cursor=pointer]:
+            - /url: https://webmasters.googleblog.com/?hl=ru
+            - generic [ref=e135]: 
+          - link [ref=e136] [cursor=pointer]:
+            - /url: https://www.youtube.com/user/GoogleWebmasterHelp
+            - generic [ref=e137]: 
+      - generic [ref=e139]:
+        - generic [ref=e140]:
+          - generic [ref=e141]: Ресурсы для веб-мастеров
+          - link "Справочный центр" [ref=e142] [cursor=pointer]:
+            - /url: https://support.google.com/webmasters?hl=ru
+          - link "Справочный форум" [ref=e143] [cursor=pointer]:
+            - /url: https://support.google.com/webmasters/go/community?hl=ru
+          - link "Академия для веб-мастеров" [ref=e144] [cursor=pointer]:
+            - /url: https://support.google.com/webmasters/answer/6001102?hl=ru
+        - generic [ref=e145]:
+          - generic [ref=e146]: Ресурсы для предпринимателей
+          - link "Google Решения для бизнеса" [ref=e147] [cursor=pointer]:
+            - /url: https://www.google.com/services/
+          - link "Google Реклама" [ref=e148] [cursor=pointer]:
+            - /url: https://www.google.com/ads/?ww-ww-et-g-aw-a-webmaster_1-footer!o2
+          - link "Интернет-маркетинг для начинающих" [ref=e149] [cursor=pointer]:
+            - /url: https://digitalgarage.withgoogle.com/?utm_source=Engagement&utm_medium=ep&utm_term=SMB&utm_content=UK%20Webmast%20footer&utm_campaign=Q1_2016%20UK%20Webmast%20footer
+        - generic [ref=e150]:
+          - generic [ref=e151]: Пакет разработчика
+          - link "Поиск для разработчиков" [ref=e152] [cursor=pointer]:
+            - /url: https://developers.google.com/search/
+          - link "Основы веб-дизайна" [ref=e153] [cursor=pointer]:
+            - /url: https://developers.google.com/web/fundamentals/
+          - link "Индексирование приложений" [ref=e154] [cursor=pointer]:
+            - /url: https://developers.google.com/app-indexing/?hl=ru
+        - generic [ref=e155]:
+          - generic [ref=e156]: Дополнительные продукты
+          - link "Google Аналитика" [ref=e157] [cursor=pointer]:
+            - /url: https://www.google.com/analytics/
+          - link "G Suite" [ref=e158] [cursor=pointer]:
+            - /url: https://gsuite.google.com?hl=ru
+      - generic [ref=e159]:
+        - link "Справка" [ref=e160] [cursor=pointer]:
+          - /url: https://support.google.com/webmasters/?hl=ru
+        - link "Google" [ref=e161] [cursor=pointer]:
+          - /url: https://www.google.com/?hl=ru
+        - link "Конфиденциальность" [ref=e162] [cursor=pointer]:
+          - /url: https://policies.google.com/privacy?hl=ru
+        - link "Условия использования" [ref=e163] [cursor=pointer]:
+          - /url: https://policies.google.com/terms?hl=ru

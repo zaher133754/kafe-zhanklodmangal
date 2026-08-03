@@ -1,0 +1,209 @@
+- generic [active] [ref=f7e1]:
+  - generic [ref=f7e2]:
+    - banner [ref=f7e4]:
+      - generic [ref=f7e5]:
+        - generic [ref=f7e6]:
+          - button "Main menu" [ref=f7e7] [cursor=pointer]
+          - link "Google Search Console" [ref=f7e12] [cursor=pointer]:
+            - /url: ./search-console?resource_id=http%3A%2F%2Fzhanklodmangal.ru%2F
+        - generic [ref=f7e14]:
+          - search [ref=f7e16]:
+            - generic [ref=f7e22]:
+              - textbox [disabled] [ref=f7e23]: Inspect any URL in 'http://zhanklodmangal.ru/'
+              - combobox "Inspect any URL in http://zhanklodmangal.ru/" [ref=f7e24]
+            - button "Search" [ref=f7e25] [cursor=pointer]
+          - generic [ref=f7e29]:
+            - generic [ref=f7e31]:
+              - button "Help" [ref=f7e33] [cursor=pointer]:
+                - generic [ref=f7e34]: 
+              - button "User settings" [ref=f7e38] [cursor=pointer]
+            - 'button "Unread messages: 1" [ref=f7e45] [cursor=pointer]':
+              - generic [ref=f7e46]: 
+        - generic [ref=f7e50]:
+          - button "Google apps" [ref=f7e54] [cursor=pointer]
+          - 'button "Google Account: Прибыльные Решения (zaharyan1997@gmail.com)" [ref=f7e60] [cursor=pointer]'
+    - dialog "navigational drawer" [ref=f7e66]:
+      - navigation "Primary" [ref=f7e69]:
+        - button "Search property" [ref=f7e73] [cursor=pointer]:
+          - img "favicon" [ref=f7e75]
+          - combobox "http://zhanklodmangal.ru/" [ref=f7e83]
+          - generic [ref=f7e84]: 
+        - generic [ref=f7e85]:
+          - generic [ref=f7e86]:
+            - generic [ref=f7e87]:
+              - link [ref=f7e89] [cursor=pointer]:
+                - /url: ./search-console?resource_id=http%3A%2F%2Fzhanklodmangal.ru%2F
+                - generic [ref=f7e90]: home
+              - link [ref=f7e96] [cursor=pointer]:
+                - /url: ./search-console/performance/insights?resource_id=http%3A%2F%2Fzhanklodmangal.ru%2F
+                - generic [ref=f7e97]: lightbulb_2
+              - link [ref=f7e103] [cursor=pointer]:
+                - /url: ./search-console/performance/search-analytics?resource_id=http%3A%2F%2Fzhanklodmangal.ru%2F
+                - generic [ref=f7e104]: trending_up
+              - button [ref=f7e110] [cursor=pointer]:
+                - generic [ref=f7e111]: search
+            - generic [ref=f7e118]:
+              - generic [ref=f7e120]:
+                - generic [ref=f7e121]: Indexing
+                - button "Indexing report section" [expanded] [ref=f7e125] [cursor=pointer]:
+                  - generic [ref=f7e126]: keyboard_arrow_up
+              - generic [ref=f7e131]:
+                - link [ref=f7e133] [cursor=pointer]:
+                  - /url: ./search-console/index?resource_id=http%3A%2F%2Fzhanklodmangal.ru%2F
+                  - generic [ref=f7e134]: file_copy
+                - link [ref=f7e140] [cursor=pointer]:
+                  - /url: ./search-console/sitemaps?resource_id=http%3A%2F%2Fzhanklodmangal.ru%2F
+                  - generic [ref=f7e141]: account_tree
+                - link [ref=f7e147] [cursor=pointer]:
+                  - /url: ./search-console/removals?resource_id=http%3A%2F%2Fzhanklodmangal.ru%2F
+                  - generic [ref=f7e148]: visibility_off
+            - generic [ref=f7e155]:
+              - generic [ref=f7e157]:
+                - generic [ref=f7e158]: Experience
+                - button "Experience report section" [expanded] [ref=f7e162] [cursor=pointer]:
+                  - generic [ref=f7e163]: keyboard_arrow_up
+              - link [ref=f7e170] [cursor=pointer]:
+                - /url: ./search-console/core-web-vitals?resource_id=http%3A%2F%2Fzhanklodmangal.ru%2F
+                - generic [ref=f7e171]: speed
+            - generic [ref=f7e180]:
+              - generic [ref=f7e181]: Security & Manual Actions
+              - button "Security & Manual Actions report section" [ref=f7e185] [cursor=pointer]:
+                - generic [ref=f7e186]: keyboard_arrow_down
+            - generic [ref=f7e188]:
+              - link "Links report" [ref=f7e190] [cursor=pointer]:
+                - /url: ./search-console/links?resource_id=http%3A%2F%2Fzhanklodmangal.ru%2F
+                - generic [ref=f7e191]: link_2
+                - generic [ref=f7e193]: Links
+              - link [ref=f7e197] [cursor=pointer]:
+                - /url: ./search-console/achievements?resource_id=http%3A%2F%2Fzhanklodmangal.ru%2F
+                - generic [ref=f7e198]: trophy
+              - link [ref=f7e204] [cursor=pointer]:
+                - /url: ./search-console/settings?resource_id=http%3A%2F%2Fzhanklodmangal.ru%2F
+                - generic [ref=f7e205]: settings
+          - generic [ref=f7e210]:
+            - generic [ref=f7e212]:
+              - button [ref=f7e214] [cursor=pointer]:
+                - generic [ref=f7e215]: feedback
+              - button [ref=f7e221] [cursor=pointer]:
+                - generic [ref=f7e222]: info
+            - generic [ref=f7e229]:
+              - link "Privacy" [ref=f7e230] [cursor=pointer]:
+                - /url: https://myaccount.google.com/privacypolicy?hl=en-GB
+              - link "Terms" [ref=f7e231] [cursor=pointer]:
+                - /url: https://myaccount.google.com/termsofservice?hl=en-GB
+    - generic [ref=f7e423]:
+      - generic [ref=f7e426]:
+        - navigation "Breadcrumbs" [ref=f7e428]:
+          - heading "Page indexing" [level=1] [ref=f7e431]
+        - button "EXPORT" [ref=f7e434] [cursor=pointer]:
+          - generic [ref=f7e437]:
+            - generic [ref=f7e438]: 
+            - generic [ref=f7e439]: EXPORT
+      - generic [ref=f7e440]:
+        - generic [ref=f7e442]:
+          - listbox [disabled] [ref=f7e445]:
+            - option "All known pages" [disabled] [selected] [ref=f7e446]
+          - generic [ref=f7e447]: "Last update: 24/07/2026"
+        - main [ref=f7e451]:
+          - generic [ref=f7e452]:
+            - generic [ref=f7e454]:
+              - generic [ref=f7e455]:
+                - generic [ref=f7e457]:
+                  - generic [ref=f7e458] [cursor=pointer]:
+                    - button "Not indexed 1 1 reason" [ref=f7e459]:
+                      - generic [ref=f7e463]:
+                        - generic "Not indexed" [ref=f7e464]: 
+                        - generic "1" [ref=f7e467]
+                        - generic [ref=f7e468]: 1 reason
+                    - button "null" [ref=f7e471]:
+                      - generic [ref=f7e472]: 
+                  - generic [ref=f7e473] [cursor=pointer]:
+                    - button "Indexed 0" [ref=f7e474]:
+                      - generic [ref=f7e478]:
+                        - generic "Indexed" [ref=f7e479]: 
+                        - generic "0" [ref=f7e482]
+                    - button "null" [ref=f7e485]:
+                      - generic [ref=f7e486]: 
+                - generic [ref=f7e487]:
+                  - checkbox "Impressions" [ref=f7e488] [cursor=pointer]
+                  - generic [ref=f7e491]: Impressions
+                - generic [ref=f7e492]:
+                  - generic [ref=f7e493]: Pages
+                  - img [ref=f7e497]:
+                    - generic [ref=f7e498]:
+                      - generic [ref=f7e499]:
+                        - generic [ref=f7e500]: 05/05/2026
+                        - generic [ref=f7e502]: 16/05/2026
+                        - generic [ref=f7e504]: 27/05/2026
+                        - generic [ref=f7e506]: 07/06/2026
+                        - generic [ref=f7e508]: 18/06/2026
+                        - generic [ref=f7e510]: 29/06/2026
+                        - generic [ref=f7e512]: 10/07/2026
+                        - generic [ref=f7e514]: 21/07/2026
+                      - generic [ref=f7e516]:
+                        - generic [ref=f7e517]: "3"
+                        - generic [ref=f7e519]: "2"
+                        - generic [ref=f7e521]: "1"
+                        - generic [ref=f7e523]: "0"
+              - link "View data about indexed pages" [ref=f7e764] [cursor=pointer]:
+                - /url: ./search-console/index/drilldown?resource_id=http%3A%2F%2Fzhanklodmangal.ru%2F&pages=ALL_URLS
+                - generic [ref=f7e767]:
+                  - generic [ref=f7e768]: check_circle
+                  - generic [ref=f7e770]: View data about indexed pages
+                  - generic [ref=f7e771]: 
+            - generic [ref=f7e775]:
+              - generic [ref=f7e777]:
+                - generic [ref=f7e780]:
+                  - generic [ref=f7e781]: info_filled
+                  - generic [ref=f7e782]:
+                    - generic [ref=f7e783]: Why pages aren’t indexed
+                    - generic [ref=f7e784]: Pages that aren’t indexed can’t be served on Google
+                - button "Filter table rows" [ref=f7e789] [cursor=pointer]:
+                  - generic [ref=f7e790]: 
+              - table [ref=f7e795]:
+                - rowgroup [ref=f7e796]:
+                  - row [ref=f7e797]:
+                    - columnheader "Reason" [ref=f7e798]
+                    - columnheader [ref=f7e804]:
+                      - generic [ref=f7e806]:
+                        - text: Source
+                        - button "null" [ref=f7e809] [cursor=pointer]:
+                          - generic [ref=f7e810]: 
+                    - columnheader "Validation" [ref=f7e814]
+                    - columnheader "Trend" [ref=f7e820]
+                    - columnheader "Pages" [ref=f7e823]
+                - rowgroup [ref=f7e829]:
+                  - row [ref=f7e830]:
+                    - cell "Page with redirect" [ref=f7e831]:
+                      - generic "Page with redirect" [ref=f7e833]
+                    - cell "Website" [ref=f7e834]
+                    - cell [ref=f7e837]:
+                      - generic [ref=f7e840]:
+                        - generic [ref=f7e841]: 
+                        - text: Not Started
+                    - cell [ref=f7e842]
+                    - cell "1" [ref=f7e847]
+                  - row [ref=f7e850]:
+                    - cell "Not found (404)" [ref=f7e851]:
+                      - generic "Not found (404)" [ref=f7e853]
+                    - cell "Website" [ref=f7e854]
+                    - cell "N/A" [ref=f7e857]
+                    - cell [ref=f7e861]
+                    - cell "0" [ref=f7e866]
+              - generic [ref=f7e871]:
+                - generic [ref=f7e873]:
+                  - generic [ref=f7e874]: "Rows per page:"
+                  - listbox "Number of rows per page" [ref=f7e875] [cursor=pointer]:
+                    - option "5"
+                    - option "10" [selected] [ref=f7e876]
+                    - option "25"
+                    - option "50"
+                    - option "100"
+                    - option "250"
+                    - option "500"
+                - generic [ref=f7e877]:
+                  - generic [ref=f7e878]: 1-2 of 2
+                  - generic [ref=f7e879]:
+                    - generic [ref=f7e880]: 
+                    - generic [ref=f7e882]: 
+  - generic [ref=f7e884]: Page indexing

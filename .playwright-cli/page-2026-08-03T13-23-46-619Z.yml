@@ -1,0 +1,172 @@
+- generic [ref=f7e2]:
+  - banner [ref=f7e4]:
+    - generic [ref=f7e5]:
+      - generic [ref=f7e6]:
+        - button [ref=f7e1281] [cursor=pointer]
+        - link [ref=f7e1282] [cursor=pointer]:
+          - /url: ./search-console?resource_id=https%3A%2F%2Fzhanklodmangal.ru%2F
+      - generic [ref=f7e14]:
+        - search [ref=f7e16]:
+          - generic [ref=f7e22]:
+            - textbox [disabled] [ref=f7e23]: Inspect any URL in 'https://zhanklodmangal.ru/'
+            - combobox [ref=f7e1283]
+          - button [ref=f7e1284] [cursor=pointer]
+        - generic [ref=f7e29]:
+          - generic [ref=f7e31]:
+            - button [ref=f7e1285] [cursor=pointer]:
+              - generic [ref=f7e34]: 
+            - button [ref=f7e1286] [cursor=pointer]
+          - button [ref=f7e1287] [cursor=pointer]:
+            - generic [ref=f7e47]:
+              - generic [ref=f7e48]: 
+              - generic [ref=f7e1184]: "1"
+      - generic [ref=f7e50]:
+        - button [ref=f7e1288] [cursor=pointer]
+        - button [ref=f7e1289] [cursor=pointer]
+  - dialog [ref=f7e1290]:
+    - navigation [ref=f7e1291]:
+      - button [ref=f7e1292] [cursor=pointer]:
+        - combobox [ref=f7e1294]: https://zhanklodmangal.ru/
+        - generic [ref=f7e1029]: 
+      - generic [ref=f7e1030]:
+        - generic [ref=f7e1031]:
+          - generic [ref=f7e1032]:
+            - link [ref=f7e1295] [cursor=pointer]:
+              - /url: ./search-console?resource_id=https%3A%2F%2Fzhanklodmangal.ru%2F
+              - generic [ref=f7e1035]: home
+              - generic [ref=f7e1037]: Overview
+            - link [ref=f7e1296] [cursor=pointer]:
+              - /url: ./search-console/performance/insights?resource_id=https%3A%2F%2Fzhanklodmangal.ru%2F
+              - generic [ref=f7e1042]: lightbulb_2
+              - generic [ref=f7e1044]: Insights
+            - link [ref=f7e1297] [cursor=pointer]:
+              - /url: ./search-console/performance/search-analytics?resource_id=https%3A%2F%2Fzhanklodmangal.ru%2F
+              - generic [ref=f7e1049]: trending_up
+              - generic [ref=f7e1051]: Performance
+            - button [ref=f7e1298] [cursor=pointer]:
+              - generic [ref=f7e1056]: search
+              - generic [ref=f7e1058]: URL inspection
+          - generic [ref=f7e1063]:
+            - generic [ref=f7e1065]:
+              - generic [ref=f7e1066]: Indexing
+              - button [expanded] [ref=f7e1299] [cursor=pointer]:
+                - generic [ref=f7e1071]: keyboard_arrow_up
+            - generic [ref=f7e1076]:
+              - link [ref=f7e1300] [cursor=pointer]:
+                - /url: ./search-console/index?resource_id=https%3A%2F%2Fzhanklodmangal.ru%2F
+                - generic [ref=f7e1079]: file_copy
+                - generic [ref=f7e1081]: Pages
+              - link [ref=f7e1301] [cursor=pointer]:
+                - /url: ./search-console/sitemaps?resource_id=https%3A%2F%2Fzhanklodmangal.ru%2F
+                - generic [ref=f7e1086]: account_tree
+                - generic [ref=f7e1088]: Sitemaps
+              - link [ref=f7e1302] [cursor=pointer]:
+                - /url: ./search-console/removals?resource_id=https%3A%2F%2Fzhanklodmangal.ru%2F
+                - generic [ref=f7e1093]: visibility_off
+                - generic [ref=f7e1095]: Removals
+          - generic [ref=f7e1100]:
+            - generic [ref=f7e1102]:
+              - generic [ref=f7e1103]: Experience
+              - button [expanded] [ref=f7e1303] [cursor=pointer]:
+                - generic [ref=f7e1108]: keyboard_arrow_up
+            - generic [ref=f7e1113]:
+              - link [ref=f7e1304] [cursor=pointer]:
+                - /url: ./search-console/core-web-vitals?resource_id=https%3A%2F%2Fzhanklodmangal.ru%2F
+                - generic [ref=f7e1116]: speed
+                - generic [ref=f7e1118]: Core web vitals
+              - link [ref=f7e1305] [cursor=pointer]:
+                - /url: ./search-console/https?resource_id=https%3A%2F%2Fzhanklodmangal.ru%2F
+                - generic [ref=f7e1123]: lock
+                - generic [ref=f7e1125]: HTTPS
+          - generic [ref=f7e1132]:
+            - generic [ref=f7e1133]: Security & Manual Actions
+            - button [ref=f7e1306] [cursor=pointer]:
+              - generic [ref=f7e1138]: keyboard_arrow_down
+          - generic [ref=f7e1140]:
+            - link [ref=f7e1307] [cursor=pointer]:
+              - /url: ./search-console/links?resource_id=https%3A%2F%2Fzhanklodmangal.ru%2F
+              - generic [ref=f7e1143]: link_2
+              - generic [ref=f7e1145]: Links
+            - link [ref=f7e1308] [cursor=pointer]:
+              - /url: ./search-console/achievements?resource_id=https%3A%2F%2Fzhanklodmangal.ru%2F
+              - generic [ref=f7e1150]: trophy
+              - generic [ref=f7e1152]: Achievements
+            - link [ref=f7e1309] [cursor=pointer]:
+              - /url: ./search-console/settings?resource_id=https%3A%2F%2Fzhanklodmangal.ru%2F
+              - generic [ref=f7e1157]: settings
+              - generic [ref=f7e1159]: Settings
+        - generic [ref=f7e1162]:
+          - generic [ref=f7e1164]:
+            - button [ref=f7e1310] [cursor=pointer]:
+              - generic [ref=f7e1167]: feedback
+              - generic [ref=f7e1169]: Submit feedback
+            - button [ref=f7e1311] [cursor=pointer]:
+              - generic [ref=f7e1174]: info
+              - generic [ref=f7e1176]: About Search Console
+          - generic [ref=f7e1181]:
+            - link [ref=f7e1312] [cursor=pointer]:
+              - /url: https://myaccount.google.com/privacypolicy?hl=en-GB
+              - text: Privacy
+            - link [ref=f7e1313] [cursor=pointer]:
+              - /url: https://myaccount.google.com/termsofservice?hl=en-GB
+              - text: Terms
+  - generic [ref=f7e1187]:
+    - navigation [ref=f7e1314]:
+      - heading [level=1] [ref=f7e1315]: Sitemaps
+    - main [ref=f7e1199]:
+      - generic [ref=f7e1202]:
+        - generic [ref=f7e1203]: Add a new sitemap
+        - generic [ref=f7e1204]:
+          - generic [ref=f7e1205]:
+            - generic [ref=f7e1206]: https://zhanklodmangal.ru/
+            - textbox [ref=f7e1316]: sitemap.xml
+          - button [active] [ref=f7e1317] [cursor=pointer]:
+            - generic [ref=f7e1218]: Submit
+      - generic [ref=f7e1321]:
+        - generic [ref=f7e1322]:
+          - heading [level=1] [ref=f7e1323]:
+            - generic [ref=f7e1324]: Submitted sitemaps
+          - button [ref=f7e1327] [cursor=pointer]:
+            - generic [ref=f7e1328]: 
+        - table [ref=f7e1332]:
+          - rowgroup [ref=f7e1333]:
+            - row [ref=f7e1334]:
+              - columnheader [ref=f7e1335]: Sitemap
+              - columnheader [ref=f7e1339]: Type
+              - columnheader [ref=f7e1343]: Submitted
+              - columnheader [ref=f7e1347]: Last read
+              - columnheader [ref=f7e1351]: Status
+              - columnheader [ref=f7e1355]: Discovered pages
+              - columnheader [ref=f7e1359]: Discovered videos
+              - columnheader [ref=f7e1363]
+          - rowgroup [ref=f7e1364]:
+            - row [ref=f7e1365] [cursor=pointer]:
+              - cell [ref=f7e1366]: /sitemap.xml
+              - cell [ref=f7e1367]: Unknown
+              - cell [ref=f7e1368]: 3 Aug 2026
+              - cell [ref=f7e1369]
+              - cell [ref=f7e1370]:
+                - generic [ref=f7e1371]: Couldn't fetch
+              - cell [ref=f7e1372]: "0"
+              - cell [ref=f7e1373]: "0"
+              - cell [ref=f7e1374]:
+                - button [ref=f7e1376]:
+                  - generic [ref=f7e1377]: 
+        - generic [ref=f7e1382]:
+          - generic [ref=f7e1384]:
+            - generic [ref=f7e1385]: "Rows per page:"
+            - listbox [ref=f7e1386] [cursor=pointer]:
+              - text: "5"
+              - option [selected] [ref=f7e1387]: "10"
+              - text: 25 50 100 250 500
+          - generic [ref=f7e1388]:
+            - generic [ref=f7e1389]: 1-1 of 1
+            - generic [ref=f7e1390]:
+              - generic [ref=f7e1391]: 
+              - generic [ref=f7e1393]: 
+  - dialog "Sitemap submitted successfully" [ref=f7e1396]:
+    - generic [ref=f7e1397]:
+      - heading "Sitemap submitted successfully" [level=2] [ref=f7e1398]:
+        - generic [ref=f7e1399]: check_circle
+      - generic [ref=f7e1401]: Google will periodically process it and look for changes. You will be notified if anything goes wrong with it in the future.
+    - button "Dismiss" [ref=f7e1404] [cursor=pointer]
