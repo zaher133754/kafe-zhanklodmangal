@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState, type FormEvent } from "react";
-import { Send } from "lucide-react";
+import { Check, Send, TicketPercent } from "lucide-react";
 import { useCart } from "@/components/cart/CartProvider";
 import { Button } from "@/components/ui/button";
 import {
@@ -16,6 +16,13 @@ import {
   DELIVERY_COST,
   FREE_DELIVERY_THRESHOLD
 } from "@/lib/delivery";
+import {
+  calculatePromoDiscount,
+  FLYER_PROMO_CODE,
+  FLYER_PROMO_DISCOUNT_PERCENT,
+  isPromoCodeValid,
+  normalizePromoCode
+} from "@/lib/promo-code";
 import { trackOrderSuccess } from "@/lib/yandex-metrika";
 
 type CheckoutFormProps = {
@@ -84,8 +91,15 @@ export function CheckoutForm({ onSubmitted }: CheckoutFormProps) {
     "idle"
   );
   const [message, setMessage] = useState("");
+  const [promoInput, setPromoInput] = useState("");
+  const [appliedPromoCode, setAppliedPromoCode] = useState("");
+  const [promoStatus, setPromoStatus] = useState<
+    "idle" | "success" | "error"
+  >("idle");
+  const discountAmount = calculatePromoDiscount(totalPrice, appliedPromoCode);
+  const discountedTotal = totalPrice - discountAmount;
   const deliveryCost = calculateDeliveryCost(fulfillmentType, totalPrice);
-  const grandTotal = totalPrice + deliveryCost;
+  const grandTotal = discountedTotal + deliveryCost;
   const fulfillmentLabel =
     fulfillmentType === "delivery"
       ? "Доставка"
@@ -103,6 +117,22 @@ export function CheckoutForm({ onSubmitted }: CheckoutFormProps) {
     [lines]
   );
 
+  function handleApplyPromo() {
+    const normalizedPromoCode = normalizePromoCode(promoInput);
+
+    if (!isPromoCodeValid(normalizedPromoCode)) {
+      setAppliedPromoCode("");
+      setPromoStatus("error");
+      return;
+    }
+
+    setPromoInput(normalizedPromoCode);
+    setAppliedPromoCode(normalizedPromoCode);
+    setPromoStatus("success");
+    setStatus("idle");
+    setMessage("");
+  }
+
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const form = event.currentTarget;
@@ -114,6 +144,12 @@ export function CheckoutForm({ onSubmitted }: CheckoutFormProps) {
     const visitTime = String(formData.get("visitTime") ?? "").trim();
     const guestCount = Number(formData.get("guestCount"));
     const comment = String(formData.get("comment") ?? "").trim();
+
+    if (promoInput.trim() && !appliedPromoCode) {
+      setStatus("error");
+      setMessage("Примените промокод или очистите поле перед оформлением заказа.");
+      return;
+    }
 
     if (fulfillmentType === "delivery" && !address) {
       setStatus("error");
@@ -185,6 +221,7 @@ export function CheckoutForm({ onSubmitted }: CheckoutFormProps) {
           visitTime: fulfillmentType === "cafe" ? visitTime : "",
           guestCount: fulfillmentType === "cafe" ? guestCount : 0,
           comment,
+          promoCode: appliedPromoCode,
           items: orderItems,
           total: totalPrice
         })
@@ -192,22 +229,30 @@ export function CheckoutForm({ onSubmitted }: CheckoutFormProps) {
       const result = (await response.json()) as {
         success?: boolean;
         orderNumber?: string;
+        grandTotal?: number;
+        discountAmount?: number;
+        promoCode?: string | null;
         error?: string;
       };
+      const serverGrandTotal = result.grandTotal;
 
       if (
         !response.ok ||
         !result.success ||
         !result.orderNumber ||
-        !/^\d{4}$/.test(result.orderNumber)
+        !/^\d{4}$/.test(result.orderNumber) ||
+        typeof serverGrandTotal !== "number" ||
+        !Number.isFinite(serverGrandTotal)
       ) {
         throw new Error(result.error || "Не удалось отправить заказ.");
       }
 
       trackOrderSuccess({
         orderId: `web-${result.orderNumber}-${Date.now()}`,
-        revenue: grandTotal,
+        revenue: serverGrandTotal,
         fulfillmentType,
+        promoCode: result.promoCode ?? undefined,
+        discountAmount: result.discountAmount,
         products: lines.map((line) => ({
           id: line.id,
           name: line.name,
@@ -227,6 +272,9 @@ export function CheckoutForm({ onSubmitted }: CheckoutFormProps) {
       });
       form.reset();
       setFulfillmentType("delivery");
+      setPromoInput("");
+      setAppliedPromoCode("");
+      setPromoStatus("idle");
     } catch {
       setStatus("error");
       setMessage(
@@ -393,11 +441,113 @@ export function CheckoutForm({ onSubmitted }: CheckoutFormProps) {
         />
       </label>
 
+      <div className="grid gap-2">
+        <label
+          htmlFor="promo-code"
+          className="flex items-center gap-2 text-sm font-bold text-cream"
+        >
+          <TicketPercent className="h-4 w-4 text-gold-soft" aria-hidden />
+          Промокод
+        </label>
+        <div className="grid grid-cols-[minmax(0,1fr)_auto] gap-2">
+          <input
+            id="promo-code"
+            value={promoInput}
+            onChange={(event) => {
+              const nextValue = event.currentTarget.value;
+              setPromoInput(nextValue);
+
+              if (
+                appliedPromoCode &&
+                normalizePromoCode(nextValue) !== appliedPromoCode
+              ) {
+                setAppliedPromoCode("");
+                setPromoStatus("idle");
+                return;
+              }
+
+              setPromoStatus(appliedPromoCode ? "success" : "idle");
+            }}
+            onKeyDown={(event) => {
+              if (event.key === "Enter") {
+                event.preventDefault();
+                handleApplyPromo();
+              }
+            }}
+            onBlur={() => {
+              if (promoInput.trim() && !appliedPromoCode) {
+                setPromoStatus(
+                  isPromoCodeValid(promoInput) ? "idle" : "error"
+                );
+              }
+            }}
+            aria-invalid={promoStatus === "error"}
+            aria-describedby={
+              promoStatus === "idle" ? undefined : "promo-code-message"
+            }
+            autoComplete="off"
+            autoCapitalize="characters"
+            spellCheck={false}
+            maxLength={40}
+            className="focus-ring min-h-12 min-w-0 rounded-xl border border-gold/18 bg-charcoal px-4 text-base font-bold uppercase text-cream outline-none placeholder:normal-case placeholder:font-medium placeholder:text-smoke aria-invalid:border-red-400/70"
+            placeholder="Введите код с листовки"
+          />
+          <Button
+            type="button"
+            onClick={handleApplyPromo}
+            disabled={!promoInput.trim() || status === "sending"}
+            className={
+              promoStatus === "success"
+                ? "min-h-12 rounded-xl border border-gold/35 bg-gold/12 px-4 font-extrabold text-gold-soft hover:bg-gold/18"
+                : "min-h-12 rounded-xl border border-gold/22 bg-charcoal px-4 font-extrabold text-cream hover:border-gold/40 hover:bg-coal"
+            }
+          >
+            {promoStatus === "success" ? (
+              <Check className="h-4 w-4" aria-hidden />
+            ) : null}
+            {promoStatus === "success" ? "Применён" : "Применить"}
+          </Button>
+        </div>
+        {promoStatus !== "idle" ? (
+          <p
+            id="promo-code-message"
+            className={
+              promoStatus === "success"
+                ? "text-xs font-bold leading-relaxed text-gold-soft"
+                : "text-xs font-medium leading-relaxed text-red-300"
+            }
+            role={promoStatus === "error" ? "alert" : "status"}
+          >
+            {promoStatus === "success"
+              ? `Промокод ${FLYER_PROMO_CODE} применён — скидка ${FLYER_PROMO_DISCOUNT_PERCENT}%.`
+              : "Промокод не найден. Проверьте написание и попробуйте снова."}
+          </p>
+        ) : null}
+      </div>
+
       <div className="grid gap-2 rounded-xl border border-gold/18 bg-coal px-4 py-3">
         <div className="flex items-center justify-between gap-4 text-sm">
-          <span className="font-medium text-smoke">Сумма заказа</span>
+          <span className="font-medium text-smoke">Сумма блюд</span>
           <span className="font-bold text-cream">{formatPrice(totalPrice)} ₽</span>
         </div>
+        {discountAmount > 0 ? (
+          <>
+            <div className="flex items-center justify-between gap-4 text-sm">
+              <span className="font-bold text-gold-soft">
+                Промокод {appliedPromoCode} · {FLYER_PROMO_DISCOUNT_PERCENT}%
+              </span>
+              <span className="font-extrabold text-gold-soft">
+                −{formatPrice(discountAmount)} ₽
+              </span>
+            </div>
+            <div className="flex items-center justify-between gap-4 text-sm">
+              <span className="font-medium text-smoke">После скидки</span>
+              <span className="font-bold text-cream">
+                {formatPrice(discountedTotal)} ₽
+              </span>
+            </div>
+          </>
+        ) : null}
         <div className="flex items-center justify-between gap-4 text-sm">
           <span className="font-medium text-smoke">{fulfillmentLabel}</span>
           <span className="font-bold text-cream">

@@ -13,6 +13,9 @@ export async function POST(request: Request) {
     return NextResponse.json({
       success: true,
       orderNumber,
+      grandTotal: order.grandTotal,
+      discountAmount: order.discountAmount,
+      promoCode: order.promoCode ?? null,
       channels: delivery.channels
     });
   } catch (error) {

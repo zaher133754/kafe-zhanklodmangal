@@ -8,6 +8,12 @@ import {
   isFutureSamaraVisit
 } from "@/lib/cafe-visit";
 import { calculateDeliveryCost } from "@/lib/delivery";
+import {
+  calculatePromoDiscount,
+  FLYER_PROMO_DISCOUNT_PERCENT,
+  isPromoCodeValid,
+  normalizePromoCode
+} from "@/lib/promo-code";
 import { deliverOrderToTelegram } from "@/lib/telegram-notifications";
 
 export type OrderItem = {
@@ -27,6 +33,7 @@ export type CheckoutOrderPayload = {
   visitTime?: string;
   guestCount?: number;
   comment?: string;
+  promoCode?: string;
   items: OrderItem[];
   total?: number;
 };
@@ -41,6 +48,9 @@ export type ValidatedOrder = {
   visitTime?: string;
   guestCount?: number;
   comment?: string;
+  promoCode?: string;
+  discountAmount: number;
+  discountedTotal: number;
   items: Array<OrderItem & { total: number }>;
   total: number;
   grandTotal: number;
@@ -106,7 +116,16 @@ export function validateOrderPayload(body: unknown): ValidatedOrder {
   const visitTime = clean(source.visitTime, 5);
   const guestCount = cleanNumber(source.guestCount);
   const comment = clean(source.comment, 800);
+  const rawPromoCode = clean(source.promoCode, 40);
   const rawItems = Array.isArray(source.items) ? source.items : [];
+
+  if (rawPromoCode && !isPromoCodeValid(rawPromoCode)) {
+    throw new Error("Промокод не найден. Проверьте написание и попробуйте снова.");
+  }
+
+  const promoCode = rawPromoCode
+    ? normalizePromoCode(rawPromoCode)
+    : undefined;
 
   if (!(["delivery", "pickup", "cafe"] as const).includes(
     rawDeliveryType as FulfillmentType
@@ -171,8 +190,10 @@ export function validateOrderPayload(body: unknown): ValidatedOrder {
   }
 
   const total = items.reduce((sum, item) => sum + item.total, 0);
+  const discountAmount = calculatePromoDiscount(total, promoCode);
+  const discountedTotal = total - discountAmount;
   const deliveryCost = calculateDeliveryCost(deliveryType, total);
-  const grandTotal = total + deliveryCost;
+  const grandTotal = discountedTotal + deliveryCost;
 
   return {
     customerName,
@@ -184,6 +205,9 @@ export function validateOrderPayload(body: unknown): ValidatedOrder {
     visitTime: deliveryType === "cafe" ? visitTime : undefined,
     guestCount: deliveryType === "cafe" ? guestCount : undefined,
     comment,
+    promoCode,
+    discountAmount,
+    discountedTotal,
     items,
     total,
     grandTotal
@@ -219,6 +243,13 @@ export function formatOrderEmail(order: ValidatedOrder, orderNumber: string) {
     ),
     "",
     `Сумма блюд: ${money(order.total)} ₽`,
+    ...(order.promoCode
+      ? [
+          `Промокод: ${order.promoCode} (скидка ${FLYER_PROMO_DISCOUNT_PERCENT}%)`,
+          `Скидка: −${money(order.discountAmount)} ₽`,
+          `Сумма после скидки: ${money(order.discountedTotal)} ₽`
+        ]
+      : []),
     ...(order.deliveryType === "delivery"
       ? [
           `Стоимость доставки: ${money(order.deliveryCost)} ₽${order.deliveryCost === 0 ? " (бесплатно)" : ""}`
@@ -273,10 +304,11 @@ async function deliverOrderToEmail(
       transporter.sendMail({
         from,
         to,
-        subject:
+        subject: `${
           order.deliveryType === "cafe"
             ? `Заказ в кафе ко времени №${orderNumber} — подтвердить`
-            : `Новый заказ №${orderNumber} с сайта Жан Клод Мангал`,
+            : `Новый заказ №${orderNumber} с сайта Жан Клод Мангал`
+        }${order.promoCode ? ` · промокод ${order.promoCode}` : ""}`,
         text: formatOrderEmail(order, orderNumber)
       }),
       new Promise<never>((_, reject) => {

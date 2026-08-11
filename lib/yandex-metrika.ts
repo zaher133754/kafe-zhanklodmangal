@@ -23,6 +23,8 @@ type OrderSuccess = {
   orderId: string;
   revenue: number;
   fulfillmentType: "delivery" | "pickup" | "cafe";
+  promoCode?: string;
+  discountAmount?: number;
   products: MetrikaProduct[];
 };
 
@@ -134,6 +136,8 @@ export function trackOrderSuccess({
   orderId,
   revenue,
   fulfillmentType,
+  promoCode,
+  discountAmount,
   products
 }: OrderSuccess) {
   const itemCount = products.reduce(
@@ -145,6 +149,8 @@ export function trackOrderSuccess({
     order_price: revenue,
     item_count: itemCount,
     fulfillment_type: fulfillmentType,
+    ...(promoCode ? { promo_code: promoCode } : {}),
+    ...(discountAmount ? { discount_amount: discountAmount } : {}),
     currency: CURRENCY
   });
 
@@ -152,7 +158,8 @@ export function trackOrderSuccess({
     purchase: {
       actionField: {
         id: orderId,
-        revenue
+        revenue,
+        ...(promoCode ? { coupon: promoCode } : {})
       },
       products: products.map(toEcommerceProduct)
     }
