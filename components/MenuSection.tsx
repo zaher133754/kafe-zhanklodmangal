@@ -12,14 +12,11 @@ export function MenuSection() {
           <div className="mx-auto max-w-[820px]">
             <h2
               className="section-title"
-              data-reveal
             >
               Попробуйте всё разнообразие «Жан-Клод Мангал»!
             </h2>
             <p
               className="section-copy mt-6 max-w-[720px] sm:mt-10"
-              data-reveal
-              data-reveal-delay="90"
             >
               Наше меню — это коллекция ваших любимых блюд в безупречном
               исполнении. Хочется сочной свиной шеи? Пожалуйста. Предпочитаете

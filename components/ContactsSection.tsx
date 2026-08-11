@@ -11,7 +11,6 @@ export function ContactsSection() {
         <div className="premium-panel mx-auto max-w-[1080px] px-5 py-12 sm:px-10 sm:py-14 md:px-14 md:py-16">
           <h2
             className="text-balance text-[clamp(30px,4vw,52px)] font-extrabold leading-[1.13] tracking-[-0.025em] text-cream"
-            data-reveal
           >
             Контакты
             <br />
@@ -39,8 +38,6 @@ export function ContactsSection() {
 
           <div
             className="mx-auto mt-10 max-w-[900px] rounded-2xl border border-gold/15 bg-charcoal/45 px-5 py-6 text-[15px] font-normal leading-[1.65] text-cream/78 sm:px-7 md:text-[19px]"
-            data-reveal
-            data-reveal-delay="90"
           >
             <strong className="font-bold text-gold-soft">Как мы доставляем</strong>
             <br />
@@ -54,8 +51,6 @@ export function ContactsSection() {
             className="mt-8 flex justify-center gap-4"
             role="group"
             aria-label="Социальные сети"
-            data-reveal
-            data-reveal-delay="160"
           >
             <a
               className="focus-ring relative h-10 w-10 overflow-hidden rounded-full ring-1 ring-gold/20 shadow-[0_8px_24px_rgba(0,0,0,0.28)] transition-[transform,box-shadow] hover:scale-105 hover:shadow-[0_12px_30px_rgba(255,85,0,0.16)]"

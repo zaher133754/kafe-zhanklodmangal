@@ -21,15 +21,13 @@ export function AboutSection() {
     <section id="onas" className="section-surface section-pad-lg cv-auto bg-coal">
       <div className="container-tilda text-center">
         <div className="mx-auto max-w-[860px]">
-          <h2 className="section-title" data-reveal>
+          <h2 className="section-title">
             Вкус, который вы искали.
             <br />
             Здесь мясо готовят так, как вы ещё не пробовали.
           </h2>
           <p
             className="section-copy mx-auto mt-10 max-w-[940px] md:mt-12"
-            data-reveal
-            data-reveal-delay="90"
           >
             Мы готовим по традиционным армянским рецептам, передавая настоящий
             вкус мяса на углях — сочного, ароматного, с идеальной прожаркой.
@@ -43,11 +41,9 @@ export function AboutSection() {
         </div>
 
         <div className="mt-16 grid grid-cols-2 justify-items-center gap-3 sm:gap-5 md:mt-24 md:grid-cols-6 md:gap-8 xl:relative xl:left-1/2 xl:w-[min(calc(100vw-40px),1854px)] xl:-translate-x-1/2 xl:grid-cols-5 xl:gap-4">
-          {aboutImages.map((image, index) => (
+          {aboutImages.map((image) => (
               <div
                 className="media-card group relative aspect-square w-full max-w-[300px] overflow-hidden max-md:last:col-span-2 md:col-span-2 md:max-w-[360px] md:[&:nth-child(4)]:col-start-2 xl:col-span-1 xl:max-w-[358px] xl:[&:nth-child(4)]:col-start-auto"
-                data-reveal
-                data-reveal-delay={Math.min(index * 55, 160)}
                 key={image.src.src}
               >
                 <Image

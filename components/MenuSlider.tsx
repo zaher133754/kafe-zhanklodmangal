@@ -63,8 +63,6 @@ export function MenuSlider() {
   return (
     <div
       className="premium-panel mx-auto mt-14 max-w-[720px] p-5 sm:mt-18 sm:p-8 md:mt-20 md:p-10"
-      data-reveal="scale"
-      data-reveal-delay="140"
     >
       <div className="grid grid-cols-[44px_minmax(0,360px)_44px] items-center justify-center gap-3 sm:grid-cols-[48px_minmax(0,360px)_48px] sm:gap-7">
         <button

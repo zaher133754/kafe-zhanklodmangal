@@ -409,12 +409,6 @@ section[id] {
     scroll-behavior: auto !important;
     transition-duration: 1ms !important;
   }
-
-  [data-reveal] {
-    opacity: 1;
-    transform: none;
-    filter: none;
-  }
 }
 
 @theme inline {

@@ -71,7 +71,7 @@ export function TrustSection() {
         <BrandDivider />
 
         <div className="mt-12 grid gap-8 lg:mt-16 lg:grid-cols-2 lg:gap-12">
-          <div className="flex min-w-0 flex-col" data-reveal>
+          <div className="flex min-w-0 flex-col">
             <h2
               id="reviews-title"
               className="max-w-[720px] text-balance text-[clamp(2.25rem,4.6vw,4.5rem)] font-extrabold leading-[1.02] tracking-[-0.035em] text-cream"
@@ -132,8 +132,6 @@ export function TrustSection() {
 
           <div
             className="flex min-w-0 flex-col gap-5"
-            data-reveal
-            data-reveal-delay="100"
           >
             <div className="relative min-h-[360px] overflow-hidden rounded-2xl border border-ember/45 bg-coal sm:min-h-[430px]">
               <iframe

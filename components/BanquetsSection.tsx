@@ -16,7 +16,6 @@ export function BanquetsSection() {
       <div className="container-tilda grid items-center gap-14 md:grid-cols-2 md:gap-16 lg:gap-20">
         <div
           className="relative mx-auto w-full max-w-[560px]"
-          data-reveal="scale"
         >
           <div className="flex">
             <div className="w-[60%] pr-2.5">
@@ -72,8 +71,6 @@ export function BanquetsSection() {
 
         <div
           className="premium-panel p-7 text-left sm:p-9 md:p-10"
-          data-reveal
-          data-reveal-delay="100"
         >
           <h2 className="section-title uppercase">
             Банкеты и торжества
