@@ -16,6 +16,7 @@ import {
   DELIVERY_COST,
   FREE_DELIVERY_THRESHOLD
 } from "@/lib/delivery";
+import { trackOrderSuccess } from "@/lib/yandex-metrika";
 
 type CheckoutFormProps = {
   onSubmitted: (order: {
@@ -203,6 +204,18 @@ export function CheckoutForm({ onSubmitted }: CheckoutFormProps) {
         throw new Error(result.error || "Не удалось отправить заказ.");
       }
 
+      trackOrderSuccess({
+        orderId: `web-${result.orderNumber}-${Date.now()}`,
+        revenue: grandTotal,
+        fulfillmentType,
+        products: lines.map((line) => ({
+          id: line.id,
+          name: line.name,
+          price: line.price,
+          quantity: line.quantity,
+          category: line.category
+        }))
+      });
       clearCart();
       setStatus("sent");
       setMessage(

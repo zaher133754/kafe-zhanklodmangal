@@ -17,6 +17,7 @@ function getInitializationScript(counterId: number) {
 
   return `
     window.dataLayer = window.dataLayer || [];
+    window.__yandexMetrikaCounterId = ${counterId};
     (function(m,e,t,r,i,k,a){
       m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
       m[i].l=1*new Date();

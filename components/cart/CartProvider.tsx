@@ -11,9 +11,14 @@ import {
   type ReactNode
 } from "react";
 import type { MenuItem } from "@/data/menu";
+import {
+  trackProductAdded,
+  trackProductRemoved
+} from "@/lib/yandex-metrika";
 
 export type CartLine = {
   id: string;
+  category?: string;
   name: string;
   price: number;
   weight: string;
@@ -69,6 +74,7 @@ function cartReducer(state: CartState, action: CartAction): CartState {
             ...state.lines,
             {
               id: action.item.id,
+              category: action.item.category,
               name: action.item.name,
               price: action.item.price,
               weight: action.item.weight,
@@ -166,6 +172,50 @@ export function CartProvider({ children }: { children: ReactNode }) {
     [state.lines]
   );
 
+  const addItem = useCallback((item: MenuItem) => {
+    trackProductAdded({
+      id: item.id,
+      name: item.name,
+      price: item.price,
+      quantity: 1,
+      category: item.category
+    });
+    dispatch({ type: "add", item });
+  }, []);
+
+  const incrementItem = useCallback(
+    (id: string) => {
+      const line = state.lines.find((candidate) => candidate.id === id);
+      if (line) {
+        trackProductAdded({ ...line, quantity: 1 });
+      }
+      dispatch({ type: "increment", id });
+    },
+    [state.lines]
+  );
+
+  const decrementItem = useCallback(
+    (id: string) => {
+      const line = state.lines.find((candidate) => candidate.id === id);
+      if (line) {
+        trackProductRemoved({ ...line, quantity: 1 });
+      }
+      dispatch({ type: "decrement", id });
+    },
+    [state.lines]
+  );
+
+  const removeItem = useCallback(
+    (id: string) => {
+      const line = state.lines.find((candidate) => candidate.id === id);
+      if (line) {
+        trackProductRemoved(line);
+      }
+      dispatch({ type: "remove", id });
+    },
+    [state.lines]
+  );
+
   const value = useMemo<CartContextValue>(
     () => ({
       lines: state.lines,
@@ -176,14 +226,25 @@ export function CartProvider({ children }: { children: ReactNode }) {
       openCart: () => setIsOpen(true),
       closeCart: () => setIsOpen(false),
       setCartOpen: setIsOpen,
-      addItem: (item) => dispatch({ type: "add", item }),
-      incrementItem: (id) => dispatch({ type: "increment", id }),
-      decrementItem: (id) => dispatch({ type: "decrement", id }),
-      removeItem: (id) => dispatch({ type: "remove", id }),
+      addItem,
+      incrementItem,
+      decrementItem,
+      removeItem,
       clearCart: () => dispatch({ type: "clear" }),
       getQuantity
     }),
-    [getQuantity, isOpen, state.lastAddedAt, state.lines, totalItems, totalPrice]
+    [
+      addItem,
+      decrementItem,
+      getQuantity,
+      incrementItem,
+      isOpen,
+      removeItem,
+      state.lastAddedAt,
+      state.lines,
+      totalItems,
+      totalPrice
+    ]
   );
 
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;

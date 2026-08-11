@@ -22,6 +22,7 @@ import {
   SheetHeader,
   SheetTitle
 } from "@/components/ui/sheet";
+import { trackCheckoutStarted } from "@/lib/yandex-metrika";
 
 const CheckoutForm = dynamic(
   () =>
@@ -319,7 +320,10 @@ export function CartSheet() {
             </div>
             <Button
               type="button"
-              onClick={() => setStep("checkout")}
+              onClick={() => {
+                trackCheckoutStarted(totalPrice, totalItems);
+                setStep("checkout");
+              }}
               className="min-h-12 rounded-xl border border-ember/35 bg-ember px-5 text-base font-extrabold text-white hover:bg-flame"
             >
               К оформлению
