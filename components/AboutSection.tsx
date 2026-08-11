@@ -22,7 +22,7 @@ export function AboutSection() {
       <div className="container-tilda text-center">
         <div className="mx-auto max-w-[860px]">
           <h2 className="section-title">
-            Вкус, который вы искали.
+            Шашлык, который вы искали.
             <br />
             Здесь мясо готовят так, как вы ещё не пробовали.
           </h2>
