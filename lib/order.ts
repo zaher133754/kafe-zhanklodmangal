@@ -4,8 +4,9 @@ import {
   CAFE_CLOSE_TIME,
   CAFE_OPEN_TIME,
   getTodayInSamara,
+  hasCafePreparationTime,
   isCafeVisitTime,
-  isFutureSamaraVisit
+  MIN_CAFE_PREPARATION_MINUTES
 } from "@/lib/cafe-visit";
 import { calculateDeliveryCost } from "@/lib/delivery";
 import {
@@ -166,8 +167,10 @@ export function validateOrderPayload(body: unknown): ValidatedOrder {
       throw new Error("Укажите количество гостей от 1 до 100.");
     }
 
-    if (!isFutureSamaraVisit(visitDate, visitTime)) {
-      throw new Error("Выберите время позже текущего.");
+    if (!hasCafePreparationTime(visitDate, visitTime)) {
+      throw new Error(
+        `Выберите время минимум через ${MIN_CAFE_PREPARATION_MINUTES} минут после оформления заказа.`
+      );
     }
   }
 

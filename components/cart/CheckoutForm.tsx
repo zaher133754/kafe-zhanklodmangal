@@ -7,9 +7,11 @@ import { Button } from "@/components/ui/button";
 import {
   CAFE_CLOSE_TIME,
   CAFE_OPEN_TIME,
+  getEarliestCafeVisitTime,
   getTodayInSamara,
+  hasCafePreparationTime,
   isCafeVisitTime,
-  isFutureSamaraVisit
+  MIN_CAFE_PREPARATION_MINUTES
 } from "@/lib/cafe-visit";
 import {
   calculateDeliveryCost,
@@ -87,6 +89,9 @@ export function CheckoutForm({ onSubmitted }: CheckoutFormProps) {
   const [fulfillmentType, setFulfillmentType] =
     useState<FulfillmentType>("delivery");
   const [todayInSamara] = useState(getTodayInSamara);
+  const [earliestCafeVisitTime, setEarliestCafeVisitTime] = useState(
+    getEarliestCafeVisitTime
+  );
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">(
     "idle"
   );
@@ -144,6 +149,11 @@ export function CheckoutForm({ onSubmitted }: CheckoutFormProps) {
     const visitTime = String(formData.get("visitTime") ?? "").trim();
     const guestCount = Number(formData.get("guestCount"));
     const comment = String(formData.get("comment") ?? "").trim();
+    const currentEarliestCafeVisitTime = getEarliestCafeVisitTime();
+
+    if (fulfillmentType === "cafe") {
+      setEarliestCafeVisitTime(currentEarliestCafeVisitTime);
+    }
 
     if (promoInput.trim() && !appliedPromoCode) {
       setStatus("error");
@@ -159,7 +169,11 @@ export function CheckoutForm({ onSubmitted }: CheckoutFormProps) {
 
     if (fulfillmentType === "cafe" && !visitTime) {
       setStatus("error");
-      setMessage("Укажите время визита в кафе.");
+      setMessage(
+        currentEarliestCafeVisitTime
+          ? "Укажите время визита в кафе."
+          : `Сегодня уже нет доступного времени: на приготовление нужно минимум ${MIN_CAFE_PREPARATION_MINUTES} минут.`
+      );
       return;
     }
 
@@ -182,10 +196,12 @@ export function CheckoutForm({ onSubmitted }: CheckoutFormProps) {
 
     if (
       fulfillmentType === "cafe" &&
-      !isFutureSamaraVisit(visitDate, visitTime)
+      !hasCafePreparationTime(visitDate, visitTime)
     ) {
       setStatus("error");
-      setMessage("Выберите время позже текущего.");
+      setMessage(
+        `Выберите время минимум через ${MIN_CAFE_PREPARATION_MINUTES} минут после оформления заказа.`
+      );
       return;
     }
 
@@ -332,6 +348,7 @@ export function CheckoutForm({ onSubmitted }: CheckoutFormProps) {
               checked={fulfillmentType === "cafe"}
               onChange={() => {
                 setFulfillmentType("cafe");
+                setEarliestCafeVisitTime(getEarliestCafeVisitTime());
                 setStatus("idle");
                 setMessage("");
               }}
@@ -362,8 +379,18 @@ export function CheckoutForm({ onSubmitted }: CheckoutFormProps) {
           </legend>
           <p className="text-xs font-medium leading-relaxed text-smoke">
             Заказ можно оформить только на сегодня, с {CAFE_OPEN_TIME} до{" "}
-            {CAFE_CLOSE_TIME}. Сотрудник кафе подтвердит его по телефону.
+            {CAFE_CLOSE_TIME}. На приготовление нужно минимум{" "}
+            {MIN_CAFE_PREPARATION_MINUTES} минут. Сотрудник кафе подтвердит его
+            по телефону.
           </p>
+          {!earliestCafeVisitTime ? (
+            <p
+              className="text-xs font-medium leading-relaxed text-red-300"
+              role="status"
+            >
+              Сегодня уже нет доступного времени для заказа в кафе.
+            </p>
+          ) : null}
           <div className="grid gap-3 sm:grid-cols-2">
             <div className="grid min-w-0 gap-2 text-sm font-bold text-cream">
               Дата
@@ -376,9 +403,13 @@ export function CheckoutForm({ onSubmitted }: CheckoutFormProps) {
               <input
                 type="time"
                 name="visitTime"
-                min={CAFE_OPEN_TIME}
+                min={earliestCafeVisitTime ?? CAFE_OPEN_TIME}
                 max={CAFE_CLOSE_TIME}
                 required
+                disabled={!earliestCafeVisitTime}
+                onFocus={() =>
+                  setEarliestCafeVisitTime(getEarliestCafeVisitTime())
+                }
                 className="focus-ring min-h-12 min-w-0 rounded-xl border border-gold/18 bg-charcoal px-3 text-base font-medium text-cream outline-none"
               />
             </label>
@@ -490,7 +521,7 @@ export function CheckoutForm({ onSubmitted }: CheckoutFormProps) {
             spellCheck={false}
             maxLength={40}
             className="focus-ring min-h-12 min-w-0 rounded-xl border border-gold/18 bg-charcoal px-4 text-base font-bold uppercase text-cream outline-none placeholder:normal-case placeholder:font-medium placeholder:text-smoke aria-invalid:border-red-400/70"
-            placeholder="Введите код с листовки"
+            placeholder="Введите промокод"
           />
           <Button
             type="button"
