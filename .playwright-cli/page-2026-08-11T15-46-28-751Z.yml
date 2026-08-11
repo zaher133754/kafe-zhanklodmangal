@@ -1,0 +1,34 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - button "Skip to content" [ref=e4]
+    - banner [ref=e7]:
+      - generic [ref=e8]:
+        - button "Open navigation sidebar" [ref=e9] [cursor=pointer]
+        - navigation [ref=e13]:
+          - menubar [ref=e14]:
+            - menuitem "Pricing" [ref=e15] [cursor=pointer]
+            - menuitem "Enterprise" [ref=e16] [cursor=pointer]
+            - menuitem "More" [ref=e17] [cursor=pointer]
+            - menuitem "Log In" [ref=e18] [cursor=pointer]
+    - generic [ref=e19]:
+      - main [ref=e20]:
+        - generic [ref=e92]:
+          - heading "Log in to view the page" [level=1] [ref=e93]
+          - paragraph [ref=e94]: It seems that you were lost in space. Please log in or sign up to see the page.
+          - paragraph [ref=e95]:
+            - link "Log in" [ref=e96] [cursor=pointer]:
+              - /url: /login/?src=error_page&redirect_to=%2Ftracking%2Foverview%2F30687435_5244072.html%3Fvolume_type%3Dlocal%26fid%3D12902473%26domain_1%3Dzhanklodmangal.ru%26report_mode%3Ddomain_1%26sort%3D0_pos_asc
+            - link "Sign up" [ref=e99] [cursor=pointer]:
+              - /url: /signup/?src=error_page&redirect_to=%2Ftracking%2Foverview%2F30687435_5244072.html%3Fvolume_type%3Dlocal%26fid%3D12902473%26domain_1%3Dzhanklodmangal.ru%26report_mode%3Ddomain_1%26sort%3D0_pos_asc
+      - contentinfo [ref=e103]:
+        - button "English" [ref=e107] [cursor=pointer]
+        - generic [ref=e108]:
+          - generic [ref=e109]:
+            - link "Contact us" [ref=e110] [cursor=pointer]:
+              - /url: /company/contacts/
+            - link "Cookie settings" [ref=e111] [cursor=pointer]:
+              - /url: javascript:window.showConsentSettings();
+          - generic [ref=e112]: © 2026 Semrush Holdings. All rights reserved.
+  - region "Notifications"
+  - iframe [ref=e114]:
+    

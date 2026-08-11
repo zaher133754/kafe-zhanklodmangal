@@ -1,0 +1,11 @@
+[    1003ms] [ERROR] Failed to load resource: the server responded with a status of 401 () @ https://www.semrush.com/tracking/overview/30687435_5244072.html?volume_type=local&fid=12902473&domain_1=zhanklodmangal.ru&report_mode=domain_1&sort=0_pos_asc:0
+[    1610ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_CLOSED @ https://www.googletagmanager.com/gtm.js?id=GTM-5K82J2:0
+[    2019ms] [WARNING] SSO Frontend. You are using old value for defaultActiveTab parameter.
+      Please use loginForm instead of login.
+      For more information see the documentation. @ https://www.semrush.com/__static__/webpack/semrush-sso-extended-2550.39ed55e0cac3b67c.js:16
+[    2617ms] [LOG] isAllowedPage:  true @ https://static.semrush.com/remote-integrations/csat-feedback-V1/__federation_expose_init.chunk.7082542e444d24753fa9.js:0
+[    2617ms] [LOG] isPaid:         false @ https://static.semrush.com/remote-integrations/csat-feedback-V1/__federation_expose_init.chunk.7082542e444d24753fa9.js:0
+[    2852ms] [WARNING] sm2.renderReactModuleFederationWidget("search-bar-V1/Component") is deprecated and will be removed. Migrate to sm2.getComponent(). See the "Dynamic-link frontend components" guide. @ https://www.semrush.com/__static__/webpack/mf_widgets.92f36a81b66f3509.js:1
+[    2910ms] [ERROR] Failed to load resource: the server responded with a status of 401 () @ https://www.semrush.com/apis/v4-raw/folders/api/v0/folders/selector-list?limit=10000&offset=0:0
+[   33004ms] [ERROR] Failed to load resource: net::ERR_TIMED_OUT @ https://sentry.semrush.net/api/6/envelope/?sentry_version=7&sentry_key=4a917eb2bb421cc25c62e23594cb51c4&sentry_client=sentry.javascript.browser%2F8.55.0:0
+[   33004ms] [ERROR] Failed to load resource: net::ERR_TIMED_OUT @ https://sentry.semrush.net/api/6/envelope/?sentry_version=7&sentry_key=4a917eb2bb421cc25c62e23594cb51c4&sentry_client=sentry.javascript.browser%2F8.55.0:0

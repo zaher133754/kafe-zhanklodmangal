@@ -1,0 +1,41 @@
+[     970ms] [ERROR] Failed to load resource: the server responded with a status of 401 () @ https://www.semrush.com/tracking/overview/30687435_5244072.html?volume_type=local&fid=12902473&domain_1=zhanklodmangal.ru&report_mode=domain_1&sort=0_pos_asc:0
+[    1711ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_CLOSED @ https://www.googletagmanager.com/gtm.js?id=GTM-5K82J2:0
+[    1947ms] [WARNING] SSO Frontend. You are using old value for defaultActiveTab parameter.
+      Please use loginForm instead of login.
+      For more information see the documentation. @ https://www.semrush.com/__static__/webpack/semrush-sso-extended-2550.39ed55e0cac3b67c.js:16
+[    2723ms] [WARNING] sm2.renderReactModuleFederationWidget("search-bar-V1/Component") is deprecated and will be removed. Migrate to sm2.getComponent(). See the "Dynamic-link frontend components" guide. @ https://www.semrush.com/__static__/webpack/mf_widgets.92f36a81b66f3509.js:1
+[    2773ms] [LOG] isAllowedPage:  true @ https://static.semrush.com/remote-integrations/csat-feedback-V1/__federation_expose_init.chunk.7082542e444d24753fa9.js:0
+[    2774ms] [LOG] isPaid:         false @ https://static.semrush.com/remote-integrations/csat-feedback-V1/__federation_expose_init.chunk.7082542e444d24753fa9.js:0
+[    2782ms] [ERROR] Failed to load resource: the server responded with a status of 401 () @ https://www.semrush.com/apis/v4-raw/folders/api/v0/folders/selector-list?limit=10000&offset=0:0
+[   21714ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_CLOSED @ https://www.googletagmanager.com/gtm.js?id=GTM-5K82J2:0
+[  127532ms] [ERROR] Cross-Origin-Opener-Policy policy would block the window.postMessage call. @ https://accounts.google.com/gsi/client?hl=en:381
+[  127532ms] [ERROR] Cross-Origin-Opener-Policy policy would block the window.postMessage call. @ https://accounts.google.com/gsi/client?hl=en:381
+[  128035ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_CLOSED @ https://api.amplitude.com/2/httpapi:0
+[  128718ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_CLOSED @ https://www.googletagmanager.com/gtm.js?id=GTM-5K82J2:0
+[  129181ms] [INFO] [Intercom] Launcher is disabled in settings or current page does not match display conditions @ https://js.intercomcdn.com/frame-modern.562fa5dd.js:0
+[  129267ms] [LOG] isAllowedPage:  true @ https://static.semrush.com/remote-integrations/csat-feedback-V1/__federation_expose_init.chunk.7082542e444d24753fa9.js:0
+[  129267ms] [LOG] isPaid:         false @ https://static.semrush.com/remote-integrations/csat-feedback-V1/__federation_expose_init.chunk.7082542e444d24753fa9.js:0
+[  129285ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://www.semrush.com/recommendation/api/former-paid-subscription/:0
+[  129362ms] Uncaught (in promise) Error: Container initialization failed as it has already been initialized with a different share scope
+    at o (https://static.semrush.com/position-tracking/wizard/remote.js?v=1786463315403:0:1141)
+    at o (https://www.semrush.com/tracking/overview/30687435_5244072.html?volume_type=local&fid=12902473&domain_1=zhanklodmangal.ru&report_mode=domain_1&sort=0_pos_asc:5784:8961)
+[  129663ms] [WARNING] sm2.renderReactModuleFederationWidget("search-bar-V1/Component") is deprecated and will be removed. Migrate to sm2.getComponent(). See the "Dynamic-link frontend components" guide. @ https://www.semrush.com/__static__/webpack/mf_widgets.92f36a81b66f3509.js:1
+[  129666ms] [WARNING] sm2.renderReactModuleFederationWidget("project-selector-V1/Component") is deprecated and will be removed. Migrate to sm2.getComponent(). See the "Dynamic-link frontend components" guide. @ https://www.semrush.com/__static__/webpack/mf_widgets.92f36a81b66f3509.js:1
+[  129671ms] [LOG] [SagaRunner][RUN] Pages SAGAS @ https://static.semrush.com/position-tracking/tracking/1.275.1/entry.9b76699952cbff85dc65.js:0
+[  129926ms] [LOG] [SagaRunner][RUN] overview SAGAS @ https://static.semrush.com/position-tracking/tracking/1.275.1/entry.9b76699952cbff85dc65.js:0
+[  129931ms] [LOG] [SagaRunner][RUN] overview-chart SAGAS @ https://static.semrush.com/position-tracking/tracking/1.275.1/entry.9b76699952cbff85dc65.js:0
+[  130038ms] [COUNT] updateWithTh: 1 @ https://static.semrush.com/position-tracking/tracking/1.275.1/vendors-node_modules_semcore_accordion_lib_es6_Accordion_js-node_modules_semcore_badge_lib_es-ab328a.746af8833e962425acb1.js:1
+[  130199ms] [COUNT] updateWithTh: 2 @ https://static.semrush.com/position-tracking/tracking/1.275.1/vendors-node_modules_semcore_accordion_lib_es6_Accordion_js-node_modules_semcore_badge_lib_es-ab328a.746af8833e962425acb1.js:1
+[  130480ms] [COUNT] updateWithTh: 3 @ https://static.semrush.com/position-tracking/tracking/1.275.1/vendors-node_modules_semcore_accordion_lib_es6_Accordion_js-node_modules_semcore_badge_lib_es-ab328a.746af8833e962425acb1.js:1
+[  130482ms] [COUNT] updateWithTh: 4 @ https://static.semrush.com/position-tracking/tracking/1.275.1/vendors-node_modules_semcore_accordion_lib_es6_Accordion_js-node_modules_semcore_badge_lib_es-ab328a.746af8833e962425acb1.js:1
+[  130530ms] [COUNT] updateWithTh: 5 @ https://static.semrush.com/position-tracking/tracking/1.275.1/vendors-node_modules_semcore_accordion_lib_es6_Accordion_js-node_modules_semcore_badge_lib_es-ab328a.746af8833e962425acb1.js:1
+[  130611ms] [COUNT] updateWithTh: 6 @ https://static.semrush.com/position-tracking/tracking/1.275.1/vendors-node_modules_semcore_accordion_lib_es6_Accordion_js-node_modules_semcore_badge_lib_es-ab328a.746af8833e962425acb1.js:1
+[  164283ms] [LOG] [SagaRunner][STOP] overview SAGAS @ https://static.semrush.com/position-tracking/tracking/1.275.1/entry.9b76699952cbff85dc65.js:0
+[  164291ms] [COUNT] updateWithTh: 7 @ https://static.semrush.com/position-tracking/tracking/1.275.1/vendors-node_modules_semcore_accordion_lib_es6_Accordion_js-node_modules_semcore_badge_lib_es-ab328a.746af8833e962425acb1.js:1
+[  164630ms] [LOG] [SagaRunner][STOP] overview-chart SAGAS @ https://static.semrush.com/position-tracking/tracking/1.275.1/entry.9b76699952cbff85dc65.js:0
+[  164634ms] [LOG] [SagaRunner][RUN] rankingsDistribution SAGAS @ https://static.semrush.com/position-tracking/tracking/1.275.1/entry.9b76699952cbff85dc65.js:0
+[  164712ms] [COUNT] updateWithTh: 8 @ https://static.semrush.com/position-tracking/tracking/1.275.1/vendors-node_modules_semcore_accordion_lib_es6_Accordion_js-node_modules_semcore_badge_lib_es-ab328a.746af8833e962425acb1.js:1
+[  164724ms] [COUNT] updateWithTh: 9 @ https://static.semrush.com/position-tracking/tracking/1.275.1/vendors-node_modules_semcore_accordion_lib_es6_Accordion_js-node_modules_semcore_badge_lib_es-ab328a.746af8833e962425acb1.js:1
+[  165421ms] [COUNT] updateWithTh: 10 @ https://static.semrush.com/position-tracking/tracking/1.275.1/vendors-node_modules_semcore_accordion_lib_es6_Accordion_js-node_modules_semcore_badge_lib_es-ab328a.746af8833e962425acb1.js:1
+[  165423ms] [COUNT] updateWithTh: 11 @ https://static.semrush.com/position-tracking/tracking/1.275.1/vendors-node_modules_semcore_accordion_lib_es6_Accordion_js-node_modules_semcore_badge_lib_es-ab328a.746af8833e962425acb1.js:1
+[  165428ms] [COUNT] updateWithTh: 12 @ https://static.semrush.com/position-tracking/tracking/1.275.1/vendors-node_modules_semcore_accordion_lib_es6_Accordion_js-node_modules_semcore_badge_lib_es-ab328a.746af8833e962425acb1.js:1

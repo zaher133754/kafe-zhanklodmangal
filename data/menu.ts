@@ -86,7 +86,7 @@ const rawMenuItems: MenuItem[] = [
     id: "polovinka-lepeshki",
     category: "Гарниры",
     name: "Половинка лепешки",
-    price: 51,
+    price: 36,
     weight: "50 г",
     image: getOptimizedMenuImage("Половинка лепешки.jfif")
   },

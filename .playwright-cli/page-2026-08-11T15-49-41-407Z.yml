@@ -1,0 +1,177 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - button "Skip to content" [ref=e4]
+    - banner [ref=e7]:
+      - navigation [ref=e12]:
+        - menubar [ref=e13]:
+          - menuitem "Pricing" [ref=e14] [cursor=pointer]
+          - menuitem "Enterprise" [ref=e15] [cursor=pointer]
+          - menuitem "More" [ref=e16] [cursor=pointer]
+          - menuitem "Log In" [ref=e17] [cursor=pointer]
+          - menuitem "Sign Up" [ref=e18] [cursor=pointer]
+    - navigation [ref=e22]:
+      - generic [ref=e23]:
+        - list [ref=e24]:
+          - listitem [ref=e25]:
+            - link "Home" [ref=e26] [cursor=pointer]:
+              - /url: https://www.semrush.com/home/?fid=12902473
+          - listitem [ref=e31]:
+            - link "SEO" [ref=e32] [cursor=pointer]:
+              - /url: https://www.semrush.com/seo/?fid=12902473
+          - listitem [ref=e37]:
+            - link "AI" [ref=e38] [cursor=pointer]:
+              - /url: https://www.semrush.com/ai-seo/overview/?fid=12902473
+          - listitem [ref=e43]:
+            - link "Traffic & Market" [ref=e44] [cursor=pointer]:
+              - /url: https://www.semrush.com/analytics/traffic/?fid=12902473
+          - listitem [ref=e48]:
+            - link "Local" [ref=e49] [cursor=pointer]:
+              - /url: https://www.semrush.com/local-business/?fid=12902473
+          - listitem [ref=e54]:
+            - link "Content" [ref=e55] [cursor=pointer]:
+              - /url: https://www.semrush.com/content/?fid=12902473
+          - listitem [ref=e60]:
+            - link "Ad" [ref=e61] [cursor=pointer]:
+              - /url: https://www.semrush.com/advertising/?fid=12902473
+          - listitem [ref=e67]:
+            - link "AI PR" [ref=e68] [cursor=pointer]:
+              - /url: https://www.semrush.com/pr-toolkit/?fid=12902473
+          - listitem [ref=e72]:
+            - link "Social" [ref=e73] [cursor=pointer]:
+              - /url: https://www.semrush.com/social-media/?fid=12902473
+        - separator [ref=e80]
+        - list [ref=e81]:
+          - listitem [ref=e82]:
+            - link "Reports" [ref=e83] [cursor=pointer]:
+              - /url: https://www.semrush.com/my_reports/grid/?fid=12902473
+          - listitem [ref=e87]:
+            - link "App Center" [ref=e88] [cursor=pointer]:
+              - /url: https://www.semrush.com/apps/?fid=12902473
+      - generic [ref=e95]:
+        - generic [ref=e96]: SEO
+        - list [ref=e98]:
+          - listitem [ref=e99]:
+            - link "Dashboard" [ref=e101] [cursor=pointer]:
+              - /url: https://www.semrush.com/seo/?fid=12902473
+        - list [ref=e103]:
+          - listitem [ref=e104]:
+            - generic [ref=e105]: Site Performance
+          - listitem [ref=e106]:
+            - link "Site Audit" [ref=e108] [cursor=pointer]:
+              - /url: https://www.semrush.com/siteaudit/?fid=12902473
+          - listitem [ref=e109]:
+            - link "Position Tracking" [ref=e111] [cursor=pointer]:
+              - /url: https://www.semrush.com/position-tracking/?fid=12902473
+        - list [ref=e113]:
+          - listitem [ref=e114]:
+            - generic [ref=e115]: Competitive Analysis
+          - listitem [ref=e116]:
+            - link "Domain Overview" [ref=e118] [cursor=pointer]:
+              - /url: https://www.semrush.com/analytics/overview/?fid=12902473
+          - listitem [ref=e119]:
+            - link "Organic Rankings" [ref=e121] [cursor=pointer]:
+              - /url: https://www.semrush.com/analytics/organic/overview?fid=12902473
+          - listitem [ref=e122]:
+            - link "Top Pages" [ref=e124] [cursor=pointer]:
+              - /url: https://www.semrush.com/analytics/toppages/?fid=12902473
+          - listitem [ref=e125]:
+            - link "Compare Domains" [ref=e127] [cursor=pointer]:
+              - /url: https://www.semrush.com/analytics/comparedomains/?fid=12902473
+          - listitem [ref=e128]:
+            - link "Keyword Gap" [ref=e130] [cursor=pointer]:
+              - /url: https://www.semrush.com/analytics/keywordgap/?fid=12902473
+          - listitem [ref=e131]:
+            - link "Backlink Gap" [ref=e133] [cursor=pointer]:
+              - /url: https://www.semrush.com/analytics/gap/backlinks/?fid=12902473
+        - list [ref=e135]:
+          - listitem [ref=e136]:
+            - generic [ref=e137]: Keyword Research
+          - listitem [ref=e138]:
+            - link "Keyword Overview" [ref=e140] [cursor=pointer]:
+              - /url: https://www.semrush.com/analytics/keywordoverview/?fid=12902473
+          - listitem [ref=e141]:
+            - link "Keyword Magic Tool" [ref=e143] [cursor=pointer]:
+              - /url: https://www.semrush.com/analytics/keywordmagic/?fid=12902473
+          - listitem [ref=e144]:
+            - link "Keyword Strategy Builder" [ref=e146] [cursor=pointer]:
+              - /url: https://www.semrush.com/analytics/keywordmanager/?fid=12902473
+        - list [ref=e148]:
+          - listitem [ref=e149]:
+            - generic [ref=e150]: Content Ideas
+          - listitem [ref=e151]:
+            - link "SEO Writing Assistant" [ref=e153] [cursor=pointer]:
+              - /url: https://www.semrush.com/swa/?fid=12902473
+          - listitem [ref=e154]:
+            - link "Topic Research" [ref=e156] [cursor=pointer]:
+              - /url: https://www.semrush.com/topic-research/?fid=12902473
+        - list [ref=e158]:
+          - listitem [ref=e159]:
+            - generic [ref=e160]: Link Building
+          - listitem [ref=e161]:
+            - link "Backlinks" [ref=e163] [cursor=pointer]:
+              - /url: https://www.semrush.com/analytics/backlinks/overview/?fid=12902473
+          - listitem [ref=e164]:
+            - link "Referring Domains" [ref=e166] [cursor=pointer]:
+              - /url: https://www.semrush.com/analytics/refdomains/report/?fid=12902473
+          - listitem [ref=e167]:
+            - link "Backlink Audit" [ref=e169] [cursor=pointer]:
+              - /url: https://www.semrush.com/backlink_audit/?fid=12902473
+        - list [ref=e171]:
+          - listitem [ref=e172]:
+            - generic [ref=e173]: Extras
+          - listitem [ref=e174]:
+            - link "Sensor" [ref=e176] [cursor=pointer]:
+              - /url: https://www.semrush.com/sensor/?fid=12902473&utm_medium=footer&utm_source=semrush
+          - listitem [ref=e177]:
+            - link "SEOquake" [ref=e179] [cursor=pointer]:
+              - /url: https://www.seoquake.com/?fid=12902473
+          - listitem [ref=e180]:
+            - link "Semrush Rank" [ref=e182] [cursor=pointer]:
+              - /url: https://www.semrush.com/analytics/ranks/rank/?fid=12902473
+        - list [ref=e184]:
+          - listitem [ref=e185]:
+            - generic [ref=e186]: Other
+          - listitem [ref=e187]:
+            - link "On Page SEO Checker" [ref=e189] [cursor=pointer]:
+              - /url: https://www.semrush.com/on-page-seo-checker/?fid=12902473
+          - listitem [ref=e190]:
+            - link "Organic Traffic Insights" [ref=e192] [cursor=pointer]:
+              - /url: https://www.semrush.com/organic_traffic_insights/?fid=12902473
+      - button "Hide navigation" [expanded] [ref=e194] [cursor=pointer]
+    - generic [ref=e198]:
+      - main [ref=e199]:
+        - generic [ref=e271]:
+          - heading "Log in to view the page" [level=1] [ref=e272]
+          - paragraph [ref=e273]: It seems that you were lost in space. Please log in or sign up to see the page.
+          - paragraph [ref=e274]:
+            - link "Log in" [ref=e275] [cursor=pointer]:
+              - /url: /login/?src=error_page&redirect_to=%2Ftracking%2Foverview%2F30687435_5244072.html%3Fvolume_type%3Dlocal%26fid%3D12902473%26domain_1%3Dzhanklodmangal.ru%26report_mode%3Ddomain_1%26sort%3D0_pos_asc
+            - link "Sign up" [ref=e278] [cursor=pointer]:
+              - /url: /signup/?src=error_page&redirect_to=%2Ftracking%2Foverview%2F30687435_5244072.html%3Fvolume_type%3Dlocal%26fid%3D12902473%26domain_1%3Dzhanklodmangal.ru%26report_mode%3Ddomain_1%26sort%3D0_pos_asc
+      - contentinfo [ref=e282]:
+        - generic [ref=e283]:
+          - generic [ref=e284]:
+            - link "Contact us" [ref=e285] [cursor=pointer]:
+              - /url: /company/contacts/
+            - link "About us" [ref=e286] [cursor=pointer]:
+              - /url: /company/
+            - link "Blog" [ref=e287] [cursor=pointer]:
+              - /url: /blog/
+            - button "English" [ref=e289] [cursor=pointer]
+          - generic [ref=e290]:
+            - link "See plans and pricing" [ref=e291] [cursor=pointer]:
+              - /url: /pricing/
+            - link "Get started with Semrush" [ref=e292] [cursor=pointer]:
+              - /url: /signup/?src=footer
+        - generic [ref=e293]:
+          - generic [ref=e294]:
+            - link "Cookie settings" [ref=e295] [cursor=pointer]:
+              - /url: javascript:window.showConsentSettings();
+            - link "Legal info" [ref=e296] [cursor=pointer]:
+              - /url: /company/legal/
+            - link "Privacy policy" [ref=e297] [cursor=pointer]:
+              - /url: /company/legal/privacy-policy/
+            - link "Do not sell my personal info" [ref=e298] [cursor=pointer]:
+              - /url: javascript:window.showConsentSettings();
+          - generic [ref=e299]: © 2026 Semrush Holdings. All rights reserved.
+  - region "Notifications"
