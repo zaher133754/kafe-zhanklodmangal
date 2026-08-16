@@ -15,6 +15,10 @@ import {
   isPromoCodeValid,
   normalizePromoCode
 } from "@/lib/promo-code";
+import {
+  PERSONAL_DATA_CONSENT_REQUIRED_MESSAGE,
+  PERSONAL_DATA_CONSENT_VERSION
+} from "@/lib/personal-data";
 import { deliverOrderToTelegram } from "@/lib/telegram-notifications";
 
 export type OrderItem = {
@@ -35,6 +39,11 @@ export type CheckoutOrderPayload = {
   guestCount?: number;
   comment?: string;
   promoCode?: string;
+  personalDataConsent?: {
+    accepted?: boolean;
+    version?: string;
+    acceptedAt?: string;
+  };
   items: OrderItem[];
   total?: number;
 };
@@ -50,6 +59,11 @@ export type ValidatedOrder = {
   guestCount?: number;
   comment?: string;
   promoCode?: string;
+  personalDataConsent: {
+    accepted: true;
+    version: typeof PERSONAL_DATA_CONSENT_VERSION;
+    acceptedAt: string;
+  };
   discountAmount: number;
   discountedTotal: number;
   items: Array<OrderItem & { total: number }>;
@@ -119,6 +133,16 @@ export function validateOrderPayload(body: unknown): ValidatedOrder {
   const comment = clean(source.comment, 800);
   const rawPromoCode = clean(source.promoCode, 40);
   const rawItems = Array.isArray(source.items) ? source.items : [];
+
+  if (source.personalDataConsent?.accepted !== true) {
+    throw new Error(PERSONAL_DATA_CONSENT_REQUIRED_MESSAGE);
+  }
+
+  const personalDataConsent = {
+    accepted: true as const,
+    version: PERSONAL_DATA_CONSENT_VERSION,
+    acceptedAt: new Date().toISOString()
+  };
 
   if (rawPromoCode && !isPromoCodeValid(rawPromoCode)) {
     throw new Error("Промокод не найден. Проверьте написание и попробуйте снова.");
@@ -209,6 +233,7 @@ export function validateOrderPayload(body: unknown): ValidatedOrder {
     guestCount: deliveryType === "cafe" ? guestCount : undefined,
     comment,
     promoCode,
+    personalDataConsent,
     discountAmount,
     discountedTotal,
     items,
@@ -238,6 +263,12 @@ export function formatOrderEmail(order: ValidatedOrder, orderNumber: string) {
         ]
       : []),
     order.comment ? `Комментарий: ${order.comment}` : "Комментарий: —",
+    "",
+    "Согласие на обработку персональных данных:",
+    "Статус: принято",
+    "Версия: " + order.personalDataConsent.version,
+    "Принято (ISO 8601): " + order.personalDataConsent.acceptedAt,
+    "Связано с заказом №" + orderNumber,
     "",
     "Состав заказа:",
     ...order.items.map(

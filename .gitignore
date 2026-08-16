@@ -6,3 +6,8 @@ dist/
 .env.local
 .vercel/
 .DS_Store
+playwright-report/
+test-results/
+blob-report/
+.playwright-cli/
+output/playwright/

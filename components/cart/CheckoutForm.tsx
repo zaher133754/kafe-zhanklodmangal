@@ -3,6 +3,10 @@
 import { useMemo, useState, type FormEvent } from "react";
 import { Check, Send, TicketPercent } from "lucide-react";
 import { useCart } from "@/components/cart/CartProvider";
+import {
+  PERSONAL_DATA_CONSENT_INPUT_ID,
+  PersonalDataConsentField
+} from "@/components/legal/PersonalDataConsentField";
 import { Button } from "@/components/ui/button";
 import {
   CAFE_CLOSE_TIME,
@@ -25,6 +29,10 @@ import {
   isPromoCodeValid,
   normalizePromoCode
 } from "@/lib/promo-code";
+import {
+  PERSONAL_DATA_CONSENT_REQUIRED_MESSAGE,
+  PERSONAL_DATA_CONSENT_VERSION
+} from "@/lib/personal-data";
 import { trackOrderSuccess } from "@/lib/yandex-metrika";
 
 type CheckoutFormProps = {
@@ -98,6 +106,10 @@ export function CheckoutForm({ onSubmitted }: CheckoutFormProps) {
   const [message, setMessage] = useState("");
   const [promoInput, setPromoInput] = useState("");
   const [appliedPromoCode, setAppliedPromoCode] = useState("");
+  const [personalDataConsentAccepted, setPersonalDataConsentAccepted] =
+    useState(false);
+  const [personalDataConsentError, setPersonalDataConsentError] =
+    useState("");
   const [promoStatus, setPromoStatus] = useState<
     "idle" | "success" | "error"
   >("idle");
@@ -154,6 +166,18 @@ export function CheckoutForm({ onSubmitted }: CheckoutFormProps) {
     if (fulfillmentType === "cafe") {
       setEarliestCafeVisitTime(currentEarliestCafeVisitTime);
     }
+
+    if (!personalDataConsentAccepted) {
+      setPersonalDataConsentError(PERSONAL_DATA_CONSENT_REQUIRED_MESSAGE);
+      setStatus("error");
+      setMessage("");
+      window.requestAnimationFrame(() => {
+        document.getElementById(PERSONAL_DATA_CONSENT_INPUT_ID)?.focus();
+      });
+      return;
+    }
+
+    setPersonalDataConsentError("");
 
     if (promoInput.trim() && !appliedPromoCode) {
       setStatus("error");
@@ -238,6 +262,10 @@ export function CheckoutForm({ onSubmitted }: CheckoutFormProps) {
           guestCount: fulfillmentType === "cafe" ? guestCount : 0,
           comment,
           promoCode: appliedPromoCode,
+          personalDataConsent: {
+            accepted: personalDataConsentAccepted,
+            version: PERSONAL_DATA_CONSENT_VERSION
+          },
           items: orderItems,
           total: totalPrice
         })
@@ -291,6 +319,8 @@ export function CheckoutForm({ onSubmitted }: CheckoutFormProps) {
       setPromoInput("");
       setAppliedPromoCode("");
       setPromoStatus("idle");
+      setPersonalDataConsentAccepted(false);
+      setPersonalDataConsentError("");
     } catch {
       setStatus("error");
       setMessage(
@@ -605,6 +635,19 @@ export function CheckoutForm({ onSubmitted }: CheckoutFormProps) {
           </strong>
         </div>
       </div>
+
+      <PersonalDataConsentField
+        checked={personalDataConsentAccepted}
+        error={personalDataConsentError}
+        onChange={(accepted) => {
+          setPersonalDataConsentAccepted(accepted);
+          if (accepted) {
+            setPersonalDataConsentError("");
+            setStatus("idle");
+            setMessage("");
+          }
+        }}
+      />
 
       <Button
         type="submit"

@@ -160,7 +160,7 @@ export function MenuPageShell({
       <footer className="border-t border-gold/15 bg-charcoal py-10">
         <div className="container-tilda flex flex-col gap-5 text-sm text-smoke sm:flex-row sm:items-center sm:justify-between">
           <div>
-            <p className="font-extrabold text-cream">{site.legalName}</p>
+            <p className="font-extrabold text-cream">Жан Клод Мангал</p>
             <p className="mt-1">{site.address}</p>
           </div>
           <div className="flex flex-wrap items-center gap-x-6 gap-y-3">
