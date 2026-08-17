@@ -22,7 +22,7 @@ export function PolicyDocumentContent() {
         </p>
         <p>1.2. Оператором персональных данных является:</p>
         <p>
-          <strong>Индивидуальный предприниматель Озернова Мария Сергеевна</strong>
+          <strong>Индивидуальный предприниматель Игитян Мария Сергеевна</strong>
           <br />
           ИНН: {personalDataOperator.taxId}
           <br />
