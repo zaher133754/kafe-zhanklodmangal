@@ -264,11 +264,7 @@ export function formatOrderEmail(order: ValidatedOrder, orderNumber: string) {
       : []),
     order.comment ? `Комментарий: ${order.comment}` : "Комментарий: —",
     "",
-    "Согласие на обработку персональных данных:",
-    "Статус: принято",
-    "Версия: " + order.personalDataConsent.version,
-    "Принято (ISO 8601): " + order.personalDataConsent.acceptedAt,
-    "Связано с заказом №" + orderNumber,
+    "Согласие на обработку персональных данных: принято",
     "",
     "Состав заказа:",
     ...order.items.map(
