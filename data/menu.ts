@@ -133,6 +133,13 @@ const rawMenuItems: MenuItem[] = [
     weight: "180 г"
   },
   {
+    id: "lyulya-kebab-assorti",
+    category: "Шашлык",
+    name: "Люля кебаб Ассорти",
+    price: 2239,
+    weight: "1,100 кг"
+  },
+  {
     id: "kurinye-krylya-gril",
     category: "Шашлык",
     name: "Куриные крылья гриль в пикантном маринаде с хрустящей корочкой",
@@ -375,6 +382,7 @@ const menuImageById: Partial<Record<MenuItem["id"], StaticImageData>> = {
   "salat-firmennyy-zhan-klod-mangal": menuImage(
     "Салат фирменный Жан Клод Мангал.jfif"
   ),
+  "lyulya-kebab-assorti": menuImage("Люля кебаб Ассорти.png"),
   "kurinye-krylya-gril": menuImage("chicken-wings-grill.jfif"),
   "kurinyy-lyulya-kebab": menuImage(
     "Куриный люля-кебаб с восточными специями.jfif"
@@ -452,6 +460,8 @@ const menuCompositionById: Partial<Record<MenuItem["id"], string>> = {
     "Курица, сыр, соус, черри, салат.",
   "salat-firmennyy-zhan-klod-mangal":
     "Грибы, курица, кукуруза, грецкий орех, маринованный огурец, сыр, соус цахтон.",
+  "lyulya-kebab-assorti":
+    "2 люля-кебаба из говядины, 2 люля-кебаба из курицы, 2 люля-кебаба из свинины, 2 шашлычных соуса, 2 соуса «Цехтон».",
   "kurinye-krylya-gril":
     "Сочные куриные крылья, пикантный соус, паприка, пряности.",
   "kurinyy-lyulya-kebab":
