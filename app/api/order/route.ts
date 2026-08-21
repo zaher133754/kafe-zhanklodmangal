@@ -16,6 +16,7 @@ export async function POST(request: Request) {
       grandTotal: order.grandTotal,
       discountAmount: order.discountAmount,
       promoCode: order.promoCode ?? null,
+      visitTime: order.visitTime ?? null,
       channels: delivery.channels
     });
   } catch (error) {

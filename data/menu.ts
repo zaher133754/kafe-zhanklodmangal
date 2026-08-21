@@ -133,32 +133,11 @@ const rawMenuItems: MenuItem[] = [
     weight: "180 г"
   },
   {
-    id: "lyulya-kebab-assorti",
+    id: "shashlyk-iz-svinoy-sheyki",
     category: "Шашлык",
-    name: "Люля кебаб Ассорти",
-    price: 2239,
-    weight: "1,100 кг"
-  },
-  {
-    id: "kurinye-krylya-gril",
-    category: "Шашлык",
-    name: "Куриные крылья гриль в пикантном маринаде с хрустящей корочкой",
-    price: 359,
-    weight: "250 г"
-  },
-  {
-    id: "kurinyy-lyulya-kebab",
-    category: "Шашлык",
-    name: "Куриный люля-кебаб с восточными специями",
-    price: 399,
-    weight: "200 г"
-  },
-  {
-    id: "lyulya-kebab-iz-sochnoy-govyadiny",
-    category: "Шашлык",
-    name: "Люля-кебаб из сочной говядины",
-    price: 429,
-    weight: "200 г",
+    name: "Шашлык из свиной шейки",
+    price: 539,
+    weight: "300 г",
     popular: true
   },
   {
@@ -176,12 +155,33 @@ const rawMenuItems: MenuItem[] = [
     weight: "300 г"
   },
   {
-    id: "shashlyk-iz-svinoy-sheyki",
+    id: "kurinyy-lyulya-kebab",
     category: "Шашлык",
-    name: "Шашлык из свиной шейки",
-    price: 539,
-    weight: "300 г",
+    name: "Куриный люля-кебаб с восточными специями",
+    price: 399,
+    weight: "200 г"
+  },
+  {
+    id: "lyulya-kebab-iz-sochnoy-govyadiny",
+    category: "Шашлык",
+    name: "Люля-кебаб из сочной говядины",
+    price: 429,
+    weight: "200 г",
     popular: true
+  },
+  {
+    id: "kurinye-krylya-gril",
+    category: "Шашлык",
+    name: "Куриные крылья гриль в пикантном маринаде с хрустящей корочкой",
+    price: 359,
+    weight: "250 г"
+  },
+  {
+    id: "lyulya-kebab-assorti",
+    category: "Шашлык",
+    name: "Люля кебаб Ассорти",
+    price: 2239,
+    weight: "1,100 кг"
   },
   {
     id: "nezhnoe-pyure-s-aromatnym-lyulya",

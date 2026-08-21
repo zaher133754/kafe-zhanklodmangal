@@ -45,6 +45,38 @@ function formatPrice(value: number) {
   return new Intl.NumberFormat("ru-RU").format(value);
 }
 
+function successTitle(type: FulfillmentType, visitTime: string) {
+  if (type === "pickup") return "Заказ принят, ждем вас.";
+  if (type === "cafe") {
+    return visitTime
+      ? `Ожидаем вас к ${visitTime}`
+      : "Ожидаем вас к выбранному времени";
+  }
+  return "Заказ отправлен!";
+}
+
+function successDescription(type: FulfillmentType, visitTime: string) {
+  if (type === "pickup") {
+    return "Заказ принят. Готовность — примерно через 15–20 минут.";
+  }
+  if (type === "cafe") {
+    return visitTime
+      ? `Ожидаем вас сегодня к ${visitTime}.`
+      : "Ожидаем вас к выбранному времени.";
+  }
+  return "Спасибо. Мы скоро свяжемся с вами для подтверждения.";
+}
+
+function successDetails(type: FulfillmentType) {
+  if (type === "pickup") {
+    return "Заказ будет готов к самовывозу примерно через 15–20 минут или к указанному времени в комментариях.";
+  }
+  if (type === "cafe") {
+    return "Заказ принят и будет готов к вашему приходу.";
+  }
+  return "Мы скоро свяжемся с вами для подтверждения.";
+}
+
 export function CartSheet() {
   const {
     clearCart,
@@ -62,6 +94,7 @@ export function CartSheet() {
   const [orderNumber, setOrderNumber] = useState("");
   const [submittedFulfillmentType, setSubmittedFulfillmentType] =
     useState<FulfillmentType>("delivery");
+  const [submittedVisitTime, setSubmittedVisitTime] = useState("");
   const [isOrderNumberCopied, setIsOrderNumberCopied] = useState(false);
 
   useEffect(() => {
@@ -76,6 +109,7 @@ export function CartSheet() {
         setStep("cart");
         setOrderNumber("");
         setSubmittedFulfillmentType("delivery");
+        setSubmittedVisitTime("");
         setIsOrderNumberCopied(false);
       }, 180);
       return () => window.clearTimeout(timer);
@@ -134,9 +168,10 @@ export function CartSheet() {
                 {step === "checkout"
                   ? "Выберите тип получения и оставьте контакты."
                   : step === "success"
-                    ? submittedFulfillmentType === "cafe"
-                      ? "Сотрудник кафе подтвердит заказ по телефону."
-                      : "Спасибо. Мы скоро свяжемся с вами для подтверждения."
+                    ? successDescription(
+                        submittedFulfillmentType,
+                        submittedVisitTime
+                      )
                     : hasItems
                       ? `${totalItems} позиций · ${formatPrice(totalPrice)} ₽`
                       : "Добавьте блюда из меню."}
@@ -153,9 +188,10 @@ export function CartSheet() {
                   <ShoppingBag className="h-7 w-7" aria-hidden />
                 </div>
                 <h3 className="mt-5 text-2xl font-extrabold text-cream">
-                  {submittedFulfillmentType === "cafe"
-                    ? "Заказ принят."
-                    : "Заказ отправлен!"}
+                  {successTitle(
+                    submittedFulfillmentType,
+                    submittedVisitTime
+                  )}
                 </h3>
                 {orderNumber ? (
                   <div className="mx-auto mt-5 max-w-[320px] rounded-2xl border border-gold/28 bg-coal px-5 py-4">
@@ -183,9 +219,7 @@ export function CartSheet() {
                   </div>
                 ) : null}
                 <p className="mx-auto mt-5 max-w-[300px] text-sm leading-relaxed text-smoke">
-                  {submittedFulfillmentType === "cafe"
-                    ? "Сотрудник кафе подтвердит его."
-                    : "Мы скоро свяжемся с вами для подтверждения."}
+                  {successDetails(submittedFulfillmentType)}
                 </p>
                 <Button
                   type="button"
@@ -200,10 +234,12 @@ export function CartSheet() {
             <CheckoutForm
               onSubmitted={({
                 orderNumber: submittedOrderNumber,
-                deliveryType
+                deliveryType,
+                visitTime
               }) => {
                 setOrderNumber(submittedOrderNumber);
                 setSubmittedFulfillmentType(deliveryType);
+                setSubmittedVisitTime(visitTime ?? "");
                 setIsOrderNumberCopied(false);
                 setStep("success");
               }}

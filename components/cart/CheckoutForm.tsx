@@ -35,14 +35,17 @@ import {
 } from "@/lib/personal-data";
 import { trackOrderSuccess } from "@/lib/yandex-metrika";
 
-type CheckoutFormProps = {
-  onSubmitted: (order: {
-    orderNumber: string;
-    deliveryType: FulfillmentType;
-  }) => void;
+export type FulfillmentType = "delivery" | "pickup" | "cafe";
+
+export type SubmittedOrder = {
+  orderNumber: string;
+  deliveryType: FulfillmentType;
+  visitTime?: string;
 };
 
-export type FulfillmentType = "delivery" | "pickup" | "cafe";
+type CheckoutFormProps = {
+  onSubmitted: (order: SubmittedOrder) => void;
+};
 
 const ORDER_RETRY_DELAYS_MS = [1_500, 2_500, 4_000];
 
@@ -276,6 +279,7 @@ export function CheckoutForm({ onSubmitted }: CheckoutFormProps) {
         grandTotal?: number;
         discountAmount?: number;
         promoCode?: string | null;
+        visitTime?: string | null;
         error?: string;
       };
       const serverGrandTotal = result.grandTotal;
@@ -308,11 +312,19 @@ export function CheckoutForm({ onSubmitted }: CheckoutFormProps) {
       clearCart();
       setStatus("sent");
       setMessage(
-        "Заказ отправлен! Мы скоро свяжемся с вами для подтверждения."
+        fulfillmentType === "delivery"
+          ? "Заказ отправлен! Мы скоро свяжемся с вами для подтверждения."
+          : fulfillmentType === "pickup"
+            ? "Заказ принят! Готовность — примерно через 15–20 минут."
+            : `Заказ принят! Ожидаем вас сегодня к ${result.visitTime ?? visitTime}.`
       );
       onSubmitted({
         orderNumber: result.orderNumber,
-        deliveryType: fulfillmentType
+        deliveryType: fulfillmentType,
+        visitTime:
+          fulfillmentType === "cafe"
+            ? (result.visitTime ?? visitTime)
+            : undefined
       });
       form.reset();
       setFulfillmentType("delivery");
@@ -410,8 +422,8 @@ export function CheckoutForm({ onSubmitted }: CheckoutFormProps) {
           <p className="text-xs font-medium leading-relaxed text-smoke">
             Заказ можно оформить только на сегодня, с {CAFE_OPEN_TIME} до{" "}
             {CAFE_CLOSE_TIME}. На приготовление нужно минимум{" "}
-            {MIN_CAFE_PREPARATION_MINUTES} минут. Сотрудник кафе подтвердит его
-            по телефону.
+            {MIN_CAFE_PREPARATION_MINUTES} минут. После оформления заказ сразу
+            поступит на кухню — будем ждать вас к выбранному времени.
           </p>
           {!earliestCafeVisitTime ? (
             <p

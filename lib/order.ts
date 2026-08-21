@@ -243,13 +243,17 @@ export function validateOrderPayload(body: unknown): ValidatedOrder {
 }
 
 export function formatOrderEmail(order: ValidatedOrder, orderNumber: string) {
+  const orderHeading =
+    order.deliveryType === "cafe"
+      ? "Новый заказ в кафе ко времени"
+      : order.deliveryType === "pickup"
+        ? "Новый заказ на самовывоз"
+        : "Новый заказ с сайта Жан Клод Мангал";
   const lines = [
     `Номер заказа: ${orderNumber}`,
     `Дата и время заказа: ${formatOrderDateTime()}`,
     "",
-    order.deliveryType === "cafe"
-      ? "Новый заказ в кафе ко времени — требуется подтверждение"
-      : "Новый заказ с сайта Жан Клод Мангал",
+    orderHeading,
     "",
     `Имя: ${order.customerName}`,
     `Телефон: ${order.phone}`,
@@ -336,8 +340,10 @@ async function deliverOrderToEmail(
         to,
         subject: `${
           order.deliveryType === "cafe"
-            ? `Заказ в кафе ко времени №${orderNumber} — подтвердить`
-            : `Новый заказ №${orderNumber} с сайта Жан Клод Мангал`
+            ? `Заказ в кафе к ${order.visitTime} №${orderNumber} — звонок не требуется`
+            : order.deliveryType === "pickup"
+              ? `Самовывоз №${orderNumber} — звонок не требуется`
+              : `Новый заказ №${orderNumber} с сайта Жан Клод Мангал`
         }${order.promoCode ? ` · промокод ${order.promoCode}` : ""}`,
         text: formatOrderEmail(order, orderNumber)
       }),

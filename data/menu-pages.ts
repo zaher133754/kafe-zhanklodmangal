@@ -157,13 +157,15 @@ export function getMenuCategoryItems(
         (item) =>
           item.category === "Шашлык" &&
           item.id !== "kurinyy-lyulya-kebab" &&
-          item.id !== "lyulya-kebab-iz-sochnoy-govyadiny"
+          item.id !== "lyulya-kebab-iz-sochnoy-govyadiny" &&
+          item.id !== "lyulya-kebab-assorti"
       );
     case "lyulya-kebab":
       return menuItems.filter(
         (item) =>
           item.id === "kurinyy-lyulya-kebab" ||
-          item.id === "lyulya-kebab-iz-sochnoy-govyadiny"
+          item.id === "lyulya-kebab-iz-sochnoy-govyadiny" ||
+          item.id === "lyulya-kebab-assorti"
       );
     case "goryachie-blyuda":
       return menuItems.filter((item) => item.category === "Горячие блюда");
