@@ -1,7 +1,20 @@
 "use client";
 
-import { useMemo, useState, type FormEvent } from "react";
-import { Check, Send, TicketPercent } from "lucide-react";
+import {
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+  type FormEvent,
+  type KeyboardEvent
+} from "react";
+import {
+  Check,
+  LoaderCircle,
+  MapPinOff,
+  Send,
+  TicketPercent
+} from "lucide-react";
 import { useCart } from "@/components/cart/CartProvider";
 import {
   PERSONAL_DATA_CONSENT_INPUT_ID,
@@ -18,9 +31,14 @@ import {
   MIN_CAFE_PREPARATION_MINUTES
 } from "@/lib/cafe-visit";
 import {
-  calculateDeliveryCost,
-  DELIVERY_COST,
-  FREE_DELIVERY_THRESHOLD
+  FAR_DELIVERY_COST,
+  FAR_FREE_DELIVERY_THRESHOLD,
+  getDeliveryPricing,
+  MAX_DELIVERY_DISTANCE_METERS,
+  NEAR_DELIVERY_COST,
+  NEAR_DELIVERY_MAX_DISTANCE_METERS,
+  NEAR_FREE_DELIVERY_THRESHOLD,
+  type DeliveryZone
 } from "@/lib/delivery";
 import {
   calculatePromoDiscount,
@@ -45,6 +63,22 @@ export type SubmittedOrder = {
 
 type CheckoutFormProps = {
   onSubmitted: (order: SubmittedOrder) => void;
+};
+
+type AddressSuggestion = {
+  id: string;
+  title: string;
+  subtitle: string;
+  address: string;
+};
+
+type DeliveryQuote = {
+  token: string;
+  address: string;
+  distanceMeters: number;
+  zone: DeliveryZone;
+  issuedAt: number;
+  expiresAt: number;
 };
 
 const ORDER_RETRY_DELAYS_MS = [1_500, 2_500, 4_000];
@@ -73,6 +107,12 @@ async function submitOrder(body: string) {
 
 function formatPrice(value: number) {
   return new Intl.NumberFormat("ru-RU").format(value);
+}
+
+function formatDistance(distanceMeters: number) {
+  return new Intl.NumberFormat("ru-RU", {
+    maximumFractionDigits: 1
+  }).format(distanceMeters / 1_000);
 }
 
 function isPhoneLike(value: string) {
@@ -116,10 +156,32 @@ export function CheckoutForm({ onSubmitted }: CheckoutFormProps) {
   const [promoStatus, setPromoStatus] = useState<
     "idle" | "success" | "error"
   >("idle");
+  const [addressInput, setAddressInput] = useState("");
+  const [addressSuggestions, setAddressSuggestions] = useState<
+    AddressSuggestion[]
+  >([]);
+  const [suggestionStatus, setSuggestionStatus] = useState<
+    "idle" | "loading" | "success" | "error"
+  >("idle");
+  const [suggestionsOpen, setSuggestionsOpen] = useState(false);
+  const [activeSuggestionIndex, setActiveSuggestionIndex] = useState(-1);
+  const [selectedSuggestionId, setSelectedSuggestionId] = useState("");
+  const [deliveryQuote, setDeliveryQuote] = useState<DeliveryQuote | null>(
+    null
+  );
+  const [deliveryQuoteStatus, setDeliveryQuoteStatus] = useState<
+    "idle" | "loading" | "success" | "outside" | "error"
+  >("idle");
+  const [deliveryQuoteMessage, setDeliveryQuoteMessage] = useState("");
+  const quoteRequestSequence = useRef(0);
   const discountAmount = calculatePromoDiscount(totalPrice, appliedPromoCode);
   const discountedTotal = totalPrice - discountAmount;
-  const deliveryCost = calculateDeliveryCost(fulfillmentType, totalPrice);
-  const grandTotal = discountedTotal + deliveryCost;
+  const deliveryPricing = deliveryQuote
+    ? getDeliveryPricing(totalPrice, deliveryQuote.distanceMeters)
+    : null;
+  const deliveryCost =
+    fulfillmentType === "delivery" ? (deliveryPricing?.cost ?? null) : 0;
+  const grandTotal = discountedTotal + (deliveryCost ?? 0);
   const fulfillmentLabel =
     fulfillmentType === "delivery"
       ? "Доставка"
@@ -130,12 +192,174 @@ export function CheckoutForm({ onSubmitted }: CheckoutFormProps) {
   const orderItems = useMemo(
     () =>
       lines.map((line) => ({
-        name: line.name,
-        price: line.price,
+        id: line.id,
         quantity: line.quantity
       })),
     [lines]
   );
+
+  useEffect(() => {
+    const query = addressInput.trim();
+
+    if (
+      fulfillmentType !== "delivery" ||
+      query.length < 3 ||
+      selectedSuggestionId
+    ) {
+      if (query.length < 3) {
+        setAddressSuggestions([]);
+        setSuggestionStatus("idle");
+        setSuggestionsOpen(false);
+      }
+      return;
+    }
+
+    const controller = new AbortController();
+    const timeout = window.setTimeout(async () => {
+      setSuggestionStatus("loading");
+      setSuggestionsOpen(true);
+
+      try {
+        const response = await fetch(
+          `/api/delivery/suggest?q=${encodeURIComponent(query)}`,
+          { signal: controller.signal }
+        );
+        const result = (await response.json()) as {
+          success?: boolean;
+          suggestions?: AddressSuggestion[];
+          error?: string;
+        };
+
+        if (!response.ok || !result.success) {
+          throw new Error(result.error || "Не удалось найти адрес.");
+        }
+
+        setAddressSuggestions(result.suggestions ?? []);
+        setSuggestionStatus("success");
+        setActiveSuggestionIndex(-1);
+      } catch (error) {
+        if (controller.signal.aborted) return;
+        setAddressSuggestions([]);
+        setSuggestionStatus("error");
+        setDeliveryQuoteMessage(
+          error instanceof Error
+            ? error.message
+            : "Не удалось найти адрес. Попробуйте ещё раз."
+        );
+      }
+    }, 350);
+
+    return () => {
+      window.clearTimeout(timeout);
+      controller.abort();
+    };
+  }, [addressInput, fulfillmentType, selectedSuggestionId]);
+
+  function resetDeliveryAddress(nextAddress = "") {
+    quoteRequestSequence.current += 1;
+    setAddressInput(nextAddress);
+    setSelectedSuggestionId("");
+    setDeliveryQuote(null);
+    setDeliveryQuoteStatus("idle");
+    setDeliveryQuoteMessage("");
+    setAddressSuggestions([]);
+    setActiveSuggestionIndex(-1);
+    setSuggestionsOpen(nextAddress.trim().length >= 3);
+  }
+
+  async function handleSuggestionSelect(suggestion: AddressSuggestion) {
+    const requestSequence = quoteRequestSequence.current + 1;
+    quoteRequestSequence.current = requestSequence;
+    setAddressInput(suggestion.address);
+    setSelectedSuggestionId(suggestion.id);
+    setAddressSuggestions([]);
+    setSuggestionsOpen(false);
+    setActiveSuggestionIndex(-1);
+    setDeliveryQuote(null);
+    setDeliveryQuoteStatus("loading");
+    setDeliveryQuoteMessage("");
+    setStatus("idle");
+    setMessage("");
+
+    try {
+      const response = await fetch("/api/delivery/quote", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ uri: suggestion.id })
+      });
+      const result = (await response.json()) as {
+        success?: boolean;
+        code?: string;
+        error?: string;
+        address?: string;
+        distanceMeters?: number;
+        quote?: DeliveryQuote;
+      };
+
+      if (requestSequence !== quoteRequestSequence.current) return;
+
+      if (result.code === "OUTSIDE_ZONE") {
+        setDeliveryQuoteStatus("outside");
+        setDeliveryQuoteMessage(
+          typeof result.distanceMeters === "number"
+            ? `До адреса ${formatDistance(result.distanceMeters)} км — это дальше нашей зоны 20 км.`
+            : "Адрес находится за пределами зоны доставки 20 км."
+        );
+        return;
+      }
+
+      if (
+        !response.ok ||
+        !result.success ||
+        !result.quote ||
+        !result.quote.token ||
+        typeof result.quote.distanceMeters !== "number"
+      ) {
+        throw new Error(result.error || "Не удалось рассчитать доставку.");
+      }
+
+      setAddressInput(result.quote.address);
+      setDeliveryQuote(result.quote);
+      setDeliveryQuoteStatus("success");
+    } catch (error) {
+      if (requestSequence !== quoteRequestSequence.current) return;
+      setDeliveryQuoteStatus("error");
+      setDeliveryQuoteMessage(
+        error instanceof Error
+          ? error.message
+          : "Не удалось рассчитать доставку. Попробуйте ещё раз."
+      );
+    }
+  }
+
+  function handleAddressKeyDown(event: KeyboardEvent<HTMLInputElement>) {
+    if (!suggestionsOpen || addressSuggestions.length === 0) {
+      if (event.key === "ArrowDown" && addressSuggestions.length > 0) {
+        event.preventDefault();
+        setSuggestionsOpen(true);
+        setActiveSuggestionIndex(0);
+      }
+      return;
+    }
+
+    if (event.key === "ArrowDown") {
+      event.preventDefault();
+      setActiveSuggestionIndex((current) =>
+        current >= addressSuggestions.length - 1 ? 0 : current + 1
+      );
+    } else if (event.key === "ArrowUp") {
+      event.preventDefault();
+      setActiveSuggestionIndex((current) =>
+        current <= 0 ? addressSuggestions.length - 1 : current - 1
+      );
+    } else if (event.key === "Enter" && activeSuggestionIndex >= 0) {
+      event.preventDefault();
+      void handleSuggestionSelect(addressSuggestions[activeSuggestionIndex]);
+    } else if (event.key === "Escape") {
+      setSuggestionsOpen(false);
+      setActiveSuggestionIndex(-1);
+    }
+  }
 
   function handleApplyPromo() {
     const normalizedPromoCode = normalizePromoCode(promoInput);
@@ -159,7 +383,9 @@ export function CheckoutForm({ onSubmitted }: CheckoutFormProps) {
     const formData = new FormData(form);
     const customerName = String(formData.get("customerName") ?? "").trim();
     const phone = String(formData.get("phone") ?? "").trim();
-    const address = String(formData.get("address") ?? "").trim();
+    const deliveryDetails = String(
+      formData.get("deliveryDetails") ?? ""
+    ).trim();
     const visitDate = getTodayInSamara();
     const visitTime = String(formData.get("visitTime") ?? "").trim();
     const guestCount = Number(formData.get("guestCount"));
@@ -188,9 +414,12 @@ export function CheckoutForm({ onSubmitted }: CheckoutFormProps) {
       return;
     }
 
-    if (fulfillmentType === "delivery" && !address) {
+    if (
+      fulfillmentType === "delivery" &&
+      (deliveryQuoteStatus !== "success" || !deliveryQuote)
+    ) {
       setStatus("error");
-      setMessage("Укажите адрес доставки.");
+      setMessage("Выберите дом из подсказок, чтобы рассчитать доставку.");
       return;
     }
 
@@ -259,7 +488,12 @@ export function CheckoutForm({ onSubmitted }: CheckoutFormProps) {
           customerName,
           phone,
           deliveryType: fulfillmentType,
-          address: fulfillmentType === "delivery" ? address : "",
+          address:
+            fulfillmentType === "delivery" ? deliveryQuote?.address : "",
+          deliveryDetails:
+            fulfillmentType === "delivery" ? deliveryDetails : "",
+          deliveryQuoteToken:
+            fulfillmentType === "delivery" ? deliveryQuote?.token : "",
           visitDate: fulfillmentType === "cafe" ? visitDate : "",
           visitTime: fulfillmentType === "cafe" ? visitTime : "",
           guestCount: fulfillmentType === "cafe" ? guestCount : 0,
@@ -269,8 +503,7 @@ export function CheckoutForm({ onSubmitted }: CheckoutFormProps) {
             accepted: personalDataConsentAccepted,
             version: PERSONAL_DATA_CONSENT_VERSION
           },
-          items: orderItems,
-          total: totalPrice
+          items: orderItems
         })
       );
       const result = (await response.json()) as {
@@ -333,10 +566,13 @@ export function CheckoutForm({ onSubmitted }: CheckoutFormProps) {
       setPromoStatus("idle");
       setPersonalDataConsentAccepted(false);
       setPersonalDataConsentError("");
-    } catch {
+      resetDeliveryAddress();
+    } catch (error) {
       setStatus("error");
       setMessage(
-        "Не удалось отправить заказ. Попробуйте ещё раз или позвоните нам."
+        error instanceof Error
+          ? error.message
+          : "Не удалось отправить заказ. Попробуйте ещё раз или позвоните нам."
       );
     }
   }
@@ -402,16 +638,145 @@ export function CheckoutForm({ onSubmitted }: CheckoutFormProps) {
       </fieldset>
 
       {fulfillmentType === "delivery" ? (
-        <label className="grid gap-2 text-sm font-bold text-cream">
-          Адрес доставки
-          <input
-            name="address"
-            required
-            autoComplete="street-address"
-            className="focus-ring min-h-12 rounded-xl border border-gold/18 bg-charcoal px-4 text-base font-medium text-cream outline-none placeholder:text-smoke"
-            placeholder="Самара, улица, дом, квартира"
-          />
-        </label>
+        <div className="grid gap-3">
+          <div className="grid gap-2 text-sm font-bold text-cream">
+            <label htmlFor="delivery-address">Адрес доставки</label>
+            <div
+              className="relative"
+              onBlur={(event) => {
+                if (
+                  !event.currentTarget.contains(event.relatedTarget as Node)
+                ) {
+                  setSuggestionsOpen(false);
+                  setActiveSuggestionIndex(-1);
+                }
+              }}
+            >
+              <input
+                id="delivery-address"
+                name="address"
+                value={addressInput}
+                required
+                role="combobox"
+                aria-autocomplete="list"
+                aria-expanded={suggestionsOpen}
+                aria-controls="delivery-address-suggestions"
+                aria-activedescendant={
+                  activeSuggestionIndex >= 0
+                    ? `delivery-address-option-${activeSuggestionIndex}`
+                    : undefined
+                }
+                aria-busy={suggestionStatus === "loading"}
+                autoComplete="off"
+                enterKeyHint="search"
+                onChange={(event) => {
+                  resetDeliveryAddress(event.currentTarget.value);
+                  setStatus("idle");
+                  setMessage("");
+                }}
+                onFocus={() => {
+                  if (
+                    addressInput.trim().length >= 3 &&
+                    !selectedSuggestionId
+                  ) {
+                    setSuggestionsOpen(true);
+                  }
+                }}
+                onKeyDown={handleAddressKeyDown}
+                className="focus-ring min-h-12 w-full rounded-xl border border-gold/18 bg-charcoal px-4 pr-11 text-base font-medium text-cream outline-none placeholder:text-smoke"
+                placeholder="Начните вводить улицу и дом"
+              />
+              {suggestionStatus === "loading" ? (
+                <LoaderCircle
+                  className="pointer-events-none absolute top-3.5 right-4 h-5 w-5 animate-spin text-gold-soft"
+                  aria-hidden
+                />
+              ) : null}
+
+              {suggestionsOpen && addressInput.trim().length >= 3 ? (
+                <div
+                  id="delivery-address-suggestions"
+                  className="absolute top-full right-0 left-0 z-40 mt-2 max-h-72 overflow-y-auto rounded-xl border border-gold/25 bg-coal p-1.5 shadow-[0_18px_50px_rgba(0,0,0,0.48)]"
+                  role="listbox"
+                  aria-label="Подсказки адреса"
+                >
+                  {suggestionStatus === "loading" ? (
+                    <p className="px-3 py-3 text-sm font-medium text-smoke">
+                      Ищем дома рядом с кафе…
+                    </p>
+                  ) : null}
+                  {suggestionStatus === "success" &&
+                  addressSuggestions.length === 0 ? (
+                    <p className="px-3 py-3 text-sm font-medium leading-relaxed text-smoke">
+                      Дом не найден. Проверьте улицу и номер дома.
+                    </p>
+                  ) : null}
+                  {addressSuggestions.map((suggestion, index) => (
+                    <button
+                      id={`delivery-address-option-${index}`}
+                      key={suggestion.id}
+                      type="button"
+                      role="option"
+                      aria-selected={activeSuggestionIndex === index}
+                      onFocus={() => setActiveSuggestionIndex(index)}
+                      onPointerMove={() => setActiveSuggestionIndex(index)}
+                      onClick={() => void handleSuggestionSelect(suggestion)}
+                      className="focus-ring grid min-h-14 w-full gap-0.5 rounded-lg px-3 py-2.5 text-left transition-colors hover:bg-gold/10 focus:bg-gold/10 aria-selected:bg-gold/10"
+                    >
+                      <span className="text-sm font-bold text-cream">
+                        {suggestion.title}
+                      </span>
+                      {suggestion.subtitle ? (
+                        <span className="text-xs font-medium text-smoke">
+                          {suggestion.subtitle}
+                        </span>
+                      ) : null}
+                    </button>
+                  ))}
+                </div>
+              ) : null}
+            </div>
+          </div>
+
+          {deliveryQuoteStatus === "loading" ? (
+            <div
+              className="flex min-h-12 items-center gap-3 rounded-xl border border-gold/18 bg-coal px-4 py-3 text-sm font-medium text-smoke"
+              role="status"
+            >
+              <LoaderCircle
+                className="h-5 w-5 shrink-0 animate-spin text-gold-soft"
+                aria-hidden
+              />
+              Определяем расстояние от кафе…
+            </div>
+          ) : null}
+
+          {deliveryQuoteStatus === "outside" ||
+          deliveryQuoteStatus === "error" ||
+          suggestionStatus === "error" ? (
+            <div
+              className="flex items-start gap-3 rounded-xl border border-red-400/28 bg-red-400/8 px-4 py-3 text-sm font-medium leading-relaxed text-red-200"
+              role="alert"
+            >
+              <MapPinOff className="mt-0.5 h-5 w-5 shrink-0" aria-hidden />
+              {deliveryQuoteMessage ||
+                "Не удалось проверить адрес. Попробуйте ещё раз."}
+            </div>
+          ) : null}
+
+          {deliveryQuoteStatus === "success" ? (
+            <label className="grid gap-2 text-sm font-bold text-cream">
+              Квартира, подъезд, этаж
+              <input
+                name="deliveryDetails"
+                autoComplete="address-line2"
+                className="focus-ring min-h-12 rounded-xl border border-gold/18 bg-charcoal px-4 text-base font-medium text-cream outline-none placeholder:text-smoke"
+                placeholder="Например, кв. 24, подъезд 2"
+              />
+            </label>
+          ) : null}
+
+        </div>
       ) : null}
 
       {fulfillmentType === "cafe" ? (
@@ -624,18 +989,26 @@ export function CheckoutForm({ onSubmitted }: CheckoutFormProps) {
         <div className="flex items-center justify-between gap-4 text-sm">
           <span className="font-medium text-smoke">{fulfillmentLabel}</span>
           <span className="font-bold text-cream">
-            {fulfillmentType === "cafe"
+            {fulfillmentType !== "delivery"
               ? "Без доставки"
-              : deliveryCost === 0
+              : deliveryQuoteStatus === "loading"
+                ? "Считаем…"
+                : deliveryCost === null
+                  ? "После выбора адреса"
+                  : deliveryCost === 0
                 ? "Бесплатно"
                 : `${formatPrice(deliveryCost)} ₽`}
           </span>
         </div>
         {fulfillmentType === "delivery" ? (
           <p className="border-b border-gold/12 pb-3 text-xs font-medium leading-relaxed text-smoke">
-            При заказе до {formatPrice(FREE_DELIVERY_THRESHOLD)} ₽ доставка стоит{" "}
-            {formatPrice(DELIVERY_COST)} ₽, от{" "}
-            {formatPrice(FREE_DELIVERY_THRESHOLD)} ₽ — бесплатно.
+            До {formatDistance(NEAR_DELIVERY_MAX_DISTANCE_METERS)} км —{" "}
+            {formatPrice(NEAR_DELIVERY_COST)} ₽ или бесплатно от{" "}
+            {formatPrice(NEAR_FREE_DELIVERY_THRESHOLD)} ₽. От{" "}
+            {formatDistance(NEAR_DELIVERY_MAX_DISTANCE_METERS)} до{" "}
+            {formatDistance(MAX_DELIVERY_DISTANCE_METERS)} км —{" "}
+            {formatPrice(FAR_DELIVERY_COST)} ₽ или бесплатно от{" "}
+            {formatPrice(FAR_FREE_DELIVERY_THRESHOLD)} ₽.
           </p>
         ) : (
           <div className="border-b border-gold/12 pb-1" aria-hidden />
@@ -643,7 +1016,9 @@ export function CheckoutForm({ onSubmitted }: CheckoutFormProps) {
         <div className="flex items-center justify-between gap-4 pt-1">
           <span className="text-sm font-bold text-smoke">Итого к оплате</span>
           <strong className="text-xl font-extrabold text-ember">
-            {formatPrice(grandTotal)} ₽
+            {fulfillmentType === "delivery" && deliveryCost === null
+              ? "—"
+              : `${formatPrice(grandTotal)} ₽`}
           </strong>
         </div>
       </div>
@@ -663,7 +1038,11 @@ export function CheckoutForm({ onSubmitted }: CheckoutFormProps) {
 
       <Button
         type="submit"
-        disabled={status === "sending"}
+        disabled={
+          status === "sending" ||
+          (fulfillmentType === "delivery" &&
+            deliveryQuoteStatus !== "success")
+        }
         aria-busy={status === "sending"}
         className="min-h-12 rounded-xl border border-ember/35 bg-ember px-5 text-base font-extrabold text-white hover:bg-flame"
       >

@@ -1,5 +1,6 @@
 import "server-only";
 import nodemailer from "nodemailer";
+import { menuItems } from "@/data/menu";
 import {
   CAFE_CLOSE_TIME,
   CAFE_OPEN_TIME,
@@ -8,7 +9,12 @@ import {
   isCafeVisitTime,
   MIN_CAFE_PREPARATION_MINUTES
 } from "@/lib/cafe-visit";
-import { calculateDeliveryCost } from "@/lib/delivery";
+import {
+  getDeliveryPricing,
+  type DeliveryZone
+} from "@/lib/delivery";
+import { verifyDeliveryQuoteToken } from "@/lib/delivery-quote";
+import { DELIVERY_DISTANCE_COEFFICIENT } from "@/lib/geo-distance";
 import {
   calculatePromoDiscount,
   FLYER_PROMO_DISCOUNT_PERCENT,
@@ -22,9 +28,14 @@ import {
 import { deliverOrderToTelegram } from "@/lib/telegram-notifications";
 
 export type OrderItem = {
+  id: string;
+  quantity: number;
+};
+
+export type ValidatedOrderItem = OrderItem & {
   name: string;
   price: number;
-  quantity: number;
+  total: number;
 };
 
 export type FulfillmentType = "delivery" | "pickup" | "cafe";
@@ -34,6 +45,8 @@ export type CheckoutOrderPayload = {
   phone: string;
   deliveryType: FulfillmentType;
   address?: string;
+  deliveryDetails?: string;
+  deliveryQuoteToken?: string;
   visitDate?: string;
   visitTime?: string;
   guestCount?: number;
@@ -54,6 +67,9 @@ export type ValidatedOrder = {
   deliveryType: FulfillmentType;
   deliveryCost: number;
   address?: string;
+  deliveryDetails?: string;
+  deliveryDistanceMeters?: number;
+  deliveryZone?: DeliveryZone;
   visitDate?: string;
   visitTime?: string;
   guestCount?: number;
@@ -66,10 +82,17 @@ export type ValidatedOrder = {
   };
   discountAmount: number;
   discountedTotal: number;
-  items: Array<OrderItem & { total: number }>;
+  items: ValidatedOrderItem[];
   total: number;
   grandTotal: number;
 };
+
+const menuItemById = new Map(
+  menuItems.map((item) => [
+    item.id,
+    { id: item.id, name: item.name, price: item.price }
+  ])
+);
 
 export type OrderDeliveryResult = {
   delivered: true;
@@ -100,6 +123,12 @@ function money(value: number) {
   return new Intl.NumberFormat("ru-RU").format(value);
 }
 
+function formatDistance(distanceMeters: number) {
+  return new Intl.NumberFormat("ru-RU", {
+    maximumFractionDigits: 1
+  }).format(distanceMeters / 1_000);
+}
+
 function formatOrderDateTime(date = new Date()) {
   return new Intl.DateTimeFormat("ru-RU", {
     dateStyle: "short",
@@ -126,7 +155,8 @@ export function validateOrderPayload(body: unknown): ValidatedOrder {
   const customerName = clean(source.customerName, 80);
   const phone = clean(source.phone, 40);
   const rawDeliveryType = clean(source.deliveryType, 40) || "delivery";
-  const address = clean(source.address, 240);
+  const deliveryDetails = clean(source.deliveryDetails, 160);
+  const deliveryQuoteToken = clean(source.deliveryQuoteToken, 4_000);
   const visitDate = clean(source.visitDate, 10);
   const visitTime = clean(source.visitTime, 5);
   const guestCount = cleanNumber(source.guestCount);
@@ -168,8 +198,19 @@ export function validateOrderPayload(body: unknown): ValidatedOrder {
     throw new Error("Укажите корректный телефон.");
   }
 
-  if (deliveryType === "delivery" && !address) {
-    throw new Error("Укажите адрес доставки.");
+  let address = "";
+  let deliveryDistanceMeters: number | undefined;
+  let deliveryZone: DeliveryZone | undefined;
+
+  if (deliveryType === "delivery") {
+    if (!deliveryQuoteToken) {
+      throw new Error("Выберите адрес доставки из подсказок.");
+    }
+
+    const deliveryQuote = verifyDeliveryQuoteToken(deliveryQuoteToken);
+    address = deliveryQuote.address;
+    deliveryDistanceMeters = deliveryQuote.distanceMeters;
+    deliveryZone = deliveryQuote.zone;
   }
 
   if (deliveryType === "cafe") {
@@ -198,19 +239,39 @@ export function validateOrderPayload(body: unknown): ValidatedOrder {
     }
   }
 
-  const items = rawItems
-    .map((item) => {
-      const price = Math.max(0, Math.round(cleanNumber(item.price)));
-      const quantity = Math.max(0, Math.round(cleanNumber(item.quantity)));
+  const quantitiesById = new Map<string, number>();
 
-      return {
-        name: clean(item.name, 160),
-        price,
-        quantity,
-        total: price * quantity
-      };
-    })
-    .filter((item) => item.name && item.price > 0 && item.quantity > 0);
+  for (const rawItem of rawItems) {
+    const item = rawItem as Partial<OrderItem>;
+    const id = clean(item.id, 120);
+    const quantity = Math.round(cleanNumber(item.quantity));
+
+    if (!id || quantity <= 0) continue;
+
+    const catalogItem = menuItemById.get(id);
+
+    if (!catalogItem) {
+      throw new Error("Одно из блюд больше недоступно. Обновите корзину.");
+    }
+
+    const nextQuantity = (quantitiesById.get(id) ?? 0) + quantity;
+
+    if (nextQuantity > 99) {
+      throw new Error("Количество одного блюда не может быть больше 99.");
+    }
+
+    quantitiesById.set(id, nextQuantity);
+  }
+
+  const items = Array.from(quantitiesById, ([id, quantity]) => {
+    const catalogItem = menuItemById.get(id)!;
+
+    return {
+      ...catalogItem,
+      quantity,
+      total: catalogItem.price * quantity
+    };
+  });
 
   if (items.length === 0) {
     throw new Error("Корзина пуста.");
@@ -219,7 +280,16 @@ export function validateOrderPayload(body: unknown): ValidatedOrder {
   const total = items.reduce((sum, item) => sum + item.total, 0);
   const discountAmount = calculatePromoDiscount(total, promoCode);
   const discountedTotal = total - discountAmount;
-  const deliveryCost = calculateDeliveryCost(deliveryType, total);
+  const deliveryPricing =
+    deliveryType === "delivery" && typeof deliveryDistanceMeters === "number"
+      ? getDeliveryPricing(total, deliveryDistanceMeters)
+      : null;
+
+  if (deliveryType === "delivery" && !deliveryPricing) {
+    throw new Error("Адрес находится за пределами зоны доставки 20 км.");
+  }
+
+  const deliveryCost = deliveryPricing?.cost ?? 0;
   const grandTotal = discountedTotal + deliveryCost;
 
   return {
@@ -228,6 +298,10 @@ export function validateOrderPayload(body: unknown): ValidatedOrder {
     deliveryType,
     deliveryCost,
     address: deliveryType === "delivery" ? address : "",
+    deliveryDetails:
+      deliveryType === "delivery" ? deliveryDetails || undefined : undefined,
+    deliveryDistanceMeters,
+    deliveryZone,
     visitDate: deliveryType === "cafe" ? visitDate : undefined,
     visitTime: deliveryType === "cafe" ? visitTime : undefined,
     guestCount: deliveryType === "cafe" ? guestCount : undefined,
@@ -259,6 +333,15 @@ export function formatOrderEmail(order: ValidatedOrder, orderNumber: string) {
     `Телефон: ${order.phone}`,
     `Тип получения: ${fulfillmentLabel(order.deliveryType)}`,
     ...(order.address ? [`Адрес доставки: ${order.address}`] : []),
+    ...(order.deliveryDetails
+      ? [`Квартира / подъезд / этаж: ${order.deliveryDetails}`]
+      : []),
+    ...(typeof order.deliveryDistanceMeters === "number"
+      ? [
+          `Расчётное расстояние (по прямой × ${String(DELIVERY_DISTANCE_COEFFICIENT).replace(".", ",")}): ${formatDistance(order.deliveryDistanceMeters)} км`,
+          `Зона доставки: ${order.deliveryZone === "near" ? "до 5 км" : "от 5 до 20 км"}`
+        ]
+      : []),
     ...(order.visitDate && order.visitTime && order.guestCount
       ? [
           `Дата визита: ${formatVisitDate(order.visitDate)}`,

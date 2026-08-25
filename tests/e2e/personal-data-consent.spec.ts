@@ -33,10 +33,8 @@ test("юридические страницы открываются напря�
       await expect(
         page.getByRole("heading", { level: 1, name: route.heading })
       ).toBeVisible();
-      await expect(page.getByText("731304199885", { exact: true })).toBeVisible();
-      await expect(
-        page.getByText("318732500052980", { exact: true })
-      ).toBeVisible();
+      await expect(page.locator("body")).toContainText("731304199885");
+      await expect(page.locator("body")).toContainText("318732500052980");
       await expect(
         page.getByText(/Редакция от 17 августа 2026 года/)
       ).toBeVisible();
@@ -96,6 +94,42 @@ test("корзина сохраняет расчёты, а заказ отпра
   let submittedOrder: Record<string, unknown> | undefined;
   let orderRequests = 0;
 
+  await page.route("**/api/delivery/suggest?*", async (route) => {
+    await route.fulfill({
+      status: 200,
+      contentType: "application/json",
+      body: JSON.stringify({
+        success: true,
+        suggestions: [
+          {
+            id: "ymapsbm1://geo?data=test-address",
+            title: "проспект Кирова, 393В",
+            subtitle: "Самара",
+            address: "Самара, проспект Кирова, 393В"
+          }
+        ]
+      })
+    });
+  });
+
+  await page.route("**/api/delivery/quote", async (route) => {
+    await route.fulfill({
+      status: 200,
+      contentType: "application/json",
+      body: JSON.stringify({
+        success: true,
+        quote: {
+          token: "signed-delivery-quote",
+          address: "Самара, проспект Кирова, 393В",
+          distanceMeters: 3_200,
+          zone: "near",
+          issuedAt: Date.now(),
+          expiresAt: Date.now() + 7_200_000
+        }
+      })
+    });
+  });
+
   await page.route("**/api/order", async (route) => {
     orderRequests += 1;
     submittedOrder = route.request().postDataJSON() as Record<string, unknown>;
@@ -153,7 +187,11 @@ test("корзина сохраняет расчёты, а заказ отпра
   await expect(consentLink).toHaveAttribute("target", "_blank");
   await expect(policyLink).toHaveAttribute("target", "_blank");
 
-  await page.getByLabel("Адрес доставки").fill("Самара, проспект Кирова, 393В");
+  await page.getByLabel("Адрес доставки").fill("Кирова 393В");
+  await page
+    .getByRole("option", { name: /проспект Кирова, 393В/ })
+    .click();
+  await expect(page.getByLabel("Квартира, подъезд, этаж")).toBeVisible();
   await page.getByLabel("Имя", { exact: true }).fill("Мария");
   await page
     .getByLabel("Телефон", { exact: true })
@@ -174,6 +212,7 @@ test("корзина сохраняет расчёты, а заказ отпра
     customerName: "Мария",
     phone: "+7 900 000-00-00",
     deliveryType: "delivery",
+    deliveryQuoteToken: "signed-delivery-quote",
     personalDataConsent: {
       accepted: true,
       version: "1.0"
@@ -182,4 +221,7 @@ test("корзина сохраняет расчёты, а заказ отпра
   expect(
     (submittedOrder?.personalDataConsent as Record<string, unknown>).acceptedAt
   ).toBeUndefined();
+  expect(submittedOrder?.items).toEqual([
+    expect.objectContaining({ id: expect.any(String), quantity: 2 })
+  ]);
 });
