@@ -14,7 +14,6 @@ import {
   type DeliveryZone
 } from "@/lib/delivery";
 import { verifyDeliveryQuoteToken } from "@/lib/delivery-quote";
-import { DELIVERY_DISTANCE_COEFFICIENT } from "@/lib/geo-distance";
 import {
   calculatePromoDiscount,
   FLYER_PROMO_DISCOUNT_PERCENT,
@@ -121,12 +120,6 @@ function isIsoDate(value: string) {
 
 function money(value: number) {
   return new Intl.NumberFormat("ru-RU").format(value);
-}
-
-function formatDistance(distanceMeters: number) {
-  return new Intl.NumberFormat("ru-RU", {
-    maximumFractionDigits: 1
-  }).format(distanceMeters / 1_000);
 }
 
 function formatOrderDateTime(date = new Date()) {
@@ -335,12 +328,6 @@ export function formatOrderEmail(order: ValidatedOrder, orderNumber: string) {
     ...(order.address ? [`Адрес доставки: ${order.address}`] : []),
     ...(order.deliveryDetails
       ? [`Квартира / подъезд / этаж: ${order.deliveryDetails}`]
-      : []),
-    ...(typeof order.deliveryDistanceMeters === "number"
-      ? [
-          `Расчётное расстояние (по прямой × ${String(DELIVERY_DISTANCE_COEFFICIENT).replace(".", ",")}): ${formatDistance(order.deliveryDistanceMeters)} км`,
-          `Зона доставки: ${order.deliveryZone === "near" ? "до 5 км" : "от 5 до 20 км"}`
-        ]
       : []),
     ...(order.visitDate && order.visitTime && order.guestCount
       ? [
