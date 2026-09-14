@@ -184,6 +184,13 @@ const rawMenuItems: MenuItem[] = [
     weight: "1,100 кг"
   },
   {
+    id: "myasnoe-assorti-zhan-klod-mangal",
+    category: "Шашлык",
+    name: 'Мясное ассорти "Жан Клод Мангал"',
+    price: 2890,
+    weight: "1,5 кг"
+  },
+  {
     id: "nezhnoe-pyure-s-aromatnym-lyulya",
     category: "Горячие блюда",
     name: "Нежное пюре с ароматным люля",
@@ -383,6 +390,7 @@ const menuImageById: Partial<Record<MenuItem["id"], StaticImageData>> = {
     "Салат фирменный Жан Клод Мангал.jfif"
   ),
   "lyulya-kebab-assorti": menuImage("Люля кебаб Ассорти.png"),
+  "myasnoe-assorti-zhan-klod-mangal": menuImage("Мясное ассорти Жан Клод Мангал.png"),
   "kurinye-krylya-gril": menuImage("chicken-wings-grill.jfif"),
   "kurinyy-lyulya-kebab": menuImage(
     "Куриный люля-кебаб с восточными специями.jfif"
@@ -440,6 +448,8 @@ const menuImageById: Partial<Record<MenuItem["id"], StaticImageData>> = {
 };
 
 const menuCompositionById: Partial<Record<MenuItem["id"], string>> = {
+  "myasnoe-assorti-zhan-klod-mangal":
+    "Свиная шейка, свиная корейка, куриное филе, куриные крылья, люля-кебаб из курицы, люля-кебаб из говядины, говядина, картофель фри, соус.",
   "griby-na-uglyah": "Запечённые на углях, в пряном маринаде.",
   "kartofel-na-uglyah": "Картофель, лук репчатый, зелень.",
   "kartofel-fri": "Картофель фри, прожаренный во фритюре.",

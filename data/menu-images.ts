@@ -45,6 +45,7 @@ import image43 from "@/public/menu-optimized/Шашлык из свиной ше
 import image44 from "@/public/menu-optimized/Черноголовка лимонад тархун-dark.avif";
 import image45 from "@/public/menu-optimized/Черноголовка лимонад байкал-dark.avif";
 import image46 from "@/public/menu-optimized/Люля кебаб Ассорти.avif";
+import image47 from "@/public/menu-optimized/Мясное ассорти Жан Клод Мангал.avif";
 
 const optimizedMenuImages = {
   "chicken-wings-grill.jfif": image01,
@@ -92,7 +93,8 @@ const optimizedMenuImages = {
   "Шашлык из свиной шейки.jfif": image43,
   "Черноголовка лимонад тархун-dark.png": image44,
   "Черноголовка лимонад байкал-dark.png": image45,
-  "Люля кебаб Ассорти.png": image46
+  "Люля кебаб Ассорти.png": image46,
+  "Мясное ассорти Жан Клод Мангал.png": image47
 } satisfies Record<string, StaticImageData>;
 
 export function getOptimizedMenuImage(fileName: string): StaticImageData {
