@@ -72,9 +72,9 @@ export function BanquetsSection() {
         <div
           className="premium-panel p-7 text-left sm:p-9 md:p-10"
         >
-          <h2 className="section-title uppercase">
+          <h1 className="section-title uppercase">
             Банкеты и торжества
-          </h2>
+          </h1>
           <p className="section-copy mt-8">
             Мы знаем, как сделать ваш праздник вкусным и уютным. Дни рождения,
             корпоративы или встречи с друзьями — в «ЖанКлод Мангал» вы

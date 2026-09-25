@@ -8,6 +8,7 @@ import { site } from "@/lib/site";
 
 const homeLastModified = new Date("2026-07-31T22:02:47+04:00");
 const menuLastModified = new Date("2026-07-31T22:02:47+04:00");
+const banquetsLastModified = new Date("2026-09-25T00:00:00+04:00");
 const legalLastModified = new Date(
   `${PERSONAL_DATA_DOCUMENT_DATE_ISO}T00:00:00+04:00`
 );
@@ -38,6 +39,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: menuLastModified,
       changeFrequency: "weekly",
       priority: 0.9
+    },
+    {
+      url: `${site.url}/banquets`,
+      lastModified: banquetsLastModified,
+      changeFrequency: "monthly",
+      priority: 0.8
     },
     {
       url: `${site.url}/consent`,

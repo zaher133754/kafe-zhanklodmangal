@@ -1,5 +1,4 @@
 import { AboutSection } from "@/components/AboutSection";
-import { BanquetsSection } from "@/components/BanquetsSection";
 import { ContactsSection } from "@/components/ContactsSection";
 import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
@@ -17,7 +16,6 @@ export default function Home() {
         <Hero />
         <AboutSection />
         <MenuSection />
-        <BanquetsSection />
         <TrustSection />
         <ContactsSection />
       </main>
