@@ -11,3 +11,4 @@ test-results/
 blob-report/
 .playwright-cli/
 output/playwright/
+.superpowers/
