@@ -5,6 +5,7 @@ import {
   validateBanquetRequestPayload
 } from "../../lib/banquet-request";
 import { createBanquetRequestHandler } from "../../lib/banquet-request-handler";
+import { deliverBanquetRequestToChannels } from "../../lib/banquet-request-multichannel";
 import { PERSONAL_DATA_CONSENT_VERSION } from "../../lib/personal-data";
 
 const validPayload = {
@@ -69,6 +70,50 @@ test.describe("банкетная заявка", () => {
     expect(response.status).toBe(200);
     await expect(response.json()).resolves.toEqual({ success: true });
     expect(delivered).toEqual(["+7 (903) 123-45-67"]);
+  });
+
+  test("отправляет банкетную заявку одновременно на почту и в Telegram", async () => {
+    const request = validateBanquetRequestPayload(validPayload);
+    const delivered: string[] = [];
+
+    await deliverBanquetRequestToChannels(request, {
+      email: async () => {
+        delivered.push("email");
+      },
+      telegram: async () => {
+        delivered.push("telegram");
+      }
+    });
+
+    expect(delivered.sort()).toEqual(["email", "telegram"]);
+  });
+
+  test("не теряет банкетную заявку при временной ошибке одного канала", async () => {
+    const request = validateBanquetRequestPayload(validPayload);
+
+    await expect(
+      deliverBanquetRequestToChannels(request, {
+        email: async () => {
+          throw new Error("SMTP unavailable");
+        },
+        telegram: async () => undefined
+      })
+    ).resolves.toBeUndefined();
+  });
+
+  test("возвращает ошибку, только если не сработали оба канала", async () => {
+    const request = validateBanquetRequestPayload(validPayload);
+
+    await expect(
+      deliverBanquetRequestToChannels(request, {
+        email: async () => {
+          throw new Error("SMTP unavailable");
+        },
+        telegram: async () => {
+          throw new Error("Telegram unavailable");
+        }
+      })
+    ).rejects.toThrow("Не удалось доставить банкетную заявку");
   });
 
   test("ошибка валидации возвращает 400 и не вызывает доставку", async () => {

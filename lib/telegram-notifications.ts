@@ -12,6 +12,32 @@ export type TelegramDeliveryResult = {
   channel: "telegram";
 };
 
+function getTelegramConfiguration() {
+  const token = process.env.TELEGRAM_BOT_TOKEN?.trim();
+  const chatId = process.env.TELEGRAM_CHAT_ID?.trim();
+  const silent = process.env.TELEGRAM_SILENT === "true";
+  const relayUrl = process.env.TELEGRAM_RELAY_URL?.trim();
+  const relaySecret = process.env.TELEGRAM_RELAY_SECRET?.trim();
+  const proxyUrl =
+    process.env.NODE_ENV === "production"
+      ? ""
+      : process.env.TELEGRAM_PROXY_URL?.trim() || "";
+
+  if ((relayUrl && !relaySecret) || (!relayUrl && relaySecret)) {
+    throw new Error(
+      "TELEGRAM_RELAY_URL и TELEGRAM_RELAY_SECRET должны быть настроены вместе."
+    );
+  }
+
+  if (!relayUrl && (!token || !chatId)) {
+    throw new Error(
+      "Не настроены TELEGRAM_BOT_TOKEN и TELEGRAM_CHAT_ID для отправки уведомления."
+    );
+  }
+
+  return { token, chatId, silent, relayUrl, relaySecret, proxyUrl };
+}
+
 function splitMessage(text: string) {
   const chunks: string[] = [];
   let remaining = text.trim();
@@ -265,6 +291,36 @@ export async function deliverOrderToTelegram(
         proxyUrl,
         showAcceptButton ? callbackData : undefined
       );
+    }
+  }
+
+  return { delivered: true, channel: "telegram" };
+}
+
+export async function deliverBanquetRequestToTelegram(
+  banquetRequestText: string
+): Promise<TelegramDeliveryResult> {
+  const { token, chatId, silent, relayUrl, relaySecret, proxyUrl } =
+    getTelegramConfiguration();
+  const notificationId = randomBytes(12).toString("hex");
+  const chunks = splitMessage(`🎉 ${banquetRequestText}`);
+
+  for (let index = 0; index < chunks.length; index += 1) {
+    const prefix = chunks.length > 1 ? `(${index + 1}/${chunks.length})\n` : "";
+    const text = `${prefix}${chunks[index]}`;
+
+    if (relayUrl && relaySecret) {
+      await sendMessageThroughRelay(
+        relayUrl,
+        relaySecret,
+        text,
+        silent,
+        "banquet-request",
+        notificationId,
+        false
+      );
+    } else {
+      await sendMessage(token!, chatId!, text, silent, proxyUrl);
     }
   }
 

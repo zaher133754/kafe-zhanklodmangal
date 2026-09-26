@@ -4,6 +4,7 @@ import {
   formatBanquetRequestEmail,
   type ValidatedBanquetRequest
 } from "@/lib/banquet-request";
+import { deliverBanquetRequestToTelegram } from "@/lib/telegram-notifications";
 
 const BANQUET_REQUEST_SUBJECT =
   "Новая заявка на банкет с сайта Жан Клод Мангал";
@@ -59,4 +60,10 @@ export async function deliverBanquetRequestEmail(
     if (timeout) clearTimeout(timeout);
     transporter.close();
   }
+}
+
+export async function deliverBanquetRequestTelegram(
+  request: ValidatedBanquetRequest
+): Promise<void> {
+  await deliverBanquetRequestToTelegram(formatBanquetRequestEmail(request));
 }

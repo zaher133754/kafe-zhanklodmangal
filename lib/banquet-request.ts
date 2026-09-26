@@ -88,8 +88,6 @@ export function formatBanquetRequestEmail(
     `Телефон: ${request.phone}`,
     `Комментарий: ${request.comment || "не указан"}`,
     "",
-    "Согласие на обработку персональных данных: принято",
-    `Версия согласия: ${request.personalDataConsent.version}`,
-    `Время согласия: ${request.personalDataConsent.acceptedAt}`
+    "Согласие на обработку персональных данных: принято"
   ].join("\n");
 }
