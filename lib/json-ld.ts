@@ -10,13 +10,20 @@ export function restaurantJsonLd() {
     url: site.url,
     image: [`${site.url}${images.hero}`, `${site.url}${images.og}`],
     description: site.description,
-    telephone: site.phones.map((phone) => phone.label),
+    telephone: site.orderPhone.label,
     address: {
       "@type": "PostalAddress",
       streetAddress: "просп. Кирова, 393В",
       addressLocality: "Самара",
       addressCountry: "RU"
     },
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: 53.250859,
+      longitude: 50.224685
+    },
+    hasMap: site.yandexOrgUrl,
+    acceptsReservations: true,
     areaServed: {
       "@type": "City",
       name: "Самара"

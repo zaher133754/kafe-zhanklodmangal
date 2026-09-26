@@ -44,7 +44,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: `${site.url}/banquets`,
       lastModified: banquetsLastModified,
       changeFrequency: "monthly",
-      priority: 0.8
+      priority: 0.8,
+      images: [
+        `${site.url}/images/banquet-table.webp`,
+        `${site.url}/images/banquet-hall.webp`,
+        `${site.url}/images/banquet-food.webp`
+      ]
     },
     {
       url: `${site.url}/consent`,

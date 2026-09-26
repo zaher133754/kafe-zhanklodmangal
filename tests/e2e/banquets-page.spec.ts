@@ -11,7 +11,11 @@ test("страница банкетов доступна для поисковы
     })
   ).toBeVisible();
   await expect(page).toHaveTitle(
-    /Банкеты, корпоративы и Дни рождения в Самаре/
+    "Банкеты и корпоративы в Самаре | Жан Клод Мангал"
+  );
+  await expect(page.locator('meta[name="description"]')).toHaveAttribute(
+    "content",
+    "Банкеты, корпоративы и дни рождения в Самаре до 40 человек. От 2500 ₽ на гостя, можно со своим алкоголем. Забронируйте дату по телефону."
   );
   await expect(page.locator('link[rel="canonical"]')).toHaveAttribute(
     "href",
@@ -19,8 +23,69 @@ test("страница банкетов доступна для поисковы
   );
   await expect(page.locator('meta[name="robots"]')).toHaveAttribute(
     "content",
-    /index/
+    /index, follow/
   );
+  await expect(page.locator('meta[name="googlebot"]')).toHaveAttribute(
+    "content",
+    /max-image-preview:large/
+  );
+});
+
+test("банкетная страница содержит локальную Schema.org-разметку", async ({
+  page
+}) => {
+  await page.goto("/banquets");
+
+  const nodes = await page
+    .locator('script[type="application/ld+json"]')
+    .evaluateAll((scripts) =>
+      scripts.flatMap((script) => {
+        const data = JSON.parse(script.textContent ?? "{}") as Record<
+          string,
+          unknown
+        >;
+        return Array.isArray(data["@graph"])
+          ? (data["@graph"] as Record<string, unknown>[])
+          : [data];
+      })
+    );
+
+  const restaurant = nodes.find((node) => {
+    const type = node["@type"];
+    return Array.isArray(type) && type.includes("Restaurant");
+  });
+  const service = nodes.find((node) => node["@type"] === "Service");
+  const breadcrumbs = nodes.find(
+    (node) => node["@type"] === "BreadcrumbList"
+  );
+
+  expect(restaurant).toMatchObject({
+    name: "Жан Клод Мангал",
+    telephone: "+7 (903) 308-62-89",
+    address: {
+      addressLocality: "Самара",
+      addressCountry: "RU"
+    },
+    geo: {
+      latitude: 53.250859,
+      longitude: 50.224685
+    }
+  });
+  expect(service).toMatchObject({
+    serviceType: "Организация банкетов и мероприятий",
+    areaServed: { name: "Самара" },
+    provider: { "@id": "https://zhanklodmangal.ru/#restaurant" },
+    offers: {
+      price: "2500",
+      priceCurrency: "RUB"
+    }
+  });
+  expect(breadcrumbs).toMatchObject({
+    itemListElement: [
+      { position: 1, item: "https://zhanklodmangal.ru/" },
+      { position: 2, item: "https://zhanklodmangal.ru/banquets" }
+    ]
+  });
 });
 
 test("первый экран содержит условия, три фотографии и блоки доверия", async ({
@@ -47,6 +112,24 @@ test("первый экран содержит условия, три фотог
     page.getByRole("button", { name: "Оставить заявку" })
   ).toBeVisible();
   await expect(page.getByText(/в «Жан Клод Мангал»/)).toBeVisible();
+});
+
+test("заголовок банкетов использует тот же размер, что и заголовок главной", async ({
+  page
+}) => {
+  await page.setViewportSize({ width: 1280, height: 900 });
+  await page.goto("/");
+  const homeHeadingSize = await page
+    .getByRole("heading", { level: 1, name: /Доставка еды из кафе/ })
+    .evaluate((element) => getComputedStyle(element).fontSize);
+
+  await page.goto("/banquets");
+  const banquetHeading = page.getByRole("heading", {
+    level: 1,
+    name: "Банкеты, корпоративы и Дни рождения в Самаре"
+  });
+
+  await expect(banquetHeading).toHaveCSS("font-size", homeHeadingSize);
 });
 
 test("кнопка открывает доступную форму и Escape возвращает фокус", async ({
@@ -158,11 +241,11 @@ test("на широком экране преимущества отделены
   expect(heroLayout).not.toBeNull();
   expect(benefits).not.toBeNull();
   expect(benefits!.y - (heroLayout!.y + heroLayout!.height)).toBeGreaterThanOrEqual(
-    80
+    120
   );
 });
 
-test("первый экран сохраняет начало блока преимуществ", async ({
+test("преимущества следуют сразу после первого экрана", async ({
   page
 }) => {
   await page.setViewportSize({ width: 1280, height: 900 });
@@ -174,7 +257,7 @@ test("первый экран сохраняет начало блока пре�
   const box = await firstBenefit.boundingBox();
 
   expect(box).not.toBeNull();
-  expect(box!.y).toBeLessThan(890);
+  expect(box!.y).toBeLessThan(1000);
 });
 
 test("телефон использует фирменную подсветку и motion-анимацию", async ({
@@ -292,7 +375,23 @@ test("страница банкетов опубликована в sitemap", as
   const response = await request.get("/sitemap.xml");
 
   expect(response.status()).toBe(200);
-  expect(await response.text()).toContain(
-    "<loc>https://zhanklodmangal.ru/banquets</loc>"
+  const sitemap = await response.text();
+  expect(sitemap).toContain("<loc>https://zhanklodmangal.ru/banquets</loc>");
+  expect(sitemap).toContain(
+    "<image:loc>https://zhanklodmangal.ru/images/banquet-table.webp</image:loc>"
+  );
+});
+
+test("robots разрешает банкеты, закрывает API и указывает sitemap", async ({
+  request
+}) => {
+  const response = await request.get("/robots.txt");
+  const robots = await response.text();
+
+  expect(response.status()).toBe(200);
+  expect(robots).toContain("Allow: /");
+  expect(robots).toContain("Disallow: /api/");
+  expect(robots).toContain(
+    "Sitemap: https://zhanklodmangal.ru/sitemap.xml"
   );
 });

@@ -24,6 +24,8 @@ const isYandexMetrikaEnabled =
   yandexMetrikaId > 0 &&
   (process.env.NODE_ENV === "production" ||
     process.env.NEXT_PUBLIC_YANDEX_METRIKA_DEBUG === "true");
+const yandexWebmasterVerification =
+  process.env.NEXT_PUBLIC_YANDEX_WEBMASTER_VERIFICATION?.trim();
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
@@ -37,7 +39,10 @@ export const metadata: Metadata = {
     canonical: "/"
   },
   verification: {
-    google: "F_hjfTqDdg4PomM4lNwIHFcC6f0DBMj_cQuGt0dKe9g"
+    google: "F_hjfTqDdg4PomM4lNwIHFcC6f0DBMj_cQuGt0dKe9g",
+    ...(yandexWebmasterVerification
+      ? { yandex: yandexWebmasterVerification }
+      : {})
   },
   openGraph: {
     type: "website",

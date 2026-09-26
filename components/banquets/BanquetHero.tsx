@@ -31,7 +31,7 @@ export function BanquetHero() {
           data-banquet-hero-layout
         >
           <div className="max-w-[650px] text-left">
-            <h1 className="text-balance text-[clamp(2.25rem,4.05vw,4rem)] font-extrabold leading-[1.04] tracking-[-0.035em] text-cream">
+            <h1 className="text-balance text-[clamp(42px,6.2vw,84px)] font-extrabold leading-[0.98] tracking-[-0.035em] text-cream">
               Банкеты, корпоративы и Дни рождения{" "}
               <span className="text-flame">в Самаре</span>
             </h1>
@@ -95,7 +95,7 @@ export function BanquetHero() {
         </div>
 
         <div
-          className="mt-16 border-t border-gold/20 py-6 lg:mt-24"
+          className="mt-20 border-t border-gold/20 py-6 lg:mt-32"
           data-banquet-benefits
         >
           <div className="grid md:grid-cols-3">

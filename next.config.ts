@@ -38,11 +38,16 @@ const securityHeaders = [
   {
     key: "X-Frame-Options",
     value: "DENY"
+  },
+  {
+    key: "Strict-Transport-Security",
+    value: "max-age=31536000"
   }
 ] as const;
 
 const nextConfig: NextConfig = {
   output: "standalone",
+  poweredByHeader: false,
   async headers() {
     return [
       {
@@ -89,6 +94,16 @@ const nextConfig: NextConfig = {
       },
       {
         source: "/",
+        headers: [
+          {
+            key: "Cache-Control",
+            value:
+              "public, max-age=0, s-maxage=3600, stale-while-revalidate=86400"
+          }
+        ]
+      },
+      {
+        source: "/banquets",
         headers: [
           {
             key: "Cache-Control",

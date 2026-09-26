@@ -3,7 +3,7 @@ export const siteUrl =
   "https://zhanklodmangal.ru";
 
 export const site = {
-  name: "ЖанКлод Мангал",
+  name: "Жан Клод Мангал",
   legalName: "ИП Озернова Мария Сергеевна",
   title: "Шашлык с доставкой в Самаре — Жан Клод Мангал",
   description:

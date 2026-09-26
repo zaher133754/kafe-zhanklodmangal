@@ -6,43 +6,56 @@ import { BanquetReviews } from "@/components/banquets/BanquetReviews";
 import { BanquetContacts } from "@/components/banquets/BanquetContacts";
 import { Header } from "@/components/Header";
 import banquetTable from "@/public/images/banquet-table.webp";
+import {
+  banquetPageJsonLd,
+  banquetPageUrl,
+  banquetSeoDescription,
+  banquetSeoTitle
+} from "@/lib/banquet-json-ld";
+import { site } from "@/lib/site";
 
 export const dynamic = "force-static";
 
-const title =
-  "Банкеты, корпоративы и Дни рождения в Самаре";
-const description =
-  "Банкеты и корпоративы в Самаре до 40 человек. Стоимость от 2500 ₽ на гостя, можно со своим алкоголем. Тёплая атмосфера и блюда с мангала.";
-
 export const metadata: Metadata = {
-  title,
-  description,
+  title: {
+    absolute: banquetSeoTitle
+  },
+  description: banquetSeoDescription,
   alternates: {
-    canonical: "/banquets"
+    canonical: banquetPageUrl
   },
   openGraph: {
     type: "website",
-    url: "/banquets",
-    title,
-    description,
+    locale: "ru_RU",
+    siteName: site.name,
+    url: banquetPageUrl,
+    title: banquetSeoTitle,
+    description: banquetSeoDescription,
     images: [
       {
         url: banquetTable.src,
         width: banquetTable.width,
         height: banquetTable.height,
-        alt: "Банкетный стол с блюдами ЖанКлод Мангал"
+        alt: "Банкетный стол с блюдами Жан Клод Мангал"
       }
     ]
   },
   twitter: {
     card: "summary_large_image",
-    title,
-    description,
+    title: banquetSeoTitle,
+    description: banquetSeoDescription,
     images: [banquetTable.src]
   },
   robots: {
     index: true,
-    follow: true
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1
+    }
   }
 };
 
@@ -57,6 +70,12 @@ export default function BanquetsPage() {
         <BanquetContacts />
       </main>
       <BanquetRequestDialog />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(banquetPageJsonLd()).replace(/</g, "\\u003c")
+        }}
+      />
     </>
   );
 }
