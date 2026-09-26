@@ -8,7 +8,7 @@ import { site } from "@/lib/site";
 
 const homeLastModified = new Date("2026-07-31T22:02:47+04:00");
 const menuLastModified = new Date("2026-07-31T22:02:47+04:00");
-const banquetsLastModified = new Date("2026-09-25T00:00:00+04:00");
+const banquetsLastModified = new Date("2026-09-26T00:00:00+04:00");
 const legalLastModified = new Date(
   `${PERSONAL_DATA_DOCUMENT_DATE_ISO}T00:00:00+04:00`
 );

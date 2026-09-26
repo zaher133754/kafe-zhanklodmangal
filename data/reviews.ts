@@ -10,6 +10,8 @@ export const yandexTrust = {
     "https://yandex.ru/maps/51/samara/?ll=50.224685%2C53.250859&mode=routes&rtext=~53.250859%2C50.224685&rtt=auto&z=15",
   mapEmbedUrl:
     "https://yandex.ru/map-widget/v1/?ll=50.224685%2C53.250859&z=15&ol=biz&oid=222834997712",
+  banquetMapEmbedUrl:
+    "https://yandex.ru/map-widget/v1/?ll=50.224685%2C53.250859&z=15&pt=50.224685%2C53.250859%2Cpm2rdm",
   verifiedAt: "2026-07-06",
   reviews: [
     {

@@ -1,13 +1,18 @@
 import type { Metadata } from "next";
-import { BanquetsSection } from "@/components/BanquetsSection";
+import { BanquetHero } from "@/components/banquets/BanquetHero";
+import { BanquetRequestDialog } from "@/components/banquets/BanquetRequestDialog";
+import { BanquetPhoneCta } from "@/components/banquets/BanquetPhoneCta";
+import { BanquetReviews } from "@/components/banquets/BanquetReviews";
+import { BanquetContacts } from "@/components/banquets/BanquetContacts";
 import { Header } from "@/components/Header";
 import banquetTable from "@/public/images/banquet-table.webp";
 
 export const dynamic = "force-static";
 
-const title = "Банкеты и торжества";
+const title =
+  "Банкеты, корпоративы и Дни рождения в Самаре";
 const description =
-  "Мы знаем, как сделать ваш праздник вкусным и уютным. Дни рождения, корпоративы или встречи с друзьями — в «ЖанКлод Мангал» вы получаете тёплую атмосферу, сочное мясо на углях и никакой суеты.";
+  "Банкеты и корпоративы в Самаре до 40 человек. Стоимость от 2500 ₽ на гостя, можно со своим алкоголем. Тёплая атмосфера и блюда с мангала.";
 
 export const metadata: Metadata = {
   title,
@@ -29,6 +34,12 @@ export const metadata: Metadata = {
       }
     ]
   },
+  twitter: {
+    card: "summary_large_image",
+    title,
+    description,
+    images: [banquetTable.src]
+  },
   robots: {
     index: true,
     follow: true
@@ -40,8 +51,12 @@ export default function BanquetsPage() {
     <>
       <Header />
       <main>
-        <BanquetsSection />
+        <BanquetHero />
+        <BanquetPhoneCta />
+        <BanquetReviews />
+        <BanquetContacts />
       </main>
+      <BanquetRequestDialog />
     </>
   );
 }
